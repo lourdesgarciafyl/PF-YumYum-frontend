@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Space+Mono&display=swap');
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #af0303;
+}
+.mainSection{
+  flex-grow: 1;
+}
+.letraSpace{
+  font-family: 'Space Mono', monospace;
+}
+.letraRoboto{
+  font-family: 'Roboto Condensed', sans-serif;
+}
+.fondoGrisOscuro{
+  background-color: #2b2d42;
+}
+.letraGrisOscuro{
+  color: #2b2d42;
+}
+.fondoGrisClaro{
+  background-color: #8d99ae;
+}
+.letraGrisClaro{
+  color: #8d99ae;
+}
+.fondoAmarillo{
+  background-color: #f7b538;
+}
+.letraAmarilla{
+  color: #f7b538;
+}
+.fondoNaranja{
+  background-color: #d8572a;
+}
+.letraNaranja{
+  color: #d8572a;
+}
+.fondoRojo{
+  background-color: #c32f27;
+}
+.letraRoja{
+  color: #c32f27;
+}
