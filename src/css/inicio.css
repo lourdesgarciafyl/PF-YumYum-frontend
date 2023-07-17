@@ -1,0 +1,64 @@
+.card-text {
+  font-size: x-small;
+  display: flex;
+  justify-content: space-between;
+}
+.card {
+  background: transparent;
+  border: none;
+  max-height: 400px;
+  max-width: 12rem;
+}
+
+
+
+.card:hover {
+  filter: brightness(1.1);
+}
+
+.card-body {
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+  top: -28px;
+}
+
+.btnPrecioCard {
+  border-radius: 50%;
+  background-color: #d8572a!important;
+  border: none;
+  color: white;
+  height: 45px; 
+
+}
+.btnPedirCard {
+  border-radius: 50%;
+  background-color: #d8572a!important;
+  border: none;
+  color: white;
+  height: 45px; 
+}
+
+.btnPedirCard:hover {
+  background-color: #c25a34!important;
+  color: #f7b538;
+
+
+}
+.btnPedirCard:active{
+
+}
+.imagenHero {
+  object-fit: cover;
+    width: 100%;
+  max-height: 100vh;
+}
+
+.tituloHero{
+  bottom: 50%;
+  color: #d8572a;
+  left: 50%;
+
+}
+
+
