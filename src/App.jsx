@@ -1,12 +1,12 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Footer from "./components/common/Footer";;
-import AgregarProducto from "./components/views/producto/AgregarProducto";
+import Navegacion from "./components/common/Navegacion"
 function App() {
   return (
     <>
         
-          <AgregarProducto></AgregarProducto>
+          <Navegacion></Navegacion>
           <Footer></Footer>
     </>
   );
