@@ -1,5 +1,6 @@
 import "../../../css/formularioAdminProductos.css";
 import { Form, Button, Card, Row, Col } from "react-bootstrap";
+import { crearProducto } from "../../helpers/queriesProducto";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
@@ -7,8 +8,24 @@ import { useNavigate } from "react-router-dom";
 const AgregarProducto = () => {
     const { register, formState: {errors}, reset , handleSubmit} = useForm()
     
-    const onSubmit = (data) =>{
-        console.log(data)
+    const onSubmit = (productoNuevo) =>{
+        crearProducto(productoNuevo).then((respuestaCreated)=>{
+            if(respuestaCreated && respuestaCreated.status === 201){
+                Swal.fire(
+                    "Producto agregado",
+                    `El producto ${productoNuevo.nombreProducto} se agregó correctamente`,
+                    `success`
+                )
+                reset()
+                /*Redireccionar a pag administrar productos */
+            }else{
+                Swal.fire(
+                    `Ocurrió un error`, 
+                    `Intente nuevamente más tarde`, 
+                    `error`
+                    )
+            }
+        })
     }
 
     return(
@@ -19,7 +36,7 @@ const AgregarProducto = () => {
         <Card.Body className="py-3 w-100 mx-auto">
             <Form noValidate className="w-75 mx-auto letraRoboto" onSubmit={handleSubmit(onSubmit)}>
                 
-                <Form.Group className="mb-3 fw-bold" controlId="formNombre">
+                <Form.Group className="mb-2 fw-bold" controlId="formNombre">
                     <Form.Label className="letraFormLabel">Nombre del producto *</Form.Label>
                     <Form.Control
                     type="text"
@@ -38,7 +55,7 @@ const AgregarProducto = () => {
                     <Form.Text className="text-danger ms-1">{errors.nombreProducto?.message}</Form.Text>
                 </Form.Group>
 
-                <Form.Group className="mb-3 fw-bold" controlId="formDetalle">
+                <Form.Group className="mb-2 fw-bold" controlId="formDetalle">
                     <Form.Label className="letraFormLabel">Detalle del producto *</Form.Label>
                     <Form.Control
                     type="text"
@@ -59,7 +76,7 @@ const AgregarProducto = () => {
                     <Form.Text className="text-danger ms-1">{errors.detalle?.message}</Form.Text>
                 </Form.Group>
 
-                <Form.Group className="mb-3 fw-bold" controlId="forPrecio">
+                <Form.Group className="mb-2 fw-bold" controlId="forPrecio">
                     <Form.Label className="letraFormLabel">Precio *</Form.Label>
                     <Form.Control
                     type="number"
@@ -78,7 +95,7 @@ const AgregarProducto = () => {
                     <Form.Text className="text-danger ms-1">{errors.precio?.message}</Form.Text>
                 </Form.Group>
 
-                <Form.Group className="mb-3 fw-bold" controlId="forImagen">
+                <Form.Group className="mb-2 fw-bold" controlId="forImagen">
                     <Form.Label className="letraFormLabel">Imagen *</Form.Label>
                     <Form.Control
                     type="text"
@@ -95,7 +112,7 @@ const AgregarProducto = () => {
 
                 <Row>
                     <Col lg={6}>
-                    <Form.Group className="mb-3 fw-bold" controlId="forCategoria">
+                    <Form.Group className="mb-2 fw-bold" controlId="forCategoria">
                     <Form.Label className="letraFormLabel">Categoría *</Form.Label>
                     <Form.Select {... register("categoria",{
                         required: "Debe seleccionar una categoría"
@@ -113,7 +130,7 @@ const AgregarProducto = () => {
                     </Col>
 
                     <Col lg={6}>
-                    <Form.Group className="mb-3 fw-bold" controlId="forEstado">
+                    <Form.Group className="mb-2 fw-bold" controlId="forEstado">
                     <Form.Label className="letraFormLabel">Estado *</Form.Label>
                     <Form.Select {... register("estado", {
                         required: "Debe seleccionar el estado del producto."

@@ -63,7 +63,6 @@
       "estado": "Activo",
       "categoria": "Otro"
     },
-
     {
       "id": 8,
       "nombreProducto": "Nuggets XL",
@@ -90,6 +89,15 @@
       "detalle": "La ensalada mixta está compuesta de lechuga romana, tomate, zanahoria, atún, cebolla, maíz dulce y huevo cocido.",
       "estado": "Activo",
       "categoria": "Veggie"
+    },
+    {
+      "nombreProducto": "Hamburguesa vegana",
+      "detalle": "Hamburguesa de lentejas con lechuga y tomate",
+      "precio": "1250",
+      "imagen": "https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383717/yumyum/hamburguesaCheeseburger_owbqs3.png",
+      "categoria": "Hamburguesa",
+      "estado": "Activo",
+      "id": 11
     }
   ]
 }
