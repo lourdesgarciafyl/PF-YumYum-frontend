@@ -1,0 +1,14 @@
+footer {
+    width: 100%;
+  }
+
+.logo {
+  width: 200px;
+  height: 100px;
+}
+
+.ordenFooter {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
