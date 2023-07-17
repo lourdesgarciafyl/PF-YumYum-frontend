@@ -1,0 +1,15 @@
+.formSelect{
+    background-color: #d8572a;
+    color: #f7b538;
+    font-weight: bold;
+}
+#btnAgregar{
+    background-color: #c32f27;
+    color: #f7b538;
+    border-color: #f7b538;
+    border-radius: 12px;
+}
+#btnAgregar:hover{
+    background-color: #d8572a;
+    border-color: #f7b538;
+}
