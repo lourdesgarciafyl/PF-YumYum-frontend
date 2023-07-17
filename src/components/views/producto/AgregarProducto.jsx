@@ -20,7 +20,7 @@ const AgregarProducto = () => {
             <Form noValidate className="w-75 mx-auto letraRoboto" onSubmit={handleSubmit(onSubmit)}>
                 
                 <Form.Group className="mb-3 fw-bold" controlId="formNombre">
-                    <Form.Label>Nombre del producto *</Form.Label>
+                    <Form.Label className="letraFormLabel">Nombre del producto *</Form.Label>
                     <Form.Control
                     type="text"
                     placeholder="Ej: Pizza especial"
@@ -35,11 +35,11 @@ const AgregarProducto = () => {
                             message: "Cantidad máxima de caracteres: 50"
                         }
                     })}></Form.Control>
-                    <Form.Text className="text-danger">{errors.nombreProducto?.message}</Form.Text>
+                    <Form.Text className="text-danger ms-1">{errors.nombreProducto?.message}</Form.Text>
                 </Form.Group>
 
                 <Form.Group className="mb-3 fw-bold" controlId="formDetalle">
-                    <Form.Label>Detalle del producto *</Form.Label>
+                    <Form.Label className="letraFormLabel">Detalle del producto *</Form.Label>
                     <Form.Control
                     type="text"
                     as="textarea"
@@ -56,11 +56,11 @@ const AgregarProducto = () => {
                             message: "Cantidad máxima de caracteres: 500"
                         }
                     })}></Form.Control>
-                    <Form.Text className="text-danger">{errors.detalle?.message}</Form.Text>
+                    <Form.Text className="text-danger ms-1">{errors.detalle?.message}</Form.Text>
                 </Form.Group>
 
                 <Form.Group className="mb-3 fw-bold" controlId="forPrecio">
-                    <Form.Label>Precio *</Form.Label>
+                    <Form.Label className="letraFormLabel">Precio *</Form.Label>
                     <Form.Control
                     type="number"
                     placeholder="Ej: 1200"
@@ -75,14 +75,14 @@ const AgregarProducto = () => {
                             message: "Precio máximo: $10000"
                         }
                     })}></Form.Control>
-                    <Form.Text className="text-danger">{errors.precio?.message}</Form.Text>
+                    <Form.Text className="text-danger ms-1">{errors.precio?.message}</Form.Text>
                 </Form.Group>
 
                 <Form.Group className="mb-3 fw-bold" controlId="forImagen">
-                    <Form.Label>Imagen *</Form.Label>
+                    <Form.Label className="letraFormLabel">Imagen *</Form.Label>
                     <Form.Control
                     type="text"
-                    placeholder="Ej: https://www.paulinacocina.net/wp-content/uploads/2020/04/budin-de-zanahoria-800x558.jpg"
+                    placeholder="Ej: https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383714/yumyum/pizzaMuzzarela_rfihh1.png"
                     {...register("imagen",{
                         required: "Debe ingresar la URL de la imagen.",
                         pattern:{
@@ -90,13 +90,13 @@ const AgregarProducto = () => {
                             message: "La URL debe terminar en: PNG, JPG, JPEG, GIF o SVG"
                         }
                     })}></Form.Control>
-                    <Form.Text className="text-danger">{errors.imagen?.message}</Form.Text>
+                    <Form.Text className="text-danger ms-1">{errors.imagen?.message}</Form.Text>
                 </Form.Group>
 
                 <Row>
                     <Col lg={6}>
                     <Form.Group className="mb-3 fw-bold" controlId="forCategoria">
-                    <Form.Label>Categoría *</Form.Label>
+                    <Form.Label className="letraFormLabel">Categoría *</Form.Label>
                     <Form.Select {... register("categoria",{
                         required: "Debe seleccionar una categoría"
                     })}>
@@ -108,13 +108,13 @@ const AgregarProducto = () => {
                         <option value="Promociones" className="formSelect">Promoción</option>
                         <option value="Otro" className="formSelect">Otro</option>
                     </Form.Select>
-                    <Form.Text className="text-danger">{errors.categoria?.message}</Form.Text>
+                    <Form.Text className="text-danger ms-1">{errors.categoria?.message}</Form.Text>
                     </Form.Group>
                     </Col>
 
                     <Col lg={6}>
                     <Form.Group className="mb-3 fw-bold" controlId="forEstado">
-                    <Form.Label>Estado *</Form.Label>
+                    <Form.Label className="letraFormLabel">Estado *</Form.Label>
                     <Form.Select {... register("estado", {
                         required: "Debe seleccionar el estado del producto."
                     })}>
@@ -122,7 +122,7 @@ const AgregarProducto = () => {
                         <option value="Activo" className="formSelect">Activo</option>
                         <option value="Inactivo" className="formSelect">Inactivo</option>
                     </Form.Select>
-                    <Form.Text className="text-danger">{errors.estado?.message}</Form.Text>
+                    <Form.Text className="text-danger ms-1">{errors.estado?.message}</Form.Text>
                     </Form.Group>
                     </Col>
                 </Row>

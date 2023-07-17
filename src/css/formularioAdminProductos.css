@@ -1,3 +1,6 @@
+.letraFormLabel{
+    font-size: large;
+}
 .formSelect{
     background-color: #d8572a;
     color: #f7b538;
@@ -8,6 +11,7 @@
     color: #f7b538;
     border-color: #f7b538;
     border-radius: 12px;
+    font-size: large;
 }
 #btnAgregar:hover{
     background-color: #d8572a;
