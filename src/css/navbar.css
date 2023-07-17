@@ -1,0 +1,54 @@
+.logoNavbar {
+  max-width: 202px;
+}
+
+.navbar-collapse {
+  max-width: 348px;
+}
+
+.nav-link {
+  color: #ffffff !important;
+}
+.nav-link:hover {
+  color: #f7b538 !important;
+}
+.nav-link:active {
+  color: #ffffff !important;
+}
+
+.dropdown-item:active {
+  background-color: #f7b538;
+}
+
+.dropdown-item {
+  color: white;
+}
+.dropdown-menu {
+  background-color: rgb(39, 38, 38);
+}
+
+.carritoConPedidos p {
+  font-size: 10px;
+}
+
+#cantidadProductosCliente {
+  position: relative;
+  right: 56%;
+  font-size: 12px;
+  color: rgb(241, 171, 18);
+}
+
+.btn-dark {
+  background-color: #af0303;
+}
+
+.btn-dark:hover {
+  background-color: rgb(241, 171, 18);
+  color: #af0303;
+}
+
+@media (max-width: 576px) {
+  .logoNavbar {
+    max-width: 100px;
+  }
+}
