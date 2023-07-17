@@ -1,0 +1,21 @@
+.logoNavbar {
+    max-width: 202px;
+  }
+  
+  .navbar-collapse {
+    max-width: 348px;
+  }
+  
+  .nav-link {
+    color: #ffffff !important;
+  }
+  .nav-link:hover {
+    color: #f7b538 !important;
+  }
+  .nav-link:active {
+    color: #ffffff !important;
+  }
+  
+  
+  
+  
