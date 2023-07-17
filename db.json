@@ -10,13 +10,13 @@
       "categoria": "Pizza"
     },
     {
-      "id": 2,
       "nombreProducto": "Doble Cheeseburger",
-      "precio": 2600,
+      "precio": 2500,
       "imagen": "https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383717/yumyum/hamburguesaCheeseburger_owbqs3.png",
       "detalle": "La Doble Cheeseburger incluye dos patties 100% carne. vienen cubierta con crujientes pepinillos, cebolla picada, ketchup, mostaza y dos rebanadas de queso americano",
       "estado": "Activo",
-      "categoria": "Hamburguesa"
+      "categoria": "Hamburguesa",
+      "id": 2
     },
     {
       "id": 3,

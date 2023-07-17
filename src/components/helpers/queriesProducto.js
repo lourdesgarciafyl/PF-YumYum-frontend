@@ -16,6 +16,22 @@ export const crearProducto = async (producto) => {
   }
 };
 
+export const editarProducto = async (id, producto) => {
+  try {
+    const respuesta = await fetch(`${URLProducto}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(producto),
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
 export const borrarProducto = async (id) => {
   try {
     const respuesta = await fetch(`${URLProducto}/${id}`, {
