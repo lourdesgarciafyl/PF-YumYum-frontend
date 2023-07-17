@@ -37,3 +37,13 @@ export const obtenerListaProductos = async () => {
     console.log(error);
   }
 };
+
+export const consultaProductosPorCategoria = async (categoria) => {
+  try {
+    const respuesta = await fetch(`${URLProducto}?categoria=${categoria}`);
+    const productosFiltrados = await respuesta.json();
+    return productosFiltrados;
+  } catch (error) {
+    console.log(error);
+  }
+};
