@@ -1,50 +1,35 @@
-/* CARD CONTENEDOR DE LOS PRODUCTOS DEL INICIO */
-.showText h6,
-.showText span {
-  display: none;
-}
-
-.imgCardInicio {
-  max-width: 230px;
-}
-
-.cardProducto {
+.card-text {
+  font-size: x-small;
   display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  background: transparent;
+  border: none;
+  max-height: 400px;
+  max-width: 14rem;
+}
+
+.card:hover {
+  filter: brightness(1.1);
+}
+
+.card-body {
+  margin: 0px;
+  padding: 0px;
   position: relative;
-  width: 100px;
-  flex-direction: column;
-  transition: transform 0.3s ease-in-out;
-  color: #f7b538;
-  min-height: 300px;
-}
-.navbar2 {
-  color: wheat;
-}
-.cardProducto:hover {
-  transform: scale(1.1);
-  transition: transform 0.3s ease-in-out;
-  color: white;
-  filter: brightness(105%);
+  top: -28px;
 }
 
-.cardProducto img {
-  max-width: 240px!important;
-  filter: drop-shadow(0 5px 6px rgba(0, 0, 0, 1));
-}
-.cardProducto h6 {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  top: 15px;
-  font-size: 1em;
-  align-self: center;
-  line-height: 0.7;
+.btnPrecioCard {
+  border-radius: 18px;
+  background-color: #d8572a;
+  border: none;
 }
 
-.cardProducto span {
-  font-size: large;
-  background-color: #f6a000;
-  color: white;
-  width: fit-content;
-  margin-top: -5px;
-  padding: 9px;
-  border-radius: 15px;
+.imagenHero {
+  object-fit: cover;
+  object-position: 55%;
+  width: 100%;
 }
