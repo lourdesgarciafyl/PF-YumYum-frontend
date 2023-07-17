@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Space+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Space+Mono&display=swap");
 
 #root {
   display: flex;
@@ -6,42 +6,42 @@
   min-height: 100vh;
   background-color: #af0303;
 }
-.mainSection{
+.mainSection {
   flex-grow: 1;
 }
-.letraSpace{
-  font-family: 'Space Mono', monospace;
+.letraSpace {
+  font-family: "Space Mono", monospace;
 }
-.letraRoboto{
-  font-family: 'Roboto Condensed', sans-serif;
+.letraRoboto {
+  font-family: "Roboto Condensed", sans-serif;
 }
-.fondoGrisOscuro{
+.fondoGrisOscuro {
   background-color: #2b2d42;
 }
-.letraGrisOscuro{
+.letraGrisOscuro {
   color: #2b2d42;
 }
-.fondoGrisClaro{
+.fondoGrisClaro {
   background-color: #8d99ae;
 }
-.letraGrisClaro{
+.letraGrisClaro {
   color: #8d99ae;
 }
-.fondoAmarillo{
+.fondoAmarillo {
   background-color: #f7b538;
 }
-.letraAmarilla{
+.letraAmarilla {
   color: #f7b538;
 }
-.fondoNaranja{
+.fondoNaranja {
   background-color: #d8572a;
 }
-.letraNaranja{
+.letraNaranja {
   color: #d8572a;
 }
-.fondoRojo{
+.fondoRojo {
   background-color: #c32f27;
 }
-.letraRoja{
+.letraRoja {
   color: #c32f27;
 }

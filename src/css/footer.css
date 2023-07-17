@@ -1,6 +1,6 @@
 footer {
-    width: 100%;
-  }
+  width: 100%;
+}
 
 .logo {
   width: 200px;
@@ -11,4 +11,16 @@ footer {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+/* Dispositivos Small */
+
+@media all and (max-width: 767px) {
+  .ordenFooter {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 3%;
+  }
 }
