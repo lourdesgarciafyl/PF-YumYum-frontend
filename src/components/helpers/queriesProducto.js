@@ -25,6 +25,7 @@ export const editarProducto = async (id, producto) => {
       },
       body: JSON.stringify(producto),
     });
+    
     return respuesta;
   } catch (error) {
     console.log(error);
