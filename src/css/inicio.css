@@ -7,10 +7,12 @@
   background: transparent;
   border: none;
   max-height: 400px;
-  max-width: 12rem;
+  max-width: 13rem;
 }
 
-
+.banner {
+  max-height: 100vh;
+}
 
 .card:hover {
   filter: brightness(1.1);
