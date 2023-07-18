@@ -108,5 +108,17 @@
       "estado": "Activo",
       "id": 12
     }
+  ],
+
+  "usuarios": [
+    {
+      "id": 1,
+      "nombreUsuario": "rolling",
+      "apellidoUsuario" : "code",
+      "email": "admin@rollingcode.com",
+      "password": "123456aA",
+      "estado" : "Activo",
+      "perfil" : "Administrador"
+    }
   ]
 }
