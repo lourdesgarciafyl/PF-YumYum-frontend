@@ -34,6 +34,17 @@ const EditarProducto = () => {
             <Form.Control
               type="text"
               placeholder="Ej: Pizza especial"
+              {...register('nombreProducto', {
+                required: 'Debe ingresar el nombre del producto.',
+                minLength: {
+                  value: 3,
+                  message: 'Mínimo de caracteres: 3',
+                },
+                maxLength: {
+                  value: 50,
+                  message: 'Cantidad máxima de caracteres: 50',
+                },
+              })}
             ></Form.Control>
             <Form.Text className="text-danger ms-1">
               {errors.nombreProducto?.message}
@@ -49,6 +60,17 @@ const EditarProducto = () => {
               as="textarea"
               rows={2}
               placeholder="Ingrese una descripción para dar más detalles sobre el producto."
+              {...register('detalle', {
+                required: 'Debe ingresar una descripción del producto',
+                minLength: {
+                  value: 5,
+                  message: 'Cantidad mínima de caracteres: 5',
+                },
+                maxLength: {
+                  value: 500,
+                  message: 'Cantidad máxima de caracteres: 500',
+                },
+              })}
             ></Form.Control>
             <Form.Text className="text-danger ms-1">
               {errors.detalle?.message}
@@ -57,7 +79,21 @@ const EditarProducto = () => {
 
           <Form.Group className="mb-2 fw-bold" controlId="formPrecio">
             <Form.Label className="letraFormLabel">Precio *</Form.Label>
-            <Form.Control type="number" placeholder="Ej: 1200"></Form.Control>
+            <Form.Control
+              type="number"
+              placeholder="Ej: 1200"
+              {...register('precio', {
+                required: 'Debe ingresar el precio del producto.',
+                min: {
+                  value: 100,
+                  message: 'Precio mínimo: $100',
+                },
+                max: {
+                  value: 10000,
+                  message: 'Precio máximo: $10000',
+                },
+              })}
+            ></Form.Control>
             <Form.Text className="text-danger ms-1">
               {errors.precio?.message}
             </Form.Text>
@@ -68,6 +104,13 @@ const EditarProducto = () => {
             <Form.Control
               type="text"
               placeholder="Ej: https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383720/yumyum/hamburguesaQuesoyMorron_pfs2by.png"
+              {...register('imagen', {
+                required: 'Debe ingresar la URL de la imagen.',
+                pattern: {
+                  value: /^(http(s?):)([/|.|\w|\s|-])*\.(?:png|jpe?g|gif|svg)$/,
+                  message: 'La URL debe terminar en: PNG, JPG, JPEG, GIF o SVG',
+                },
+              })}
             ></Form.Control>
             <Form.Text className="text-danger ms-1">
               {errors.imagen?.message}
