@@ -109,16 +109,42 @@
       "id": 12
     }
   ],
-
   "usuarios": [
     {
       "id": 1,
       "nombreUsuario": "rolling",
-      "apellidoUsuario" : "code",
+      "apellidoUsuario": "code",
       "email": "admin@rollingcode.com",
       "password": "123456aA",
-      "estado" : "Activo",
-      "perfil" : "Administrador"
+      "estado": "Activo",
+      "perfil": "Administrador"
+    },
+    {
+      "nombreUsuario": "Mariana",
+      "apellidoUsuario": "Enriquez",
+      "email": "marianaenriquez@gmail.com",
+      "password": "123456aA",
+      "estado": "Activo",
+      "perfil": "Cliente",
+      "id": 2
+    },
+    {
+      "nombreUsuario": "Juan",
+      "apellidoUsuario": "Perez",
+      "email": "juanperez@gmail.com",
+      "password": "123456aA",
+      "estado": "Activo",
+      "perfil": "Cliente",
+      "id": 3
+    },
+    {
+      "nombreUsuario": "Suduns",
+      "apellidoUsuario": "Jimenez",
+      "email": "susanajimenez@gmail.com",
+      "password": "123456aA",
+      "estado": "Activo",
+      "perfil": "Cliente",
+      "id": 4
     }
   ]
 }
