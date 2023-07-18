@@ -98,6 +98,15 @@
       "categoria": "Hamburguesa",
       "estado": "Activo",
       "id": 11
+    },
+    {
+      "nombreProducto": "Hamburguesa DobleCheddar",
+      "detalle": "Carne de calidad con queso cheedar y cebolla caramelizada.",
+      "precio": "2700",
+      "imagen": "https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383720/yumyum/hamburguesaDobleCheddar_wyifm1.png",
+      "categoria": "Hamburguesa",
+      "estado": "Activo",
+      "id": 12
     }
   ]
 }
