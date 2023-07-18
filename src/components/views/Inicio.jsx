@@ -1,57 +1,46 @@
-
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Button } from "react-bootstrap";
 import "../../css/inicio.css";
 import CardProductoInicio from "../../components/views/producto/CardProductoInicio";
-
+import Nav from "react-bootstrap/Nav";
 
 const Inicio = () => {
   return (
-    
     <section className="mainSection">
-      <img
-        className="banner"
-        src="https://images.pexels.com/photos/6802983/pexels-photo-6802983.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-        alt="fondo cafe"
-      />
+      <div className="imagenBanner">
+        <img className="banner" src="" alt="fondo cafe" />
+      </div>
+
+      <Nav className="justify-content-center" activeKey="/home">
+        <Nav.Item>
+          <Nav.Link href="/home">Hamburguesas</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-1">Pizzas</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-2">Veggie</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-2">Bebidas</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-2">Otros</Nav.Link>
+        </Nav.Item>
+      </Nav>
+
       <Container>
         <h1 className="display-4">Nuestros Productos</h1>
         <hr />
-        <Row>
-            <CardProductoInicio></CardProductoInicio>
-            <CardProductoInicio></CardProductoInicio>
-            <CardProductoInicio></CardProductoInicio>
-            <CardProductoInicio></CardProductoInicio>
-            <CardProductoInicio></CardProductoInicio>
-            <CardProductoInicio></CardProductoInicio>
-            <CardProductoInicio></CardProductoInicio>
-            <CardProductoInicio></CardProductoInicio>
-            
-         
+        <Row className="justify-content-around">
+          <CardProductoInicio></CardProductoInicio>
+          <CardProductoInicio></CardProductoInicio>
+          <CardProductoInicio></CardProductoInicio>
+          <CardProductoInicio></CardProductoInicio>
+          <CardProductoInicio></CardProductoInicio>
+          <CardProductoInicio></CardProductoInicio>
         </Row>
       </Container>
     </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
   );
 };
 
