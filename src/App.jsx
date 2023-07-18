@@ -1,14 +1,13 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import Footer from './components/common/Footer';
-import Navegacion from './components/common/Navegacion';
-import EditarProducto from './components/views/producto/EditarProducto';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import Footer from "./components/common/Footer";;
+import Navegacion from "./components/common/Navegacion"
 function App() {
   return (
     <>
-      <Navegacion></Navegacion>
-      <EditarProducto />
-      <Footer></Footer>
+        
+          <Navegacion></Navegacion>
+          <Footer></Footer>
     </>
   );
 }
