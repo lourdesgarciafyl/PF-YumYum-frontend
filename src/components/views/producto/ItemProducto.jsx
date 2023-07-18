@@ -12,7 +12,7 @@ const ItemProducto = () => {
 
     return(
         <Col sm={6} md={4} lg={3} className="mb-3 justify-content-center">
-        <Card className="pt-0">
+        <Card className="pt-0 cardItemProducto">
         <Card.Img 
         className="imagenCard"
         variant="top"
@@ -21,9 +21,9 @@ const ItemProducto = () => {
         <Card.Body className="cardBodyProducto shadow">
           <Row className="justify-content-between justify-content-md-between my-0 py-0">
             <Col  className="me-1">
-            <Card.Title className="fuenteSpace fw-bolder">Hamburguesa Doble Bacon y Cheddar</Card.Title>
+            <Card.Title className="letraSpace fw-bolder">Hamburguesa Doble Bacon</Card.Title>
             </Col>
-            <Col >
+            <Col>
             <Form onClick={toggler}>
               <Form.Check
               type="switch"
@@ -35,12 +35,12 @@ const ItemProducto = () => {
             </Col>
           </Row>
           <hr/>
-          <Card.Text className="fuenteRoboto">
-            <strong className="fuenteSpace">Categoría:</strong> Pizza
+          <Card.Text className="letraRoboto">
+            <strong className="letraSpace">Categoría:</strong> Pizza
             <br/>
-            <strong className="fuenteSpace">Precio:</strong> $ 1200
+            <strong className="letraSpace">Precio:</strong> $ 1200
           </Card.Text>
-          <section className="fuenteRoboto d-flex flex-row justify-content-evenly pb-2">
+          <section className="letraRoboto d-flex flex-row justify-content-evenly pb-2">
           <aside>
             <Button className="btnEditarProducto ">Editar</Button>
           </aside>
