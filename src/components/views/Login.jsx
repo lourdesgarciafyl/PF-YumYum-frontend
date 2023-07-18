@@ -33,6 +33,15 @@ const Login = () => {
                   aria-describedby="iconoEmail"
                   type="email"
                   className="inputFormulario"
+                  {...register('email', {
+                    required: 'El Email es un dato obligatorio.',
+                    pattern: {
+                      value:
+                        /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
+                      message:
+                        'El Email debe cumplir con el formato juan@correo.com',
+                    },
+                  })}
                 />
               </InputGroup>
               <Form.Text className="text-danger my-2 py-3">
@@ -51,6 +60,14 @@ const Login = () => {
                   aria-describedby="iconoPassword"
                   type="password"
                   className="inputFormulario"
+                  {...register('password', {
+                    required: 'La contraseña es un dato obligatorio.',
+                    pattern: {
+                      value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8}$/,
+                      message:
+                        'La contraseña debe tener mínimo 8 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.',
+                    },
+                  })}
                 />
               </InputGroup>
               <Form.Text className="text-danger my-2 py-3">
