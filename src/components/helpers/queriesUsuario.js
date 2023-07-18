@@ -16,3 +16,16 @@ export const crearUsuario = async (usuario) => {
     }
 }
 
+export const obtenerUsuario = async (id) => {
+    try {
+        const respuesta = await fetch(`${URLUsuario}/${id}`);
+        const usuarioEncontrado = {
+            data: await respuesta.json(),
+            status: respuesta.status
+        }
+        return usuarioEncontrado;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
