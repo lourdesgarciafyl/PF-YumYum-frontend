@@ -1,19 +1,30 @@
-.letraFormLabel{
-    font-size: large;
+.letraFormLabel {
+  font-size: large;
 }
-.formSelect{
-    background-color: #d8572a;
-    color: #f7b538;
-    font-weight: bold;
+.formSelect {
+  background-color: #d8572a;
+  color: #f7b538;
+  font-weight: bold;
 }
-#btnAgregar{
-    background-color: #c32f27;
-    color: #f7b538;
-    border-color: #f7b538;
-    border-radius: 12px;
-    font-size: large;
+#btnAgregar {
+  background-color: #c32f27;
+  color: #f7b538;
+  border-color: #f7b538;
+  border-radius: 12px;
+  font-size: large;
 }
-#btnAgregar:hover{
-    background-color: #d8572a;
-    border-color: #f7b538;
+#btnAgregar:hover {
+  background-color: #d8572a;
+  border-color: #f7b538;
+}
+#btnEditar {
+  background-color: #c32f27;
+  color: #f7b538;
+  border-color: #f7b538;
+  border-radius: 12px;
+  font-size: large;
+}
+#btnEditar:hover {
+  background-color: #d8572a;
+  border-color: #f7b538;
 }
