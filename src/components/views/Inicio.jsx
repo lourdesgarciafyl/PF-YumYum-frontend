@@ -1,15 +1,30 @@
-import { Container, Row, Button } from "react-bootstrap";
+import { Container, Row, Button, Carousel } from "react-bootstrap";
 import "../../css/inicio.css";
 import CardProductoInicio from "../../components/views/producto/CardProductoInicio";
 import Nav from "react-bootstrap/Nav";
+import banner1 from "../../assets/img/Banner1.jpg";
+import banner2 from "../../assets/img/Banner2.jpg";
+import banner3 from "../../assets/img/Banner3.jpg";
+import banner4 from "../../assets/img/Banner4.jpg";
 
 const Inicio = () => {
   return (
     <section className="mainSection">
-      <div className="imagenBanner">
-        <img className="banner" src="" alt="fondo cafe" />
-      </div>
-
+      <Carousel className="Carrusel-MD-LG">
+        <Carousel.Item>
+          <img  src={banner1} />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img  src={banner2} />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img  src={banner3} />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img  src={banner4} />
+        </Carousel.Item>
+      </Carousel>
+      ;
       <Nav className="justify-content-center" activeKey="/home">
         <Nav.Item>
           <Nav.Link href="/home">Hamburguesas</Nav.Link>
@@ -27,7 +42,6 @@ const Inicio = () => {
           <Nav.Link eventKey="link-2">Otros</Nav.Link>
         </Nav.Item>
       </Nav>
-
       <Container>
         <h1 className="display-4">Nuestros Productos</h1>
         <hr />

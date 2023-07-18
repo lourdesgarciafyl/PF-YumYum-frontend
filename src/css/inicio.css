@@ -59,6 +59,28 @@
 }
 
 .precio {
-  background-color: #f7b538!important;
-  color:  
+  background-color: #f7b538 !important;
+}
+
+/* El carrusel debe tener 4 imagenes para sm y 4 imagenes para LG */
+
+.Carrusel-MD-LG{
+width: 100%;
+}
+
+.Carrusel-MD-LG img{
+  width: 100%;
+  }
+@media (max-width: 767px) {
+  /* Estilos para dispositivos pequeños */
+  .nav {
+  font-size: xx-small;
+
+  }
+
+  .Carrusel-MD-LG img{
+    width: 100%;
+    object-fit: cover;
+    
+    }
 }
