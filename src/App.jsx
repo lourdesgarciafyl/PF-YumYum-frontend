@@ -7,6 +7,7 @@ function App() {
     <>
         
           <Navegacion></Navegacion>
+          
           <Footer></Footer>
     </>
   );

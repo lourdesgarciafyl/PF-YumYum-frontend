@@ -1,0 +1,9 @@
+.imagenCard {
+    width: 100%;
+    object-fit: contain;
+    object-position: 100%;
+    padding: 2px;
+    position: relative;
+    bottom: -15px;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 2.5));
+  }
