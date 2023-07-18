@@ -75,4 +75,5 @@ export const consultaListaUsuarios = async () => {
   } catch (error) {
     console.log(error);
   }
+  
 };
