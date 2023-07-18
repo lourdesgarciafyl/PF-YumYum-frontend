@@ -1,6 +1,8 @@
 import '../../../css/formularioAdminProductos.css';
 import { Form, Button, Card, Row, Col } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import { editarProducto } from '../../helpers/queriesProducto';
+import Swal from 'sweetalert2';
 
 const EditarProducto = () => {
   const {
@@ -9,9 +11,26 @@ const EditarProducto = () => {
     reset,
     handleSubmit,
   } = useForm();
+  const id = 12;
 
-  const onSubmit = (datos) => {
-    console.log(datos);
+  const onSubmit = (productoEditado) => {
+    editarProducto(id, productoEditado).then((respuestaEditado) => {
+      if (respuestaEditado && respuestaEditado.status === 200) {
+        Swal.fire(
+          'Producto Editado',
+          `El producto ${productoEditado.nombreProducto} se editó correctamente`,
+          'success'
+        );
+        reset();
+        /*TODO: Redireccionar a pag administrar productos */
+      } else {
+        Swal.fire(
+          'Ocurrió un error',
+          `El producto ${productoEditado.nombreProducto} no fue editado, inténtelo más tarde`,
+          'error'
+        );
+      }
+    });
   };
 
   return (
