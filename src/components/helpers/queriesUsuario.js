@@ -29,3 +29,15 @@ export const obtenerUsuario = async (id) => {
         return null;
     }
 }
+
+export const borrarUsuario = async (id) => {
+    try {
+      const respuesta = await fetch(`${URLUsuario}/${id}`, {
+        method: 'DELETE',
+      });
+      return respuesta;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  };
