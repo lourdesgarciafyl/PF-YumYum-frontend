@@ -10,40 +10,38 @@ import banner4 from "../../assets/img/Banner4.jpg";
 const Inicio = () => {
   return (
     <section className="mainSection">
-      <Carousel className="Carrusel-MD-LG">
+      <Carousel fade className="Carrusel-MD-LG">
         <Carousel.Item>
-          <img  src={banner1} />
+          <img src={banner2} />
         </Carousel.Item>
         <Carousel.Item>
-          <img  src={banner2} />
+          <img src={banner3} />
         </Carousel.Item>
         <Carousel.Item>
-          <img  src={banner3} />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img  src={banner4} />
+          <img src={banner4} />
         </Carousel.Item>
       </Carousel>
       ;
-      <Nav className="justify-content-center" activeKey="/home">
-        <Nav.Item>
-          <Nav.Link href="/home">Hamburguesas</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="link-1">Pizzas</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="link-2">Veggie</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="link-2">Bebidas</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="link-2">Otros</Nav.Link>
-        </Nav.Item>
-      </Nav>
       <Container>
-        <h1 className="display-4">Nuestros Productos</h1>
+        <h1 className="display-4 text-center text-white mt-3">Menú</h1>
+        <hr />
+        <Nav className="justify-content-center my-4   ">
+          <Nav.Item>
+            <Nav.Link href="/home">Hamburguesas</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="link-1">Pizzas</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="link-2">Veggie</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="link-2">Bebidas</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="link-2">Otros</Nav.Link>
+          </Nav.Item>
+        </Nav>
         <hr />
         <Row className="justify-content-around">
           <CardProductoInicio></CardProductoInicio>
