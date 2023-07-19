@@ -145,6 +145,15 @@
       "estado": "Activo",
       "perfil": "Cliente",
       "id": 4
+    },
+    {
+      "nombreUsuario": "Juana",
+      "apellidoUsuario": "Molina",
+      "email": "juanamolina@gmail.com",
+      "password": "123456789aA",
+      "perfil": "Cliente",
+      "estado": "Activo",
+      "id": 5
     }
   ]
 }

@@ -11,8 +11,32 @@ const Registro = () => {
     const password = watch("password");
 
     const onSubmit = (data) => {
-        console.log(data)
-        delete data.confirmarPassword
+        console.log(data);
+        delete data.confirmarPassword;
+        data.perfil = "Cliente";
+        data.estado = "Activo";
+        crearUsuario(data).then((respuesta) => {
+            if(respuesta.status === 201){
+                Swal.fire({
+                    color: "#fff",
+                    background: "#d8572a", 
+                    confirmButtonColor: "#f7b538",
+                    title: `Bienvenido ${data.nombreUsuario}`,
+                    text: "Ahora podrás realizar un pedido",
+                    icon: "success"
+                });
+                localStorage.setItem("usuarioInicioSesion", JSON.stringify(respuesta))
+                /* Aqui deberiamos actualizar nuestro prop de usuario Logueado */
+                reset()
+                /* Aqui redireccionar al Inicio */
+            } else {
+                Swal.fire(
+                    `Ocurrió un error`, 
+                    `Intente nuevamente más tarde`, 
+                    `error`
+                );
+            }
+        })
     }
 
     return(
