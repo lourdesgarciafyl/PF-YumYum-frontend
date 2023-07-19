@@ -18,11 +18,11 @@ const AgregarUsuario = () => {
       if (respuestaCreated && respuestaCreated.status === 201) {
         Swal.fire(
           "Usuario agregado",
-          `El producto ${usuarioNuevo.nombreUsuario} se agregó correctamente`,
+          `El usuario ${usuarioNuevo.nombreUsuario} se agregó correctamente`,
           `success`
         );
         reset();
-        /*Redireccionar a pag administrar productos */
+        /*Redireccionar a pag administrar usuarios */
       } else {
         Swal.fire(`Ocurrió un error`, `Intente nuevamente más tarde`, `error`);
       }
@@ -67,7 +67,7 @@ const AgregarUsuario = () => {
           <Form.Group className="mb-2 fw-bold" controlId="formApellido">
             <Form.Label className="letraFormLabel">Apellido</Form.Label>
             <Form.Control
-              type="text"          
+              type="text"
               rows={2}
               placeholder="Apellido."
               {...register("apellido", {
@@ -87,6 +87,95 @@ const AgregarUsuario = () => {
             </Form.Text>
           </Form.Group>
 
+          <Form.Group className="mb-2 fw-bold " controlId="formEmail">
+            <Form.Label className="letraFormLabel">
+              Correo electronico *
+            </Form.Label>
+            <Form.Control
+              placeholder="Ingrese un email"
+              {...register("email", {
+                required: "El Email es un dato obligatorio.",
+                pattern: {
+                  value:
+                    /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
+                  message:
+                    "El Email debe cumplir con el formato correo@correo.com",
+                },
+              })}
+            />
+            <Form.Text className="text-danger my-2 py-3">
+              {errors.email?.message}
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group className="mb-3 fw-bold" controlId="formPassword">
+            <Form.Label className="letraFormLabel">Password *</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              {...register("password", {
+                required: "El Password es un dato obligatorio.",
+                pattern: {
+                  value:  /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+                  message:
+                    "La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.",
+                },
+              })}
+            />
+            <Form.Text className="text-danger my-2 py-3">
+              {errors.password?.message}
+            </Form.Text>
+          </Form.Group>
+
+          <Row>
+            <Col lg={6}>
+              <Form.Group className="mb-2 fw-bold" controlId="forCategoria">
+                <Form.Label className="letraFormLabel">Perfil</Form.Label>
+                <Form.Select
+                  {...register("perfil", {
+                    required: "Debe seleccionar una categoría",
+                  })}
+                >
+                  <option value="" className="formSelect">
+                    --Elegir una perfil--
+                  </option>
+                  <option value="Administrador" className="formSelect">
+                    Administrador
+                  </option>
+                  <option value="Cliente" className="formSelect">
+                    Cliente
+                  </option>
+                </Form.Select>
+                <Form.Text className="text-danger ms-1">
+                  {errors.perfil?.message}
+                </Form.Text>
+              </Form.Group>
+            </Col>
+
+            <Col lg={6}>
+              <Form.Group className="mb-2 fw-bold" controlId="forEstado">
+                <Form.Label className="letraFormLabel">Estado *</Form.Label>
+                <Form.Select
+                  {...register("estado", {
+                    required: "Debe seleccionar el estado del usuario.",
+                  })}
+                >
+                  <option value="" className="formSelect">
+                    --Elegir un estado--
+                  </option>
+                  <option value="Activo" className="formSelect">
+                    Activo
+                  </option>
+                  <option value="Inactivo" className="formSelect">
+                    Inactivo
+                  </option>
+                </Form.Select>
+                <Form.Text className="text-danger ms-1">
+                  {errors.estado?.message}
+                </Form.Text>
+              </Form.Group>
+            </Col>
+          </Row>
 
           <Button className="mt-1 mb-3" type="submit" id="btnAgregar">
             Agregar

@@ -145,6 +145,15 @@
       "estado": "Activo",
       "perfil": "Cliente",
       "id": 4
+    },
+    {
+      "nombreUsuario": "Cristian",
+      "apellido": "Quiroga",
+      "email": "cristianq3@gmail.com",
+      "password": "cARAMELO2343",
+      "perfil": "Administrador",
+      "estado": "Activo",
+      "id": 5
     }
   ]
 }
