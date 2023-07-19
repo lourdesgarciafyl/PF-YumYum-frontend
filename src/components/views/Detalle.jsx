@@ -14,9 +14,7 @@ const Detalle = () => {
                 La Doble Cheeseburger incluye dos patties 100% carne. Vienen cubierta con crujientes pepinillos, cebolla picada, ketchup, mostaza y dos rebanadas de queso americano.
                 <br />
                 <br />
-              
-              </Card.Text>
-
+             </Card.Text>
               <div className="d-flex justify-content-evenly">
                 <p className="precio"> $2000</p>
                 <button type="submit" className="botonDetalle"> AÑADIR AL CARRITO </button>
