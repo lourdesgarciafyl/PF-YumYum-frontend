@@ -43,20 +43,26 @@ const Login = () => {
                   <PersonFill size={25}></PersonFill>
                 </InputGroup.Text>
                 <Form.Control
-                  placeholder="Email"
                   aria-label="Email"
                   aria-describedby="iconoEmail"
                   type="email"
                   className="inputFormulario"
-                  {...register('email', {
-                    required: 'El Email es un dato obligatorio.',
-                    pattern: {
-                      value:
-                        /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
-                      message:
-                        'El Email debe cumplir con el formato juan@correo.com',
+                  placeholder="Ej: lisandrov@gmail.com"
+                  {...register("email", {
+                    required: "El email es obligatorio",
+                    minLength:{
+                        value: 5,
+                        message: "Cantidad mínima de caracteres: 5"
+                    }, 
+                    maxLength: {
+                        value: 60,
+                        message: "Cantidad máxima de caracteres: 60."
                     },
-                  })}
+                    pattern: {
+                        value: /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/,
+                        message: "El Email debe cumplir con el formato juan@correo.com"
+                    }
+                })}
                 />
               </InputGroup>
               <Form.Text className="text-danger my-2 py-3">
