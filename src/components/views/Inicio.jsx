@@ -9,7 +9,7 @@ import banner4 from "../../assets/img/Banner4.jpg";
 
 const Inicio = () => {
   return (
-    <section className="mainSection">
+    <section className="mainSection letraRoboto">
       <Carousel fade className="Carrusel-MD-LG">
         <Carousel.Item>
           <img src={banner2} />
@@ -23,7 +23,7 @@ const Inicio = () => {
       </Carousel>
       ;
       <Container>
-        <h1 className="display-4 text-center text-white mt-3">Menú</h1>
+        <h1 className="display-4 text-center text-white mt-3 letraSpace">Menú</h1>
         <hr />
         <Nav className="justify-content-center my-4   ">
           <Nav.Item>

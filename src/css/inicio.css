@@ -59,7 +59,8 @@
 }
 
 .precio {
-  background-color: #f7b538 !important;
+  background-color: #f7b43837 !important;
+  border-radius: 15px;
 }
 
 /* El carrusel debe tener 4 imagenes para sm y 4 imagenes para LG */
