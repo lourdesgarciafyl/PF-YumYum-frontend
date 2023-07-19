@@ -1,7 +1,8 @@
 import '../../../css/formularioAdminProductos.css';
 import { Form, Button, Card, Row, Col } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { editarUsuario } from '../../helpers/queriesUsuario';
+import { editarUsuario, obtenerUsuario } from '../../helpers/queriesUsuario';
+import { useEffect, useRef, useState } from 'react';
 import Swal from 'sweetalert2';
 
 const EditarUsuario = () => {
@@ -9,16 +10,39 @@ const EditarUsuario = () => {
     register,
     formState: { errors },
     reset,
+    setValue,
     handleSubmit,
   } = useForm();
-  const id = 1;
+  
+  const id = 2;
+
+  useEffect(() => {
+    obtenerUsuario(id).then((respuesta) => {
+      if (respuesta) {
+        // tengo que cargar el objeto en el formulario
+        setValue('nombreUsuario', respuesta.nombreUsuario);
+        setValue('apellido', respuesta.apellidoUsuario);
+        setValue('email', respuesta.email);
+        setValue('password', respuesta.password);
+        setValue('perfil', respuesta.perfil);
+        setValue('estado', respuesta.estado);
+
+      } else {
+        Swal.fire(
+          'Ocurrio un error',
+          `No se puede editar el usuario, intentelo mas tarde`,
+          'error'
+        );
+      }
+    });
+  }, []);
 
   const onSubmit = (usuarioEditado) => {
-    editarUsuario(id, usuarioEditado).then((respuestaEditado) => {
+    editarUsuario(usuarioEditado,id).then((respuestaEditado) => {
       if (respuestaEditado && respuestaEditado.status === 200) {
         Swal.fire(
           'Usuario Editado',
-          `El usuario ${usuarioEditado.nombreusuario} se editó correctamente`,
+          `El usuario ${usuarioEditado.nombreUsuario} se editó correctamente`,
           'success'
         );
         reset();
@@ -26,7 +50,7 @@ const EditarUsuario = () => {
       } else {
         Swal.fire(
           'Ocurrió un error',
-          `El usuario ${usuarioEditado.nombreusuario} no fue editado, inténtelo más tarde`,
+          `El usuario ${usuarioEditado.nombreUsuario} no fue editado, inténtelo más tarde`,
           'error'
         );
       }
