@@ -27,6 +27,9 @@ const Inicio = () => {
         </h1>
         <hr />
         <Nav className="justify-content-center my-4 menuBuscador  ">
+        <Nav.Item>
+            <Nav.Link href="">Todo</Nav.Link>
+          </Nav.Item>
           <Nav.Item>
             <Nav.Link href="">Hamburguesas</Nav.Link>
           </Nav.Item>
