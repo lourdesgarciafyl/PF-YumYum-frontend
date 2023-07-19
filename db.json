@@ -98,6 +98,53 @@
       "categoria": "Hamburguesa",
       "estado": "Activo",
       "id": 11
+    },
+    {
+      "nombreProducto": "Hamburguesa DobleCheddar",
+      "detalle": "Carne de calidad con queso cheedar y cebolla caramelizada.",
+      "precio": "2700",
+      "imagen": "https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383720/yumyum/hamburguesaDobleCheddar_wyifm1.png",
+      "categoria": "Hamburguesa",
+      "estado": "Activo",
+      "id": 12
+    }
+  ],
+  "usuarios": [
+    {
+      "id": 1,
+      "nombreUsuario": "rolling",
+      "apellidoUsuario": "code",
+      "email": "admin@rollingcode.com",
+      "password": "123456aA",
+      "estado": "Activo",
+      "perfil": "Administrador"
+    },
+    {
+      "nombreUsuario": "Mariana",
+      "apellidoUsuario": "Enriquez",
+      "email": "marianaenriquez@gmail.com",
+      "password": "123456aA",
+      "estado": "Activo",
+      "perfil": "Cliente",
+      "id": 2
+    },
+    {
+      "nombreUsuario": "Juan",
+      "apellidoUsuario": "Perez",
+      "email": "juanperez@gmail.com",
+      "password": "123456aA",
+      "estado": "Activo",
+      "perfil": "Cliente",
+      "id": 3
+    },
+    {
+      "nombreUsuario": "Suduns",
+      "apellidoUsuario": "Jimenez",
+      "email": "susanajimenez@gmail.com",
+      "password": "123456aA",
+      "estado": "Activo",
+      "perfil": "Cliente",
+      "id": 4
     }
   ]
 }
