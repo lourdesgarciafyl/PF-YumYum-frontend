@@ -2,15 +2,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Footer from "./components/common/Footer";
 import Navegacion from "./components/common/Navegacion";
-import AdministradorUsuarios from "./components/views/AdministrarUsuarios";
+import Login from "./components/views/Login";
 
 function App() {
   return (
     <>
-        
-          <Navegacion></Navegacion>
-          <AdministradorUsuarios></AdministradorUsuarios>
-          <Footer></Footer>
+      <Navegacion></Navegacion>
+      <Login></Login>
+      <Footer></Footer>
     </>
   );
 }
