@@ -2,6 +2,8 @@ import { Form, Button, Container, Card, InputGroup } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { PersonFill, FileLock2Fill } from 'react-bootstrap-icons';
 import './../../css/login.css';
+import { loginUsuario } from '../helpers/queriesUsuario';
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const {
@@ -10,8 +12,21 @@ const Login = () => {
     formState: { errors },
     reset,
   } = useForm();
-  const onSubmit = (usuarioaLoguear) => {
-    console.log(usuarioaLoguear);
+  const onSubmit = (usuario) => {
+    loginUsuario(usuario).then((respuesta) => {
+      if (respuesta) {
+        sessionStorage.setItem('usuario', JSON.stringify(respuesta));
+        Swal.fire(
+          'Bienvenido',
+          `${respuesta.nombreUsuario} iniciaste sesión correctamente`,
+          'success'
+        );
+        //TODO: setear el Usuario logueado
+        //TODO: navegar hasta la página administrador
+      } else {
+        Swal.fire('Error', 'Email o Password incorrecto.', 'error');
+      }
+    });
   };
 
   return (
@@ -63,9 +78,9 @@ const Login = () => {
                   {...register('password', {
                     required: 'La contraseña es un dato obligatorio.',
                     pattern: {
-                      value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8}$/,
+                      value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
                       message:
-                        'La contraseña debe tener mínimo 8 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.',
+                      'El password debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.',
                     },
                   })}
                 />
