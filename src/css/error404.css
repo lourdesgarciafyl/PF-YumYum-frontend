@@ -1,0 +1,14 @@
+.imagenError {
+  padding-top: 8%;
+}
+
+.textoError {
+  font-family: "Space Mono", monospace;
+  font-size: 30px;
+  margin-top: 2%;
+  margin-bottom: 1%;
+}
+
+.ordenError {
+  padding-bottom: 8%;
+}
