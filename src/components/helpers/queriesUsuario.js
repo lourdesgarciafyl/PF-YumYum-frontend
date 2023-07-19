@@ -79,7 +79,7 @@ export const consultaListaUsuarios = async () => {
 
 export const editarUsuario = async (usuario, id) => {
   try {
-    const respuesta = await fetch(URLUsuario + "/" + id, {
+    const respuesta = await fetch(`${URLUsuario}/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
