@@ -2,13 +2,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Footer from "./components/common/Footer";;
 import Navegacion from "./components/common/Navegacion"
-import Inicio from "./components/views/Inicio"
+import Login from "./components/views/Login";
+
 function App() {
   return (
     <>
         
           <Navegacion></Navegacion>
-          <Inicio></Inicio>
+          <Login></Login>
           <Footer></Footer>
     </>
   );
