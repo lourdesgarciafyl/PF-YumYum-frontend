@@ -25,7 +25,9 @@ const AdministradorUsuarios = () => {
             <tr>
               <th>Usuario</th>
               <th>Email</th>
-              <th>Acciones</th>
+              <th>Estado</th>
+              <th>Perfil</th>
+              <th className="text-center">Acciones</th>
             </tr>
           </thead>
           <tbody>

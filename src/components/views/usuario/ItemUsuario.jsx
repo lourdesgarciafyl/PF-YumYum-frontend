@@ -7,7 +7,10 @@ const ItemUsuario = () => {
     <tr>
       <td>Juan Perez</td>
       <td>juanperez@gmail.com</td>
-      <td className="d-flex justify-content-evenly">
+      <td>Activo</td>
+      <td>Cliente</td>
+      
+      <td className="d-flex justify-content-around">
         <Button variant="warning" className="m-1">
           Editar
         </Button>
