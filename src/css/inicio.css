@@ -90,10 +90,13 @@
 .precio {
   background-color: #27252154 !important;
   padding: 23px;
-  top: 32%;
+  min-width: 75%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: white !important;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
+  border-radius: 55px;
   font-size: 25px;
 }
 
