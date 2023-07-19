@@ -27,14 +27,15 @@
 }
 
 .detalleLink {
-  color: #f7b538;
+  color: #ffffff;
   font-size: medium;
-  margin-top: -25px;
+  margin-top: -10px;
   text-align: center;
 }
 
 .detalleLink:hover {
   border-bottom: solid 3px #f7b538;
+  color: #f7b538;
 }
 
 .menuBuscador .nav-item .nav-link:hover {
@@ -87,13 +88,13 @@
 }
 
 .precio {
-  background-color: #ffa60073 !important;
-  padding: 25px;
-  top: 28%;
+  background-color: #27252154 !important;
+  padding: 23px;
+  top: 32%;
   color: white !important;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   border-radius: 50%;
-  font-size: 35px;
+  font-size: 25px;
 }
 
 /* El carrusel debe tener 4 imagenes para sm y 4 imagenes para LG */
