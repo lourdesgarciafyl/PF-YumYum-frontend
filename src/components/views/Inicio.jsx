@@ -1,84 +1,62 @@
-import { Badge, Button } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
+import { Container, Row, Button, Carousel } from "react-bootstrap";
 import "../../css/inicio.css";
+import CardProducto from "../../components/views/producto/CardProducto";
+import Nav from "react-bootstrap/Nav";
+import banner2 from "../../assets/img/Banner2.jpg";
+import banner3 from "../../assets/img/Banner3.jpg";
+import banner4 from "../../assets/img/Banner4.jpg";
 
 const Inicio = () => {
   return (
-    <section className="text-center ">
-      <div className="HeroSection position-relative">
-        <img
-          className="imagenHero"
-          src="https://cdn.leonardo.ai/users/14881c64-1646-47cf-bbc7-c85d2eb01d50/generations/45d215bc-d916-4f6d-ada2-d7e20fefe3d3/Default_Deliciously_CraveWorthy_Sizzling_Pizzas_and_Juicy_Burg_1.jpg"
-          alt="imagen de portada"
-        />
-      </div>
-
-      <div className="container text-center"></div>
-      <h1 className="mt-4 mb-3 ">Nuestro Menu</h1>
-
-      <div className="row justify-content-center ">
-        <Card className=" col-12 col-md-3 col-lg-3 ">
-          <Card.Title>Pizza Napolitana</Card.Title>
-          <Card.Img
-            variant="top"
-            src="https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383714/yumyum/pizzaMuzzarela_rfihh1.png"
-          />
-          <Card.Body className="justify-content-between d-flex">
-            <Badge className="btnPrecioCard letraAmarilla  p-2">$2999</Badge>
-
-            <Button className="btnPedirCard letraAmarilla ">Pedir</Button>
-          </Card.Body>
-        </Card>
-        <Card className=" col-12 col-md-3 col-lg-3 ">
-          <Card.Title>Pizza Napolitana</Card.Title>
-          <Card.Img
-            variant="top"
-            src="https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383714/yumyum/pizzaMuzzarela_rfihh1.png"
-          />
-          <Card.Body className="justify-content-between d-flex">
-            <Badge className="btnPrecioCard letraAmarilla  p-2">$2999</Badge>
-
-            <Button className="btnPedirCard letraAmarilla ">Pedir</Button>
-          </Card.Body>
-        </Card>
-        <Card className=" col-12 col-md-3 col-lg-3 ">
-          <Card.Title>Pizza Napolitana</Card.Title>
-          <Card.Img
-            variant="top"
-            src="https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383714/yumyum/pizzaMuzzarela_rfihh1.png"
-          />
-          <Card.Body className="justify-content-between d-flex">
-            <Badge className="btnPrecioCard letraAmarilla  p-2">$2999</Badge>
-
-            <Button className="btnPedirCard letraAmarilla ">Pedir</Button>
-          </Card.Body>
-        </Card>
-        <Card className=" col-12 col-md-3 col-lg-3 ">
-          <Card.Title>Pizza Napolitana</Card.Title>
-          <Card.Img
-            variant="top"
-            src="https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383714/yumyum/pizzaMuzzarela_rfihh1.png"
-          />
-          <Card.Body className="justify-content-between d-flex">
-            <Badge className="btnPrecioCard letraAmarilla  p-2">$2999</Badge>
-
-            <Button className="btnPedirCard letraAmarilla ">Pedir</Button>
-          </Card.Body>
-        </Card>
-        <Card className=" col-12 col-md-3 col-lg-3 ">
-          <Card.Title>Pizza Napolitana</Card.Title>
-          <Card.Img
-            variant="top"
-            src="https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383714/yumyum/pizzaMuzzarela_rfihh1.png"
-          />
-          <Card.Body className="justify-content-between d-flex">
-            <Badge className="btnPrecioCard letraAmarilla  p-2">$2999</Badge>
-
-            <Button className="btnPedirCard letraAmarilla ">Pedir</Button>
-          </Card.Body>
-        </Card>
-        
-      </div>
+    <section className="mainSection letraRoboto mb-3">
+      <Carousel fade className="Carrusel-MD-LG">
+        <Carousel.Item>
+          <img src={banner2} />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img src={banner3} />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img src={banner4} />
+        </Carousel.Item>
+      </Carousel>
+      ;
+      <Container>
+        <h1 className="display-4 text-center text-white mt-3 letraSpace">
+          Menú
+        </h1>
+        <hr />
+        <Nav className="justify-content-center my-4 menuBuscador  ">
+          <Nav.Item>
+            <Nav.Link href="">Hamburguesas</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="link-1">Pizzas</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="link-2">Veggie</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="link-2">Bebidas</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="link-2">Otros</Nav.Link>
+          </Nav.Item>
+        </Nav>
+        <hr />
+        <Row className="justify-content-around">
+          <CardProducto></CardProducto>
+          <CardProducto></CardProducto>
+          <CardProducto></CardProducto>
+          <CardProducto></CardProducto>
+          <CardProducto></CardProducto>
+          <CardProducto></CardProducto>
+          <CardProducto></CardProducto>
+          <CardProducto></CardProducto>
+          <CardProducto></CardProducto>
+          
+        </Row>
+      </Container>
     </section>
   );
 };
