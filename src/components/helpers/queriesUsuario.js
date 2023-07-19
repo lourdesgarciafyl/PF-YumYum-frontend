@@ -75,5 +75,19 @@ export const consultaListaUsuarios = async () => {
   } catch (error) {
     console.log(error);
   }
-  
+};
+
+export const editarUsuario = async (usuario, id) => {
+  try {
+    const respuesta = await fetch(`${URLUsuario}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuario),
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+  }
 };
