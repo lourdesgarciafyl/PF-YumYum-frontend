@@ -8,6 +8,7 @@
   border: none;
   max-height: 400px;
   max-width: 13rem;
+  color: #f7b538;
 }
 
 .banner {
@@ -21,46 +22,73 @@
 .card-body {
   margin: 0px;
   padding: 0px;
-  position: relative;
-  top: -28px;
+}
+
+.row > * {
+  width: auto;
 }
 
 .btnPrecioCard {
   border-radius: 50%;
-  background-color: #d8572a!important;
+  background-color: #d8572a !important;
   border: none;
   color: white;
-  height: 45px; 
-
+  height: 45px;
 }
 .btnPedirCard {
   border-radius: 50%;
-  background-color: #d8572a!important;
+  background-color: #d8572a !important;
   border: none;
   color: white;
-  height: 45px; 
+  height: 45px;
 }
 
 .btnPedirCard:hover {
-  background-color: #c25a34!important;
+  background-color: #c1750c !important;
   color: #f7b538;
-
-
 }
-.btnPedirCard:active{
-
+.btnPedirCard:hover {
+  background-color: #c1750c !important;
+  color: #f7b538;
 }
+
 .imagenHero {
   object-fit: cover;
-    width: 100%;
+  width: 100%;
   max-height: 100vh;
 }
 
-.tituloHero{
-  bottom: 50%;
-  color: #d8572a;
-  left: 50%;
+.precio {
+  background-color: #f7b538 !important;
+}
+
+/* El carrusel debe tener 4 imagenes para sm y 4 imagenes para LG */
+
+.Carrusel-MD-LG{
+width: 100%;
 
 }
 
+.Carrusel-MD-LG img{
+  width: 100%;
+  height: 95vh;
+  object-fit:cover;
+
+
+  }
+@media (max-width: 767px) {
+  /* Estilos para dispositivos pequeños */
+  .nav {
+  font-size: xx-small;
+
+  }
+
+  .Carrusel-MD-LG img{
+      width: 100%;
+      height: 40vh;
+    object-fit: cover;
+    object-position: 95%;  
+    
+    }
+}
 
