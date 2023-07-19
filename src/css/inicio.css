@@ -2,17 +2,75 @@
   font-size: x-small;
   display: flex;
   justify-content: space-between;
+  text-align: center;
+}
+.card-title {
+  text-align: center;
 }
 .card {
   background: transparent;
+
   border: none;
   max-height: 400px;
+  min-height: 320px;
   max-width: 13rem;
+  color: #f7b538;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card img {
+  filter: drop-shadow(2px 5px 12px rgba(0, 0, 0, 2));
+}
+
+.row {
+  padding-top: 10px;
+}
+
+.detalleLink {
+  color: #f7b538;
+  font-size: medium;
+  margin-top: -25px;
+  text-align: center;
+}
+
+.detalleLink:hover {
+  border-bottom: solid 3px #f7b538;
+}
+
+.menuBuscador .nav-item .nav-link:hover {
+  border-bottom: solid 3px #f7b538;
+}
+
+.verMas {
+  border: #fbfbfb solid 1px;
+  margin: 15px;
+  font-size: 39px !important;
+  border-radius: 50%;
+  margin-top: -15px;
+}
+
+.verMas:hover {
+  border: #ffffff solid 1px;
   color: #f7b538;
 }
 
-.banner {
-  max-height: 100vh;
+.verMas:hover {
+  border: #f7b538 solid 1px;
+  color: white;
+  transition: transform 0.1s ease-in-out;
+}
+.verMas:active {
+  border: #ffffff solid 1px;
+  color: #f7b538;
+  transform: scale(1.3);
+  transition: transform 0.1s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+  color: white;
+  filter: brightness(105%);
 }
 
 .card:hover {
@@ -28,68 +86,42 @@
   width: auto;
 }
 
-.btnPrecioCard {
-  border-radius: 50%;
-  background-color: #d8572a !important;
-  border: none;
-  color: white;
-  height: 45px;
-}
-.btnPedirCard {
-  border-radius: 50%;
-  background-color: #d8572a !important;
-  border: none;
-  color: white;
-  height: 45px;
-}
-
-.btnPedirCard:hover {
-  background-color: #c1750c !important;
-  color: #f7b538;
-}
-.btnPedirCard:hover {
-  background-color: #c1750c !important;
-  color: #f7b538;
-}
-
-.imagenHero {
-  object-fit: cover;
-  width: 100%;
-  max-height: 100vh;
-}
-
 .precio {
-  background-color: #f7b43837 !important;
-  border-radius: 15px;
+  background-color: #ffa60073 !important;
+  padding: 25px;
+  top: 28%;
+  color: white !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  font-size: 35px;
 }
 
 /* El carrusel debe tener 4 imagenes para sm y 4 imagenes para LG */
 
-.Carrusel-MD-LG{
-width: 100%;
-
-}
-
-.Carrusel-MD-LG img{
+.Carrusel-MD-LG img {
   width: 100%;
-  height: 95vh;
-  object-fit:cover;
-
-
-  }
+  max-height: 95vh;
+}
 @media (max-width: 767px) {
   /* Estilos para dispositivos pequeños */
   .nav {
-  font-size: xx-small;
-
+    font-size: small;
   }
 
-  .Carrusel-MD-LG img{
-      width: 100%;
-      height: 40vh;
-    object-fit: cover;
-    object-position: 95%;  
-    
-    }
-}
+  .menuBuscador .nav-link {
+    padding: 5px;
+    margin: -1px;
+    font-weight: 700;
+  }
 
+  .menuBuscador .nav-link:hover {
+    border-radius: solid 3px black;
+  }
+
+  .Carrusel-MD-LG img {
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+    object-position: 95%;
+  }
+}
