@@ -13,6 +13,7 @@ import Detalle from "./components/views/Detalle"
 import AdministradorUsuarios from "./components/views/AdministrarUsuarios"
 import AdministrarProducto from "./components/views/AdministrarProductos"
 import RutasProtegidas from "./components/routes/RutasProtegidas";
+import RutasAdministrador from "./components/routes/RutasAdministrador";
 /* Faltaria Mi pedido */
 /* faltaria Administrar pedidos  y Sobre nosotros */
 
