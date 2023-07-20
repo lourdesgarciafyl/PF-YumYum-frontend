@@ -14,8 +14,8 @@ import AdministradorUsuarios from "./components/views/AdministrarUsuarios"
 import AdministrarProducto from "./components/views/AdministrarProductos"
 import RutasProtegidas from "./components/routes/RutasProtegidas";
 import RutasAdministrador from "./components/routes/RutasAdministrador";
-/* Faltaria Mi pedido */
-/* faltaria Administrar pedidos  y Sobre nosotros */
+import CarritoPedido from "./components/views/CarritoPedido"
+import Nosotros from "./components/views/Nosotros"
 
 function App() {
   const usuario = JSON.parse(localStorage.getItem("usuarioInicioSesion")) || {};
@@ -30,6 +30,7 @@ function App() {
       <Route exact path="/detalle/:id" element={<Detalle usuarioLogueado={usuarioLogueado} setUsuarioLogueado={setUsuarioLogueado}></Detalle>}></Route>
       <Route exact path="/login" element={<Login></Login>}></Route>
       <Route exact path="/registro" element={<Registro setUsuarioLogueado={setUsuarioLogueado}></Registro>}></Route>
+      <Route exact path="/nosotros" element={<Nosotros></Nosotros>}></Route>
       <Route path="/administrar/*" element={
         <RutasProtegidas usuario={usuarioLogueado}>
           <RutasAdministrador></RutasAdministrador>
