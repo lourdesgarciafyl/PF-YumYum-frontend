@@ -5,7 +5,7 @@ import { Cart, Person } from "react-bootstrap-icons";
 
 const Navegacion = () => {
   return (
-    <Navbar bg="dark" className="shadow" variant="dark" expand="lg">
+    <Navbar bg="dark" className="shadow fixed-top" variant="dark" expand="lg">
       <Container className="d-flex justify-content-between">
         <Navbar.Brand href="#home">
           <img

@@ -8,6 +8,7 @@
 }
 .mainSection {
   flex-grow: 1;
+  padding-top: 90px
 }
 .letraSpace {
   font-family: 'Space Mono', monospace;
