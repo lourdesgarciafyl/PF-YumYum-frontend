@@ -9,17 +9,32 @@
 }
 .menu .card {
   background: transparent;
-
   border: none;
-  max-height: 400px;
-  min-height: 320px;
-  max-width: 13rem;
+  max-height: 450px;
+  min-height: 340px;
+  max-width: 15rem;
   color: #f7b538;
   transition: transform 0.3s ease-in-out;
 }
 
 .menu .card img {
   filter: drop-shadow(2px 5px 12px rgba(0, 0, 0, 2));
+}
+
+.menu .card:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in;
+  color: white;
+  filter: brightness(105%);
+}
+
+.menu .card-body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.menu .row-producto > * {
+  width: auto;
 }
 
 .detalleLink {
@@ -63,24 +78,9 @@
   transition: transform 0.1s ease-in-out;
 }
 
-.card-producto:hover {
-  transform: scale(1.1);
-  transition: transform 0.3s ease-in-out;
-  color: white;
-  filter: brightness(105%);
-}
-
-.card-producto-body {
-  margin: 0px;
-  padding: 0px;
-}
-
-.row-producto > * {
-  width: auto;
-}
-
 .precio {
   background-color: #27252154 !important;
+  backdrop-filter: blur(0.5px);
   padding: 23px;
   min-width: 75%;
   top: 50%;
@@ -88,19 +88,22 @@
   transform: translate(-50%, -50%);
   color: white !important;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  border-radius: 55px;
+  border-radius: 48px;
   font-size: 25px;
+
 }
 
 /* El carrusel debe tener 4 imagenes para sm y 4 imagenes para LG */
 
 .Carrusel-MD-LG img {
   width: 100%;
-  max-height: 95vh;
+  max-height: 85vh;
+  object-fit: cover;
+  object-position: 50%;
 }
 @media (max-width: 767px) {
   /* Estilos para dispositivos pequeños */
-  .nav {
+  .menuBuscador {
     font-size: small;
   }
 

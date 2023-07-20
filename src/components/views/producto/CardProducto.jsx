@@ -1,4 +1,4 @@
-import { Col, Card, Button, Badge } from "react-bootstrap";
+import { Col, Card, Button } from "react-bootstrap";
 import { Plus } from "react-bootstrap-icons";
 import React, { useState } from "react";
 
@@ -17,7 +17,7 @@ const CardProducto = ({ producto }) => {
     <Col
       md={6}
       lg={3}
-      className="mb-3"
+      className="mb-3 letraRoboto d-flex justify-content-center"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -34,7 +34,10 @@ const CardProducto = ({ producto }) => {
               <p className="text-center fw-bold">${precio} </p>{" "}
               <p className="detalleLink">Ver Detalle </p>
             </div>
-            <Plus className=" verMas shadow"></Plus>{" "}
+            <Button className=" rounded-5 btnAgregar">
+              {" "}
+              <Plus className=" shadow fs-1 p-0 m-0"></Plus>{" "}
+            </Button>
           </div>
         </Card.Body>
       </Card>
