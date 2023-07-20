@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 
-const RutasProtegidasUsuario = ({children, usuario}) => {
+const RutasProtegidasCliente = ({children, usuario}) => {
     if(usuario.perfil === "Cliente"){
         return children;
     } else if(usuario.perfil === "Administrador"){
@@ -10,4 +10,4 @@ const RutasProtegidasUsuario = ({children, usuario}) => {
     }
 }
 
-export default RutasProtegidasUsuario;
+export default RutasProtegidasCliente;
