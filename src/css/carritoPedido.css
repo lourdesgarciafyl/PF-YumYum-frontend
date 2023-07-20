@@ -1,0 +1,15 @@
+.borderDerechoContenidoCarrito-lg {
+  border-right: 1px solid #b53434;
+  border-bottom: none;
+}
+
+.colorHr {
+  color: white;
+}
+
+@media all and (max-width: 991px) {
+  .borderDerechoContenidoCarrito-lg {
+    border-right: none;
+    border-bottom: 3px solid #b53434;
+  }
+}

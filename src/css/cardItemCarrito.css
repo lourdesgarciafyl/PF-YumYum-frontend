@@ -1,3 +1,31 @@
-.rojo {
-  color: red;
+.imagenItem {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.linkDetalle {
+  color: #2b2d42;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 8px 6px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+}
+
+.linkDetalle:hover {
+  background-color: #f7b538;
+  color: white;
+}
+
+@media all and (max-width: 575px) {
+  .imagenItem {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
 }

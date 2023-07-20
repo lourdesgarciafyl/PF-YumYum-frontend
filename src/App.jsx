@@ -2,13 +2,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Footer from './components/common/Footer';
 import Navegacion from './components/common/Navegacion';
-import CarrritoPedido from './components/views/CarrritoPedido';
+import CarritoPedido from './components/views/CarritoPedido';
 
 function App() {
   return (
     <>
       <Navegacion></Navegacion>
-      <CarrritoPedido></CarrritoPedido>
+      <CarritoPedido></CarritoPedido>
       <Footer></Footer>
     </>
   );
