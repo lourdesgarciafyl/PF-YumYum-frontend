@@ -42,15 +42,25 @@
   font-size: medium;
   margin-top: -10px;
   text-align: center;
+  margin: auto;
 }
 
 .detalleLink:hover {
-  border-bottom: solid 1px #f7b538;
   color: #f7b538;
+  background-color: #1414145e;
+
+  border-radius: 15px;
+}
+
+
+.categoriaActiva {
+  outline: solid 1px #f7b538;
+  border-radius: 15px;
 }
 
 .menuBuscador .nav-item .nav-link:hover {
-  border-bottom: solid 3px #f7b538;
+  outline: solid 1px #f7b538;
+  border-radius: 15px;
 }
 
 .verMas {
@@ -90,7 +100,14 @@
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   border-radius: 48px;
   font-size: 25px;
+}
 
+.btnAgregar {
+  color: #000000;
+  background-color: white;
+  border: 1px solid rgb(0, 0, 0);
+  border: none;
+  outline: none;
 }
 
 /* El carrusel debe tener 4 imagenes para sm y 4 imagenes para LG */
@@ -113,9 +130,7 @@
     font-weight: 700;
   }
 
-  .menuBuscador .nav-link:hover {
-    border-radius: solid 3px black;
-  }
+
 
   .Carrusel-MD-LG img {
     width: 100%;

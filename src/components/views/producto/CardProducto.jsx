@@ -31,12 +31,18 @@ const CardProducto = ({ producto }) => {
         >
           <div className="justify-content-around flex-column align-items-center w-100 d-flex">
             <div className="fw-bolder position-absolute precio">
-              <p className="text-center fw-bold">${precio} </p>{" "}
-              <p className="detalleLink">Ver Detalle </p>
+              <p className="text-center fw-bold fs-1">
+                <b className="fw-bolder fs-1">$</b>
+                {precio}{" "}
+              </p>{" "}
+              <span>
+                {" "}
+                <p className="text-center detalleLink"> Ver Detalle </p>{" "}
+              </span>
             </div>
-            <Button className=" rounded-5 btnAgregar">
+            <Button variant="light" className="rounded-5">
               {" "}
-              <Plus className=" shadow fs-1 p-0 m-0"></Plus>{" "}
+              <Plus className="fs-1"></Plus>{" "}
             </Button>
           </div>
         </Card.Body>

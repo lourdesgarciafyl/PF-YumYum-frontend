@@ -42,7 +42,9 @@ const Inicio = () => {
         <hr />
         <Nav className="justify-content-center my-4 menuBuscador  ">
           <Nav.Item>
-            <Nav.Link href="">Todo</Nav.Link>
+            <Nav.Link href="" className="categoriaActiva">
+              Todo
+            </Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link href="">Hamburguesas</Nav.Link>
@@ -60,7 +62,7 @@ const Inicio = () => {
             <Nav.Link eventKey="link-2">Otros</Nav.Link>
           </Nav.Item>
         </Nav>
-        <hr />
+        <hr className="mb-5" />
 
         <Row className="justify-content-around menu">
           {productos.map((producto) => (
