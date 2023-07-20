@@ -14,7 +14,8 @@ import AdministradorUsuarios from "./components/views/AdministrarUsuarios"
 import AdministrarProducto from "./components/views/AdministrarProductos"
 import RutasProtegidas from "./components/routes/RutasProtegidas";
 import RutasAdministrador from "./components/routes/RutasAdministrador";
-import CarritoPedido from "./components/views/CarritoPedido"
+import RutasProtegidasCliente from "./components/routes/RutasProtegidasCliente";
+import RutasCliente from "./components/routes/RutasCliente";
 import Nosotros from "./components/views/Nosotros"
 
 function App() {
@@ -31,6 +32,11 @@ function App() {
       <Route exact path="/login" element={<Login></Login>}></Route>
       <Route exact path="/registro" element={<Registro setUsuarioLogueado={setUsuarioLogueado}></Registro>}></Route>
       <Route exact path="/nosotros" element={<Nosotros></Nosotros>}></Route>
+      <Route path="/cliente/*" element={
+        <RutasProtegidasCliente usuario={usuarioLogueado}>
+          <RutasCliente usuario={usuarioLogueado}></RutasCliente>
+        </RutasProtegidasCliente>
+      }></Route>
       <Route path="/administrar/*" element={
         <RutasProtegidas usuario={usuarioLogueado}>
           <RutasAdministrador></RutasAdministrador>
