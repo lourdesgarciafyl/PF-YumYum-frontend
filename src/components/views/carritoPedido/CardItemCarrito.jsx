@@ -1,5 +1,6 @@
 import './../../../css/CardItemCarrito.css';
 import { Card, Row, Col } from 'react-bootstrap';
+import { Trash3Fill } from 'react-bootstrap-icons';
 
 const CardItemCarrito = () => {
   return (
@@ -31,7 +32,24 @@ const CardItemCarrito = () => {
             lg={6}
             className="d-flex justify-content-between align-items-center gap-2"
           >
-            <h2>cantidad , icono Eliminar y el icono borrar</h2>
+            <div className="itemCantidad letraRoboto">
+              <div>
+                <button className="botonOperarCantidad">-</button>
+              </div>
+              <span className="mx-1">1</span>
+              <div>
+                <button className="botonOperarCantidad">+</button>
+              </div>
+            </div>
+
+            <Trash3Fill
+              className="letraRoja iconoEliminar"
+              size={25}
+            ></Trash3Fill>
+
+            <Card.Text as="h5" className="letraRoboto">
+              $ 2900
+            </Card.Text>
           </Col>
         </Row>
       </Card.Body>

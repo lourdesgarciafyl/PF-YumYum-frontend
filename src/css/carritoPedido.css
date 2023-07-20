@@ -7,6 +7,17 @@
   color: white;
 }
 
+.botonVaciarCarrito {
+  color: #c32f27;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.botonVaciarCarrito:hover {
+  background-color: #d8572a;
+  color: white;
+}
+
 @media all and (max-width: 991px) {
   .borderDerechoContenidoCarrito-lg {
     border-right: none;

@@ -1,5 +1,5 @@
 import './../../css/carritoPedido.css';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import CardItemCarrito from './carritoPedido/CardItemCarrito';
 
 const CarritoPedido = () => {
@@ -18,6 +18,13 @@ const CarritoPedido = () => {
             >
               <CardItemCarrito></CardItemCarrito>
               <CardItemCarrito></CardItemCarrito>
+              <Button
+                variant="light"
+                type="submit"
+                className="my-2 botonVaciarCarrito"
+              >
+                Vaciar Carrito
+              </Button>
             </Col>
 
             <Col lg={3} className="justify-content-around my-3">

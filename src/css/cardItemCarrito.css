@@ -4,6 +4,28 @@
   object-fit: contain;
 }
 
+.itemCantidad {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.botonOperarCantidad {
+  border-radius: 10px;
+  width: 2.3rem;
+  font-size: 1.1rem;
+  background-color: #c32f27;
+  color: white;
+  border: none;
+  box-shadow: 0px 0px 5px 0px #8d99ae;
+  transition: 0.3s ease;
+}
+
+.botonOperarCantidad:hover {
+  background-color: #d8572a;
+  transition: 0.3s ease;
+}
+
 .linkDetalle {
   color: #2b2d42;
   display: inline-block;
@@ -22,10 +44,22 @@
   color: white;
 }
 
+.iconoEliminar {
+  cursor: pointer;
+}
+
 @media all and (max-width: 575px) {
   .imagenItem {
     width: 80px;
     height: 80px;
     object-fit: cover;
+  }
+  .botonOperarCantidad {
+    width: 1.8rem;
+    font-size: 1rem;
+  }
+  .linkDetalle {
+    font-size: 0.8rem;
+    font-weight: 400;
   }
 }
