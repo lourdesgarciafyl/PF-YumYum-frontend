@@ -6,9 +6,10 @@ import Swal from "sweetalert2";
 import imgRegistro from "../../assets/imgRegistro.png"
 import "../../css/registro.css"
 
-const Registro = () => {
+const Registro = ({setUsuarioLogueado}) => {
     const { register, handleSubmit, formState: { errors }, reset, watch } = useForm();
     const password = watch("password");
+    const navegacion = useNavigate();
 
     const onSubmit = (data) => {
         console.log(data);
@@ -26,9 +27,9 @@ const Registro = () => {
                     icon: "success"
                 });
                 localStorage.setItem("usuarioInicioSesion", JSON.stringify(respuesta))
-                /* Aqui deberiamos actualizar nuestro prop de usuario Logueado */
+                setUsuarioLogueado(respuesta)
                 reset()
-                /* Aqui redireccionar al Inicio */
+                navegacion("/")
             } else {
                 Swal.fire(
                     `Ocurrió un error`, 
