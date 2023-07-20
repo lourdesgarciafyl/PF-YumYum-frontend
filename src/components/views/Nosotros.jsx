@@ -1,7 +1,10 @@
-import { Container, Card, Row, Col } from "react-bootstrap";
+import { Container, Card, Row, Col, ListGroup } from "react-bootstrap";
 import "../../css/detalle.css";
 import { Github } from "react-bootstrap-icons";
-import {cristian} from "../../assets/img/perfil/cristian.png"
+import cristian from "../../assets/img/perfil/cristian.png";
+import lourdes from "../../assets/img/perfil/lourdes.png";
+import gerardo from "../../assets/img/perfil/gerardo.png";
+import agustin from "../../assets/img/perfil/agustin.png";
 
 const Nosotros = () => {
   return (
@@ -25,72 +28,103 @@ const Nosotros = () => {
       {/* Seccion Fotos del Equipo */}
       <Row>
         <h2 className="letraAmarilla">El Equipo:</h2>
-        <hr />
+        <hr className="mb-5" />
 
         <Col sm={6} md={6} lg={3} className="mb-3">
           <Card className="bg-transparent border-0">
-            <Card.Title className="text-center letraAmarilla">
+            <Card.Title className="text-center text-white">
               Maria Lourdes Garcia
             </Card.Title>
             <Card.Img
               variant="top"
-              src="cristian"
+              src={lourdes}
               className=""
               alt="FotoPerfil"
             />
-            <Card.Body className="text-center fw-bolder letraAmarilla">
-              <Github className="fs-1"></Github> /lourdesgarciafyl
+
+            <Card.Body className="text-center fw-bolder text-white">
+              <a
+                href="https://github.com/lourdesgarciafyl"
+                target="_blank"
+                className="text-white  text-decoration-none nav-link"
+                rel="noopener noreferrer"
+              >
+                <Github className="fs-1"></Github> /lourdesgarciafyl
+              </a>
             </Card.Body>
           </Card>
         </Col>
 
         <Col sm={6} md={6} lg={3} className="mb-3">
           <Card className="bg-transparent border-0">
-            <Card.Title className="text-center letraAmarilla">
+            <Card.Title className="text-center text-white">
               Juan Gerardo Romero Uro
             </Card.Title>
             <Card.Img
               variant="top"
-              src="https://flixadastream.netlify.app/img/profile-pictures/cristianquiroga.png"
+              src={gerardo}
               className=""
               alt="FotoPerfil"
             />
-            <Card.Body className="text-center fw-bolder letraAmarilla">
-              <Github className="fs-1"></Github> /jgromerou
+
+            <Card.Body className="text-center fw-bolder text-white">
+              <a
+                href="https://github.com/jgromerou"
+                target="_blank"
+                className="text-white  text-decoration-none nav-link"
+                rel="noopener noreferrer"
+              >
+                <Github className="fs-1"></Github> /jgromerou
+              </a>
             </Card.Body>
           </Card>
         </Col>
 
         <Col sm={6} md={6} lg={3} className="mb-3">
           <Card className="bg-transparent border-0">
-            <Card.Title className="text-center letraAmarilla">
+            <Card.Title className="text-center text-white">
               Agustín Baza
             </Card.Title>
             <Card.Img
               variant="top"
-              src="https://flixadastream.netlify.app/img/profile-pictures/cristianquiroga.png"
+              src={agustin}
               className=""
               alt="FotoPerfil"
             />
-            <Card.Body className="text-center fw-bolder letraAmarilla">
-              <Github className="fs-1"></Github> /agustinbaza
+
+            <Card.Body className="text-center fw-bolder text-white">
+              <a
+                href="https://github.com/agustinbaza"
+                target="_blank"
+                className="text-white  text-decoration-none nav-link"
+                rel="noopener noreferrer"
+              >
+                <Github className="fs-1"></Github> /agustinbaza
+              </a>
             </Card.Body>
           </Card>
         </Col>
 
         <Col sm={6} md={6} lg={3} className="mb-3">
           <Card className="bg-transparent border-0">
-            <Card.Title className="text-center letraAmarilla">
+            <Card.Title className="text-center text-white">
               Cristian Quiroga
             </Card.Title>
             <Card.Img
               variant="top"
-              src="https://flixadastream.netlify.app/img/profile-pictures/cristianquiroga.png"
+              src={cristian}
               className=""
               alt="FotoPerfil"
             />
-            <Card.Body className="text-center fw-bolder letraAmarilla">
-              <Github className="fs-1"></Github> /cristianq3
+            <Card.Body className="text-center fw-bolder text-white">
+              <a
+                href="https://github.com/cristianq3"
+                target="_blank"
+                className="text-white  text-decoration-none nav-link"
+                rel="noopener noreferrer"
+              >
+                <Github className="fs-1"></Github> /cristianq3
+              </a>
             </Card.Body>
           </Card>
         </Col>
