@@ -13,19 +13,19 @@ const EditarUsuario = () => {
     setValue,
     handleSubmit,
   } = useForm();
-  
+
   const id = 2;
 
   useEffect(() => {
     obtenerUsuario(id).then((respuesta) => {
       if (respuesta) {
         // tengo que cargar el objeto en el formulario
-        setValue('nombreUsuario', respuesta.nombreUsuario);
-        setValue('apellido', respuesta.apellidoUsuario);
-        setValue('email', respuesta.email);
-        setValue('password', respuesta.password);
-        setValue('perfil', respuesta.perfil);
-        setValue('estado', respuesta.estado);
+        setValue('nombreUsuario', respuesta.data.nombreUsuario);
+        setValue('apellido', respuesta.data.apellidoUsuario);
+        setValue('email', respuesta.data.email);
+        setValue('password', respuesta.data.password);
+        setValue('perfil', respuesta.data.perfil);
+        setValue('estado', respuesta.data.estado);
 
       } else {
         Swal.fire(
