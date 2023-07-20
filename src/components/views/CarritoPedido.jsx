@@ -1,6 +1,6 @@
 import './../../css/carritoPedido.css';
 import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
-import CardItemCarrito from './carritoPedido/CardItemCarrito';
+import CardItemCarrito from './pedido/CardItemCarrito';
 
 const CarritoPedido = () => {
   return (
