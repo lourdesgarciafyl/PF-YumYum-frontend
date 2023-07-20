@@ -154,6 +154,15 @@
       "perfil": "Administrador",
       "estado": "Activo",
       "id": 5
+    },
+    {
+      "nombreUsuario": "Pedro",
+      "apellidoUsuario": "Pablo",
+      "email": "pedropablo@gmail.com",
+      "password": "123456aA",
+      "perfil": "Cliente",
+      "estado": "Activo",
+      "id": 6
     }
   ]
 }

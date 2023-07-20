@@ -4,24 +4,30 @@ import { PersonFill, FileLock2Fill } from 'react-bootstrap-icons';
 import './../../css/login.css';
 import { loginUsuario } from '../helpers/queriesUsuario';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({setUsuarioLogueado}) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
+  const navegacion = useNavigate()
+
   const onSubmit = (usuario) => {
     loginUsuario(usuario).then((respuesta) => {
       if (respuesta) {
-        sessionStorage.setItem('usuario', JSON.stringify(respuesta));
+        localStorage.setItem('usuarioInicioSesion', JSON.stringify(respuesta));
+        setUsuarioLogueado(respuesta)
+        reset()
         Swal.fire(
           'Bienvenido',
           `${respuesta.nombreUsuario} iniciaste sesión correctamente`,
           'success'
         );
-        //TODO: setear el Usuario logueado
+        navegacion("/")
+        console.log(respuesta.perfil)
         //TODO: navegar hasta la página administrador
       } else {
         Swal.fire('Error', 'Email o Password incorrecto.', 'error');
