@@ -1,5 +1,5 @@
 import './../../css/carritoPedido.css';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
 import CardItemCarrito from './carritoPedido/CardItemCarrito';
 
 const CarritoPedido = () => {
@@ -14,21 +14,41 @@ const CarritoPedido = () => {
           <Row>
             <Col
               lg={9}
-              className="justify-content-around borderDerechoContenidoCarrito-lg"
+              className="justify-content-around borderDerechoContenidoCarrito-lg mb-3"
             >
               <CardItemCarrito></CardItemCarrito>
               <CardItemCarrito></CardItemCarrito>
               <Button
                 variant="light"
                 type="submit"
-                className="my-2 botonVaciarCarrito"
+                className="mt-2 mb-3 botonVaciarCarrito"
               >
                 Vaciar Carrito
               </Button>
             </Col>
 
-            <Col lg={3} className="justify-content-around my-3">
-              <h2>Total, Envio y Botón Generar Pedido</h2>
+            <Col lg={3} className="justify-content-around">
+              <ListGroup className="mb-2">
+                <ListGroup.Item className="border-0">
+                  <div className="d-flex justify-content-between align-items-center">
+                    <span className="letra-roboto tamanioLetra">Total:</span>
+                    <span className="letra-roboto tamanioLetra">$5800</span>
+                  </div>
+                </ListGroup.Item>
+                <ListGroup.Item className="border-0">
+                  <div className="d-flex justify-content-between align-items-center">
+                    <span className="letra-roboto tamanioLetra">Envío:</span>
+                    <span className="letra-roboto tamanioLetra">Gratis</span>
+                  </div>
+                </ListGroup.Item>
+              </ListGroup>
+              <Button
+                variant="primary"
+                type="submit"
+                className="mt-2 mb-1 botonGenerarPedido"
+              >
+                Generar Pedido
+              </Button>
             </Col>
           </Row>
         </Container>
