@@ -1,29 +1,40 @@
-.card-text {
+.menu.card-text {
   font-size: x-small;
   display: flex;
   justify-content: space-between;
   text-align: center;
 }
-.card-title {
+.menu .card-title {
   text-align: center;
 }
-.card {
+.menu .card {
   background: transparent;
-
   border: none;
-  max-height: 400px;
-  min-height: 320px;
-  max-width: 13rem;
+  max-height: 450px;
+  min-height: 340px;
+  max-width: 15rem;
   color: #f7b538;
   transition: transform 0.3s ease-in-out;
 }
 
-.card img {
+.menu .card img {
   filter: drop-shadow(2px 5px 12px rgba(0, 0, 0, 2));
 }
 
-.row {
-  padding-top: 10px;
+.menu .card:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in;
+  color: white;
+  filter: brightness(105%);
+}
+
+.menu .card-body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.menu .row-producto > * {
+  width: auto;
 }
 
 .detalleLink {
@@ -31,15 +42,25 @@
   font-size: medium;
   margin-top: -10px;
   text-align: center;
+  margin: auto;
 }
 
 .detalleLink:hover {
-  border-bottom: solid 3px #f7b538;
   color: #f7b538;
+  background-color: #1414145e;
+
+  border-radius: 15px;
+}
+
+
+.categoriaActiva {
+  outline: solid 1px #f7b538;
+  border-radius: 15px;
 }
 
 .menuBuscador .nav-item .nav-link:hover {
-  border-bottom: solid 3px #f7b538;
+  outline: solid 1px #f7b538;
+  border-radius: 15px;
 }
 
 .verMas {
@@ -67,28 +88,9 @@
   transition: transform 0.1s ease-in-out;
 }
 
-.card:hover {
-  transform: scale(1.1);
-  transition: transform 0.3s ease-in-out;
-  color: white;
-  filter: brightness(105%);
-}
-
-.card:hover {
-  filter: brightness(1.1);
-}
-
-.card-body {
-  margin: 0px;
-  padding: 0px;
-}
-
-.row > * {
-  width: auto;
-}
-
 .precio {
   background-color: #27252154 !important;
+  backdrop-filter: blur(0.5px);
   padding: 23px;
   min-width: 75%;
   top: 50%;
@@ -96,19 +98,29 @@
   transform: translate(-50%, -50%);
   color: white !important;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  border-radius: 55px;
+  border-radius: 48px;
   font-size: 25px;
+}
+
+.btnAgregar {
+  color: #000000;
+  background-color: white;
+  border: 1px solid rgb(0, 0, 0);
+  border: none;
+  outline: none;
 }
 
 /* El carrusel debe tener 4 imagenes para sm y 4 imagenes para LG */
 
 .Carrusel-MD-LG img {
   width: 100%;
-  max-height: 95vh;
+  max-height: 85vh;
+  object-fit: cover;
+  object-position: 50%;
 }
 @media (max-width: 767px) {
   /* Estilos para dispositivos pequeños */
-  .nav {
+  .menuBuscador {
     font-size: small;
   }
 
@@ -118,9 +130,7 @@
     font-weight: 700;
   }
 
-  .menuBuscador .nav-link:hover {
-    border-radius: solid 3px black;
-  }
+
 
   .Carrusel-MD-LG img {
     width: 100%;
