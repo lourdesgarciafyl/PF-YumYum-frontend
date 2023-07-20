@@ -20,7 +20,7 @@ import Nosotros from "./components/views/Nosotros"
 
 function App() {
   const usuario = JSON.parse(localStorage.getItem("usuarioInicioSesion")) || {};
-  const [usuarioLogueado, setUsuarioLogueado] = useState({});
+  const [usuarioLogueado, setUsuarioLogueado] = useState(usuario);
 
   return (
     <>
