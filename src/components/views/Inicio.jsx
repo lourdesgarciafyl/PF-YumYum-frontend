@@ -1,12 +1,53 @@
 import { Container, Row, Button, Carousel } from "react-bootstrap";
 import "../../css/inicio.css";
 import CardProducto from "../../components/views/producto/CardProducto";
+import { obtenerListaProductos } from '../helpers/queriesProducto';
 import Nav from "react-bootstrap/Nav";
+import { useEffect, useState } from 'react';
 import banner2 from "../../assets/img/Banner2.jpg";
 import banner3 from "../../assets/img/Banner3.jpg";
 import banner4 from "../../assets/img/Banner4.jpg";
 
 const Inicio = () => {
+
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    obtenerListaProductos()
+      .then((repuesta) => {
+        setProductos(repuesta);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <section className="mainSection letraRoboto mb-3">
       <Carousel fade className="Carrusel-MD-LG">
@@ -27,7 +68,7 @@ const Inicio = () => {
         </h1>
         <hr />
         <Nav className="justify-content-center my-4 menuBuscador  ">
-        <Nav.Item>
+          <Nav.Item>
             <Nav.Link href="">Todo</Nav.Link>
           </Nav.Item>
           <Nav.Item>
@@ -47,17 +88,12 @@ const Inicio = () => {
           </Nav.Item>
         </Nav>
         <hr />
+
+
         <Row className="justify-content-around">
-          <CardProducto></CardProducto>
-          <CardProducto></CardProducto>
-          <CardProducto></CardProducto>
-          <CardProducto></CardProducto>
-          <CardProducto></CardProducto>
-          <CardProducto></CardProducto>
-          <CardProducto></CardProducto>
-          <CardProducto></CardProducto>
-          <CardProducto></CardProducto>
-          
+        {productos.map((producto) => (
+            <CardProducto key={producto._id} producto={producto}></CardProducto>
+          ))}
         </Row>
       </Container>
     </section>
