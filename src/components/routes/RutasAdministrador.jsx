@@ -13,12 +13,12 @@ const RutasAdministrador = () => {
     return(
         <>
         <Routes>
-            <Route exact path='/' element={<AdministrarProducto></AdministrarProducto>}></Route>
-            <Route exact path='/agregar-producto' element={<AgregarProducto></AgregarProducto>}></Route>
-            <Route exact path='/editar-producto/:id' element={<EditarProducto></EditarProducto>}></Route>
-            <Route exact path='/administrar-usuarios' element={<AdministradorUsuarios></AdministradorUsuarios>}></Route>
-            <Route exact path='/administrar-usuarios/agregar-usuario' element={<AgregarUsuario></AgregarUsuario>}></Route>
-            <Route exact path='/administrar-usuarios/editar-usuario/:id' element={<EditarUsuario></EditarUsuario>}></Route>
+            <Route exact path='/productos' element={<AdministrarProducto></AdministrarProducto>}></Route>
+            <Route exact path='/productos/agregar-producto' element={<AgregarProducto></AgregarProducto>}></Route>
+            <Route exact path='/productos/editar-producto/:id' element={<EditarProducto></EditarProducto>}></Route>
+            <Route exact path='/usuarios' element={<AdministradorUsuarios></AdministradorUsuarios>}></Route>
+            <Route exact path='/usuarios/agregar-usuario' element={<AgregarUsuario></AgregarUsuario>}></Route>
+            <Route exact path='/usuarios/editar-usuario/:id' element={<EditarUsuario></EditarUsuario>}></Route>
             <Route exact path='*' element={<Error404></Error404>}></Route>
         </Routes>
         </>
