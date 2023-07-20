@@ -7,7 +7,7 @@ const Error404 = () => {
     <section className="mainSection text-center fondoRojo ordenError">
       <img src={error} className="imagenError" alt="error 404" />
       <div>
-        <h2 className="textoError"> OH NO! Ha ocurrido un error </h2>
+        <h2 className="textoError"> OH NO! Ha ocurrido un error... </h2>
         <Button variant="btn btn-warning mt-3 botonError">
           Volver al inicio
         </Button>
