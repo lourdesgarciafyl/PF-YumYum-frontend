@@ -1,5 +1,5 @@
 import { Container, Row, Button, Carousel } from "react-bootstrap";
-/*import "../../css/inicio.css"; */
+import "../../css/inicio.css"; 
 import CardProducto from "../../components/views/producto/CardProducto";
 import Nav from "react-bootstrap/Nav";
 import banner2 from "../../assets/img/Banner2.jpg";
