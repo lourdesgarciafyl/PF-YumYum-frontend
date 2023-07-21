@@ -1,11 +1,19 @@
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import { useState, useRef } from 'react';
 import "../../css/navbar.css";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import Overlay from 'react-bootstrap/Overlay';
+import Tooltip from 'react-bootstrap/Tooltip';
 import { Cart, Person } from "react-bootstrap-icons";
 
 const Navegacion = () => {
+  const [show, setShow] = useState(false);
+  const target = useRef(null);
+
+
+
   return (
-    <Navbar bg="dark" className="shadow fixed-top" variant="dark" expand="lg">
+    <Navbar bg="dark" className="shadow fixed-top navPrincipal" variant="dark" expand="lg">
       <Container className="d-flex justify-content-between">
         <Navbar.Brand href="#home">
           <img
@@ -47,12 +55,26 @@ const Navegacion = () => {
               <NavDropdown.Item href="#action5">Pedidos</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="#">
-              {" "}
-              <Button className="btn btn-dark rounded-5">
-                {" "}
+            <Button className="rounded-5" variant="dark" ref={target} onClick={() => setShow(!show)}>
                 <Person size={25}></Person>
-              </Button>{" "}
+              </Button>
+              <Overlay target={target.current} show={show} placement="bottom">
+        {(props) => (
+          <Tooltip className="bg-dark" id="overlayIngreso" {...props}>
+             <Button variant="dark" className="fw-bold">
+        Ingresar
+      </Button>
+          </Tooltip>
+        )}
+      </Overlay>
+
             </Nav.Link>
+
+            <Nav.Link>Cristian</Nav.Link>
+
+
+
+
           </Nav>
         </Navbar.Collapse>
       </Container>

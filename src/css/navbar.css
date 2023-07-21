@@ -3,7 +3,7 @@
 }
 
 .navbar-collapse {
-  max-width: 348px;
+  max-width: 358px;
 }
 
 .nav-link {
@@ -21,10 +21,14 @@
 }
 
 .dropdown-item {
+  background-color: #f7b538;
   color: white;
+ 
+  
 }
 .dropdown-menu {
-  background-color: rgb(39, 38, 38);
+  overflow: hidden;
+  background-color: #f7b538;
 }
 
 .carritoConPedidos p {
