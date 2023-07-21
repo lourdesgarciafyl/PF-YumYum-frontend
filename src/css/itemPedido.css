@@ -28,10 +28,6 @@
   font-size: 1.4rem;
 }
 
-.tamanioCelda {
-  max-width: 1.5rem;
-}
-
 @media all and (max-width: 576px) {
   .tamanioLetraItemListGroup {
     font-size: 1.1rem;
@@ -39,9 +35,7 @@
   .tamanioLetraTituloTabla {
     font-size: xx-small;
   }
-  .tamanioLetraItemTabla {
-    font-size: small;
-  }
+
   .linkDetalle {
     font-size: 0.9rem;
     font-weight: 400;
@@ -53,9 +47,6 @@
     font-size: 1.3rem;
   }
   .tamanioLetraTituloTabla {
-    font-size: small;
-  }
-  .tamanioLetraItemTabla {
     font-size: small;
   }
 }

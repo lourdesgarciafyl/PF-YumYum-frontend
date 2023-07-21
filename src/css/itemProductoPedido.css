@@ -1,0 +1,15 @@
+.tamanioCelda {
+  max-width: 10rem;
+}
+
+@media all and (max-width: 576px) {
+  .tamanioLetraItemTabla {
+    font-size: small;
+  }
+}
+
+@media all and (min-width: 577px) and (max-width: 992px) {
+  .tamanioLetraItemTabla {
+    font-size: small;
+  }
+}

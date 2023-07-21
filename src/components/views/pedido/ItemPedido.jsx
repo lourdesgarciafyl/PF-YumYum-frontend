@@ -3,6 +3,7 @@ import './../../../css/itemPedido.css';
 import { useState } from 'react';
 import { Trash3Fill } from 'react-bootstrap-icons';
 import { ToggleAcordion } from '../../helpers/ToggleAcordion';
+import ItemProductoPedido from './ItemProductoPedido';
 
 const ItemPedido = () => {
   const [botonSwitch, setBotonSwitch] = useState(false);
@@ -58,7 +59,7 @@ const ItemPedido = () => {
           </Card.Header>
 
           <Accordion.Collapse eventKey="1">
-            <Card.Body className="m-1 tamanioLetraTabla">
+            <Card.Body className="m-1">
               <Table responsive striped bordered hover>
                 <thead>
                   <tr>
@@ -74,20 +75,7 @@ const ItemPedido = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td className="text-truncate tamanioCelda letraRoboto tamanioLetraItemTabla">
-                      Hamburguesa DobleCheddar
-                    </td>
-                    <td className="letraRoboto tamanioLetraItemTabla">2</td>
-                    <td className="letraRoboto tamanioLetraItemTabla">5600</td>
-                  </tr>
-                  <tr>
-                    <td className="text-truncate letraRoboto tamanioLetraItemTabla">
-                      Hamburguesa DobleCheddar
-                    </td>
-                    <td className="letraRoboto tamanioLetraItemTabla">2</td>
-                    <td className="letraRoboto tamanioLetraItemTabla">5600</td>
-                  </tr>
+                  <ItemProductoPedido></ItemProductoPedido>
                 </tbody>
               </Table>
             </Card.Body>
