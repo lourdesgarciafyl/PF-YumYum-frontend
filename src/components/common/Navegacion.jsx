@@ -2,12 +2,15 @@ import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import "../../css/navbar.css";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Cart, Person } from "react-bootstrap-icons";
+import { Link, NavLink, useNavigate} from "react-router-dom"
 
-const Navegacion = () => {
+const Navegacion = ({usuarioLogueado, setUsuarioLogueado}) => {
+  const navegacion = useNavigate();
+
   return (
     <Navbar bg="dark" className="shadow" variant="dark" expand="lg">
       <Container className="d-flex justify-content-between">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand as={Link} to="/">
           <img
             src="../../src/assets/LogoYumNavbar.svg"
             className="logoNavbar"
@@ -37,22 +40,49 @@ const Navegacion = () => {
         <Navbar.Toggle aria-controls="navbar" />
         <Navbar.Collapse id="navbar">
           <Nav className="d-flex justify-content-between align-items-center  ">
-            <Nav.Link href="#">Menu</Nav.Link>
-            <Nav.Link href="#">Nosotros</Nav.Link>
-
-            <NavDropdown title="Administrador" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#">Productos</NavDropdown.Item>
-              <NavDropdown.Item href="#">Usuarios</NavDropdown.Item>
-
+            <NavLink end to="/" className="nav-link">Menu</NavLink>
+            <NavLink to="/nosotros" className="nav-link">Nosotros</NavLink>
+            {usuarioLogueado.nombreUsuario ? (
+              <>
+              {usuarioLogueado.perfil === "Administrador"? (
+                <>
+              <NavDropdown title="Administrador" id="navbarScrollingDropdown">
+              <NavDropdown.Item as={Link} to="/administrar/productos">Productos</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/administrar/usuarios">Usuarios</NavDropdown.Item>
               <NavDropdown.Item href="#action5">Pedidos</NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link href="#">
+              </NavDropdown>
+              <NavLink to="/login" className="nav-link">
               {" "}
               <Button className="btn btn-dark rounded-5">
                 {" "}
                 <Person size={25}></Person>
               </Button>{" "}
-            </Nav.Link>
+              </NavLink>
+                </>
+              ) : (
+                <>
+                <NavLink to="/login" className="nav-link">
+                {" "}
+                <Button className="btn btn-dark rounded-5">
+                {" "}
+                <Person size={25}></Person>
+               </Button>{" "}
+               </NavLink>
+                </>
+              )}
+              </>
+            ) : (
+              <>
+              <NavLink to="/registro" className="nav-link">Registrarme</NavLink>
+              <NavLink to="/login" className="nav-link">
+                {" "}
+                <Button className="btn btn-dark rounded-5">
+                {" "}
+                <Person size={25}></Person>
+               </Button>{" "}
+               </NavLink>
+              </>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
