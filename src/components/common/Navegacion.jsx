@@ -6,6 +6,11 @@ import { Link, NavLink, useNavigate} from "react-router-dom"
 
 const Navegacion = ({usuarioLogueado, setUsuarioLogueado}) => {
   const navegacion = useNavigate();
+  const logout = () => {
+    localStorage.removeItem("usuarioInicioSesion");
+    setUsuarioLogueado("")
+    navegacion("/")
+  }
 
   return (
     <Navbar bg="dark" className="shadow" variant="dark" expand="lg">
@@ -19,23 +24,49 @@ const Navegacion = ({usuarioLogueado, setUsuarioLogueado}) => {
         </Navbar.Brand>
 
         {/* Este link nos envia al carrito de compras. */}
-
-        <Nav.Link
-          href="#CarritodeCompras"
-          id="carrito"
-          className="d-flex mt-2 justi flex-column carritoConPedidos"
-        >
-          {" "}
-          <div className="d-flex align-items-center ">
-            <Cart size={30}></Cart>
-
+        {usuarioLogueado.nombreUsuario ? (
+          <>
+          {usuarioLogueado.perfil === "Cliente" ? (
+            <>
+            <NavLink
+            to="/cliente/pedido"
+            id="carrito"
+            className="d-flex mt-2 justi flex-column carritoConPedidos nav-link"
+            >
+           {" "}
+           <div className="d-flex align-items-center ">
+           <Cart size={30}></Cart>
             {/* Este Span lee la cantidad de productos que va sumando el cliente.  */}
             <span className="ms-2 my-2 fw-bolder" id="cantidadProductosCliente">
               1
             </span>
-          </div>
-          <p className="">Tu pedido</p>
-        </Nav.Link>
+            </div>
+            <p className="">Tu pedido</p>
+          </NavLink>
+            </>
+          ):(
+          <>
+          </>)}
+          </>
+        ) : (
+        <>
+          <NavLink
+            to="login"
+            id="carrito"
+            className="d-flex mt-2 justi flex-column carritoConPedidos nav-link"
+            >
+           {" "}
+           <div className="d-flex align-items-center ">
+           <Cart size={30}></Cart>
+            {/* Este Span lee la cantidad de productos que va sumando el cliente.  */}
+            <span className="ms-2 my-2 fw-bolder" id="cantidadProductosCliente">
+              1
+            </span>
+            </div>
+            <p className="">Tu pedido</p>
+          </NavLink>
+        </>
+        )}
 
         <Navbar.Toggle aria-controls="navbar" />
         <Navbar.Collapse id="navbar">
@@ -49,25 +80,27 @@ const Navegacion = ({usuarioLogueado, setUsuarioLogueado}) => {
               <NavDropdown title="Administrador" id="navbarScrollingDropdown">
               <NavDropdown.Item as={Link} to="/administrar/productos">Productos</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/administrar/usuarios">Usuarios</NavDropdown.Item>
-              <NavDropdown.Item href="#action5">Pedidos</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/administrar/pedidos">Pedidos</NavDropdown.Item>
               </NavDropdown>
-              <NavLink to="/login" className="nav-link">
+              <Nav.Link>
               {" "}
-              <Button className="btn btn-dark rounded-5">
+              <Button 
+              className="btn btn-dark rounded-5" 
+              onClick={logout}>
                 {" "}
                 <Person size={25}></Person>
               </Button>{" "}
-              </NavLink>
+              </Nav.Link>
                 </>
               ) : (
                 <>
-                <NavLink to="/login" className="nav-link">
+                <Nav.Link>
                 {" "}
-                <Button className="btn btn-dark rounded-5">
+                <Button className="btn btn-dark rounded-5" onClick={logout}>
                 {" "}
                 <Person size={25}></Person>
                </Button>{" "}
-               </NavLink>
+               </Nav.Link>
                 </>
               )}
               </>
