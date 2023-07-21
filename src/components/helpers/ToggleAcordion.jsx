@@ -5,7 +5,11 @@ export function ToggleAcordion({ children, eventKey }) {
   );
 
   return (
-    <Button type="button" onClick={abreCierraAcordion} className="linkDetalle">
+    <Button
+      type="button"
+      onClick={abreCierraAcordion}
+      className="linkDetalle text-white"
+    >
       {children}
     </Button>
   );
