@@ -1,5 +1,5 @@
 .tamanioCelda {
-  max-width: 10rem;
+  max-width: 9rem;
 }
 
 @media all and (max-width: 576px) {

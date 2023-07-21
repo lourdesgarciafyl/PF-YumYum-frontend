@@ -15,7 +15,7 @@ const ItemPedido = ({ index }) => {
     console.log(index);
   };
   return (
-    <Col md={6}>
+    <Col md={6} xxl={4}>
       <Accordion defaultActiveKey="0" className="my-2">
         <Card>
           <Card.Header className="bg-white">
