@@ -18,13 +18,21 @@ const Detalle = () => {
           setExisteProducto(true);
           setProducto(respuesta);
         } else {
-          Swal.fire("Ocurrió un error", `No pudimos encontrar el producto que buscas`, "error");
+          Swal.fire(
+            "Ocurrió un error",
+            `No pudimos encontrar el producto que buscas`,
+            "error"
+          );
           setExisteProducto(false);
         }
       })
       .catch((error) => {
         console.error("Error fetching product data:", error);
-        Swal.fire("Ocurrió un error", `No pudimos encontrar el producto que buscas`, "error");
+        Swal.fire(
+          "Ocurrió un error",
+          `No pudimos encontrar el producto que buscas`,
+          "error"
+        );
         setExisteProducto(false);
       });
   }, [id]);
@@ -41,11 +49,13 @@ const Detalle = () => {
             <Row>
               <Col lg={6}>
                 <Card.Body>
-                  <Card.Title className="titulo">{producto.nombreProducto}</Card.Title>
+                  <Card.Title className="titulo">
+                    {producto.nombreProducto}
+                  </Card.Title>
                   <hr />
                   <Card.Text className="texto">{producto.detalle}</Card.Text>
-                  <div className="d-flex justify-content-evenly">
-                    <p className="precio">{producto.precio}</p>
+                  <div className="ordenDetallesPrecio">
+                    <p className="fs-1"> ${producto.precio} </p>
                     <button type="submit" className="botonDetalle">
                       AÑADIR AL CARRITO
                     </button>
@@ -54,7 +64,11 @@ const Detalle = () => {
               </Col>
               <Col lg={6} className="fotoDetalle">
                 <div className="ocultarImagenDetalle">
-                  <img src={producto.imagen} alt="Imagen descriptiva del producto" className="fijarImagenDetalle" />
+                  <img
+                    src={producto.imagen}
+                    alt="Imagen descriptiva del producto"
+                    className="fijarImagenDetalle"
+                  />
                 </div>
               </Col>
             </Row>

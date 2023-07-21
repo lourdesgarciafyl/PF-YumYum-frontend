@@ -57,6 +57,12 @@
   padding: 0px 3%;
 }
 
+.ordenDetallesPrecio {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10%;
+}
+
 /* dispositivos small */
 
 @media all and (max-width: 767px) {
