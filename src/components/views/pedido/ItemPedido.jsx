@@ -5,13 +5,15 @@ import { Trash3Fill } from 'react-bootstrap-icons';
 import { ToggleAcordion } from '../../helpers/ToggleAcordion';
 import ItemProductoPedido from './ItemProductoPedido';
 
-const ItemPedido = () => {
+const ItemPedido = ({ index }) => {
   const [botonSwitch, setBotonSwitch] = useState(false);
 
   const toggler = () => {
     botonSwitch ? setBotonSwitch(false) : setBotonSwitch(true);
   };
-
+  const cambioCheckbox = (index) => {
+    console.log(index);
+  };
   return (
     <Col md={6}>
       <Accordion defaultActiveKey="0" className="my-2">
@@ -34,9 +36,10 @@ const ItemPedido = () => {
                 <Form>
                   <Form.Check
                     type="switch"
-                    id="switchEstado"
+                    id={index}
                     className="d-flex justify-content-end align-items-center"
                     onClick={toggler}
+                    onChange={() => cambioCheckbox(`${index}`)}
                     label={
                       botonSwitch ? (
                         <span className="textoSpan fw-bold letraRoboto">
@@ -75,6 +78,9 @@ const ItemPedido = () => {
                   </tr>
                 </thead>
                 <tbody>
+                  <ItemProductoPedido></ItemProductoPedido>
+                  <ItemProductoPedido></ItemProductoPedido>
+                  <ItemProductoPedido></ItemProductoPedido>
                   <ItemProductoPedido></ItemProductoPedido>
                 </tbody>
               </Table>

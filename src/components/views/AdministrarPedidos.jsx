@@ -9,11 +9,11 @@ const AdministrarPedidos = () => {
         </h1>
         <hr />
         <Row className="justify-content-start">
-          <ItemPedido></ItemPedido>
-          <ItemPedido></ItemPedido>
-          <ItemPedido></ItemPedido>
-          <ItemPedido></ItemPedido>
-          <ItemPedido></ItemPedido>
+          <ItemPedido index={1}></ItemPedido>
+          <ItemPedido index={2}></ItemPedido>
+          <ItemPedido index={3}></ItemPedido>
+          <ItemPedido index={4}></ItemPedido>
+          <ItemPedido index={5}></ItemPedido>
         </Row>
       </Container>
     </section>
