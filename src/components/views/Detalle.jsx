@@ -44,7 +44,7 @@ const Detalle = () => {
   return (
     <>
       {existeProducto ? (
-        <Container className="my-3 mainSection">
+        <Container className="mt-3 mainSection">
           <Card className="cardDetalle">
             <Row>
               <Col lg={6}>
@@ -54,24 +54,14 @@ const Detalle = () => {
                   </Card.Title>
                   <hr />
                   <Card.Text className="texto">{producto.detalle}</Card.Text>
-                  <div className="ordenDetallesPrecio">
-                    <p className="fs-1"> ${producto.precio} </p>
-                    <button type="submit" className="botonDetalle">
-                      AÑADIR AL CARRITO
-                    </button>
-                  </div>
-                  <div className="mt-5 texto">
-                    <Link
-                      className="text-decoration-none letraAmarilla botonLevantado"
-                      to={"/"}
-                    >
-                      {" "}
-                      <p>
-                        <i className="bi bi-arrow-left-circle p-1"></i> Volver
-                        al menú{" "}
-                      </p>
-                    </Link>
-                  </div>
+                  <section>
+                    <div className="ordenDetallesPrecio">
+                      <p className="fs-1"> ${producto.precio} </p>
+                      <button type="submit" className="botonDetalle">
+                        AÑADIR AL CARRITO
+                      </button>
+                    </div>
+                  </section>
                 </Card.Body>
               </Col>
               <Col lg={6} className="fotoDetalle">
@@ -89,6 +79,12 @@ const Detalle = () => {
       ) : (
         navegacion("/404")
       )}
+      <div className="mb-4 texto container fs-2 text-center">
+        <Link className="text-decoration-none letraAmarilla" to={"/"}>
+          {" "}
+          <button className="btn botonVolver">Volver al menú</button>
+        </Link>
+      </div>
     </>
   );
 };
