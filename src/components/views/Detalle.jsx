@@ -1,5 +1,6 @@
 import { Container, Card, Row, Col} from "react-bootstrap";
 import "../../css/detalle.css";
+import { consultaProducto } from "../helpers/queriesProducto";
 
 const Detalle = () => {
   return (
@@ -8,15 +9,15 @@ const Detalle = () => {
         <Row>
           <Col lg={6}>
             <Card.Body>
-              <Card.Title className="titulo">DOBLE CHEESEBURGER</Card.Title>
+              <Card.Title className="titulo"> {producto.nombreProducto} </Card.Title>
               <hr />
               <Card.Text className="texto">
-                La Doble Cheeseburger incluye dos patties 100% carne. Vienen cubierta con crujientes pepinillos, cebolla picada, ketchup, mostaza y dos rebanadas de queso americano.
+                {producto.detalle}
                 <br />
                 <br />
              </Card.Text>
               <div className="d-flex justify-content-evenly">
-                <p className="precio"> $2000</p>
+                <p className="precio">{producto.precio}</p>
                 <button type="submit" className="botonDetalle"> AÑADIR AL CARRITO </button>
               </div>
             </Card.Body>
@@ -24,8 +25,8 @@ const Detalle = () => {
           <Col lg={6} className="fotoDetalle">
           <div className="ocultarImagenDetalle">
               <img
-                src="../../src/assets/hamburguesaDobleCheddar.png"
-                alt="Imagen del producto"
+                src={producto.imagen}
+                alt={producto.imagen}
                 className="fijarImagenDetalle"
               />
             </div>

@@ -64,3 +64,13 @@ export const consultaProductosPorCategoria = async (categoria) => {
     console.log(error);
   }
 };
+
+export const consultaProducto = async (id) => {
+  try {
+      const respuesta = await fetch(URLProducto + "/" + id);
+      const producto = await respuesta.json();
+      return producto;
+  } catch (error) {
+      console.log(error);
+  }
+};
