@@ -2,7 +2,7 @@ import { Container, Card, Row, Col } from "react-bootstrap";
 import "../../css/detalle.css";
 import { useEffect, useState } from "react";
 import { consultaProducto } from "../helpers/queriesProducto";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Detalle = () => {
@@ -59,6 +59,18 @@ const Detalle = () => {
                     <button type="submit" className="botonDetalle">
                       AÑADIR AL CARRITO
                     </button>
+                  </div>
+                  <div className="mt-5 texto">
+                    <Link
+                      className="text-decoration-none letraAmarilla botonLevantado"
+                      to={"/"}
+                    >
+                      {" "}
+                      <p>
+                        <i className="bi bi-arrow-left-circle p-1"></i> Volver
+                        al menú{" "}
+                      </p>
+                    </Link>
                   </div>
                 </Card.Body>
               </Col>
