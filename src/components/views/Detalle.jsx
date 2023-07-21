@@ -26,7 +26,7 @@ const Detalle = () => {
           <div className="ocultarImagenDetalle">
               <img
                 src={producto.imagen}
-                alt={producto.imagen}
+                alt= "Imagen descriptiva del producto"
                 className="fijarImagenDetalle"
               />
             </div>
