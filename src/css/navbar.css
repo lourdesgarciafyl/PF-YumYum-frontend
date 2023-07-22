@@ -2,8 +2,8 @@
   max-width: 200px;
 }
 
-.navbar-collapse {
-  max-width: 358px;
+.navBar2 {
+  max-width: fit-content;
 }
 
 .nav-link {
@@ -23,12 +23,15 @@
 .dropdown-item {
   background-color: #f7b538;
   color: white;
- 
-  
 }
 .dropdown-menu {
   overflow: hidden;
   background-color: #f7b538;
+}
+
+#carrito {
+  left: 20vw;
+  position: relative;
 }
 
 .carritoConPedidos p {
@@ -37,22 +40,47 @@
 
 #cantidadProductosCliente {
   position: relative;
-  right: 56%;
-  font-size: 12px;
+  right: 55%;
+  bottom: 1px;
+  font-size: 10px;
   color: rgb(241, 171, 18);
 }
 
 .btn-dark {
-  background-color: #af0303;
+  background-color: rgb(241, 171, 18);
+  color: white;
 }
 
 .btn-dark:hover {
-  background-color: rgb(241, 171, 18);
-  color: #af0303;
+  background-color: #af0303;
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .logoNavbar {
+    max-width: 160px;
+  }
+
+  .navBar2 {
+    max-width: 100px;
+  }
+
+  #carrito {
+    left: 20px;
+    position: relative;
+  }
 }
 
 @media (max-width: 576px) {
   .logoNavbar {
     max-width: 100px;
+  }
+
+  #carrito {
+    left: -20px;
+    position: relative;
+  }
+
+  .carritoConPedidos p {
+    font-size: 8px;
   }
 }
