@@ -1,6 +1,7 @@
 import { Col, Card, Button } from "react-bootstrap";
 import { Plus } from "react-bootstrap-icons";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const CardProducto = ({ producto }) => {
   const [mostrarElementos, setmostrarElementos] = useState(false);
@@ -35,10 +36,9 @@ const CardProducto = ({ producto }) => {
                 <b className="fw-bolder fs-1">$</b>
                 {precio}{" "}
               </p>{" "}
-              <span>
-                {" "}
-                <p className="text-center detalleLink"> Ver Detalle </p>{" "}
-              </span>
+                 <Link className="btn btn-dark" to={"/detalle/" + producto.id}>
+                Ver detalle
+              </Link>
             </div>
             <Button variant="light" className="rounded-5">
               {" "}
