@@ -190,6 +190,15 @@
       "perfil": "Cliente",
       "estado": "Activo",
       "id": 9
+    },
+    {
+      "nombreUsuario": "Jose",
+      "apellidoUsuario": "Villafañe",
+      "email": "jvillafane@gmail.com",
+      "password": "123456aA",
+      "perfil": "Cliente",
+      "estado": "Activo",
+      "id": 10
     }
   ]
 }
