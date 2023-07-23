@@ -1,7 +1,7 @@
 import { Container, Card, Row, Col} from "react-bootstrap";
 import "../../css/detalle.css";
 
-const Detalle = () => {
+const Detalle = ({usuarioLogueado, setusuarioLogueado}) => {
   return (
     <Container className="my-3 mainSection">
       <Card className="cardDetalle">

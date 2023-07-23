@@ -8,7 +8,7 @@ import banner2 from "../../assets/img/Banner2.jpg";
 import banner3 from "../../assets/img/Banner3.jpg";
 import banner4 from "../../assets/img/Banner4.jpg";
 
-const Inicio = () => {
+const Inicio = ({usuarioLogueado, setusuarioLogueado}) => {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
