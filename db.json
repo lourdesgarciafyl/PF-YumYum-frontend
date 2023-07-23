@@ -163,6 +163,51 @@
       "perfil": "Cliente",
       "estado": "Activo",
       "id": 6
+    },
+    {
+      "nombreUsuario": "Maria",
+      "apellidoUsuario": "Garcia",
+      "email": "maria@gmail.com",
+      "password": "123456aA",
+      "perfil": "Cliente",
+      "estado": "Activo",
+      "id": 7
+    },
+    {
+      "nombreUsuario": "Leando",
+      "apellidoUsuario": "Garcia",
+      "email": "leandro@gmail.com",
+      "password": "123456aA",
+      "perfil": "Cliente",
+      "estado": "Activo",
+      "id": 8
+    },
+    {
+      "nombreUsuario": "Juan",
+      "apellidoUsuario": "Garcia",
+      "email": "juangarcia@gmail.com",
+      "password": "123456aA",
+      "perfil": "Cliente",
+      "estado": "Activo",
+      "id": 9
+    },
+    {
+      "nombreUsuario": "Jose",
+      "apellidoUsuario": "Villafañe",
+      "email": "jvillafane@gmail.com",
+      "password": "123456aA",
+      "perfil": "Cliente",
+      "estado": "Activo",
+      "id": 10
+    },
+    {
+      "nombreUsuario": "Veronica",
+      "apellidoUsuario": "Garcia",
+      "email": "veronica@gmail.com",
+      "password": "123456aA",
+      "perfil": "Cliente",
+      "estado": "Activo",
+      "id": 11
     }
   ]
 }

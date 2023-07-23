@@ -16,27 +16,23 @@ const Registro = ({setUsuarioLogueado}) => {
         delete data.confirmarPassword;
         data.perfil = "Cliente";
         data.estado = "Activo";
-        crearUsuario(data).then((respuesta) => {
-            if(respuesta.status === 201){
+        crearUsuario(data).then(respuesta => {
+            if (respuesta.status === 201) {
+                localStorage.setItem("usuarioInicioSesion", JSON.stringify(respuesta));
+                setUsuarioLogueado(respuesta)
+                reset()
                 Swal.fire({
                     color: "#fff",
-                    background: "#d8572a", 
-                    confirmButtonColor: "#f7b538",
+                    background: '#d8572a',
+                    confirmButtonColor: '#f7b538',
                     title: `Bienvenido ${data.nombreUsuario}`,
                     text: "Ahora podrás realizar un pedido",
                     icon: "success"
-                });
-                localStorage.setItem("usuarioInicioSesion", JSON.stringify(respuesta))
-                setUsuarioLogueado(respuesta)
-                reset()
-                navegacion("/")
+                  });
+                navegacion('/');
             } else {
-                Swal.fire(
-                    `Ocurrió un error`, 
-                    `Intente nuevamente más tarde`, 
-                    `error`
-                );
-            }
+                Swal.fire(`Ocurrió un error`, `Intente nuevamente más tarde`, `error`);
+            } 
         })
     }
 

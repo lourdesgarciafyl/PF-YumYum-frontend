@@ -5,10 +5,17 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Overlay from "react-bootstrap/Overlay";
 import Tooltip from "react-bootstrap/Tooltip";
 import { Cart, Person } from "react-bootstrap-icons";
+import { Link, NavLink, useNavigate} from "react-router-dom"
 
-const Navegacion = () => {
+const Navegacion = ({usuarioLogueado, setUsuarioLogueado}) => {
   const [show, setShow] = useState(false);
   const target = useRef(null);
+  const navegacion = useNavigate();
+  const logout = () => {
+    localStorage.removeItem("usuarioInicioSesion");
+    setUsuarioLogueado("")
+    navegacion("/")
+  }
 
   return (
     <Navbar
@@ -18,7 +25,7 @@ const Navegacion = () => {
       expand="lg"
     >
       <Container className="d-flex justify-content-between">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand as={Link} to="/">
           <img
             src="../../src/assets/LogoYumNavbar.svg"
             className="logoNavbar"
@@ -27,46 +34,107 @@ const Navegacion = () => {
         </Navbar.Brand>
 
         {/* Este link nos envia al carrito de compras. */}
-
-        <Nav.Link
-          href="#CarritodeCompras"
-          id="carrito"
-          className="d-flex mt-2 justi flex-column carritoConPedidos"
-        >
-          {" "}
-          <div className="d-flex align-items-center ">
-            <Cart size={30}></Cart>
-
+        {usuarioLogueado.nombreUsuario ? (
+          <>
+          {usuarioLogueado.perfil === "Cliente" ? (
+            <>
+            <NavLink
+            to="/cliente/pedido"
+            id="carrito"
+            className="d-flex mt-2 justi flex-column carritoConPedidos nav-link"
+            >
+           {" "}
+           <div className="d-flex align-items-center ">
+           <Cart size={30}></Cart>
+            {/* Este Span lee la cantidad de productos que va sumando el cliente.  */}
+            <span className="ms-2 my-2 fw-bolder" id="cantidadProductosCliente">
+              1
+            </span>
+            </div>
+            <p className="">Tu pedido</p>
+          </NavLink>
+            </>
+          ):(
+          <>
+          </>)}
+          </>
+        ) : (
+        <>
+          <NavLink
+            to="login"
+            id="carrito"
+            className="d-flex mt-2 justi flex-column carritoConPedidos nav-link"
+            >
+           {" "}
+           <div className="d-flex align-items-center ">
+           <Cart size={30}></Cart>
             {/* Este Span lee la cantidad de productos que va sumando el cliente.  */}
             <span className="ms-2 my-2 fw-bolder" id="cantidadProductosCliente">
               3
             </span>
-          </div>
-          <p className="">Tu pedido</p>
-        </Nav.Link>
+            </div>
+            <p className="">Tu pedido</p>
+          </NavLink>
+        </>
+        )}
 
         <Navbar.Toggle aria-controls="navbar" />
-        <Navbar.Collapse id="navbar" className="">
+
+        <Navbar.Collapse id="navbar">
           <Nav className="d-flex ms-lg-auto navBar2">
-            <Nav.Link href="#">Menu</Nav.Link>
-            <Nav.Link href="#">Nosotros</Nav.Link>
-
-            <NavDropdown title="Administrador" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#">Productos</NavDropdown.Item>
-              <NavDropdown.Item href="#">Usuarios</NavDropdown.Item>
-
-              <NavDropdown.Item href="#action5">Pedidos</NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link href="#">
-              <Button
+            <NavLink end to="/" className="nav-link">Menu</NavLink>
+            <NavLink to="/nosotros" className="nav-link">Nosotros</NavLink>
+            {usuarioLogueado.nombreUsuario ? (
+              <>
+              {usuarioLogueado.perfil === "Administrador"? (
+                <>
+              <NavDropdown title="Administrador" id="navbarScrollingDropdown">
+              <NavDropdown.Item as={Link} to="/administrar/productos">Productos</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/administrar/usuarios">Usuarios</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/administrar/pedidos">Pedidos</NavDropdown.Item>
+              </NavDropdown>
+              <Nav.Link>
+              {" "}
+              <Button 
+                 className="rounded-5"
+                variant="dark"
+                ref={target}
+                 onClick={logout}>
+                {" "}
+                <Person size={25}></Person>
+              </Button>{" "}
+              </Nav.Link>
+              <Nav.Link>{usuarioLogueado.nombreUsuario}</Nav.Link>
+              </>
+              ) : (
+                <>
+                <Nav.Link>
+                {" "}
+                <Button               
+                className="rounded-5"
+                variant="dark"
+                ref={target} 
+                 onClick={logout}>
+                {" "}
+                <Person size={25}></Person>
+               </Button>{" "}
+               </Nav.Link>
+                </>
+              )}
+              </>
+            ) : (
+              <>
+              <NavLink to="/registro" className="nav-link">Registrarme</NavLink>
+              <NavLink to="/login" className="nav-link">
+                {" "}
+                <Button               
                 className="rounded-5"
                 variant="dark"
                 ref={target}
-                onClick={() => setShow(!show)}
-              >
+                onClick={() => setShow(!show)} >
                 <Person size={25}></Person>
-              </Button>
-              <Overlay target={target.current} show={show} placement="bottom">
+               </Button>
+               <Overlay target={target.current} show={show} placement="bottom">
                 {(props) => (
                   <Tooltip className="bg-dark" id="overlayIngreso" {...props}>
                     <Button variant="dark" className="fw-bold">
@@ -75,9 +143,9 @@ const Navegacion = () => {
                   </Tooltip>
                 )}
               </Overlay>
-            </Nav.Link>
-
-            <Nav.Link>Cristian</Nav.Link>
+              </NavLink>
+              </>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

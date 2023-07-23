@@ -2,7 +2,7 @@ import './../../css/carritoPedido.css';
 import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
 import CardItemCarrito from './pedido/CardItemCarrito';
 
-const CarritoPedido = () => {
+const CarritoPedido = ({usuario}) => {
   return (
     <>
       <section className="mainSection letraRoboto mb-3">

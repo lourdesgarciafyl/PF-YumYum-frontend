@@ -5,7 +5,8 @@ import { consultaProducto } from "../helpers/queriesProducto";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const Detalle = () => {
+
+const Detalle = ({usuarioLogueado, setusuarioLogueado}) => {
   const { id } = useParams();
   const navegacion = useNavigate();
   const [producto, setProducto] = useState();

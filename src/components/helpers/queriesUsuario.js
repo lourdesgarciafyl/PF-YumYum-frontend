@@ -9,7 +9,16 @@ export const crearUsuario = async (usuario) => {
       },
       body: JSON.stringify(usuario),
     });
-    return nuevoUsuario;
+    const datos = await nuevoUsuario.json();
+    return {
+      status: nuevoUsuario.status,
+      id: datos.id,
+      nombreUsuario: datos.nombreUsuario,
+      apellidoUsuario: datos.apellidoUsuario,
+      email: datos.email,
+      estado: datos.estado,
+      perfil: datos.perfil,
+    }
   } catch (error) {
     console.log(error);
     return null;
