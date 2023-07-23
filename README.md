@@ -17,8 +17,8 @@ para que los clientes de un restaurante elijan entre distintos productos y pueda
 - [Vite](https://vitejs.dev/)
 - [React](https://es.legacy.reactjs.org/)
 - [React-Bootstrap](https://react-bootstrap.github.io/)
-- [React-router-dom]()
-- [React-hook-form]()
+- [React-router-dom](https://reactrouter.com/en/main)
+- [React-hook-form](https://react-hook-form.com/)
 - [SweetAlert2](https://sweetalert2.github.io/)
 
 
