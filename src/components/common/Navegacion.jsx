@@ -1,10 +1,15 @@
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import { useState, useRef } from "react";
 import "../../css/navbar.css";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import Overlay from "react-bootstrap/Overlay";
+import Tooltip from "react-bootstrap/Tooltip";
 import { Cart, Person } from "react-bootstrap-icons";
 import { Link, NavLink, useNavigate} from "react-router-dom"
 
 const Navegacion = ({usuarioLogueado, setUsuarioLogueado}) => {
+  const [show, setShow] = useState(false);
+  const target = useRef(null);
   const navegacion = useNavigate();
   const logout = () => {
     localStorage.removeItem("usuarioInicioSesion");
@@ -13,7 +18,12 @@ const Navegacion = ({usuarioLogueado, setUsuarioLogueado}) => {
   }
 
   return (
-    <Navbar bg="dark" className="shadow" variant="dark" expand="lg">
+    <Navbar
+      bg="dark"
+      className="shadow fixed-top navPrincipal"
+      variant="dark"
+      expand="lg"
+    >
       <Container className="d-flex justify-content-between">
         <Navbar.Brand as={Link} to="/">
           <img
@@ -60,7 +70,7 @@ const Navegacion = ({usuarioLogueado, setUsuarioLogueado}) => {
            <Cart size={30}></Cart>
             {/* Este Span lee la cantidad de productos que va sumando el cliente.  */}
             <span className="ms-2 my-2 fw-bolder" id="cantidadProductosCliente">
-              1
+              3
             </span>
             </div>
             <p className="">Tu pedido</p>
@@ -69,8 +79,9 @@ const Navegacion = ({usuarioLogueado, setUsuarioLogueado}) => {
         )}
 
         <Navbar.Toggle aria-controls="navbar" />
+
         <Navbar.Collapse id="navbar">
-          <Nav className="d-flex justify-content-between align-items-center  ">
+          <Nav className="d-flex ms-lg-auto navBar2">
             <NavLink end to="/" className="nav-link">Menu</NavLink>
             <NavLink to="/nosotros" className="nav-link">Nosotros</NavLink>
             {usuarioLogueado.nombreUsuario ? (
@@ -85,18 +96,25 @@ const Navegacion = ({usuarioLogueado, setUsuarioLogueado}) => {
               <Nav.Link>
               {" "}
               <Button 
-              className="btn btn-dark rounded-5" 
-              onClick={logout}>
+                 className="rounded-5"
+                variant="dark"
+                ref={target}
+                 onClick={logout}>
                 {" "}
                 <Person size={25}></Person>
               </Button>{" "}
               </Nav.Link>
-                </>
+              <Nav.Link>{usuarioLogueado.nombreUsuario}</Nav.Link>
+              </>
               ) : (
                 <>
                 <Nav.Link>
                 {" "}
-                <Button className="btn btn-dark rounded-5" onClick={logout}>
+                <Button               
+                className="rounded-5"
+                variant="dark"
+                ref={target} 
+                 onClick={logout}>
                 {" "}
                 <Person size={25}></Person>
                </Button>{" "}
@@ -109,11 +127,23 @@ const Navegacion = ({usuarioLogueado, setUsuarioLogueado}) => {
               <NavLink to="/registro" className="nav-link">Registrarme</NavLink>
               <NavLink to="/login" className="nav-link">
                 {" "}
-                <Button className="btn btn-dark rounded-5">
-                {" "}
+                <Button               
+                className="rounded-5"
+                variant="dark"
+                ref={target}
+                onClick={() => setShow(!show)} >
                 <Person size={25}></Person>
-               </Button>{" "}
-               </NavLink>
+               </Button>
+               <Overlay target={target.current} show={show} placement="bottom">
+                {(props) => (
+                  <Tooltip className="bg-dark" id="overlayIngreso" {...props}>
+                    <Button variant="dark" className="fw-bold">
+                      Ingresar
+                    </Button>
+                  </Tooltip>
+                )}
+              </Overlay>
+              </NavLink>
               </>
             )}
           </Nav>
