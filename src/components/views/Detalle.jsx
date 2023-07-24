@@ -49,7 +49,7 @@ const Detalle = ({usuarioLogueado, setusuarioLogueado}) => {
           <Card className="cardDetalle">
             <Row>
               <Col lg={6}>
-                <Card.Body>
+                <Card.Body className="card-body-detalles">
                   <Card.Title className="titulo">
                     {producto.nombreProducto}
                   </Card.Title>
