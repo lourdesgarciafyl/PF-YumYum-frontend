@@ -1,16 +1,26 @@
 import "../../css/footer.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="fondoGrisClaro letraGrisOscuro">
+    <footer className="bg-dark letraGrisOscuro">
       <section className="ordenFooter">
         <article>
-          <h5> Redes sociales </h5>
+          <h5 className="letraAmarilla"> Redes sociales </h5>
           <div className="d-flex justify-content-evenly">
-            <i className="bi bi-instagram"></i>
-            <i className="bi bi-facebook"></i>
-            <i className="bi bi-twitter"></i>
+            <Link to={"/error404"} className="letraAmarilla">
+              {" "}
+              <i className="bi bi-instagram"></i>{" "}
+            </Link>
+            <Link to={"/error404"} className="letraAmarilla">
+              {" "}
+              <i className="bi bi-facebook"></i>{" "}
+            </Link>
+            <Link to={"/error404"} className="letraAmarilla">
+              {" "}
+              <i className="bi bi-twitter"></i>{" "}
+            </Link>
           </div>
         </article>
         <article>
@@ -21,8 +31,26 @@ const Footer = () => {
           />
         </article>
         <article className="text-center">
-          <h5> Sobre nosotros </h5>
-          <h5> Contactanos </h5>
+          <h5>
+            {" "}
+            <Link
+              to={"/nosotros"}
+              className="text-decoration-none letraAmarilla"
+            >
+              {" "}
+              Sobre nosotros{" "}
+            </Link>{" "}
+          </h5>
+          <h5>
+            {" "}
+            <Link
+              to={"/error404"}
+              className="text-decoration-none letraAmarilla"
+            >
+              {" "}
+              Contactanos{" "}
+            </Link>{" "}
+          </h5>
         </article>
       </section>
     </footer>
