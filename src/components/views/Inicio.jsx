@@ -1,17 +1,39 @@
-import { Container, Row, Button, Carousel } from "react-bootstrap";
-import "../../css/inicio.css"; 
-import CardProducto from "../../components/views/producto/CardProducto";
-import { obtenerListaProductos } from "../helpers/queriesProducto";
-import Nav from "react-bootstrap/Nav";
-import { useEffect, useState } from "react";
-import banner2 from "../../assets/img/Banner2.jpg";
-import banner3 from "../../assets/img/Banner3.jpg";
-import banner4 from "../../assets/img/Banner4.jpg";
+import { Container, Row, Button, Carousel } from 'react-bootstrap';
+import '../../css/inicio.css';
+import CardProducto from '../../components/views/producto/CardProducto';
+import {
+  consultaProductosPorCategoria,
+  obtenerListaProductos,
+} from '../helpers/queriesProducto';
+import Nav from 'react-bootstrap/Nav';
+import { useEffect, useState } from 'react';
+import banner2 from '../../assets/img/Banner2.jpg';
+import banner3 from '../../assets/img/Banner3.jpg';
+import banner4 from '../../assets/img/Banner4.jpg';
+import ItemNavCategoria from '../helpers/ItemNavCategoria';
+import { obtenerListaCategorias } from '../helpers/querieCategoria';
 
-const Inicio = ({usuarioLogueado, setusuarioLogueado}) => {
+const Inicio = ({ usuarioLogueado, setusuarioLogueado }) => {
+  const [categorias, setCategorias] = useState([]);
   const [productos, setProductos] = useState([]);
+  const [categoriaActiva, setCategoriaActiva] = useState('Todo');
 
+  // const categorias = [
+  //   'Todo',
+  //   'Pizza',
+  //   'Hamburguesa',
+  //   'Veggie',
+  //   'Bebida',
+  //   'Otro',
+  // ];
   useEffect(() => {
+    obtenerListaCategorias()
+      .then((respuesta) =>
+        setCategorias(respuesta.map((categ) => categ.nombreCategoria))
+      )
+      .catch((error) => {
+        console.log(error);
+      });
     obtenerListaProductos()
       .then((repuesta) => {
         setProductos(repuesta);
@@ -20,6 +42,28 @@ const Inicio = ({usuarioLogueado, setusuarioLogueado}) => {
         console.log(error);
       });
   }, []);
+
+  const manejadorCambioCategoria = (categoria) => {
+    if (categoria === 'Todo') {
+      setCategoriaActiva(categoria);
+      obtenerListaProductos()
+        .then((repuesta) => {
+          setProductos(repuesta);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      setCategoriaActiva(categoria);
+      consultaProductosPorCategoria(categoria)
+        .then((repuesta) => {
+          setProductos(repuesta);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
 
   return (
     <section className="mainSection letraRoboto mb-3">
@@ -40,30 +84,17 @@ const Inicio = ({usuarioLogueado, setusuarioLogueado}) => {
           Menú
         </h1>
         <hr />
-        <Nav className="justify-content-center my-4 menuBuscador  ">
-          <Nav.Item>
-            <Nav.Link href="" className="categoriaActiva">
-              Todo
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="">Hamburguesas</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="link-1">Pizzas</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="link-2">Veggie</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="link-2">Bebidas</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="link-2">Otros</Nav.Link>
-          </Nav.Item>
+        <Nav className="justify-content-center my-4 menuBuscador">
+          {categorias.map((categoria) => (
+            <ItemNavCategoria
+              key={categoria}
+              categoria={categoria}
+              categoriaActiva={categoriaActiva}
+              manejadorCambioCategoria={manejadorCambioCategoria}
+            />
+          ))}
         </Nav>
         <hr className="mb-5" />
-
         <Row className="justify-content-around menu">
           {productos.map((producto) => (
             <CardProducto key={producto.id} producto={producto}></CardProducto>

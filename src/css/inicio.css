@@ -52,10 +52,10 @@
   border-radius: 15px;
 }
 
-
 .categoriaActiva {
   outline: solid 1px #f7b538;
   border-radius: 15px;
+  color: #f7b538 !important;
 }
 
 .menuBuscador .nav-item .nav-link:hover {
@@ -129,8 +129,6 @@
     margin: -1px;
     font-weight: 700;
   }
-
-
 
   .Carrusel-MD-LG img {
     width: 100%;
