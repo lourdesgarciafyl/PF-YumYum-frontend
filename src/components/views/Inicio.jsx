@@ -87,26 +87,6 @@ const Inicio = ({ usuarioLogueado, setusuarioLogueado }) => {
               {categoria}
             </Nav.Link>
           ))}
-          {/* <Nav.Item>
-            <Nav.Link href="" className="categoriaActiva">
-              Todo
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="">Hamburguesas</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="link-1">Pizzas</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="link-2">Veggie</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="link-2">Bebidas</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="link-2">Otros</Nav.Link>
-          </Nav.Item> */}
         </Nav>
         <hr className="mb-5" />
 
