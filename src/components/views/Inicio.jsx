@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import banner2 from '../../assets/img/Banner2.jpg';
 import banner3 from '../../assets/img/Banner3.jpg';
 import banner4 from '../../assets/img/Banner4.jpg';
+import ItemNavCategoria from '../helpers/ItemNavCategoria';
 
 const Inicio = ({ usuarioLogueado, setusuarioLogueado }) => {
   const [productos, setProductos] = useState([]);
@@ -76,20 +77,15 @@ const Inicio = ({ usuarioLogueado, setusuarioLogueado }) => {
         <hr />
         <Nav className="justify-content-center my-4 menuBuscador">
           {categorias.map((categoria) => (
-            <Nav.Link
+            <ItemNavCategoria
               key={categoria}
-              onClick={() => manejadorCambioCategoria(categoria)}
-              active={categoria === categoriaActiva}
-              className={
-                categoria === categoriaActiva ? 'categoriaActiva' : null
-              }
-            >
-              {categoria}
-            </Nav.Link>
+              categoria={categoria}
+              categoriaActiva={categoriaActiva}
+              manejadorCambioCategoria={manejadorCambioCategoria}
+            />
           ))}
         </Nav>
         <hr className="mb-5" />
-
         <Row className="justify-content-around menu">
           {productos.map((producto) => (
             <CardProducto key={producto.id} producto={producto}></CardProducto>
