@@ -36,12 +36,22 @@ const Inicio = ({ usuarioLogueado, setusuarioLogueado }) => {
   const manejadorCambioCategoria = (categoria) => {
     if (categoria === 'Todo') {
       setCategoriaActiva(categoria);
-      //TODO: Hacer la consulta de Listar Todos
-      console.log('Categoria Todo');
+      obtenerListaProductos()
+        .then((repuesta) => {
+          setProductos(repuesta);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     } else {
       setCategoriaActiva(categoria);
-      //TODO: Hacer la consulta de productos por categoria
-      console.log('Otras categorias que no es Todo');
+      consultaProductosPorCategoria(categoria)
+        .then((repuesta) => {
+          setProductos(repuesta);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   };
 
