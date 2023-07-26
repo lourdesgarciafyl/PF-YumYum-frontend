@@ -209,5 +209,37 @@
       "estado": "Activo",
       "id": 11
     }
+  ],
+  "categorias": [
+    {
+      "id": 1,
+      "nombreCategoria": "Todo",
+      "estado": "Activo"
+    },
+    {
+      "id": 2,
+      "nombreCategoria": "Pizza",
+      "estado": "Activo"
+    },
+    {
+      "id": 3,
+      "nombreCategoria": "Hamburguesa",
+      "estado": "Activo"
+    },
+    {
+      "id": 4,
+      "nombreCategoria": "Veggie",
+      "estado": "Activo"
+    },
+    {
+      "id": 5,
+      "nombreCategoria": "Bebida",
+      "estado": "Activo"
+    },
+    {
+      "id": 6,
+      "nombreCategoria": "Otro",
+      "estado": "Activo"
+    }
   ]
 }

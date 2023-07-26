@@ -11,20 +11,29 @@ import banner2 from '../../assets/img/Banner2.jpg';
 import banner3 from '../../assets/img/Banner3.jpg';
 import banner4 from '../../assets/img/Banner4.jpg';
 import ItemNavCategoria from '../helpers/ItemNavCategoria';
+import { obtenerListaCategorias } from '../helpers/querieCategoria';
 
 const Inicio = ({ usuarioLogueado, setusuarioLogueado }) => {
+  const [categorias, setCategorias] = useState([]);
   const [productos, setProductos] = useState([]);
   const [categoriaActiva, setCategoriaActiva] = useState('Todo');
 
-  const categorias = [
-    'Todo',
-    'Pizza',
-    'Hamburguesa',
-    'Veggie',
-    'Bebida',
-    'Otro',
-  ];
+  // const categorias = [
+  //   'Todo',
+  //   'Pizza',
+  //   'Hamburguesa',
+  //   'Veggie',
+  //   'Bebida',
+  //   'Otro',
+  // ];
   useEffect(() => {
+    obtenerListaCategorias()
+      .then((respuesta) =>
+        setCategorias(respuesta.map((categ) => categ.nombreCategoria))
+      )
+      .catch((error) => {
+        console.log(error);
+      });
     obtenerListaProductos()
       .then((repuesta) => {
         setProductos(repuesta);
