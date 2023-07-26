@@ -1,16 +1,28 @@
-import { Container, Row, Button, Carousel } from "react-bootstrap";
-import "../../css/inicio.css"; 
-import CardProducto from "../../components/views/producto/CardProducto";
-import { obtenerListaProductos } from "../helpers/queriesProducto";
-import Nav from "react-bootstrap/Nav";
-import { useEffect, useState } from "react";
-import banner2 from "../../assets/img/Banner2.jpg";
-import banner3 from "../../assets/img/Banner3.jpg";
-import banner4 from "../../assets/img/Banner4.jpg";
+import { Container, Row, Button, Carousel } from 'react-bootstrap';
+import '../../css/inicio.css';
+import CardProducto from '../../components/views/producto/CardProducto';
+import {
+  consultaProductosPorCategoria,
+  obtenerListaProductos,
+} from '../helpers/queriesProducto';
+import Nav from 'react-bootstrap/Nav';
+import { useEffect, useState } from 'react';
+import banner2 from '../../assets/img/Banner2.jpg';
+import banner3 from '../../assets/img/Banner3.jpg';
+import banner4 from '../../assets/img/Banner4.jpg';
 
-const Inicio = ({usuarioLogueado, setusuarioLogueado}) => {
+const Inicio = ({ usuarioLogueado, setusuarioLogueado }) => {
   const [productos, setProductos] = useState([]);
+  const [categoriaActiva, setCategoriaActiva] = useState('Todo');
 
+  const categorias = [
+    'Todo',
+    'Pizza',
+    'Hamburguesa',
+    'Veggie',
+    'Bebida',
+    'Otro',
+  ];
   useEffect(() => {
     obtenerListaProductos()
       .then((repuesta) => {
@@ -20,6 +32,18 @@ const Inicio = ({usuarioLogueado, setusuarioLogueado}) => {
         console.log(error);
       });
   }, []);
+
+  const manejadorCambioCategoria = (categoria) => {
+    if (categoria === 'Todo') {
+      setCategoriaActiva(categoria);
+      //TODO: Hacer la consulta de Listar Todos
+      console.log('Categoria Todo');
+    } else {
+      setCategoriaActiva(categoria);
+      //TODO: Hacer la consulta de productos por categoria
+      console.log('Otras categorias que no es Todo');
+    }
+  };
 
   return (
     <section className="mainSection letraRoboto mb-3">
@@ -40,8 +64,20 @@ const Inicio = ({usuarioLogueado, setusuarioLogueado}) => {
           Menú
         </h1>
         <hr />
-        <Nav className="justify-content-center my-4 menuBuscador  ">
-          <Nav.Item>
+        <Nav className="justify-content-center my-4 menuBuscador">
+          {categorias.map((categoria) => (
+            <Nav.Link
+              key={categoria}
+              onClick={() => manejadorCambioCategoria(categoria)}
+              active={categoria === categoriaActiva}
+              className={
+                categoria === categoriaActiva ? 'categoriaActiva' : null
+              }
+            >
+              {categoria}
+            </Nav.Link>
+          ))}
+          {/* <Nav.Item>
             <Nav.Link href="" className="categoriaActiva">
               Todo
             </Nav.Link>
@@ -60,7 +96,7 @@ const Inicio = ({usuarioLogueado, setusuarioLogueado}) => {
           </Nav.Item>
           <Nav.Item>
             <Nav.Link eventKey="link-2">Otros</Nav.Link>
-          </Nav.Item>
+          </Nav.Item> */}
         </Nav>
         <hr className="mb-5" />
 
