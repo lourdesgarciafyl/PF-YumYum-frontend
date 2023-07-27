@@ -25,7 +25,7 @@ const EditarUsuario = () => {
         // tengo que cargar el objeto en el formulario
         setValue("nombreUsuario", respuesta.data.nombreUsuario);
     
-        setValue("apellido", respuesta.data.apellidoUsuario);
+        setValue("apellidoUsuario", respuesta.data.apellidoUsuario);
         setValue("email", respuesta.data.email);
         setValue("password", respuesta.data.password);
         setValue("perfil", respuesta.data.perfil);
@@ -102,8 +102,8 @@ const EditarUsuario = () => {
             <Form.Control
               type="text"
               rows={2}
-              placeholder="Apellido."
-              {...register("apellido", {
+              placeholder="Apellido"
+              {...register("apellidoUsuario", {
                 required: "Debe ingresar un apellido",
                 minLength: {
                   value: 3,
@@ -116,7 +116,7 @@ const EditarUsuario = () => {
               })}
             ></Form.Control>
             <Form.Text className="text-danger ms-1">
-              {errors.apellido?.message}
+              {errors.apellidoUsuario?.message}
             </Form.Text>
           </Form.Group>
 

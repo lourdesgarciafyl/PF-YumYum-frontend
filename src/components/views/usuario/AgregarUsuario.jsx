@@ -71,8 +71,8 @@ const AgregarUsuario = () => {
             <Form.Control
               type="text"
               rows={2}
-              placeholder="Apellido."
-              {...register("apellido", {
+              placeholder="Apellido"
+              {...register("apellidoUsuario", {
                 required: "Debe ingresar un apellido",
                 minLength: {
                   value: 3,
@@ -85,7 +85,7 @@ const AgregarUsuario = () => {
               })}
             ></Form.Control>
             <Form.Text className="text-danger ms-1">
-              {errors.apellido?.message}
+              {errors.apellidoUsuario?.message}
             </Form.Text>
           </Form.Group>
 
