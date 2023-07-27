@@ -3,7 +3,7 @@ import { Plus } from 'react-bootstrap-icons';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const CardProducto = ({ producto, carrito, setCarrito }) => {
+const CardProducto = ({ producto, carrito, setCarrito, totalProductos }) => {
   const [mostrarElementos, setmostrarElementos] = useState(false);
   const handleMouseEnter = () => {
     setmostrarElementos(true);
@@ -15,6 +15,8 @@ const CardProducto = ({ producto, carrito, setCarrito }) => {
   const { nombreProducto, precio, imagen, _id } = producto;
   //Función que agrega el producto si no existe, y si existe cambia su cantidad.
   const sumarProductoCarrito = (productoSumado) => {
+
+   if(totalProductos <15){
     const existeProducto = carrito.find(
       (itemCarrito) => itemCarrito.producto === productoSumado._id
     );
@@ -37,6 +39,9 @@ const CardProducto = ({ producto, carrito, setCarrito }) => {
       setCarrito([...carrito, nuevoProducto]);
     }
     
+   }else{
+    console.log('Solo se permite agregar 10 productos al carrito')
+   }
   };
 
   return (

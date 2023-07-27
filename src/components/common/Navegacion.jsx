@@ -15,7 +15,7 @@ const Navegacion = ({usuarioLogueado, setUsuarioLogueado, totalProductos, setCar
     localStorage.removeItem("usuarioInicioSesion");
     sessionStorage.removeItem(`${usuarioLogueado.id}`);
     setUsuarioLogueado("")
-    //setCarrito("")
+    setCarrito([])
     navegacion("/")
   }
 
