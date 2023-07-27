@@ -9,19 +9,19 @@ import Swal from "sweetalert2";
 const Detalle = ({usuarioLogueado, setusuarioLogueado}) => {
   const { id } = useParams();
   const navegacion = useNavigate();
-  const [producto, setProducto] = useState([]);
+  const [producto, setProducto] = useState({});
+  const [existeProducto, setExisteProducto] = useState(true);
 
-  useEffect(() => {
-    consultaProducto(id).then((respuesta) => {
-      if (respuesta.status === 200) {
-        setProducto(respuesta.dato);
-      }
-    });
-  }, []);
+  useEffect(() =>{
+    consultaProducto(id).then((respuesta) =>{
+      setProducto(respuesta)
+    })
+  }, [])
 
-
+  
   return (
     <>
+      {existeProducto ? (
         <Container className="mt-3 mainSection">
           <Card className="cardDetalle">
             <Row>
@@ -54,6 +54,15 @@ const Detalle = ({usuarioLogueado, setusuarioLogueado}) => {
             </Row>
           </Card>
         </Container>
+      ) : (
+        navegacion("/404")
+      )}
+      <div className="mb-4 texto container fs-2 text-center">
+        <Link className="text-decoration-none letraAmarilla" to={"/"}>
+          {" "}
+          <button className="btn botonVolver">Volver al menú</button>
+        </Link>
+      </div>
     </>
   );
 };
