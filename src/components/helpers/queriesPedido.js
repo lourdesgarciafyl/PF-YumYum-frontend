@@ -10,4 +10,19 @@ export const obtenerPedido = async (id) => {
     }
   };
 
-  
+  export const editarPedido = async (id, pedido) => {
+    try {
+      const respuesta = await fetch(`${URLPedido}${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(pedido),
+      });
+      
+      return respuesta;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  };
