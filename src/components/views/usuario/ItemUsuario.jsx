@@ -21,7 +21,7 @@ const ItemUsuario = ({ usuario, setUsuarios }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         //borrar el usuario
-        borrarUsuario(usuario.id).then((respuesta) => {
+        borrarUsuario(usuario._id).then((respuesta) => {
           console.log(respuesta);
           if (respuesta.status === 200) {
             Swal.fire(
@@ -52,7 +52,7 @@ const ItemUsuario = ({ usuario, setUsuarios }) => {
 
       <td className="d-flex justify-content-around">
         
-        <Link className="btn btn-warning" to={'/administrar/usuarios/editar-usuario/'+ usuario.id}>Editar</Link>
+        <Link className="btn btn-warning" to={'/administrar/usuarios/editar-usuario/'+ usuario._id}>Editar</Link>
   
       
         <Button variant="danger" className="m-1" onClick={borrarUsuarioActual}>
