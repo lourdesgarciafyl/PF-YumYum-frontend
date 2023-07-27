@@ -17,6 +17,7 @@ import RutasAdministrador from "./components/routes/RutasAdministrador";
 import RutasProtegidasCliente from "./components/routes/RutasProtegidasCliente";
 import RutasCliente from "./components/routes/RutasCliente";
 import Nosotros from "./components/views/Nosotros"
+import { sumaCantidad } from "./components/helpers/queriesCarrito";
 
 function App() {
   const usuario = JSON.parse(localStorage.getItem("usuarioInicioSesion")) || {};
@@ -28,6 +29,7 @@ function App() {
 
   useEffect(() => {
     sessionStorage.setItem(`${usuario.id}`, JSON.stringify(carrito))
+    setTotalProductos(sumaCantidad(carrito))
   }, [carrito])
   
   return (
