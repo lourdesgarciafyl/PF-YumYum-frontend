@@ -3,7 +3,7 @@ import { Plus } from "react-bootstrap-icons";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const CardProducto = ({ producto }) => {
+const CardProducto = ({ producto, setTotalProductos }) => {
   const [mostrarElementos, setmostrarElementos] = useState(false);
   const handleMouseEnter = () => {
     setmostrarElementos(true);
@@ -42,7 +42,7 @@ const CardProducto = ({ producto }) => {
             </div>
             <Button variant="light" className="rounded-5">
               {" "}
-              <Plus className="fs-1"></Plus>{" "}
+              <Plus className="fs-1" ></Plus>{" "}
             </Button>
           </div>
         </Card.Body>

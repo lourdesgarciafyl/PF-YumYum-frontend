@@ -6,7 +6,7 @@ import { loginUsuario } from '../helpers/queriesUsuario';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({setUsuarioLogueado}) => {
+const Login = ({setUsuarioLogueado, carrito}) => {
   const {
     register,
     handleSubmit,
@@ -18,7 +18,9 @@ const Login = ({setUsuarioLogueado}) => {
   const onSubmit = (usuario) => {
     loginUsuario(usuario).then((respuesta) => {
       if (respuesta) {
+        console.log(respuesta);
         localStorage.setItem('usuarioInicioSesion', JSON.stringify(respuesta));
+        sessionStorage.setItem(`${respuesta.id}`, JSON.stringify(carrito))
         setUsuarioLogueado(respuesta)
         reset()
         Swal.fire(

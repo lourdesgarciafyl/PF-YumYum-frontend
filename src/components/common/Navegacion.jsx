@@ -7,7 +7,7 @@ import Tooltip from "react-bootstrap/Tooltip";
 import { Cart, Person } from "react-bootstrap-icons";
 import { Link, NavLink, useNavigate} from "react-router-dom"
 
-const Navegacion = ({usuarioLogueado, setUsuarioLogueado}) => {
+const Navegacion = ({usuarioLogueado, setUsuarioLogueado, totalProductos}) => {
   const [show, setShow] = useState(false);
   const target = useRef(null);
   const navegacion = useNavigate();
@@ -48,7 +48,7 @@ const Navegacion = ({usuarioLogueado, setUsuarioLogueado}) => {
            <Cart size={30}></Cart>
             {/* Este Span lee la cantidad de productos que va sumando el cliente.  */}
             <span className="ms-2 my-2 fw-bolder" id="cantidadProductosCliente">
-              1
+              {totalProductos}
             </span>
             </div>
             <p className="">Tu pedido</p>
@@ -70,7 +70,7 @@ const Navegacion = ({usuarioLogueado, setUsuarioLogueado}) => {
            <Cart size={30}></Cart>
             {/* Este Span lee la cantidad de productos que va sumando el cliente.  */}
             <span className="ms-2 my-2 fw-bolder" id="cantidadProductosCliente">
-              3
+            {totalProductos}
             </span>
             </div>
             <p className="">Tu pedido</p>
