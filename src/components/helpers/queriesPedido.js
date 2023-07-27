@@ -26,3 +26,15 @@ export const obtenerPedido = async (id) => {
       return null;
     }
   };
+
+  export const borrarPedido= async (id) => {
+    try {
+      const respuesta = await fetch(`${URLPedido}${id}`, {
+        method: 'DELETE',
+      });
+      return respuesta;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  };
