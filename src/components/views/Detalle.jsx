@@ -9,42 +9,19 @@ import Swal from "sweetalert2";
 const Detalle = ({usuarioLogueado, setusuarioLogueado}) => {
   const { id } = useParams();
   const navegacion = useNavigate();
-  const [producto, setProducto] = useState();
-  const [existeProducto, setExisteProducto] = useState(true);
+  const [producto, setProducto] = useState([]);
 
   useEffect(() => {
-    consultaProducto(id)
-      .then((respuesta) => {
-        if (respuesta.id) {
-          setExisteProducto(true);
-          setProducto(respuesta);
-        } else {
-          Swal.fire(
-            "Ocurrió un error",
-            `No pudimos encontrar el producto que buscas`,
-            "error"
-          );
-          setExisteProducto(false);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching product data:", error);
-        Swal.fire(
-          "Ocurrió un error",
-          `No pudimos encontrar el producto que buscas`,
-          "error"
-        );
-        setExisteProducto(false);
-      });
-  }, [id]);
+    consultaProducto(id).then((respuesta) => {
+      if (respuesta.status === 200) {
+        setProducto(respuesta.dato);
+      }
+    });
+  }, []);
 
-  if (!producto) {
-    return null;
-  }
 
   return (
     <>
-      {existeProducto ? (
         <Container className="mt-3 mainSection">
           <Card className="cardDetalle">
             <Row>
@@ -77,15 +54,6 @@ const Detalle = ({usuarioLogueado, setusuarioLogueado}) => {
             </Row>
           </Card>
         </Container>
-      ) : (
-        navegacion("/404")
-      )}
-      <div className="mb-4 texto container fs-2 text-center">
-        <Link className="text-decoration-none letraAmarilla" to={"/"}>
-          {" "}
-          <button className="btn botonVolver">Volver al menú</button>
-        </Link>
-      </div>
     </>
   );
 };

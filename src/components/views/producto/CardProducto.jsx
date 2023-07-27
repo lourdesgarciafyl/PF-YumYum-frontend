@@ -36,9 +36,9 @@ const CardProducto = ({ producto }) => {
                 <b className="fw-bolder fs-1">$</b>
                 {precio}{" "}
               </p>{" "}
-                 <Link className="btn btn-dark" to={"/detalle/" + producto.id}>
+                 <Button className="btn btn-dark" as={Link} to={`/detalle/${producto._id}`}>
                 Ver detalle
-              </Link>
+              </Button>
             </div>
             <Button variant="light" className="rounded-5">
               {" "}
