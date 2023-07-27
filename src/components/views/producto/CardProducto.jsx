@@ -2,6 +2,7 @@ import { Col, Card, Button } from 'react-bootstrap';
 import { Plus } from 'react-bootstrap-icons';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const CardProducto = ({ producto, carrito, setCarrito, totalProductos }) => {
   const [mostrarElementos, setmostrarElementos] = useState(false);
@@ -15,33 +16,45 @@ const CardProducto = ({ producto, carrito, setCarrito, totalProductos }) => {
   const { nombreProducto, precio, imagen, _id } = producto;
   //Función que agrega el producto si no existe, y si existe cambia su cantidad.
   const sumarProductoCarrito = (productoSumado) => {
-
-   if(totalProductos <15){
-    const existeProducto = carrito.find(
-      (itemCarrito) => itemCarrito.producto === productoSumado._id
-    );
-    
-    if (existeProducto) {
-      const indice = carrito.findIndex(
-        (prod) => prod.producto === productoSumado._id
+    if (totalProductos < 15) {
+      const existeProducto = carrito.find(
+        (itemCarrito) => itemCarrito.producto === productoSumado._id
       );
-      const aux = [...carrito];
-      aux[indice].cantidad = aux[indice].cantidad + 1;
-      aux[indice].subtotalItem =
-        aux[indice].subtotalItem * aux[indice].cantidad;
-      setCarrito(aux);
+
+      if (existeProducto) {
+        const indice = carrito.findIndex(
+          (prod) => prod.producto === productoSumado._id
+        );
+        const aux = [...carrito];
+        aux[indice].cantidad = aux[indice].cantidad + 1;
+        aux[indice].subtotalItem =
+          aux[indice].subtotalItem * aux[indice].cantidad;
+        setCarrito(aux);
+      } else {
+        const nuevoProducto = {
+          producto: productoSumado._id,
+          cantidad: 1,
+          subtotalItem: productoSumado.precio * 1,
+        };
+        setCarrito([...carrito, nuevoProducto]);
+      }
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Se agregó producto al carrito.',
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } else {
-      const nuevoProducto = {
-        producto: productoSumado._id,
-        cantidad: 1,
-        subtotalItem: productoSumado.precio * 1,
-      };
-      setCarrito([...carrito, nuevoProducto]);
+      console.log('Solo se permite agregar 15 productos al carrito');
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Se permiten máximo 15 productos al carrito',
+        showConfirmButton: false,
+        timer: 2000,
+      });
     }
-    
-   }else{
-    console.log('Solo se permite agregar 15 productos al carrito')
-   }
   };
 
   return (
