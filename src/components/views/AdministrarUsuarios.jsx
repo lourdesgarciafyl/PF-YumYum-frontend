@@ -1,6 +1,7 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 import ItemUsuario from "./usuario/ItemUsuario";
+import { Link } from "react-router-dom";
 
 const AdministradorUsuarios = () => {
   const usuarios = [
@@ -17,7 +18,13 @@ const AdministradorUsuarios = () => {
       <section>
         <div className="d-flex justify-content-between align-items-center mt-5 mb-2">
           <h1 className="display-4 letraAmarilla">Usuarios</h1>
-          <button className="btn btn-warning">Agregar</button>
+
+          <Link
+            className="btn btn btn-warning"
+            to="/administrar/usuarios/agregar-usuario"
+          >
+            Agregar
+          </Link>
         </div>
 
         <Table responsive striped bordered hover>
