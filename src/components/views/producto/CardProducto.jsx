@@ -40,7 +40,7 @@ const CardProducto = ({ producto, carrito, setCarrito, totalProductos }) => {
     }
     
    }else{
-    console.log('Solo se permite agregar 10 productos al carrito')
+    console.log('Solo se permite agregar 15 productos al carrito')
    }
   };
 

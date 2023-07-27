@@ -6,7 +6,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
-const Detalle = ({usuarioLogueado, setusuarioLogueado}) => {
+const Detalle = ({usuarioLogueado, setusuarioLogueado, carrito, setCarrito, totalProductos}) => {
   const { id } = useParams();
   const navegacion = useNavigate();
   const [producto, setProducto] = useState({});
@@ -17,6 +17,36 @@ const Detalle = ({usuarioLogueado, setusuarioLogueado}) => {
       setProducto(respuesta)
     })
   }, [])
+
+  const sumarProductoCarrito = (productoSumado) => {
+
+    if(totalProductos <15){
+     const existeProducto = carrito.find(
+       (itemCarrito) => itemCarrito.producto === productoSumado._id
+     );
+     
+     if (existeProducto) {
+       const indice = carrito.findIndex(
+         (prod) => prod.producto === productoSumado._id
+       );
+       const aux = [...carrito];
+       aux[indice].cantidad = aux[indice].cantidad + 1;
+       aux[indice].subtotalItem =
+         aux[indice].subtotalItem * aux[indice].cantidad;
+       setCarrito(aux);
+     } else {
+       const nuevoProducto = {
+         producto: productoSumado._id,
+         cantidad: 1,
+         subtotalItem: productoSumado.precio * 1,
+       };
+       setCarrito([...carrito, nuevoProducto]);
+     }
+     
+    }else{
+     console.log('Solo se permite agregar 15 productos al carrito')
+    }
+   };
 
   
   return (
@@ -35,7 +65,7 @@ const Detalle = ({usuarioLogueado, setusuarioLogueado}) => {
                   <section>
                     <div className="ordenDetallesPrecio">
                       <p className="fs-1"> ${producto.precio} </p>
-                      <button type="submit" className="botonDetalle">
+                      <button type="submit" className="botonDetalle" onClick={() => sumarProductoCarrito(producto)}>
                         AÑADIR AL CARRITO
                       </button>
                     </div>
