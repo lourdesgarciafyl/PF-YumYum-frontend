@@ -1,14 +1,14 @@
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 // import { Link } from 'react-router-dom';
 import {
-  editarUsuario,
   borrarUsuario,
   consultaListaUsuarios,
 } from "../../helpers/queriesUsuario";
 
 const ItemUsuario = ({ usuario, setUsuarios }) => {
-  const borrarUsuario1 = () => {
+  const borrarUsuarioActual = () => {
     Swal.fire({
       title: `¿Esta seguro de borrar el usuario ${usuario.nombreUsuario}?`,
       text: "No se puede revertir este paso",
@@ -51,10 +51,11 @@ const ItemUsuario = ({ usuario, setUsuarios }) => {
       <td>{usuario.perfil}</td>
 
       <td className="d-flex justify-content-around">
-        <Button variant="warning" className="m-1">
-          . Editar
-        </Button>
-        <Button variant="danger" className="m-1" onClick={borrarUsuario1}>
+        
+        <Link className="btn btn-warning" to={'/administrar/usuarios/editar-usuario/'+ usuario.id}>Editar</Link>
+  
+      
+        <Button variant="danger" className="m-1" onClick={borrarUsuarioActual}>
           Borrar
         </Button>
       </td>

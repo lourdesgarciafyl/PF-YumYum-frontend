@@ -1,9 +1,10 @@
-import '../../../css/formularioAdminProductos.css';
-import { Form, Button, Card, Row, Col } from 'react-bootstrap';
-import { useForm } from 'react-hook-form';
-import { editarUsuario, obtenerUsuario } from '../../helpers/queriesUsuario';
-import { useEffect, useRef, useState } from 'react';
-import Swal from 'sweetalert2';
+import "../../../css/formularioAdminProductos.css";
+import { Form, Button, Card, Row, Col } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import { editarUsuario, obtenerUsuario } from "../../helpers/queriesUsuario";
+import { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const EditarUsuario = () => {
   const {
@@ -14,44 +15,48 @@ const EditarUsuario = () => {
     handleSubmit,
   } = useForm();
 
-  const id = 2;
+  const { id } = useParams();
+  const navegacion = useNavigate();
 
   useEffect(() => {
     obtenerUsuario(id).then((respuesta) => {
       if (respuesta) {
+        console.log(respuesta)
         // tengo que cargar el objeto en el formulario
-        setValue('nombreUsuario', respuesta.data.nombreUsuario);
-        setValue('apellido', respuesta.data.apellidoUsuario);
-        setValue('email', respuesta.data.email);
-        setValue('password', respuesta.data.password);
-        setValue('perfil', respuesta.data.perfil);
-        setValue('estado', respuesta.data.estado);
-
+        setValue("nombreUsuario", respuesta.data.nombreUsuario);
+    
+        setValue("apellido", respuesta.data.apellidoUsuario);
+        setValue("email", respuesta.data.email);
+        setValue("password", respuesta.data.password);
+        setValue("perfil", respuesta.data.perfil);
+        setValue("estado", respuesta.data.estado);
       } else {
         Swal.fire(
-          'Ocurrio un error',
+          "Ocurrio un error",
           `No se puede editar el usuario, intentelo mas tarde`,
-          'error'
+          "error"
         );
       }
     });
   }, []);
 
+ 
   const onSubmit = (usuarioEditado) => {
-    editarUsuario(usuarioEditado,id).then((respuestaEditado) => {
+    editarUsuario(usuarioEditado, id).then((respuestaEditado) => {
       if (respuestaEditado && respuestaEditado.status === 200) {
         Swal.fire(
-          'Usuario Editado',
+          "Usuario Editado",
           `El usuario ${usuarioEditado.nombreUsuario} se editó correctamente`,
-          'success'
+          "success"
         );
         reset();
-        /*TODO: Redireccionar a pag administrar usuarios */
+
+        navegacion("/administrar/usuarios");
       } else {
         Swal.fire(
-          'Ocurrió un error',
+          "Ocurrió un error",
           `El usuario ${usuarioEditado.nombreUsuario} no fue editado, inténtelo más tarde`,
-          'error'
+          "error"
         );
       }
     });
@@ -144,7 +149,7 @@ const EditarUsuario = () => {
               {...register("password", {
                 required: "El Password es un dato obligatorio.",
                 pattern: {
-                  value:  /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+                  value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
                   message:
                     "La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.",
                 },
@@ -208,6 +213,7 @@ const EditarUsuario = () => {
           <Button className="mt-1 mb-3" type="submit" id="btnAgregar">
             Agregar
           </Button>
+          
         </Form>
       </Card.Body>
     </Card>
