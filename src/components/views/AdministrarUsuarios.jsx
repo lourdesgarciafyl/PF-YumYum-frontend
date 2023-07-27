@@ -46,7 +46,7 @@ const AdministradorUsuarios = () => {
           </thead>
           <tbody>
             {usuarios.map((usuario) => (
-              <ItemUsuario key={usuario.id} usuario={usuario} setUsuarios={setUsuarios}></ItemUsuario>
+              <ItemUsuario key={usuario._id} usuario={usuario} setUsuarios={setUsuarios}></ItemUsuario>
             ))}
           </tbody>
         </Table>

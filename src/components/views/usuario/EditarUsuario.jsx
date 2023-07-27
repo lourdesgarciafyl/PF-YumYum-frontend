@@ -15,11 +15,11 @@ const EditarUsuario = () => {
     handleSubmit,
   } = useForm();
 
-  const { id } = useParams();
+  const { _id } = useParams();
   const navegacion = useNavigate();
 
   useEffect(() => {
-    obtenerUsuario(id).then((respuesta) => {
+    obtenerUsuario(_id).then((respuesta) => {
       if (respuesta) {
         console.log(respuesta)
         // tengo que cargar el objeto en el formulario
@@ -42,7 +42,7 @@ const EditarUsuario = () => {
 
  
   const onSubmit = (usuarioEditado) => {
-    editarUsuario(usuarioEditado, id).then((respuestaEditado) => {
+    editarUsuario(usuarioEditado, _id).then((respuestaEditado) => {
       if (respuestaEditado && respuestaEditado.status === 200) {
         Swal.fire(
           "Usuario Editado",
