@@ -156,15 +156,6 @@
       "id": 5
     },
     {
-      "nombreUsuario": "Pedro",
-      "apellidoUsuario": "Pablo",
-      "email": "pedropablo@gmail.com",
-      "password": "123456aA",
-      "perfil": "Cliente",
-      "estado": "Activo",
-      "id": 6
-    },
-    {
       "nombreUsuario": "Maria",
       "apellidoUsuario": "Garcia",
       "email": "maria@gmail.com",
@@ -172,15 +163,6 @@
       "perfil": "Cliente",
       "estado": "Activo",
       "id": 7
-    },
-    {
-      "nombreUsuario": "Leando",
-      "apellidoUsuario": "Garcia",
-      "email": "leandro@gmail.com",
-      "password": "123456aA",
-      "perfil": "Cliente",
-      "estado": "Activo",
-      "id": 8
     },
     {
       "nombreUsuario": "Juan",
@@ -208,6 +190,15 @@
       "perfil": "Cliente",
       "estado": "Activo",
       "id": 11
+    },
+    {
+      "nombreUsuario": "prueba para borrar y editar",
+      "apellidoUsuario": "eeeeee",
+      "email": "b@b.com",
+      "password": "123456aA",
+      "perfil": "Administrador",
+      "estado": "Activo",
+      "id": 12
     }
   ],
   "categorias": [

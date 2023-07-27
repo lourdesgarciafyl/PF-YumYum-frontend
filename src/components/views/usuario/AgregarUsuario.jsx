@@ -13,6 +13,8 @@ const AgregarUsuario = () => {
     handleSubmit,
   } = useForm();
 
+  const navegacion = useNavigate()
+
   const onSubmit = (usuarioNuevo) => {
     crearUsuario(usuarioNuevo).then((respuestaCreated) => {
       if (respuestaCreated && respuestaCreated.status === 201) {
@@ -22,7 +24,7 @@ const AgregarUsuario = () => {
           `success`
         );
         reset();
-        /*Redireccionar a pag administrar usuarios */
+        navegacion('/administrar/usuarios');
       } else {
         Swal.fire(`Ocurrió un error`, `Intente nuevamente más tarde`, `error`);
       }
@@ -69,8 +71,8 @@ const AgregarUsuario = () => {
             <Form.Control
               type="text"
               rows={2}
-              placeholder="Apellido."
-              {...register("apellido", {
+              placeholder="Apellido"
+              {...register("apellidoUsuario", {
                 required: "Debe ingresar un apellido",
                 minLength: {
                   value: 3,
@@ -83,7 +85,7 @@ const AgregarUsuario = () => {
               })}
             ></Form.Control>
             <Form.Text className="text-danger ms-1">
-              {errors.apellido?.message}
+              {errors.apellidoUsuario?.message}
             </Form.Text>
           </Form.Group>
 
