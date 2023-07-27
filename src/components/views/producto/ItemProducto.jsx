@@ -1,7 +1,7 @@
 import { Row, Col, Card, Badge, Button, Form } from "react-bootstrap";
 import "../../../css/itemProducto.css"
 import { useState } from "react";
-import { Link } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 import { borrarProducto, obtenerListaProductos } from "../../helpers/queriesProducto";
 import Swal from "sweetalert2";
 
@@ -77,7 +77,7 @@ const ItemProducto = ({ producto, setProductos }) => {
           </Card.Text>
           <section className="letraRoboto d-flex flex-row justify-content-evenly pb-2">
           <aside>
-            <Button className="btnEditarProducto ">Editar</Button>
+            <Button as={Link} to={`/administrar/productos/editar-producto/${producto._id}`} className="btnEditarProducto">Editar</Button>
           </aside>
           <aside>
             <Button className="btnBorrarProducto" onClick={borrarUnProducto}>Borrar</Button>
