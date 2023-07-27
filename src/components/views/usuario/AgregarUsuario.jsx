@@ -13,6 +13,8 @@ const AgregarUsuario = () => {
     handleSubmit,
   } = useForm();
 
+  const navegacion = useNavigate()
+
   const onSubmit = (usuarioNuevo) => {
     crearUsuario(usuarioNuevo).then((respuestaCreated) => {
       if (respuestaCreated && respuestaCreated.status === 201) {
@@ -22,7 +24,7 @@ const AgregarUsuario = () => {
           `success`
         );
         reset();
-        /*Redireccionar a pag administrar usuarios */
+        navegacion('/administrar/usuarios');
       } else {
         Swal.fire(`Ocurrió un error`, `Intente nuevamente más tarde`, `error`);
       }

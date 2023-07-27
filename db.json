@@ -190,6 +190,24 @@
       "perfil": "Cliente",
       "estado": "Activo",
       "id": 11
+    },
+    {
+      "nombreUsuario": "prueba para borrar y editar",
+      "apellido": "borrar y editar",
+      "email": "b@b.com",
+      "password": "123456aA",
+      "perfil": "Administrador",
+      "estado": "Activo",
+      "id": 12
+    },
+    {
+      "nombreUsuario": "eeeeee",
+      "apellido": "aaaaaaa",
+      "email": "correo@correo.com",
+      "password": "123456aA",
+      "perfil": "Administrador",
+      "estado": "Activo",
+      "id": 13
     }
   ],
   "categorias": [
