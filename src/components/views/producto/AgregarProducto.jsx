@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const AgregarProducto = () => {
     const { register, formState: {errors}, reset , handleSubmit} = useForm()
-    
+    const navegacion = useNavigate();
     const onSubmit = (productoNuevo) =>{
         crearProducto(productoNuevo).then((respuestaCreated)=>{
             if(respuestaCreated && respuestaCreated.status === 201){
@@ -17,7 +17,7 @@ const AgregarProducto = () => {
                     `success`
                 )
                 reset()
-                /*Redireccionar a pag administrar productos */
+                navegacion("/administrar/productos")
             }else{
                 Swal.fire(
                     `Ocurrió un error`, 

@@ -9,39 +9,16 @@ import Swal from "sweetalert2";
 const Detalle = ({usuarioLogueado, setusuarioLogueado}) => {
   const { id } = useParams();
   const navegacion = useNavigate();
-  const [producto, setProducto] = useState();
+  const [producto, setProducto] = useState({});
   const [existeProducto, setExisteProducto] = useState(true);
 
-  useEffect(() => {
-    consultaProducto(id)
-      .then((respuesta) => {
-        if (respuesta.id) {
-          setExisteProducto(true);
-          setProducto(respuesta);
-        } else {
-          Swal.fire(
-            "Ocurrió un error",
-            `No pudimos encontrar el producto que buscas`,
-            "error"
-          );
-          setExisteProducto(false);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching product data:", error);
-        Swal.fire(
-          "Ocurrió un error",
-          `No pudimos encontrar el producto que buscas`,
-          "error"
-        );
-        setExisteProducto(false);
-      });
-  }, [id]);
+  useEffect(() =>{
+    consultaProducto(id).then((respuesta) =>{
+      setProducto(respuesta)
+    })
+  }, [])
 
-  if (!producto) {
-    return null;
-  }
-
+  
   return (
     <>
       {existeProducto ? (

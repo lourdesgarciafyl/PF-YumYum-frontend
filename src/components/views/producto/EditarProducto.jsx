@@ -1,17 +1,21 @@
 import '../../../css/formularioAdminProductos.css';
 import { Form, Button, Card, Row, Col } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { editarProducto } from '../../helpers/queriesProducto';
+import { editarProducto, consultaProducto } from '../../helpers/queriesProducto';
 import Swal from 'sweetalert2';
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 const EditarProducto = () => {
+  const {id} = useParams();
+  const navegacion = useNavigate()
   const {
     register,
     formState: { errors },
     reset,
     handleSubmit,
+    setValue
   } = useForm();
-  const id = 12;
 
   const onSubmit = (productoEditado) => {
     editarProducto(id, productoEditado).then((respuestaEditado) => {
@@ -22,7 +26,7 @@ const EditarProducto = () => {
           'success'
         );
         reset();
-        /*TODO: Redireccionar a pag administrar productos */
+       navegacion("/administrar/productos")
       } else {
         Swal.fire(
           'Ocurrió un error',
@@ -32,6 +36,24 @@ const EditarProducto = () => {
       }
     });
   };
+
+  useEffect(()=>{
+    consultaProducto(id).then((respuesta) =>{
+        if(respuesta){
+            setValue(`nombreProducto`, respuesta.nombreProducto);
+            setValue(`detalle`, respuesta.detalle);
+            setValue(`precio`, respuesta.precio);
+            setValue(`imagen`, respuesta.imagen);
+            setValue(`categoria`, respuesta.categoria);
+            setValue(`estado`, respuesta.estado);
+        }else{
+            Swal.fire(
+                'Ocurrio un error', 
+                `No se puede editar el producto, intentelo mas tarde`, 
+                'error');
+        }
+    })
+}, [])
 
   return (
     <Card className="fondoAmarillo mainSection rounded-0">

@@ -11,7 +11,7 @@ import banner2 from '../../assets/img/Banner2.jpg';
 import banner3 from '../../assets/img/Banner3.jpg';
 import banner4 from '../../assets/img/Banner4.jpg';
 import ItemNavCategoria from '../helpers/ItemNavCategoria';
-import { obtenerListaCategorias } from '../helpers/querieCategoria';
+import { obtenerListaCategoriasActivas } from '../helpers/querieCategoria';
 
 const Inicio = ({ usuarioLogueado, setusuarioLogueado }) => {
   const [categorias, setCategorias] = useState([]);
@@ -27,7 +27,7 @@ const Inicio = ({ usuarioLogueado, setusuarioLogueado }) => {
   //   'Otro',
   // ];
   useEffect(() => {
-    obtenerListaCategorias()
+    obtenerListaCategoriasActivas()
       .then((respuesta) =>
         setCategorias(respuesta.map((categ) => categ.nombreCategoria))
       )
@@ -97,7 +97,7 @@ const Inicio = ({ usuarioLogueado, setusuarioLogueado }) => {
         <hr className="mb-5" />
         <Row className="justify-content-around menu">
           {productos.map((producto) => (
-            <CardProducto key={producto.id} producto={producto}></CardProducto>
+            <CardProducto key={producto._id} producto={producto}></CardProducto>
           ))}
         </Row>
       </Container>
