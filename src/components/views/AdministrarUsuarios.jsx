@@ -1,17 +1,24 @@
 import React from "react";
+import { useState, useEffect } from 'react';
 import { Table } from "react-bootstrap";
 import ItemUsuario from "./usuario/ItemUsuario";
 import { Link } from "react-router-dom";
+import { consultaListaUsuarios } from "../helpers/queriesUsuario"
 
 const AdministradorUsuarios = () => {
-  const usuarios = [
-    {
-      _id: 1,
-      nombreUsuario: "Juan",
-      apellidoUsuario: "Perez",
-      email: "juanperez@gmail.com",
-    },
-  ];
+
+  const [usuarios, setUsuarios] = useState([]);
+
+   useEffect(() => {
+    consultaListaUsuarios()
+      .then((repuesta) => {
+        setUsuarios(repuesta);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
 
   return (
     <div className="container mainSection my-4">
@@ -30,7 +37,7 @@ const AdministradorUsuarios = () => {
         <Table responsive striped bordered hover>
           <thead>
             <tr>
-              <th>Usuario</th>
+              <th>Nombre</th>
               <th>Email</th>
               <th>Estado</th>
               <th>Perfil</th>
@@ -39,7 +46,7 @@ const AdministradorUsuarios = () => {
           </thead>
           <tbody>
             {usuarios.map((usuario) => (
-              <ItemUsuario key={usuario._id} usuario={usuario}></ItemUsuario>
+              <ItemUsuario key={usuario.id} usuario={usuario} setUsuarios={setUsuarios}></ItemUsuario>
             ))}
           </tbody>
         </Table>
