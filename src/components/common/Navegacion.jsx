@@ -7,13 +7,15 @@ import Tooltip from "react-bootstrap/Tooltip";
 import { Cart, Person } from "react-bootstrap-icons";
 import { Link, NavLink, useNavigate} from "react-router-dom"
 
-const Navegacion = ({usuarioLogueado, setUsuarioLogueado, totalProductos}) => {
+const Navegacion = ({usuarioLogueado, setUsuarioLogueado, totalProductos, setCarrito}) => {
   const [show, setShow] = useState(false);
   const target = useRef(null);
   const navegacion = useNavigate();
   const logout = () => {
     localStorage.removeItem("usuarioInicioSesion");
+    sessionStorage.removeItem(`${usuarioLogueado.id}`);
     setUsuarioLogueado("")
+    //setCarrito("")
     navegacion("/")
   }
 

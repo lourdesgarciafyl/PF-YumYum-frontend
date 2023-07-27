@@ -3,7 +3,7 @@ import { Plus } from 'react-bootstrap-icons';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const CardProducto = ({ producto, carrito, setCarrito, setTotalProductos }) => {
+const CardProducto = ({ producto, carrito, setCarrito }) => {
   const [mostrarElementos, setmostrarElementos] = useState(false);
   const handleMouseEnter = () => {
     setmostrarElementos(true);
@@ -18,7 +18,7 @@ const CardProducto = ({ producto, carrito, setCarrito, setTotalProductos }) => {
     const existeProducto = carrito.find(
       (itemCarrito) => itemCarrito.producto === productoSumado._id
     );
-    console.log(existeProducto);
+    
     if (existeProducto) {
       const indice = carrito.findIndex(
         (prod) => prod.producto === productoSumado._id
@@ -36,6 +36,7 @@ const CardProducto = ({ producto, carrito, setCarrito, setTotalProductos }) => {
       };
       setCarrito([...carrito, nuevoProducto]);
     }
+    
   };
 
   return (
