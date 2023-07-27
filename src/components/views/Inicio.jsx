@@ -13,7 +13,7 @@ import banner4 from '../../assets/img/Banner4.jpg';
 import ItemNavCategoria from '../helpers/ItemNavCategoria';
 import { obtenerListaCategoriasActivas } from '../helpers/querieCategoria';
 
-const Inicio = ({ usuarioLogueado, setusuarioLogueado, setTotalProductos }) => {
+const Inicio = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, usuario, setTotalProductos }) => {
   const [categorias, setCategorias] = useState([]);
   const [productos, setProductos] = useState([]);
   const [categoriaActiva, setCategoriaActiva] = useState('Todo');
@@ -97,7 +97,7 @@ const Inicio = ({ usuarioLogueado, setusuarioLogueado, setTotalProductos }) => {
         <hr className="mb-5" />
         <Row className="justify-content-around menu">
           {productos.map((producto) => (
-            <CardProducto key={producto._id} producto={producto} setTotalProductos={setTotalProductos}></CardProducto>
+            <CardProducto key={producto._id} producto={producto} carrito={carrito} setCarrito={setCarrito} usuario={usuario} setTotalProductos={setTotalProductos}></CardProducto>
           ))}
         </Row>
       </Container>
