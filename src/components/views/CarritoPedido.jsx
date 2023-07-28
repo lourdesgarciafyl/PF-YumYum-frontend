@@ -2,14 +2,14 @@ import './../../css/carritoPedido.css';
 import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
 import CardItemCarrito from './pedido/CardItemCarrito';
 import { crearPedido } from "../helpers/queriesPedido"
-import { subtotal, sumaCantidad } from '../helpers/queriesCarrito';
+import { total } from '../helpers/queriesCarrito';
 import { useEffect } from 'react';
 
 const CarritoPedido = ({usuario, carrito, setCarrito, totalProductos}) => {
   
-  useEffect(()=>{
-    setCarrito(carrito)
-  },[carrito])
+  // useEffect(()=>{
+  //   setCarrito(carrito)
+  // },[carrito])
   
   return (
     <>
@@ -27,7 +27,7 @@ const CarritoPedido = ({usuario, carrito, setCarrito, totalProductos}) => {
                {carrito.map((item) => (
                     <CardItemCarrito
                       producto={item}
-                      key={item._id}
+                      key={item.idProducto}
                       carrito={carrito}
                       setCarrito={setCarrito}
                       usuario={usuario}
@@ -47,7 +47,7 @@ const CarritoPedido = ({usuario, carrito, setCarrito, totalProductos}) => {
                 <ListGroup.Item className="border-0">
                   <div className="d-flex justify-content-between align-items-center">
                     <span className="letra-roboto tamanioLetra">Total:</span>
-                    <span className="letra-roboto tamanioLetra">$5800</span>
+                    <span className="letra-roboto tamanioLetra">${total(carrito)}</span>
                   </div>
                 </ListGroup.Item>
                 <ListGroup.Item className="border-0">

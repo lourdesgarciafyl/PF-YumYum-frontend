@@ -1,9 +1,9 @@
-export const subtotal = (carrito) => {
-    let subtotalProducto = 0;
+export const total = (carrito) => {
+    let totalProducto = 0;
     carrito.forEach((item) => {
-      subtotalProducto += item.precio * item.cantidad;
+      totalProducto += item.subtotalItem;
     });
-    return subtotalProducto;
+    return totalProducto;
 };
 
 export const sumaCantidad = (carrito) => {

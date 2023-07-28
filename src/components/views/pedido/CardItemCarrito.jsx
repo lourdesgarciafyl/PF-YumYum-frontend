@@ -13,13 +13,13 @@ const CardItemCarrito = ({producto}) => {
               <Col xs={4}>
                 <Card.Img
                   variant="top"
-                  src="https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383720/yumyum/hamburguesaDobleCheddar_wyifm1.png"
+                  src={producto.imagen}
                   className="imagenItem"
                 />
               </Col>
               <Col xs={8} className="text-end text-lg-start">
-                <Card.Title className="letraMono mt-1 text-start p-1">
-                  Doble Cheese Burger con Bacon
+                <Card.Title className="letraRoboto mt-1 text-start p-1">
+                  {producto.nombreProducto}
                 </Card.Title>
 
                 <Card.Link href="#" className=" linkDetalle">
@@ -37,7 +37,7 @@ const CardItemCarrito = ({producto}) => {
               <div>
                 <button className="botonOperarCantidad">-</button>
               </div>
-              <span className="mx-1">1</span>
+              <span className="mx-1">{producto.cantidad}</span>
               <div>
                 <button className="botonOperarCantidad">+</button>
               </div>
@@ -49,7 +49,7 @@ const CardItemCarrito = ({producto}) => {
             ></Trash3Fill>
 
             <Card.Text as="h5" className="letraRoboto">
-              $ 2900
+              ${producto.subtotalItem}
             </Card.Text>
           </Col>
         </Row>

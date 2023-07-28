@@ -22,7 +22,8 @@ const Login = ({setUsuarioLogueado, carrito}) => {
       if (respuesta && respuesta.status === 200) {
         console.log(respuesta);
         const { status, ...respuestaRestante } = respuesta;
-        sessionStorage.setItem('usuarioIniciarSesion', JSON.stringify(respuestaRestante));
+        sessionStorage.clear();
+        localStorage.setItem('usuarioInicioSesion', JSON.stringify(respuestaRestante));
         sessionStorage.setItem(`${respuesta._id}`, JSON.stringify(carrito))
         Swal.fire(
           'Bienvenido',
@@ -36,26 +37,6 @@ const Login = ({setUsuarioLogueado, carrito}) => {
       }
     });
   };
-
-    // loginUsuario(usuario).then((respuesta) => {
-    //   if (respuesta) {
-    //     console.log(respuesta);
-    //     localStorage.setItem('usuarioInicioSesion', JSON.stringify(respuesta));
-    //     sessionStorage.setItem(`${respuesta.id}`, JSON.stringify(carrito))
-    //     setUsuarioLogueado(respuesta)
-    //     reset()
-    //     Swal.fire(
-    //       'Bienvenido',
-    //       `${respuesta.nombreUsuario} iniciaste sesión correctamente`,
-    //       'success'
-    //     );
-    //     navegacion("/")
-    //     console.log(respuesta.perfil)
-    //   } else {
-    //     Swal.fire('Error', 'Email o Password incorrecto.', 'error');
-    //   }
-    // });
-  //};
 
   return (
     <Container className="mainSection contenedorPrincipal">
