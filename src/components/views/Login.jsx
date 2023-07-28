@@ -22,7 +22,8 @@ const Login = ({setUsuarioLogueado, carrito}) => {
       if (respuesta && respuesta.status === 200) {
         console.log(respuesta);
         const { status, ...respuestaRestante } = respuesta;
-        localStorage.setItem('usuarioIniciarSesion', JSON.stringify(respuestaRestante));
+        sessionStorage.clear();
+        localStorage.setItem('usuarioInicioSesion', JSON.stringify(respuestaRestante));
         sessionStorage.setItem(`${respuesta._id}`, JSON.stringify(carrito))
         Swal.fire(
           'Bienvenido',
