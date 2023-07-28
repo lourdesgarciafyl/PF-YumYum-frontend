@@ -1,8 +1,9 @@
 import './../../../css/CardItemCarrito.css';
 import { Card, Row, Col } from 'react-bootstrap';
 import { Trash3Fill } from 'react-bootstrap-icons';
+import { Link } from 'react-router-dom';
 
-const CardItemCarrito = () => {
+const CardItemCarrito = ({producto}) => {
   return (
     <Card className="letraRoboto mb-3">
       <Card.Body>

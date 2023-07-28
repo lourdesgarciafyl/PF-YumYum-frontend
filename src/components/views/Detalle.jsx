@@ -5,13 +5,8 @@ import { consultaProducto } from '../helpers/queriesProducto';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const Detalle = ({
-  usuarioLogueado,
-  setusuarioLogueado,
-  carrito,
-  setCarrito,
-  totalProductos,
-}) => {
+
+const Detalle = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, totalProductos }) => {
   const { id } = useParams();
   const navegacion = useNavigate();
   const [producto, setProducto] = useState({});
@@ -24,6 +19,7 @@ const Detalle = ({
   }, []);
 
   const sumarProductoCarrito = (productoSumado) => {
+   if(usuarioLogueado.perfil === "Cliente" || usuarioLogueado.perfil === "Administrador"){
     if (totalProductos < 15) {
       const existeProducto = carrito.find(
         (itemCarrito) => itemCarrito.producto === productoSumado._id
@@ -62,6 +58,9 @@ const Detalle = ({
         timer: 2000,
       });
     }
+   } else if (!usuarioLogueado.perfil){
+    navegacion("/login")
+   }
   };
 
   return (
