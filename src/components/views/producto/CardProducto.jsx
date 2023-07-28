@@ -18,7 +18,7 @@ const CardProducto = ({ producto, carrito, setCarrito, totalProductos, usuarioLo
   
   //Función que agrega el producto si no existe, y si existe cambia su cantidad.
   const sumarProductoCarrito = (productoSumado) => {
-    if(usuarioLogueado.perfil === "Cliente") {
+    if(usuarioLogueado.perfil === "Cliente" || usuarioLogueado.perfil === "Administrador") {
       if (totalProductos < 15) {
         const existeProducto = carrito.find(
           (itemCarrito) => itemCarrito.producto === productoSumado._id

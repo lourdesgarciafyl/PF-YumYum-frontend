@@ -37,14 +37,14 @@ function App() {
     <BrowserRouter>
     <Navegacion usuarioLogueado={usuarioLogueado} setUsuarioLogueado={setUsuarioLogueado} totalProductos={totalProductos} setCarrito={setCarrito}></Navegacion>
     <Routes>
-      <Route exact path="/" element={<Inicio usuarioLogueado={usuarioLogueado} setUsuarioLogueado={setUsuarioLogueado} totalProductos={totalProductos} carrito={carrito} setCarrito={setCarrito} usuario={usuario}></Inicio>}></Route>
+      <Route exact path="/" element={<Inicio usuarioLogueado={usuarioLogueado} setUsuarioLogueado={setUsuarioLogueado} totalProductos={totalProductos} carrito={carrito} setCarrito={setCarrito}></Inicio>}></Route>
       <Route exact path="/detalle/:id" element={<Detalle usuarioLogueado={usuarioLogueado} setUsuarioLogueado={setUsuarioLogueado} totalProductos={totalProductos} carrito={carrito} setCarrito={setCarrito} ></Detalle>}></Route>
       <Route exact path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado} carrito={carrito}></Login>}></Route>
       <Route exact path="/registro" element={<Registro setUsuarioLogueado={setUsuarioLogueado}></Registro>}></Route>
       <Route exact path="/nosotros" element={<Nosotros></Nosotros>}></Route>
       <Route path="/cliente/*" element={
-        <RutasProtegidasCliente usuario={usuarioLogueado} carrito={carrito} setCarrito={setCarrito}>
-          <RutasCliente usuario={usuarioLogueado} totalProductos={totalProductos} carrito={carrito} setCarrito={setCarrito}></RutasCliente>
+        <RutasProtegidasCliente usuario={usuarioLogueado} carrito={carrito} setCarrito={setCarrito}  totalProductos={totalProductos} setTotalProductos={setTotalProductos}>
+          <RutasCliente usuario={usuarioLogueado} totalProductos={totalProductos} setTotalProductos={setTotalProductos} carrito={carrito} setCarrito={setCarrito}></RutasCliente>
         </RutasProtegidasCliente>
       }></Route>
       <Route path="/administrar/*" element={

@@ -19,7 +19,7 @@ const Detalle = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, tot
   }, []);
 
   const sumarProductoCarrito = (productoSumado) => {
-   if(usuarioLogueado.perfil === "Cliente"){
+   if(usuarioLogueado.perfil === "Cliente" || usuarioLogueado.perfil === "Administrador"){
     if (totalProductos < 15) {
       const existeProducto = carrito.find(
         (itemCarrito) => itemCarrito.producto === productoSumado._id
