@@ -1,6 +1,14 @@
 import { Container, Row } from 'react-bootstrap';
 import ItemPedido from './pedido/ItemPedido';
+import { useEffect, useState } from 'react';
+import { obtenerListaPedidos } from '../helpers/queriesPedido';
 const AdministrarPedidos = () => {
+  const [ pedidos, setPedidos ] = useState([])
+  useEffect(() => {
+    obtenerListaPedidos().then((respuesta) => {
+        setPedidos(respuesta)
+    })
+}, [])
   return (
     <section className="mainSection letraRoboto mb-3">
       <Container>
@@ -9,11 +17,9 @@ const AdministrarPedidos = () => {
         </h1>
         <hr />
         <Row className="justify-content-start">
-          <ItemPedido index={1}></ItemPedido>
-          <ItemPedido index={2}></ItemPedido>
-          <ItemPedido index={3}></ItemPedido>
-          <ItemPedido index={4}></ItemPedido>
-          <ItemPedido index={5}></ItemPedido>
+        {
+          pedidos.map((pedido)=> <ItemPedido key={pedido._id} index={pedido._id} pedido={pedido} setPedidos={setPedidos}></ItemPedido> )
+        }
         </Row>
       </Container>
     </section>
