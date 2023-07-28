@@ -22,11 +22,11 @@ const CardProducto = ({ producto, carrito, setCarrito, totalProductos, usuarioLo
     if(usuarioLogueado.perfil === "Cliente" || usuarioLogueado.perfil === "Administrador") {
       if (totalProductos < 15) {
         const existeProducto = carrito.find(
-          (itemCarrito) => itemCarrito.producto === productoSumado._id
+          (itemCarrito) => itemCarrito.idProducto === productoSumado._id
         );
         if (existeProducto) {
           const indice = carrito.findIndex(
-            (prod) => prod.producto === productoSumado._id
+            (prod) => prod.idProducto === productoSumado._id
           );
           const aux = [...carrito];
           aux[indice].cantidad = aux[indice].cantidad + 1;
@@ -35,7 +35,7 @@ const CardProducto = ({ producto, carrito, setCarrito, totalProductos, usuarioLo
           setCarrito(aux);
         } else {
           const nuevoProducto = {
-            idproducto: productoSumado._id,
+            idProducto: productoSumado._id,
             imagen: productoSumado.imagen,
             nombreProducto: productoSumado.nombreProducto,
             cantidad: 1,

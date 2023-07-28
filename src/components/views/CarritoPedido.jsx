@@ -7,9 +7,9 @@ import { useEffect } from 'react';
 
 const CarritoPedido = ({usuario, carrito, setCarrito, totalProductos}) => {
   
-  useEffect(()=>{
-    setCarrito(carrito)
-  },[carrito])
+  // useEffect(()=>{
+  //   setCarrito(carrito)
+  // },[carrito])
   
   return (
     <>

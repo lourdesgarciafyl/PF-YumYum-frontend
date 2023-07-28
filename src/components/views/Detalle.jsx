@@ -22,12 +22,12 @@ const Detalle = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, tot
    if(usuarioLogueado.perfil === "Cliente" || usuarioLogueado.perfil === "Administrador"){
     if (totalProductos < 15) {
       const existeProducto = carrito.find(
-        (itemCarrito) => itemCarrito.producto === productoSumado._id
+        (itemCarrito) => itemCarrito.idProducto === productoSumado._id
       );
 
       if (existeProducto) {
         const indice = carrito.findIndex(
-          (prod) => prod.producto === productoSumado._id
+          (prod) => prod.idProducto === productoSumado._id
         );
         const aux = [...carrito];
         aux[indice].cantidad = aux[indice].cantidad + 1;
