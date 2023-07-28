@@ -20,9 +20,7 @@ import Nosotros from "./components/views/Nosotros"
 import { sumaCantidad } from "./components/helpers/queriesCarrito";
 
 function App() {
-
   const usuario = JSON.parse(localStorage.getItem("usuarioInicioSesion")) || {};
-  console.log(usuario._id);
   const carritoUsuario = JSON.parse(sessionStorage.getItem(`${usuario._id}`)) || [];
   const [usuarioLogueado, setUsuarioLogueado] = useState(usuario);
   // const [carrito, setCarrito] = useState(!carritoUsuario ? [] : carritoUsuario )

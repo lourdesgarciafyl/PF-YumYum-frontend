@@ -36,7 +36,9 @@ const Detalle = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, tot
         setCarrito(aux);
       } else {
         const nuevoProducto = {
-          producto: productoSumado._id,
+          idproducto: productoSumado._id,
+          imagen: productoSumado.imagen,
+          nombreProducto: productoSumado.nombreProducto,
           cantidad: 1,
           subtotalItem: productoSumado.precio * 1,
         };
