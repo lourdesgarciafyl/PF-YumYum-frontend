@@ -27,7 +27,7 @@ const CarritoPedido = ({usuario, carrito, setCarrito, totalProductos}) => {
                {carrito.map((item) => (
                     <CardItemCarrito
                       producto={item}
-                      key={item._id}
+                      key={item.idProducto}
                       carrito={carrito}
                       setCarrito={setCarrito}
                       usuario={usuario}
