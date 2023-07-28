@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 
-const CardProducto = ({ producto, carrito, setCarrito, totalProductos, usuario }) => {
+const CardProducto = ({ producto, carrito, setCarrito, totalProductos, usuarioLogueado }) => {
   const [mostrarElementos, setmostrarElementos] = useState(false);
   const handleMouseEnter = () => {
     setmostrarElementos(true);
@@ -18,7 +18,7 @@ const CardProducto = ({ producto, carrito, setCarrito, totalProductos, usuario }
   
   //Función que agrega el producto si no existe, y si existe cambia su cantidad.
   const sumarProductoCarrito = (productoSumado) => {
-    if(usuario.perfil === "Cliente") {
+    if(usuarioLogueado.perfil === "Cliente") {
       if (totalProductos < 15) {
         const existeProducto = carrito.find(
           (itemCarrito) => itemCarrito.producto === productoSumado._id
@@ -58,11 +58,10 @@ const CardProducto = ({ producto, carrito, setCarrito, totalProductos, usuario }
           timer: 2000,
         });
       }
-    } else if (!usuario.perfil){
+    } else if (!usuarioLogueado.perfil){
       navegacion("/login")
     }}
     
-  
 
   return (
     <Col

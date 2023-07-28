@@ -97,7 +97,7 @@ const Inicio = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, usua
         <hr className="mb-5" />
         <Row className="justify-content-around menu">
           {productos.map((producto) => (
-            <CardProducto key={producto._id} producto={producto} carrito={carrito} setCarrito={setCarrito} usuario={usuario} totalProductos={totalProductos} ></CardProducto>
+            <CardProducto key={producto._id} producto={producto} carrito={carrito} setCarrito={setCarrito} usuarioLogueado={usuarioLogueado} totalProductos={totalProductos} ></CardProducto>
           ))}
         </Row>
       </Container>

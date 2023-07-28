@@ -43,8 +43,8 @@ function App() {
       <Route exact path="/registro" element={<Registro setUsuarioLogueado={setUsuarioLogueado}></Registro>}></Route>
       <Route exact path="/nosotros" element={<Nosotros></Nosotros>}></Route>
       <Route path="/cliente/*" element={
-        <RutasProtegidasCliente usuario={usuarioLogueado}>
-          <RutasCliente usuario={usuarioLogueado}></RutasCliente>
+        <RutasProtegidasCliente usuario={usuarioLogueado} carrito={carrito} setCarrito={setCarrito}>
+          <RutasCliente usuario={usuarioLogueado} totalProductos={totalProductos} carrito={carrito} setCarrito={setCarrito}></RutasCliente>
         </RutasProtegidasCliente>
       }></Route>
       <Route path="/administrar/*" element={

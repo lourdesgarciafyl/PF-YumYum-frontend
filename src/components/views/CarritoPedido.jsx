@@ -1,8 +1,16 @@
 import './../../css/carritoPedido.css';
 import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
 import CardItemCarrito from './pedido/CardItemCarrito';
+import { crearPedido } from "../helpers/queriesPedido"
+import { subtotal, sumaCantidad } from '../helpers/queriesCarrito';
+import { useEffect } from 'react';
 
-const CarritoPedido = ({usuario}) => {
+const CarritoPedido = ({usuario, carrito, setCarrito, totalProductos}) => {
+  
+  useEffect(()=>{
+    setCarrito(carrito)
+  },[carrito])
+  
   return (
     <>
       <section className="mainSection letraRoboto mb-3">
@@ -16,8 +24,15 @@ const CarritoPedido = ({usuario}) => {
               lg={9}
               className="justify-content-around borderDerechoContenidoCarrito-lg mb-3"
             >
-              <CardItemCarrito></CardItemCarrito>
-              <CardItemCarrito></CardItemCarrito>
+               {carrito.map((item) => (
+                    <CardItemCarrito
+                      producto={item}
+                      key={item._id}
+                      carrito={carrito}
+                      setCarrito={setCarrito}
+                      usuario={usuario}
+                    ></CardItemCarrito>
+                  ))}
               <Button
                 variant="light"
                 type="submit"
