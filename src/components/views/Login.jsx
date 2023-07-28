@@ -5,6 +5,7 @@ import './../../css/login.css';
 import { loginUsuario } from '../helpers/queriesUsuario';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Login = ({setUsuarioLogueado, carrito}) => {
   const {
@@ -132,7 +133,7 @@ const Login = ({setUsuarioLogueado, carrito}) => {
             <Card.Text as="h4" className="mt-3 subtituloCuenta">
               ¿No tienes una cuenta?
             </Card.Text>
-            <Card.Link href="#" className="linkRegistrate">
+            <Card.Link as={Link} to={"/registro"} className="linkRegistrate">
               Registrate
             </Card.Link>
           </div>
