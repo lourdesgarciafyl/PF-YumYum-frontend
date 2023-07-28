@@ -1,11 +1,7 @@
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-// import { Link } from 'react-router-dom';
-import {
-  borrarUsuario,
-  consultaListaUsuarios,
-} from "../../helpers/queriesUsuario";
+import {borrarUsuario,consultaListaUsuarios } from "../../helpers/queriesUsuario";
 
 const ItemUsuario = ({ usuario, setUsuarios }) => {
   const borrarUsuarioActual = () => {
@@ -50,11 +46,8 @@ const ItemUsuario = ({ usuario, setUsuarios }) => {
       <td>{usuario.estado}</td>
       <td>{usuario.perfil}</td>
 
-      <td className="d-flex justify-content-around">
-        
-        <Link className="btn btn-warning" to={'/administrar/usuarios/editar-usuario/'+ usuario._id}>Editar</Link>
-  
-      
+      <td className="d-flex justify-content-around">  
+        <Link className="btn btn-warning" to={`editar-usuario/${usuario._id}`}>Editar</Link>
         <Button variant="danger" className="m-1" onClick={borrarUsuarioActual}>
           Borrar
         </Button>

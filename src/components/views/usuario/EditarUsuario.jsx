@@ -15,21 +15,18 @@ const EditarUsuario = () => {
     handleSubmit,
   } = useForm();
 
-  const { _id } = useParams();
+  const { id } = useParams();
   const navegacion = useNavigate();
 
   useEffect(() => {
-    obtenerUsuario(_id).then((respuesta) => {
-      if (respuesta) {
-        console.log(respuesta)
-        // tengo que cargar el objeto en el formulario
-        setValue("nombreUsuario", respuesta.data.nombreUsuario);
-    
-        setValue("apellidoUsuario", respuesta.data.apellidoUsuario);
-        setValue("email", respuesta.data.email);
-        setValue("password", respuesta.data.password);
-        setValue("perfil", respuesta.data.perfil);
-        setValue("estado", respuesta.data.estado);
+    obtenerUsuario(id).then((respuesta) => {
+      if (respuesta.status === 200) {
+        setValue("nombreUsuario", respuesta.nombreUsuario);
+        setValue("apellidoUsuario", respuesta.apellidoUsuario);
+        setValue("email", respuesta.email);
+        setValue("password", respuesta.password);
+        setValue("perfil", respuesta.perfil);
+        setValue("estado", respuesta.estado);
       } else {
         Swal.fire(
           "Ocurrio un error",
@@ -42,7 +39,7 @@ const EditarUsuario = () => {
 
  
   const onSubmit = (usuarioEditado) => {
-    editarUsuario(usuarioEditado, _id).then((respuestaEditado) => {
+    editarUsuario(usuarioEditado, id).then((respuestaEditado) => {
       if (respuestaEditado && respuestaEditado.status === 200) {
         Swal.fire(
           "Usuario Editado",

@@ -1,6 +1,6 @@
 import "../../../css/formularioAdminProductos.css";
 import { Form, Button, Card, Row, Col } from "react-bootstrap";
-import { crearUsuario } from "../../helpers/queriesUsuario";
+import { crearUsuarioAdmin } from "../../helpers/queriesUsuario";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +16,7 @@ const AgregarUsuario = () => {
   const navegacion = useNavigate()
 
   const onSubmit = (usuarioNuevo) => {
-    crearUsuario(usuarioNuevo).then((respuestaCreated) => {
+    crearUsuarioAdmin(usuarioNuevo).then((respuestaCreated) => {
       if (respuestaCreated && respuestaCreated.status === 201) {
         Swal.fire(
           "Usuario agregado",
