@@ -1,23 +1,28 @@
-import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import { Navbar, Container, Nav, Button, Badge } from "react-bootstrap";
 import { useState, useRef } from "react";
 import "../../css/navbar.css";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import Overlay from "react-bootstrap/Overlay";
-import Tooltip from "react-bootstrap/Tooltip";
 import { Cart, Person } from "react-bootstrap-icons";
-import { Link, NavLink, useNavigate} from "react-router-dom"
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
-const Navegacion = ({usuarioLogueado, setUsuarioLogueado, totalProductos, setCarrito}) => {
+import iconoDelivery from "../../assets/img/icono-delivery.svg";
+
+const Navegacion = ({
+  usuarioLogueado,
+  setUsuarioLogueado,
+  totalProductos,
+  setCarrito,
+}) => {
   const [show, setShow] = useState(false);
   const target = useRef(null);
   const navegacion = useNavigate();
   const logout = () => {
     localStorage.removeItem("usuarioInicioSesion");
     sessionStorage.removeItem(`${usuarioLogueado.id}`);
-    setUsuarioLogueado("")
-    setCarrito([])
-    navegacion("/")
-  }
+    setUsuarioLogueado("");
+    setCarrito([]);
+    navegacion("/");
+  };
 
   return (
     <Navbar
@@ -38,114 +43,135 @@ const Navegacion = ({usuarioLogueado, setUsuarioLogueado, totalProductos, setCar
         {/* Este link nos envia al carrito de compras. */}
         {usuarioLogueado.nombreUsuario ? (
           <>
-          {usuarioLogueado.perfil === "Cliente" ? (
-            <>
-            <NavLink
-            to="/cliente/pedido"
-            id="carrito"
-            className="d-flex mt-2 justi flex-column carritoConPedidos nav-link"
-            >
-           {" "}
-           <div className="d-flex align-items-center ">
-           <Cart size={30}></Cart>
-            {/* Este Span lee la cantidad de productos que va sumando el cliente.  */}
-            <span className="ms-2 my-2 fw-bolder" id="cantidadProductosCliente">
-              {totalProductos}
-            </span>
-            </div>
-            <p className="">Tu pedido</p>
-          </NavLink>
-            </>
-          ):(
-          <>
-          </>)}
+            {usuarioLogueado.perfil === "Cliente" ? (
+              <>
+                <NavLink
+                  to="/cliente/pedido"
+                  id="carrito"
+                  className="d-flex mt-2 justi flex-column position-relative"
+                >
+                  <Button variant="outline-warning" className="rounded-5 ">
+                    <span>
+                      <img
+                        src={iconoDelivery}
+                        alt="Icono de la moto"
+                        className="iconoDelivery"
+                      />
+                    </span>
+                    {/* <Cart size={30}></Cart>{" "} */}
+                    <Badge
+                      bg=""
+                      className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-warning"
+                    >
+                      {" "}
+                      <span className="" id="cantidadProductosCliente">
+                        {totalProductos}
+                      </span>
+                    </Badge>
+                  </Button>
+                </NavLink>
+              </>
+            ) : (
+              <></>
+            )}
           </>
         ) : (
-        <>
-          <NavLink
-            to="login"
-            id="carrito"
-            className="d-flex mt-2 justi flex-column carritoConPedidos nav-link"
+          <>
+            <NavLink
+              to="login"
+              id="carrito"
+              className="d-flex mt-2 justi flex-column carritoConPedidos nav-link"
             >
-           {" "}
-           <div className="d-flex align-items-center ">
-           <Cart size={30}></Cart>
-            {/* Este Span lee la cantidad de productos que va sumando el cliente.  */}
-            <span className="ms-2 my-2 fw-bolder" id="cantidadProductosCliente">
-            {totalProductos}
-            </span>
-            </div>
-            <p className="">Tu pedido</p>
-          </NavLink>
-        </>
+              <Button variant="outline-warning" className="rounded-5 ">
+                <Cart size={30}></Cart>{" "}
+                <Badge
+                  bg=""
+                  className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success"
+                >
+                  {" "}
+                  <span className="" id="cantidadProductosCliente">
+                    {totalProductos}
+                  </span>
+                </Badge>
+              </Button>
+            </NavLink>
+          </>
         )}
 
         <Navbar.Toggle aria-controls="navbar" />
 
         <Navbar.Collapse id="navbar">
           <Nav className="d-flex ms-lg-auto navBar2">
-            <NavLink end to="/" className="nav-link">Menu</NavLink>
-            <NavLink to="/nosotros" className="nav-link">Nosotros</NavLink>
+            <NavLink end to="/" className="nav-link">
+              Menu
+            </NavLink>
+            <NavLink to="/nosotros" className="nav-link">
+              Nosotros
+            </NavLink>
             {usuarioLogueado.nombreUsuario ? (
               <>
-              {usuarioLogueado.perfil === "Administrador"? (
-                <>
-              <NavDropdown title="Administrador" id="navbarScrollingDropdown">
-              <NavDropdown.Item as={Link} to="/administrar/productos">Productos</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/administrar/usuarios">Usuarios</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/administrar/pedidos">Pedidos</NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Link>
-              {" "}
-              <Button 
-                 className="rounded-5"
-                variant="dark"
-                ref={target}
-                 onClick={logout}>
-                {" "}
-                <Person size={25}></Person>
-              </Button>{" "}
-              </Nav.Link>
-              <Nav.Link>{usuarioLogueado.nombreUsuario}</Nav.Link>
-              </>
-              ) : (
-                <>
-                <Nav.Link>
-                {" "}
-                <Button               
-                className="rounded-5"
-                variant="dark"
-                ref={target} 
-                 onClick={logout}>
-                {" "}
-                <Person size={25}></Person>
-               </Button>{" "}
-               </Nav.Link>
-                </>
-              )}
+                {usuarioLogueado.perfil === "Administrador" ? (
+                  <>
+                    <NavDropdown
+                      title="Administrador"
+                      id="navbarScrollingDropdown"
+                    >
+                      <NavDropdown.Item as={Link} to="/administrar/productos">
+                        Productos
+                      </NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to="/administrar/usuarios">
+                        Usuarios
+                      </NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to="/administrar/pedidos">
+                        Pedidos
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                    <Nav.Link>
+                      {" "}
+                      <Button
+                        className="rounded-5"
+                        variant="dark"
+                        ref={target}
+                        onClick={logout}
+                      >
+                        <Person size={25}></Person>
+                      </Button>{" "}
+                    </Nav.Link>
+                    <Nav.Link>{usuarioLogueado.nombreUsuario}</Nav.Link>
+                  </>
+                ) : (
+                  <>
+                    <Nav.Link>
+                      {" "}
+                      <Button
+                        className="rounded-5"
+                        variant="dark"
+                        ref={target}
+                        onClick={logout}
+                      >
+                        {" "}
+                        <Person size={25}></Person>
+                      </Button>{" "}
+                    </Nav.Link>
+                  </>
+                )}
               </>
             ) : (
               <>
-              <NavLink to="/registro" className="nav-link">Registrarme</NavLink>
-              <NavLink to="/login" className="nav-link">
-                {" "}
-                <Button               
-                className="rounded-5"
-                variant="dark"
-                ref={target}
-                onClick={() => setShow(!show)} >
-                <Person size={25}></Person>
-               </Button>
-               <Overlay target={target.current} show={show} placement="bottom">
-                {(props) => (
-                  <Tooltip className="bg-dark" id="overlayIngreso" {...props}>
-                    <Button variant="dark" className="fw-bold">
-                      Ingresar
-                    </Button>
-                  </Tooltip>
-                )}
-              </Overlay>
-              </NavLink>
+                <NavLink to="/registro" className="nav-link">
+                  Registrarme
+                </NavLink>
+                <NavLink to="/login" className="nav-link">
+                  {" "}
+                  <Button
+                    className="rounded-5 botonLogin"
+                    variant="dark"
+                    ref={target}
+                    onClick={() => setShow(!show)}
+                  >
+                    <Person size={25}></Person>
+                  </Button>
+                </NavLink>
               </>
             )}
           </Nav>

@@ -29,6 +29,10 @@
   background-color: #f7b538;
 }
 
+.iconoDelivery {
+  width: 35px;
+}
+
 #carrito {
   left: 20vw;
   position: relative;
@@ -36,14 +40,6 @@
 
 .carritoConPedidos p {
   font-size: 10px;
-}
-
-#cantidadProductosCliente {
-  position: relative;
-  right: 55%;
-  bottom: 1px;
-  font-size: 10px;
-  color: rgb(241, 171, 18);
 }
 
 .btn-dark {
