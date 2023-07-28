@@ -18,7 +18,7 @@ const CardItemCarrito = ({producto}) => {
                 />
               </Col>
               <Col xs={8} className="text-end text-lg-start">
-                <Card.Title className="letraMono mt-1 text-start p-1">
+                <Card.Title className="letraRoboto mt-1 text-start p-1">
                   {producto.nombreProducto}
                 </Card.Title>
 
