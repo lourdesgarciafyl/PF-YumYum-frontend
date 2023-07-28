@@ -23,7 +23,6 @@ const CardProducto = ({ producto, carrito, setCarrito, totalProductos, usuarioLo
         const existeProducto = carrito.find(
           (itemCarrito) => itemCarrito.producto === productoSumado._id
         );
-  
         if (existeProducto) {
           const indice = carrito.findIndex(
             (prod) => prod.producto === productoSumado._id
