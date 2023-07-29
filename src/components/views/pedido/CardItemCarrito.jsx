@@ -4,7 +4,7 @@ import { Trash3Fill } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const CardItemCarrito = ({producto,  carrito, setCarrito, totalProductos}) => {
+const CardItemCarrito = ({producto,  carrito, setCarrito}) => {
   
   // Funcion para sumar un producto
   const sumar = (productoSumado) => {
@@ -19,7 +19,7 @@ const CardItemCarrito = ({producto,  carrito, setCarrito, totalProductos}) => {
         const aux = [...carrito];
         aux[indice].cantidad = aux[indice].cantidad + 1;
         aux[indice].subtotalItem =
-          aux[indice].subtotalItem * aux[indice].cantidad;
+          aux[indice].precio * aux[indice].cantidad;
           setCarrito(aux);
       }
       Swal.fire({
@@ -41,6 +41,33 @@ const CardItemCarrito = ({producto,  carrito, setCarrito, totalProductos}) => {
     }
   }
 
+// funcion para restar
+  const restar = (productoRestar) => {
+    console.log(carrito)
+    if (carrito.length < 15 && carrito.length > 1 && productoRestar.cantidad > 1) {
+      const existeProducto = carrito.find(
+        (itemCarrito) => itemCarrito.idProducto === productoRestar.idProducto
+      );
+      if (existeProducto) {
+        const indice = carrito.findIndex(
+          (prod) => prod.idProducto === productoRestar.idProducto
+        );
+        const aux = [...carrito];
+        aux[indice].cantidad = aux[indice].cantidad - 1;
+        aux[indice].subtotalItem =
+          aux[indice].precio * aux[indice].cantidad;
+          console.log(aux[indice])
+          setCarrito(aux);
+      }
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Se eliminó el producto del carrito.',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } 
+  }
   return (
     <Card className="letraRoboto mb-3">
       <Card.Body>
@@ -72,7 +99,7 @@ const CardItemCarrito = ({producto,  carrito, setCarrito, totalProductos}) => {
           >
             <div className="itemCantidad letraRoboto">
               <div>
-                <button className="botonOperarCantidad">-</button>
+                <button className="botonOperarCantidad" onClick={() => restar(producto)}>-</button>
               </div>
               <span className="mx-1">{producto.cantidad}</span>
               <div>
