@@ -88,7 +88,7 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
                 </thead>
                 <tbody>
                   {pedido.productos.map((producto) => (
-                    <ItemProductoPedido key={producto._id} />
+                    <ItemProductoPedido key={producto._id} item={producto} />
                   ))}
                 </tbody>
               </Table>
