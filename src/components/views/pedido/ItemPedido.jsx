@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Trash3Fill } from 'react-bootstrap-icons';
 import { ToggleAcordion } from '../../helpers/ToggleAcordion';
 import ItemProductoPedido from './ItemProductoPedido';
+import { formatearFecha } from '../../helpers/formateoFecha';
 
 const ItemPedido = ({ index, pedido, setPedidos }) => {
   const [botonSwitch, setBotonSwitch] = useState(false);
@@ -24,7 +25,10 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
                 ID Pedido: <span className="fw-bold">{pedido._id}</span>
               </ListGroup.Item>
               <ListGroup.Item className="border-0 letraRoboto tamanioLetraItemListGroup py-1 px-2">
-                Fecha: <span className="fw-bold">{pedido.fechaPedido}</span>
+                Fecha:{' '}
+                <span className="fw-bold">
+                  {formatearFecha(pedido.fechaPedido)}
+                </span>
               </ListGroup.Item>
               <ListGroup.Item className="border-0 letraRoboto tamanioLetraItemListGroup py-1 px-2">
                 Cliente:{' '}
