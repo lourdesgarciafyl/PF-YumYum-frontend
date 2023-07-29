@@ -7,13 +7,23 @@ import ItemProductoPedido from './ItemProductoPedido';
 import { formatearFecha } from '../../helpers/formateoFecha';
 
 const ItemPedido = ({ index, pedido, setPedidos }) => {
-  const [botonSwitch, setBotonSwitch] = useState(false);
+  const estadoSwitch =
+    pedido.estado === 'En proceso'
+      ? false
+      : pedido.estado === 'Entregado'
+      ? true
+      : false;
+  const [botonSwitch, setBotonSwitch] = useState(estadoSwitch);
 
   const toggler = () => {
     botonSwitch ? setBotonSwitch(false) : setBotonSwitch(true);
   };
   const cambioCheckbox = (index) => {
-    console.log(index);
+    if (!botonSwitch) {
+      console.log('pasa a estado de Entregado');
+    } else {
+      console.log('pasa a estado de En Proceso');
+    }
   };
   return (
     <Col md={6} xxl={4}>
@@ -52,6 +62,7 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
                     id={index}
                     className="d-flex justify-content-end align-items-center"
                     onClick={toggler}
+                    checked={botonSwitch}
                     onChange={() => cambioCheckbox(`${index}`)}
                     label={
                       botonSwitch ? (
