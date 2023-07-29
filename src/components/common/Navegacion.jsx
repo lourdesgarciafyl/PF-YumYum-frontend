@@ -2,9 +2,8 @@ import { Navbar, Container, Nav, Button, Badge } from "react-bootstrap";
 import { useState, useRef } from "react";
 import "../../css/navbar.css";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { Cart, Person } from "react-bootstrap-icons";
+import { Person } from "react-bootstrap-icons";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-
 import iconoDelivery from "../../assets/img/icono-delivery.svg";
 
 const Navegacion = ({
@@ -50,7 +49,7 @@ const Navegacion = ({
                   id="carrito"
                   className="d-flex mt-2 justi flex-column position-relative"
                 >
-                  <Button variant="outline-warning" className="rounded-5 ">
+                  <Button className="rounded-4 btnCarrito " variant="outline-ligth">
                     <span>
                       <img
                         src={iconoDelivery}
@@ -60,7 +59,7 @@ const Navegacion = ({
                     </span>
                     {/* <Cart size={30}></Cart>{" "} */}
                     <Badge
-                      bg=""
+                      bg="dark"
                       className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-warning"
                     >
                       {" "}
@@ -82,11 +81,18 @@ const Navegacion = ({
               id="carrito"
               className="d-flex mt-2 justi flex-column carritoConPedidos nav-link"
             >
-              <Button variant="outline-warning" className="rounded-5 ">
-                <Cart size={30}></Cart>{" "}
+              <Button  className="rounded-5 btnCarrito  " variant="outline-ligth">
+                <span>
+                  <img
+                    src={iconoDelivery}
+                    alt="Icono de la moto"
+                    className="iconoDelivery"
+                  />
+                </span>
+                {/* <Cart size={30}></Cart>{" "} */}
                 <Badge
-                  bg=""
-                  className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success"
+                  bg="dark"
+                  className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-warning"
                 >
                   {" "}
                   <span className="" id="cantidadProductosCliente">

@@ -30,7 +30,7 @@
 }
 
 .iconoDelivery {
-  width: 35px;
+  width: 2.5rem;
 }
 
 #carrito {
@@ -38,9 +38,23 @@
   position: relative;
 }
 
-.carritoConPedidos p {
-  font-size: 10px;
-}
+.btnCarrito:hover{
+  outline: #ffffff;
+  background-color:#af0303;
+
+transform: scale(1.1);}
+
+  .btnCarrito:active{
+    outline: #ffffff;
+    background-color:#f7b538;
+    transform: scale( 1);}
+
+  .btnCarrito {
+    outline: #ffffff;
+    background-color:transparent;
+  border: none;}
+
+
 
 .btn-dark {
   background-color: rgb(241, 171, 18);
@@ -60,10 +74,7 @@
     max-width: 100px;
   }
 
-  #carrito {
-    left: 20px;
-    position: relative;
-  }
+
 }
 
 @media (max-width: 576px) {
@@ -71,12 +82,16 @@
     max-width: 100px;
   }
 
+  .iconoDelivery {
+    width: 2rem;
+    color: #ffffff;
+  }
+
   #carrito {
     left: -20px;
     position: relative;
+    
   }
 
-  .carritoConPedidos p {
-    font-size: 8px;
-  }
+
 }
