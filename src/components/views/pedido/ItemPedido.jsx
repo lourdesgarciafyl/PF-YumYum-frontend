@@ -87,10 +87,9 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  <ItemProductoPedido></ItemProductoPedido>
-                  <ItemProductoPedido></ItemProductoPedido>
-                  <ItemProductoPedido></ItemProductoPedido>
-                  <ItemProductoPedido></ItemProductoPedido>
+                  {pedido.productos.map((producto) => (
+                    <ItemProductoPedido key={producto._id} />
+                  ))}
                 </tbody>
               </Table>
             </Card.Body>
