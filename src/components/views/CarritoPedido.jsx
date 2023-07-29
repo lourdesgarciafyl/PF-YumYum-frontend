@@ -31,6 +31,7 @@ const CarritoPedido = ({usuario, carrito, setCarrito, totalProductos}) => {
                       carrito={carrito}
                       setCarrito={setCarrito}
                       usuario={usuario}
+                      totalProductos={totalProductos}
                     ></CardItemCarrito>
                   ))}
               <Button

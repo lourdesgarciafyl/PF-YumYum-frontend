@@ -40,6 +40,7 @@ const CardProducto = ({ producto, carrito, setCarrito, totalProductos, usuarioLo
             nombreProducto: productoSumado.nombreProducto,
             cantidad: 1,
             subtotalItem: productoSumado.precio * 1,
+            precio: productoSumado.precio
           };
           setCarrito([...carrito, nuevoProducto]);
         }
