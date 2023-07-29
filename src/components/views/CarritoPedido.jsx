@@ -4,6 +4,7 @@ import CardItemCarrito from './pedido/CardItemCarrito';
 import { crearPedido } from "../helpers/queriesPedido"
 import { total } from '../helpers/queriesCarrito';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { useEffect } from 'react';
 import { set } from 'react-hook-form';
 
@@ -16,8 +17,28 @@ const CarritoPedido = ({usuario, carrito, setCarrito, totalProductos}) => {
   const navegacion = useNavigate()
 
   const vaciarCarrito = ()=> {
-    setCarrito([]);
-       navegacion("/")
+
+    Swal.fire({
+      title: 'Esta seguro de vaciar su carrito?',
+      text: "Deberar volver a armar su pedido en el inicio!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, vaciar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setCarrito([]);
+        Swal.fire(
+          'Carrito vaciado!',
+          'Su Carrito fue vaciado. <br> Puede realizar nuevamente su pedido',
+          'success'
+        )
+        navegacion("/")
+      }
+    })
+
+
   
 
 
