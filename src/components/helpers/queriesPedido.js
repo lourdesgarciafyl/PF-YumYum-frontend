@@ -89,3 +89,18 @@ export const consultaEntregarPedido = async (id) => {
     return null;
   }
 };
+
+export const consultaEnProcesoPedido = async (id) => {
+  try {
+    const respuesta = await fetch(`${URLPedido}/enproceso/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};

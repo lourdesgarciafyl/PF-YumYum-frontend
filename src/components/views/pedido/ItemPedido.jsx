@@ -6,7 +6,7 @@ import { ToggleAcordion } from '../../helpers/ToggleAcordion';
 import ItemProductoPedido from './ItemProductoPedido';
 import { formatearFecha } from '../../helpers/formateoFecha';
 import Swal from 'sweetalert2';
-import { consultaEntregarPedido, obtenerListaPedidos } from '../../helpers/queriesPedido';
+import { consultaEnProcesoPedido, consultaEntregarPedido, obtenerListaPedidos } from '../../helpers/queriesPedido';
 
 const ItemPedido = ({ index, pedido, setPedidos }) => {
   const estadoSwitch =
@@ -24,7 +24,7 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
     if (!botonSwitch) {
       console.log('pasa a estado de Entregado');
       Swal.fire({
-        title: `¿Estás por pasar a entregado el pedido N°:${index}?`,
+        title: `¿Estás por pasar a "Entregado" el pedido N°:${index}?`,
         text: 'No se puede revertir este paso',
         icon: 'warning',
         showCancelButton: true,
@@ -35,11 +35,10 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
       }).then((result) => {
         if (result.isConfirmed) {
           consultaEntregarPedido(index).then((respuesta) => {
-            console.log(respuesta);
             if (respuesta && respuesta.status === 200) {
               Swal.fire(
                 'Pedido Editado',
-                `El pedido N°${index} pasó a entregado correctamente`,
+                `El pedido N°${index} pasó a "Entregado" correctamente`,
                 'success'
               );
               obtenerListaPedidos().then((respuesta) => {
@@ -59,6 +58,39 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
       });
     } else {
       console.log('pasa a estado de En Proceso');
+      Swal.fire({
+        title: `¿Estás por pasar a "En Proceso" el pedido N°:${index}?`,
+        text: 'No se puede revertir este paso',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Cambiar',
+        cancelButtonText: 'Cancelar',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          consultaEnProcesoPedido(index).then((respuesta) => {
+            if (respuesta && respuesta.status === 200) {
+              Swal.fire(
+                'Pedido Editado',
+                `El pedido N°${index} pasó a "En Proceso" correctamente`,
+                'success'
+              );
+              obtenerListaPedidos().then((respuesta) => {
+                setPedidos(respuesta);
+              });
+            } else {
+              Swal.fire(
+                'Ocurrió un error',
+                `Intente realizar esta operación nuevamente más tarde`,
+                'error'
+              );
+            }
+          });
+        }else{
+          setBotonSwitch(true);
+        }
+      });
     }
   };
   return (
