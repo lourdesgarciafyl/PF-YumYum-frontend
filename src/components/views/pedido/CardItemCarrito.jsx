@@ -1,11 +1,10 @@
-import './../../../css/CardItemCarrito.css';
-import { Card, Row, Col } from 'react-bootstrap';
-import { Trash3Fill } from 'react-bootstrap-icons';
-import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
+import "./../../../css/CardItemCarrito.css";
+import { Card, Row, Col } from "react-bootstrap";
+import { Trash3Fill } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const CardItemCarrito = ({producto,  carrito, setCarrito}) => {
-  
+const CardItemCarrito = ({ producto, carrito, setCarrito }) => {
   // Funcion para sumar un producto
   const sumar = (productoSumado) => {
     if (carrito.length < 15) {
@@ -18,33 +17,36 @@ const CardItemCarrito = ({producto,  carrito, setCarrito}) => {
         );
         const aux = [...carrito];
         aux[indice].cantidad = aux[indice].cantidad + 1;
-        aux[indice].subtotalItem =
-          aux[indice].precio * aux[indice].cantidad;
-          setCarrito(aux);
+        aux[indice].subtotalItem = aux[indice].precio * aux[indice].cantidad;
+        setCarrito(aux);
       }
       Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Se agregó producto al carrito.',
+        position: "top-end",
+        icon: "success",
+        title: "Se agregó producto al carrito.",
         showConfirmButton: false,
         timer: 1500,
       });
     } else {
-      console.log('Solo se permite agregar 15 productos al carrito');
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'Se permiten máximo 15 productos al carrito',
-          showConfirmButton: false,
-          timer: 2000,
-        });
+      console.log("Solo se permite agregar 15 productos al carrito");
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Se permiten máximo 15 productos al carrito",
+        showConfirmButton: false,
+        timer: 2000,
+      });
     }
-  }
+  };
 
-// funcion para restar
+  // funcion para restar
   const restar = (productoRestar) => {
-    console.log(carrito)
-    if (carrito.length < 15 && carrito.length > 1 && productoRestar.cantidad > 1) {
+    console.log(carrito);
+    if (
+      carrito.length < 15 &&
+      carrito.length > 1 &&
+      productoRestar.cantidad > 1
+    ) {
       const existeProducto = carrito.find(
         (itemCarrito) => itemCarrito.idProducto === productoRestar.idProducto
       );
@@ -54,20 +56,19 @@ const CardItemCarrito = ({producto,  carrito, setCarrito}) => {
         );
         const aux = [...carrito];
         aux[indice].cantidad = aux[indice].cantidad - 1;
-        aux[indice].subtotalItem =
-          aux[indice].precio * aux[indice].cantidad;
-          console.log(aux[indice])
-          setCarrito(aux);
+        aux[indice].subtotalItem = aux[indice].precio * aux[indice].cantidad;
+        console.log(aux[indice]);
+        setCarrito(aux);
       }
       Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Se eliminó el producto del carrito.',
+        position: "top-end",
+        icon: "success",
+        title: "Se eliminó el producto del carrito.",
         showConfirmButton: false,
         timer: 1500,
       });
-    } 
-  }
+    }
+  };
   return (
     <Card className="letraRoboto mb-3">
       <Card.Body>
@@ -86,8 +87,12 @@ const CardItemCarrito = ({producto,  carrito, setCarrito}) => {
                   {producto.nombreProducto}
                 </Card.Title>
 
-                <Card.Link href="#" className=" linkDetalle">
-                  Ver Detalles
+                <Card.Link
+                  as={Link}
+                  to={`/detalle/${producto.idProducto}`}
+                  className=" linkDetalle"
+                >
+                  Ver Detalle
                 </Card.Link>
               </Col>
             </Row>
@@ -99,11 +104,21 @@ const CardItemCarrito = ({producto,  carrito, setCarrito}) => {
           >
             <div className="itemCantidad letraRoboto">
               <div>
-                <button className="botonOperarCantidad" onClick={() => restar(producto)}>-</button>
+                <button
+                  className="botonOperarCantidad"
+                  onClick={() => restar(producto)}
+                >
+                  -
+                </button>
               </div>
               <span className="mx-1">{producto.cantidad}</span>
               <div>
-                <button className="botonOperarCantidad" onClick={() => sumar(producto)}>+</button>
+                <button
+                  className="botonOperarCantidad"
+                  onClick={() => sumar(producto)}
+                >
+                  +
+                </button>
               </div>
             </div>
 
