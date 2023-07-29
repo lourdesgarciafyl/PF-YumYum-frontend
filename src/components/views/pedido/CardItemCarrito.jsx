@@ -4,6 +4,7 @@ import { Trash3Fill } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
+
 const CardItemCarrito = ({producto,  carrito, setCarrito}) => {
   
   // Funcion para sumar un producto
@@ -86,8 +87,9 @@ const CardItemCarrito = ({producto,  carrito, setCarrito}) => {
                   {producto.nombreProducto}
                 </Card.Title>
 
-                <Card.Link href="#" className=" linkDetalle">
-                  Ver Detalles
+                <Card.Link as={Link}
+                to={`/detalle/${producto.idProducto}`} className=" linkDetalle">
+                  Ver Detalle
                 </Card.Link>
               </Col>
             </Row>
