@@ -69,6 +69,14 @@ const CardItemCarrito = ({ producto, carrito, setCarrito }) => {
       });
     }
   };
+
+  const eliminarProducto = (idProducto) => {
+    const nuevoCarrito = carrito.filter(
+      (itemCarrito) => itemCarrito.idProducto !== idProducto
+    );
+    setCarrito(nuevoCarrito);
+  };
+  
   return (
     <Card className="letraRoboto mb-3">
       <Card.Body>
@@ -125,6 +133,7 @@ const CardItemCarrito = ({ producto, carrito, setCarrito }) => {
             <Trash3Fill
               className="letraRoja iconoEliminar"
               size={25}
+              onClick={() => eliminarProducto(producto.idProducto)}
             ></Trash3Fill>
 
             <Card.Text as="h5" className="letraRoboto">
