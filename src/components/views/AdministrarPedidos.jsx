@@ -3,12 +3,12 @@ import ItemPedido from './pedido/ItemPedido';
 import { useEffect, useState } from 'react';
 import { obtenerListaPedidos } from '../helpers/queriesPedido';
 const AdministrarPedidos = () => {
-  const [ pedidos, setPedidos ] = useState([])
+  const [pedidos, setPedidos] = useState([]);
   useEffect(() => {
     obtenerListaPedidos().then((respuesta) => {
-        setPedidos(respuesta)
-    })
-}, [])
+      setPedidos(respuesta);
+    });
+  }, []);
   return (
     <section className="mainSection letraRoboto mb-3">
       <Container>
@@ -17,9 +17,14 @@ const AdministrarPedidos = () => {
         </h1>
         <hr />
         <Row className="justify-content-start">
-        {
-          pedidos.map((pedido)=> <ItemPedido key={pedido._id} index={pedido._id} pedido={pedido} setPedidos={setPedidos}></ItemPedido> )
-        }
+          {pedidos.map((pedido) => (
+            <ItemPedido
+              key={pedido._id}
+              index={pedido._id}
+              pedido={pedido}
+              setPedidos={setPedidos}
+            ></ItemPedido>
+          ))}
         </Row>
       </Container>
     </section>

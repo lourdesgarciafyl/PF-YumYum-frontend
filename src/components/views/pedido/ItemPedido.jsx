@@ -5,7 +5,7 @@ import { Trash3Fill } from 'react-bootstrap-icons';
 import { ToggleAcordion } from '../../helpers/ToggleAcordion';
 import ItemProductoPedido from './ItemProductoPedido';
 
-const ItemPedido = ({ index }) => {
+const ItemPedido = ({ index, pedido, setPedidos }) => {
   const [botonSwitch, setBotonSwitch] = useState(false);
 
   const toggler = () => {
@@ -21,13 +21,22 @@ const ItemPedido = ({ index }) => {
           <Card.Header className="bg-white">
             <ListGroup>
               <ListGroup.Item className="border-0 letraRoboto tamanioLetraItemListGroup py-1 px-2">
-                ID Pedido: <span className="fw-bold">1</span>
+                ID Pedido: <span className="fw-bold">{pedido._id}</span>
               </ListGroup.Item>
               <ListGroup.Item className="border-0 letraRoboto tamanioLetraItemListGroup py-1 px-2">
-                Cliente: <span className="fw-bold">Gerardo</span>
+                Fecha: <span className="fw-bold">{pedido.fechaPedido}</span>
               </ListGroup.Item>
               <ListGroup.Item className="border-0 letraRoboto tamanioLetraItemListGroup py-1 px-2">
-                Precio Total: <span className="fw-bold">$10000</span>
+                Cliente:{' '}
+                <span className="fw-bold">
+                  {pedido.usuario.nombreUsuario +
+                    ' ' +
+                    pedido.usuario.apellidoUsuario}
+                </span>
+              </ListGroup.Item>
+              <ListGroup.Item className="border-0 letraRoboto tamanioLetraItemListGroup py-1 px-2">
+                Precio Total:{' '}
+                <span className="fw-bold">${pedido.precioTotal}</span>
               </ListGroup.Item>
               <div className="d-flex justify-content-between align-items-center mt-2 mx-2">
                 <ToggleAcordion eventKey="1" className="letraRoboto px-1">
