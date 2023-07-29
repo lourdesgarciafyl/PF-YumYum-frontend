@@ -42,14 +42,18 @@ const Navegacion = ({
         {/* Este link nos envia al carrito de compras. */}
         {usuarioLogueado.nombreUsuario ? (
           <>
-            {usuarioLogueado.perfil === "Cliente" ? (
+            {usuarioLogueado.perfil === "Cliente" ||
+            usuarioLogueado.perfil === "Administrador" ? (
               <>
                 <NavLink
                   to="/cliente/pedido"
                   id="carrito"
                   className="d-flex mt-2 justi flex-column position-relative"
                 >
-                  <Button className="rounded-4 btnCarrito " variant="outline-ligth">
+                  <Button
+                    className="rounded-5 btnCarrito "
+                    variant="dark"
+                  >
                     <span>
                       <img
                         src={iconoDelivery}
@@ -81,7 +85,10 @@ const Navegacion = ({
               id="carrito"
               className="d-flex mt-2 justi flex-column carritoConPedidos nav-link"
             >
-              <Button  className="rounded-5 btnCarrito  " variant="outline-ligth">
+              <Button
+                className="rounded-5 btnCarrito  "
+                variant="outline-ligth"
+              >
                 <span>
                   <img
                     src={iconoDelivery}
