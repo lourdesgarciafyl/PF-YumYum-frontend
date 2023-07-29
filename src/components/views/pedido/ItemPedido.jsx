@@ -22,14 +22,12 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
   };
   const cambioCheckbox = (index) => {
     if (!botonSwitch) {
-      console.log('pasa a estado de Entregado');
       Swal.fire({
-        title: `¿Estás por pasar a "Entregado" el pedido N°:${index}?`,
-        text: 'No se puede revertir este paso',
+        title: `¿Pasar a Entregado el pedido N°:${index}?`,
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#f7b538',
+        cancelButtonColor: '#c32f27',
         confirmButtonText: 'Cambiar',
         cancelButtonText: 'Cancelar',
       }).then((result) => {
@@ -38,13 +36,14 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
             if (respuesta && respuesta.status === 200) {
               Swal.fire(
                 'Pedido Editado',
-                `El pedido N°${index} pasó a "Entregado" correctamente`,
+                `El pedido N°${index} pasó a Entregado correctamente`,
                 'success'
               );
               obtenerListaPedidos().then((respuesta) => {
                 setPedidos(respuesta);
               });
             } else {
+              setBotonSwitch(false);
               Swal.fire(
                 'Ocurrió un error',
                 `Intente realizar esta operación nuevamente más tarde`,
@@ -57,14 +56,12 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
         }
       });
     } else {
-      console.log('pasa a estado de En Proceso');
       Swal.fire({
-        title: `¿Estás por pasar a "En Proceso" el pedido N°:${index}?`,
-        text: 'No se puede revertir este paso',
+        title: `¿Volver a "En Proceso" el pedido N°:${index}?`,
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#f7b538',
+        cancelButtonColor: '#c32f27',
         confirmButtonText: 'Cambiar',
         cancelButtonText: 'Cancelar',
       }).then((result) => {
@@ -80,6 +77,7 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
                 setPedidos(respuesta);
               });
             } else {
+              setBotonSwitch(true);
               Swal.fire(
                 'Ocurrió un error',
                 `Intente realizar esta operación nuevamente más tarde`,
