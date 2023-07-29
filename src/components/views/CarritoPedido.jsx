@@ -1,49 +1,42 @@
-import './../../css/carritoPedido.css';
-import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
-import CardItemCarrito from './pedido/CardItemCarrito';
-import { crearPedido } from "../helpers/queriesPedido"
-import { total } from '../helpers/queriesCarrito';
-import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import { useEffect } from 'react';
-import { set } from 'react-hook-form';
+import "./../../css/carritoPedido.css";
+import { Container, Row, Col, Button, ListGroup } from "react-bootstrap";
+import CardItemCarrito from "./pedido/CardItemCarrito";
+import { crearPedido } from "../helpers/queriesPedido";
+import { total } from "../helpers/queriesCarrito";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useEffect } from "react";
+import { set } from "react-hook-form";
 
-const CarritoPedido = ({usuario, carrito, setCarrito, totalProductos}) => {
-  
+const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
   // useEffect(()=>{
   //   setCarrito(carrito)
   // },[carrito])
 
-  const navegacion = useNavigate()
+  const navegacion = useNavigate();
 
-  const vaciarCarrito = ()=> {
-
+  const vaciarCarrito = () => {
     Swal.fire({
-      title: 'Esta seguro de vaciar su carrito?',
+      title: "Esta seguro de vaciar su carrito?",
       text: "Deberar volver a armar su pedido en el inicio!",
-      icon: 'warning',
+      icon: "question",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, vaciar!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, vaciar!",
     }).then((result) => {
       if (result.isConfirmed) {
         setCarrito([]);
         Swal.fire(
-          'Carrito vaciado!',
-          'Su Carrito fue vaciado. <br> Puede realizar nuevamente su pedido',
-          'success'
-        )
-        navegacion("/")
+          "Carrito vaciado!",
+          "Su Carrito fue vaciado. <br> Puede realizar nuevamente su pedido",
+          "success"
+        );
+        navegacion("/");
       }
-    })
+    });
+  };
 
-
-  
-
-
-  }
-  
   return (
     <>
       <section className="mainSection letraRoboto mb-3">
@@ -57,16 +50,16 @@ const CarritoPedido = ({usuario, carrito, setCarrito, totalProductos}) => {
               lg={9}
               className="justify-content-around borderDerechoContenidoCarrito-lg mb-3"
             >
-               {carrito.map((item) => (
-                    <CardItemCarrito
-                      producto={item}
-                      key={item.idProducto}
-                      carrito={carrito}
-                      setCarrito={setCarrito}
-                      usuario={usuario}
-                      totalProductos={totalProductos}
-                    ></CardItemCarrito>
-                  ))}
+              {carrito.map((item) => (
+                <CardItemCarrito
+                  producto={item}
+                  key={item.idProducto}
+                  carrito={carrito}
+                  setCarrito={setCarrito}
+                  usuario={usuario}
+                  totalProductos={totalProductos}
+                ></CardItemCarrito>
+              ))}
               <Button
                 variant="light"
                 type="submit"
@@ -82,7 +75,9 @@ const CarritoPedido = ({usuario, carrito, setCarrito, totalProductos}) => {
                 <ListGroup.Item className="border-0">
                   <div className="d-flex justify-content-between align-items-center">
                     <span className="letra-roboto tamanioLetra">Total:</span>
-                    <span className="letra-roboto tamanioLetra">${total(carrito)}</span>
+                    <span className="letra-roboto tamanioLetra">
+                      ${total(carrito)}
+                    </span>
                   </div>
                 </ListGroup.Item>
                 <ListGroup.Item className="border-0">
