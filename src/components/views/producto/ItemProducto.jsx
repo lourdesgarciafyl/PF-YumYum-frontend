@@ -59,11 +59,12 @@ const ItemProducto = ({ producto, setProductos }) => {
             <Card.Title className="letraSpace fw-bolder">{producto.nombreProducto}</Card.Title>
             </Col>
             <Col>
-            <Form onClick={toggler}>
+            <Form>
               <Form.Check
               type="switch"
               id="custom-switch"
               className="d-flex justify-content-end align-items-center"
+              onClick={toggler}
               label={botonSwitch ? <span className="textoSpan fw-bold">{producto.estado}</span> : <span className="textoSpan">Inactivo</span>}>
               </Form.Check>
               </Form>

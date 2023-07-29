@@ -1,24 +1,32 @@
 const URLUsuario = import.meta.env.VITE_API_USUARIO;
-
+// sirve para registro:
 export const crearUsuario = async (usuario) => {
   try {
-    const nuevoUsuario = await fetch(URLUsuario, {
+    const nuevoUsuario = await fetch(URLUsuario+"/registro", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(usuario),
     });
-    const datos = await nuevoUsuario.json();
-    return {
-      status: nuevoUsuario.status,
-      id: datos.id,
-      nombreUsuario: datos.nombreUsuario,
-      apellidoUsuario: datos.apellidoUsuario,
-      email: datos.email,
-      estado: datos.estado,
-      perfil: datos.perfil,
-    }
+    return nuevoUsuario;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+// sirve para crear registro desde el admin:
+export const crearUsuarioAdmin = async (usuario) => {
+  try {
+    const nuevoUsuario = await fetch(URLUsuario+"/nuevo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuario),
+    });
+    return nuevoUsuario;
   } catch (error) {
     console.log(error);
     return null;

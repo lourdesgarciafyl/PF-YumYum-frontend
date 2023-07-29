@@ -1,10 +1,8 @@
 import { Navigate } from "react-router-dom";
 
 const RutasProtegidasCliente = ({children, usuario}) => {
-    if(usuario.perfil === "Cliente"){
+    if(usuario.perfil === "Cliente" || usuario.perfil === "Administrador" ){
         return children;
-    } else if(usuario.perfil === "Administrador"){
-        return <Navigate to={"/*"}></Navigate>
     } else{
         return <Navigate to={"/registro"}></Navigate>
     }

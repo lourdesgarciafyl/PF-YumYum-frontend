@@ -91,7 +91,6 @@ const EditarProducto = () => {
               {errors.nombreProducto?.message}
             </Form.Text>
           </Form.Group>
-
           <Form.Group className="mb-2 fw-bold" controlId="formDetalle">
             <Form.Label className="letraFormLabel">
               Detalle del producto *

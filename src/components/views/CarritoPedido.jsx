@@ -1,8 +1,16 @@
 import './../../css/carritoPedido.css';
 import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
 import CardItemCarrito from './pedido/CardItemCarrito';
+import { crearPedido } from "../helpers/queriesPedido"
+import { total } from '../helpers/queriesCarrito';
+import { useEffect } from 'react';
 
-const CarritoPedido = ({usuario}) => {
+const CarritoPedido = ({usuario, carrito, setCarrito, totalProductos}) => {
+  
+  // useEffect(()=>{
+  //   setCarrito(carrito)
+  // },[carrito])
+  
   return (
     <>
       <section className="mainSection letraRoboto mb-3">
@@ -16,8 +24,16 @@ const CarritoPedido = ({usuario}) => {
               lg={9}
               className="justify-content-around borderDerechoContenidoCarrito-lg mb-3"
             >
-              <CardItemCarrito></CardItemCarrito>
-              <CardItemCarrito></CardItemCarrito>
+               {carrito.map((item) => (
+                    <CardItemCarrito
+                      producto={item}
+                      key={item.idProducto}
+                      carrito={carrito}
+                      setCarrito={setCarrito}
+                      usuario={usuario}
+                      totalProductos={totalProductos}
+                    ></CardItemCarrito>
+                  ))}
               <Button
                 variant="light"
                 type="submit"
@@ -32,7 +48,7 @@ const CarritoPedido = ({usuario}) => {
                 <ListGroup.Item className="border-0">
                   <div className="d-flex justify-content-between align-items-center">
                     <span className="letra-roboto tamanioLetra">Total:</span>
-                    <span className="letra-roboto tamanioLetra">$5800</span>
+                    <span className="letra-roboto tamanioLetra">${total(carrito)}</span>
                   </div>
                 </ListGroup.Item>
                 <ListGroup.Item className="border-0">
