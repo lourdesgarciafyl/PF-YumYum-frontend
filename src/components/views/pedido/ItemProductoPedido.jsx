@@ -1,13 +1,15 @@
 import '../../../css/itemProductoPedido.css';
-const ItemProductoPedido = () => {
+const ItemProductoPedido = ({ item }) => {
   return (
     <>
       <tr>
         <td className=" tamanioCelda letraRoboto tamanioLetraItemTabla">
-          Hamburguesa DobleCheddar
+          {item.producto.nombreProducto}
         </td>
-        <td className="letraRoboto tamanioLetraItemTabla">2</td>
-        <td className="letraRoboto tamanioLetraItemTabla">5600</td>
+        <td className="letraRoboto tamanioLetraItemTabla">{item.cantidad}</td>
+        <td className="letraRoboto tamanioLetraItemTabla">
+          ${item.subtotalItem}
+        </td>
       </tr>
     </>
   );
