@@ -3,13 +3,25 @@ import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
 import CardItemCarrito from './pedido/CardItemCarrito';
 import { crearPedido } from "../helpers/queriesPedido"
 import { total } from '../helpers/queriesCarrito';
+import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { set } from 'react-hook-form';
 
 const CarritoPedido = ({usuario, carrito, setCarrito, totalProductos}) => {
   
   // useEffect(()=>{
   //   setCarrito(carrito)
   // },[carrito])
+
+  const navegacion = useNavigate()
+
+  const vaciarCarrito = ()=> {
+    setCarrito([]);
+       navegacion("/")
+  
+
+
+  }
   
   return (
     <>
@@ -38,6 +50,7 @@ const CarritoPedido = ({usuario, carrito, setCarrito, totalProductos}) => {
                 variant="light"
                 type="submit"
                 className="mt-2 mb-3 botonVaciarCarrito"
+                onClick={vaciarCarrito}
               >
                 Vaciar Carrito
               </Button>
