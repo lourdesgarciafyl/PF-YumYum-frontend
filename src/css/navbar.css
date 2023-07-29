@@ -8,7 +8,7 @@
 
 .nav-link {
   color: #ffffff !important;
-}
+} 
 .nav-link:hover {
   color: #f7b538 !important;
 }
@@ -29,22 +29,33 @@
   background-color: #f7b538;
 }
 
+.iconoDelivery {
+  width: 2.5rem;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.5));
+}
+
 #carrito {
   left: 20vw;
   position: relative;
 }
 
-.carritoConPedidos p {
-  font-size: 10px;
-}
+.btnCarrito:hover{
+  outline: #ffffff;
+  background-color:#af0303;
 
-#cantidadProductosCliente {
-  position: relative;
-  right: 55%;
-  bottom: 1px;
-  font-size: 10px;
-  color: rgb(241, 171, 18);
-}
+transform: scale(1.1);}
+
+  .btnCarrito:active{
+    outline: #ffffff;
+    background-color:#f7b538;
+    transform: scale( 1);}
+
+  .btnCarrito {
+    outline: #ffffff;
+    background-color:transparent;
+  border: none;}
+
+
 
 .btn-dark {
   background-color: rgb(241, 171, 18);
@@ -60,14 +71,17 @@
     max-width: 160px;
   }
 
+  
+#carrito {
+  left: -5vw;
+  position: relative;
+}
+
   .navBar2 {
     max-width: 100px;
   }
 
-  #carrito {
-    left: 20px;
-    position: relative;
-  }
+
 }
 
 @media (max-width: 576px) {
@@ -75,12 +89,16 @@
     max-width: 100px;
   }
 
+  .iconoDelivery {
+    width: 1.7rem;
+    color: #ffffff;
+  }
+
   #carrito {
     left: -20px;
     position: relative;
+    
   }
 
-  .carritoConPedidos p {
-    font-size: 8px;
-  }
+
 }
