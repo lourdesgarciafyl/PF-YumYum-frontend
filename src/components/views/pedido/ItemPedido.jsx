@@ -5,6 +5,8 @@ import { Trash3Fill } from 'react-bootstrap-icons';
 import { ToggleAcordion } from '../../helpers/ToggleAcordion';
 import ItemProductoPedido from './ItemProductoPedido';
 import { formatearFecha } from '../../helpers/formateoFecha';
+import Swal from 'sweetalert2';
+import { consultaEntregarPedido, obtenerListaPedidos } from '../../helpers/queriesPedido';
 
 const ItemPedido = ({ index, pedido, setPedidos }) => {
   const estadoSwitch =
@@ -21,6 +23,40 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
   const cambioCheckbox = (index) => {
     if (!botonSwitch) {
       console.log('pasa a estado de Entregado');
+      Swal.fire({
+        title: `¿Estás por pasar a entregado el pedido N°:${index}?`,
+        text: 'No se puede revertir este paso',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Cambiar',
+        cancelButtonText: 'Cancelar',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          consultaEntregarPedido(index).then((respuesta) => {
+            console.log(respuesta);
+            if (respuesta && respuesta.status === 200) {
+              Swal.fire(
+                'Pedido Editado',
+                `El pedido N°${index} pasó a entregado correctamente`,
+                'success'
+              );
+              obtenerListaPedidos().then((respuesta) => {
+                setPedidos(respuesta);
+              });
+            } else {
+              Swal.fire(
+                'Ocurrió un error',
+                `Intente realizar esta operación nuevamente más tarde`,
+                'error'
+              );
+            }
+          });
+        }else{
+          setBotonSwitch(false);
+        }
+      });
     } else {
       console.log('pasa a estado de En Proceso');
     }
