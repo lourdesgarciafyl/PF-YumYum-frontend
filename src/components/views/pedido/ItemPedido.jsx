@@ -5,15 +5,91 @@ import { Trash3Fill } from 'react-bootstrap-icons';
 import { ToggleAcordion } from '../../helpers/ToggleAcordion';
 import ItemProductoPedido from './ItemProductoPedido';
 import { formatearFecha } from '../../helpers/formateoFecha';
+import Swal from 'sweetalert2';
+import { consultaEnProcesoPedido, consultaEntregarPedido, obtenerListaPedidos } from '../../helpers/queriesPedido';
 
 const ItemPedido = ({ index, pedido, setPedidos }) => {
-  const [botonSwitch, setBotonSwitch] = useState(false);
+  const estadoSwitch =
+    pedido.estado === 'En proceso'
+      ? false
+      : pedido.estado === 'Entregado'
+      ? true
+      : false;
+  const [botonSwitch, setBotonSwitch] = useState(estadoSwitch);
 
   const toggler = () => {
     botonSwitch ? setBotonSwitch(false) : setBotonSwitch(true);
   };
   const cambioCheckbox = (index) => {
-    console.log(index);
+    if (!botonSwitch) {
+      Swal.fire({
+        title: `¿Pasar a Entregado el pedido N°:${index}?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#f7b538',
+        cancelButtonColor: '#c32f27',
+        confirmButtonText: 'Cambiar',
+        cancelButtonText: 'Cancelar',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          consultaEntregarPedido(index).then((respuesta) => {
+            if (respuesta && respuesta.status === 200) {
+              Swal.fire(
+                'Pedido Editado',
+                `El pedido N°${index} pasó a Entregado correctamente`,
+                'success'
+              );
+              obtenerListaPedidos().then((respuesta) => {
+                setPedidos(respuesta);
+              });
+            } else {
+              setBotonSwitch(false);
+              Swal.fire(
+                'Ocurrió un error',
+                `Intente realizar esta operación nuevamente más tarde`,
+                'error'
+              );
+            }
+          });
+        }else{
+          setBotonSwitch(false);
+        }
+      });
+    } else {
+      Swal.fire({
+        title: `¿Volver a "En Proceso" el pedido N°:${index}?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#f7b538',
+        cancelButtonColor: '#c32f27',
+        confirmButtonText: 'Cambiar',
+        cancelButtonText: 'Cancelar',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          consultaEnProcesoPedido(index).then((respuesta) => {
+            if (respuesta && respuesta.status === 200) {
+              Swal.fire(
+                'Pedido Editado',
+                `El pedido N°${index} pasó a "En Proceso" correctamente`,
+                'success'
+              );
+              obtenerListaPedidos().then((respuesta) => {
+                setPedidos(respuesta);
+              });
+            } else {
+              setBotonSwitch(true);
+              Swal.fire(
+                'Ocurrió un error',
+                `Intente realizar esta operación nuevamente más tarde`,
+                'error'
+              );
+            }
+          });
+        }else{
+          setBotonSwitch(true);
+        }
+      });
+    }
   };
   return (
     <Col md={6} xxl={4}>
@@ -52,6 +128,7 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
                     id={index}
                     className="d-flex justify-content-end align-items-center"
                     onClick={toggler}
+                    checked={botonSwitch}
                     onChange={() => cambioCheckbox(`${index}`)}
                     label={
                       botonSwitch ? (
