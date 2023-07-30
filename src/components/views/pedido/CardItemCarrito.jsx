@@ -41,7 +41,6 @@ const CardItemCarrito = ({ producto, carrito, setCarrito }) => {
 
   // funcion para restar
   const restar = (productoRestar) => {
-    console.log(carrito);
     if (
       carrito.length < 15 &&
       carrito.length > 1 &&
@@ -59,21 +58,21 @@ const CardItemCarrito = ({ producto, carrito, setCarrito }) => {
         aux[indice].subtotalItem = aux[indice].precio * aux[indice].cantidad;
         console.log(aux[indice]);
         setCarrito(aux);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Se eliminó el producto del carrito.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Se eliminó el producto del carrito.",
-        showConfirmButton: false,
-        timer: 1500,
-      });
     }
   };
 
   const eliminarProducto = (idProducto) => {
     Swal.fire({
-      title: "¿Seguro que deseas eliminar el producto?",
-      text: "El producto será eliminado del carrito",
+      title: `¿Seguro que deseas eliminar ${producto.nombreProducto}?`,
+      text: "Se eliminará del carrito actual.",
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Eliminar",
@@ -82,22 +81,21 @@ const CardItemCarrito = ({ producto, carrito, setCarrito }) => {
       cancelButtonColor: "#3085d6",
     }).then((result) => {
       if (result.isConfirmed) {
-        // Eliminamos el producto del carrito si el usuario confirma
-        const updatedCarrito = carrito.filter(
+        // borramos el item cuando el usuario confirme
+        const actualizarCarrito = carrito.filter(
           (itemCarrito) => itemCarrito.idProducto !== idProducto
         );
-        setCarrito(updatedCarrito);
+        setCarrito(actualizarCarrito);
         Swal.fire({
           title: "Producto eliminado",
-          text: "Producto eliminado del carrito correctamente",
+          text: `${producto.nombreProducto} eliminado del carrito correctamente`,
           icon: "success",
-          timer: 1600,
+          timer: 1700,
           showConfirmButton: false,
         });
       }
     });
   };
-
   return (
     <Card className="letraRoboto mb-3">
       <Card.Body>
