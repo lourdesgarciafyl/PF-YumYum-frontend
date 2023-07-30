@@ -69,6 +69,33 @@ const CardItemCarrito = ({ producto, carrito, setCarrito }) => {
       });
     }
   };
+  const eliminarProducto = (idProducto) => {
+    Swal.fire({
+      title: `¿Seguro que deseas eliminar ${producto.nombreProducto}?`,
+      text: "Se eliminará del carrito actual.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Eliminar",
+      cancelButtonText: "Cancelar",
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // borramos el item cuando el usuario confirme
+        const actualizarCarrito = carrito.filter(
+          (itemCarrito) => itemCarrito.idProducto !== idProducto
+        );
+        setCarrito(actualizarCarrito);
+        Swal.fire({
+          title: "Producto eliminado",
+          text: `${producto.nombreProducto} eliminado del carrito correctamente`,
+          icon: "success",
+          timer: 1700,
+          showConfirmButton: false,
+        });
+      }
+    });
+  };
   return (
     <Card className="letraRoboto mb-3">
       <Card.Body>
@@ -125,6 +152,7 @@ const CardItemCarrito = ({ producto, carrito, setCarrito }) => {
             <Trash3Fill
               className="letraRoja iconoEliminar"
               size={25}
+              onClick={() => eliminarProducto(producto.idProducto)}
             ></Trash3Fill>
 
             <Card.Text as="h5" className="letraRoboto">
