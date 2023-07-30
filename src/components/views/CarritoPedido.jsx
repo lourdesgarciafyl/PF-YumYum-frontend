@@ -33,10 +33,9 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
     });
   };
 
-  const generarPedido = (usuario, carrito) => {
-    console.log(usuario)
-    console.log(carrito)
-    crearPedido(usuario, carrito).then((respuestaCreated) => {
+  const generarPedido = (usuario, carrito, totalCarrito) => {
+   
+    crearPedido(usuario, carrito, totalCarrito).then((respuestaCreated) => {
       if (respuestaCreated && respuestaCreated.status === 201) {
         Swal.fire(
           "Pedido Realizado",
@@ -105,7 +104,7 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
                 variant="primary"
                 type="submit"
                 className="mt-2 mb-1 botonGenerarPedido"
-                onClick={()=> generarPedido(usuario, carrito)}
+                onClick={()=> generarPedido(usuario, carrito,total(carrito))}
               >
                 Generar Pedido
               </Button>
