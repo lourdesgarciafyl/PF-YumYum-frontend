@@ -44,7 +44,7 @@ const CardItemCarrito = ({ producto, carrito, setCarrito }) => {
     console.log(carrito);
     if (
       carrito.length < 15 &&
-      carrito.length > 1 &&
+      carrito.length > 0 &&
       productoRestar.cantidad > 1
     ) {
       const existeProducto = carrito.find(
