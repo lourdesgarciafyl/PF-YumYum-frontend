@@ -74,3 +74,33 @@ export const consultaProducto = async (id) => {
       console.log(error);
   }
 };
+
+export const consultaActivarProducto = async (id) => {
+  try {
+    const respuesta = await fetch(`${URLProducto}/activar/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export const consultaDesactivarProducto = async (id) => {
+  try {
+    const respuesta = await fetch(`${URLProducto}desactivar/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
