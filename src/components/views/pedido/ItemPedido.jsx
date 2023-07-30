@@ -121,6 +121,7 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
       }) 
     }})
   }
+  
   return (
     <Col md={6} xxl={4}>
       <Accordion defaultActiveKey="0" className="my-2">
