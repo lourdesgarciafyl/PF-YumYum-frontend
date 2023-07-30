@@ -23,7 +23,7 @@ const CardItemCarrito = ({ producto, carrito, setCarrito }) => {
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Se agregó producto al carrito.",
+        title: `Se agregó 1 ${productoSumado.nombreProducto} al carrito.`,
         showConfirmButton: false,
         timer: 1500,
       });
@@ -41,9 +41,10 @@ const CardItemCarrito = ({ producto, carrito, setCarrito }) => {
 
   // funcion para restar
   const restar = (productoRestar) => {
+    console.log(carrito);
     if (
       carrito.length < 15 &&
-      carrito.length > 1 &&
+      carrito.length > 0 &&
       productoRestar.cantidad > 1
     ) {
       const existeProducto = carrito.find(
@@ -58,17 +59,16 @@ const CardItemCarrito = ({ producto, carrito, setCarrito }) => {
         aux[indice].subtotalItem = aux[indice].precio * aux[indice].cantidad;
         console.log(aux[indice]);
         setCarrito(aux);
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Se eliminó el producto del carrito.",
-          showConfirmButton: false,
-          timer: 1500,
-        });
       }
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: `Se eliminó 1 ${productoRestar.nombreProducto} del carrito`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
   };
-
   const eliminarProducto = (idProducto) => {
     Swal.fire({
       title: `¿Seguro que deseas eliminar ${producto.nombreProducto}?`,
