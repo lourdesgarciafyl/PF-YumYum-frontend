@@ -1,22 +1,31 @@
-import { Container, Row, Button, Carousel } from 'react-bootstrap';
-import '../../css/inicio.css';
-import CardProducto from '../../components/views/producto/CardProducto';
+import { Container, Row, Button, Carousel, Col } from "react-bootstrap";
+import "../../css/inicio.css";
+import CardProducto from "../../components/views/producto/CardProducto";
 import {
   consultaProductosPorCategoria,
   obtenerListaProductos,
-} from '../helpers/queriesProducto';
-import Nav from 'react-bootstrap/Nav';
-import { useEffect, useState } from 'react';
-import banner2 from '../../assets/img/Banner2.jpg';
-import banner3 from '../../assets/img/Banner3.jpg';
-import banner4 from '../../assets/img/Banner4.jpg';
-import ItemNavCategoria from '../helpers/ItemNavCategoria';
-import { obtenerListaCategoriasActivas } from '../helpers/querieCategoria';
+} from "../helpers/queriesProducto";
+import Nav from "react-bootstrap/Nav";
+import { useEffect, useState } from "react";
+import banner2 from "../../assets/img/Banner2.jpg";
+import banner3 from "../../assets/img/Banner3.jpg";
+import banner4 from "../../assets/img/Banner4.jpg";
+import logoHeroSection from "../../assets/LogoYumHeroSection.svg";
+import ItemNavCategoria from "../helpers/ItemNavCategoria";
+import { obtenerListaCategoriasActivas } from "../helpers/querieCategoria";
+import { Link } from "react-router-dom";
 
-const Inicio = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, usuario, totalProductos }) => {
+const Inicio = ({
+  usuarioLogueado,
+  setusuarioLogueado,
+  carrito,
+  setCarrito,
+  usuario,
+  totalProductos,
+}) => {
   const [categorias, setCategorias] = useState([]);
   const [productos, setProductos] = useState([]);
-  const [categoriaActiva, setCategoriaActiva] = useState('Todo');
+  const [categoriaActiva, setCategoriaActiva] = useState("Todo");
 
   // const categorias = [
   //   'Todo',
@@ -44,7 +53,7 @@ const Inicio = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, usua
   }, []);
 
   const manejadorCambioCategoria = (categoria) => {
-    if (categoria === 'Todo') {
+    if (categoria === "Todo") {
       setCategoriaActiva(categoria);
       obtenerListaProductos()
         .then((repuesta) => {
@@ -67,22 +76,42 @@ const Inicio = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, usua
 
   return (
     <section className="mainSection letraRoboto mb-3">
-      <Carousel fade className="Carrusel-MD-LG">
-        <Carousel.Item>
-          <img src={banner2} />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img src={banner3} />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img src={banner4} />
-        </Carousel.Item>
-      </Carousel>
+      <>
+        {" "}
+        <div className="position-relative">
+          {" "}
+          <img className="w-100" src={banner2} />{" "}
+        </div>
+      </>
+      <Container
+        fluid="md"
+        id="contenidoHeroSection"
+        className="position-absolute"
+      >
+        <Row>
+          <Col sm={12} md={6} lg={4}>
+            {" "}
+            <img src={logoHeroSection} alt="Logotipo YumYum" />{" "}
+          </Col>
+          <Col Classname=" flex-column">
+            {" "}
+            <h1 className="text-center">
+              Tu Comida favorita <br></br> directo a tu puerta{" "}
+            </h1>{" "}
+            <Link className="w-100 d-flex justify-content-center">
+              {" "}
+              <Button variant="dark" className="rounded-5 btn-lg">
+                Pedí Ahora
+              </Button>{" "}
+            </Link>{" "}
+          </Col>
+        </Row>
+      </Container>
       ;
       <Container>
-        <h1 className="display-4 text-center text-white mt-3 letraSpace">
+        <h2 className="display-4 text-center text-white mt-3 letraSpace">
           Menú
-        </h1>
+        </h2>
         <hr />
         <Nav className="justify-content-center my-4 menuBuscador">
           {categorias.map((categoria) => (
@@ -97,7 +126,14 @@ const Inicio = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, usua
         <hr className="mb-5" />
         <Row className="justify-content-around menu">
           {productos.map((producto) => (
-            <CardProducto key={producto._id} producto={producto} carrito={carrito} setCarrito={setCarrito} usuarioLogueado={usuarioLogueado} totalProductos={totalProductos} ></CardProducto>
+            <CardProducto
+              key={producto._id}
+              producto={producto}
+              carrito={carrito}
+              setCarrito={setCarrito}
+              usuarioLogueado={usuarioLogueado}
+              totalProductos={totalProductos}
+            ></CardProducto>
           ))}
         </Row>
       </Container>

@@ -43,6 +43,23 @@
   width: auto;
 }
 
+#contenidoHeroSection {
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;  
+
+}
+
+#contenidoHeroSection h1 {
+  font-size: 5rem;
+}
+#contenidoHeroSection img {
+  filter: drop-shadow(2px 5px 8px rgba(0, 0, 0, 4));
+  width: 100%;
+}
+
+
 .detalleLink {
   color: #ffffff;
   font-size: medium;
@@ -79,7 +96,7 @@
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
   text-shadow: 1px 3px 5px rgba(0, 0, 0, 1),-2px -1px 5px rgba(224, 224, 224, 0.653);
   border-radius: 25px;
-  font-family: "Permanent Marker", cursive !important;
+
   }
 
 .btnAgregar {
@@ -120,7 +137,7 @@
 
 .Carrusel-MD-LG img {
   width: 100%;
-  max-height: 85vh;
+  max-height: 50vh;
   object-fit: cover;
   object-position: 50%;
 }
