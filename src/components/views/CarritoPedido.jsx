@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useEffect } from "react";
 import { set } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
   // useEffect(()=>{
@@ -45,7 +46,9 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
             Mi pedido
           </h1>
           <hr className="colorHr" />
-          <Row>
+          {carrito.length > 0 ? (
+          <>
+                   <Row>
             <Col
               lg={9}
               className="justify-content-around borderDerechoContenidoCarrito-lg mb-3"
@@ -96,6 +99,13 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
               </Button>
             </Col>
           </Row>
+          </> ) : ( 
+          <>
+          <div className="letraAmarilla text-center letraRoboto">
+            <h2 className="fs-1 fw-bold">No hay productos tu carrito</h2>
+            <Button as={Link} to={"/"} className="volverMenu mb-2 letraSpace">Volver al menú</Button>
+          </div>
+          </> )}
         </Container>
       </section>
     </>
