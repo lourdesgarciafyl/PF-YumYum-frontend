@@ -1,11 +1,17 @@
-import { Col, Card, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { Plus } from 'react-bootstrap-icons';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
+import { Col, Card, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Plus } from "react-bootstrap-icons";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
-const CardProducto = ({ producto, carrito, setCarrito, totalProductos, usuarioLogueado }) => {
+const CardProducto = ({
+  producto,
+  carrito,
+  setCarrito,
+  totalProductos,
+  usuarioLogueado,
+}) => {
   const [mostrarElementos, setmostrarElementos] = useState(false);
   const handleMouseEnter = () => {
     setmostrarElementos(true);
@@ -13,13 +19,16 @@ const CardProducto = ({ producto, carrito, setCarrito, totalProductos, usuarioLo
   const handleMouseLeave = () => {
     setmostrarElementos(false);
   };
-  const navegacion = useNavigate()
+  const navegacion = useNavigate();
   const { nombreProducto, precio, imagen, _id } = producto;
-  
+
   //Función que agrega el producto si no existe, y si existe cambia su cantidad.
   const sumarProductoCarrito = (productoSumado) => {
-    console.log(productoSumado)
-    if(usuarioLogueado.perfil === "Cliente" || usuarioLogueado.perfil === "Administrador") {
+    console.log(productoSumado);
+    if (
+      usuarioLogueado.perfil === "Cliente" ||
+      usuarioLogueado.perfil === "Administrador"
+    ) {
       if (totalProductos < 15) {
         const existeProducto = carrito.find(
           (itemCarrito) => itemCarrito.idProducto === productoSumado._id
@@ -40,37 +49,37 @@ const CardProducto = ({ producto, carrito, setCarrito, totalProductos, usuarioLo
             nombreProducto: productoSumado.nombreProducto,
             cantidad: 1,
             subtotalItem: productoSumado.precio * 1,
-            precio: productoSumado.precio
+            precio: productoSumado.precio,
           };
           setCarrito([...carrito, nuevoProducto]);
         }
         Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Se agregó producto al carrito.',
+          position: "top-end",
+          icon: "success",
+          title: "Se agregó producto al carrito.",
           showConfirmButton: false,
           timer: 1500,
         });
       } else {
-        console.log('Solo se permite agregar 15 productos al carrito');
+        console.log("Solo se permite agregar 15 productos al carrito");
         Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'Se permiten máximo 15 productos al carrito',
+          position: "top-end",
+          icon: "error",
+          title: "Se permiten máximo 15 productos al carrito",
           showConfirmButton: false,
           timer: 2000,
         });
       }
-    } else if (!usuarioLogueado.perfil){
-      navegacion("/login")
-    }}
+    } else if (!usuarioLogueado.perfil) {
+      navegacion("/login");
+    }
+  };
 
-    const renderTooltip = (props) => (
-      <Tooltip id="button-tooltip" {...props}>
-         Agregar a mi pedido
-      </Tooltip>
-    );
-    
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Agregar <b> {nombreProducto}</b> a mi pedido
+    </Tooltip>
+  );
 
   return (
     <Col
@@ -85,41 +94,36 @@ const CardProducto = ({ producto, carrito, setCarrito, totalProductos, usuarioLo
         <Card.Img variant="top" src={imagen} className="position-relative" />
         <Card.Body
           className={
-            mostrarElementos ? 'd-block d-lg-block' : 'd-none d-lg-none'
+            mostrarElementos ? "d-block d-lg-block" : "d-none d-lg-none"
           }
         >
           <div className="justify-content-around flex-column align-items-center w-100 d-flex">
-            <div className="fw-bolder position-absolute precio">
-              <p className="text-center fw-bold fs-1">
+            <div className="fw-bolder position-absolute precio d-flex flex-column align-items-center">
+              <span className="text-center fw-bold fs-1">
                 <b className="fw-bolder fs-1">$</b>
-                {precio}{' '}
-              </p>{' '}
-              <Button
-                className="btn btn-dark"
+                {precio}{" "}
+              </span>{" "}
+              <OverlayTrigger
+                placement="right"
+                delay={{ show: 250, hide: 400 }}
+                overlay={renderTooltip}
+              >
+                <Button variant="light" className="rounded-5 btnAgregar">
+                  {" "}
+                  <Plus
+                    className="fs-1"
+                    onClick={() => sumarProductoCarrito(producto)}
+                  ></Plus>{" "}
+                </Button>
+              </OverlayTrigger>
+              <Link
+                className="verMas btn btn-outline-dark"
                 as={Link}
                 to={`/detalle/${producto._id}`}
               >
-                Ver Detalles
-              </Button>
+                Ver detalle.
+              </Link>
             </div>
-
-            <OverlayTrigger
-      placement="right"
-      delay={{ show: 250, hide: 400 }}
-      overlay={renderTooltip}
-    >
-
-
-            <Button variant="light" className="rounded-5">
-              {' '}
-              <Plus
-                className="fs-1"
-                onClick={() => sumarProductoCarrito(producto)}
-              ></Plus>{' '}
-            </Button>
-
-            </OverlayTrigger>
-
           </div>
         </Card.Body>
       </Card>

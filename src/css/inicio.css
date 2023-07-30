@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap");
+
 .menu.card-text {
   font-size: x-small;
   display: flex;
@@ -13,24 +15,28 @@
   max-height: 450px;
   min-height: 340px;
   max-width: 15rem;
-  color: #f7b538;
+  color: #ffffff;
   transition: transform 0.3s ease-in-out;
+  font-family: "Cherry Bomb One", cursive;
 }
 
 .menu .card img {
-  filter: drop-shadow(2px 5px 12px rgba(0, 0, 0, 2));
+  filter: drop-shadow(2px 5px 8px rgba(0, 0, 0, 4));
 }
 
 .menu .card:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
   transition: transform 0.4s ease-in;
-  color: white;
+  color: #f7b538;
   filter: brightness(105%);
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 4));
 }
 
 .menu .card-body {
   margin: 0px;
   padding: 0px;
+  
+ 
 }
 
 .menu .row-producto > * {
@@ -63,51 +69,51 @@
   border-radius: 15px;
 }
 
-.verMas {
-  border: #fbfbfb solid 1px;
-  margin: 15px;
-  font-size: 39px !important;
-  border-radius: 50%;
-  margin-top: -15px;
-}
-
-.verMas:hover {
-  border: #ffffff solid 1px;
-  color: #f7b538;
-}
-
-.verMas:hover {
-  border: #f7b538 solid 1px;
-  color: white;
-  transition: transform 0.1s ease-in-out;
-}
-.verMas:active {
-  border: #ffffff solid 1px;
-  color: #f7b538;
-  transform: scale(1.3);
-  transition: transform 0.1s ease-in-out;
-}
-
 .precio {
-  background-color: #ffffff00 !important;
- 
   padding: 60px;
   min-width: 75%;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white !important;
-  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);  
-  font-size: 25px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 3px 5px rgba(0, 0, 0, 1),-2px -1px 5px rgba(224, 224, 224, 0.653);
   border-radius: 25px;
-}
+  font-family: "Permanent Marker", cursive !important;
+  }
 
 .btnAgregar {
-  color: #000000;
-  background-color: white;
+  color: black;
+  padding: 1px;
+  background-color: rgba(255, 255, 255, 0.504);
   border: 1px solid rgb(0, 0, 0);
-  border: none;
   outline: none;
+}
+
+.btnAgregar:hover {
+  border: 1px solid rgb(0, 0, 0);
+  background-color: rgba(47, 33, 33, 0.504);
+  color: white
+}
+.btnAgregar:active {
+  transform: scale(1.1);
+}
+
+.verMas {
+  margin-top: 15px;
+  background-color: #c32f27;
+  color: #ffffff;
+  font-size: 10px;
+ 
+}
+.verMas:hover {
+  background-color: #f7b538;
+  
+  color: white;
+}
+
+.verMas:active {
+  background-color: rgba(0, 0, 0, 0.308) !important;
 }
 
 /* El carrusel debe tener 4 imagenes para sm y 4 imagenes para LG */
