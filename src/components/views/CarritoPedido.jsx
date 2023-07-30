@@ -6,12 +6,8 @@ import { total } from "../helpers/queriesCarrito";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useEffect } from "react";
-import { set } from "react-hook-form";
 
 const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
-  // useEffect(()=>{
-  //   setCarrito(carrito)
-  // },[carrito])
 
   const navegacion = useNavigate();
 
@@ -33,6 +29,23 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
           "success"
         );
         navegacion("/");
+      }
+    });
+  };
+
+  const generarPedido = (usuario, carrito, totalCarrito) => {
+   
+    crearPedido(usuario, carrito, totalCarrito).then((respuestaCreated) => {
+      if (respuestaCreated && respuestaCreated.status === 201) {
+        Swal.fire(
+          "Pedido Realizado",
+          `Su pedido se realizó correctamente`,
+          `success`
+        );
+        setCarrito([])
+        navegacion("/");
+      } else {
+        Swal.fire(`Ocurrió un error`, `Intente nuevamente más tarde`, `error`);
       }
     });
   };
@@ -91,6 +104,7 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
                 variant="primary"
                 type="submit"
                 className="mt-2 mb-1 botonGenerarPedido"
+                onClick={()=> generarPedido(usuario, carrito,total(carrito))}
               >
                 Generar Pedido
               </Button>
