@@ -37,6 +37,23 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
     });
   };
 
+  const generarPedido = (nuevoPedido) => {
+    crearPedido(nuevoPedido).then((respuestaCreated) => {
+      if (respuestaCreated && respuestaCreated.status === 201) {
+        Swal.fire(
+          "Pedido Realizado",
+          `Su pedido se realizó correctamente`,
+          `success`
+        );
+
+        navegacion("/");
+      } else {
+        Swal.fire(`Ocurrió un error`, `Intente nuevamente más tarde`, `error`);
+        console.log(nuevoPedido);
+      }
+    });
+  };
+
   return (
     <>
       <section className="mainSection letraRoboto mb-3">
@@ -91,6 +108,7 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
                 variant="primary"
                 type="submit"
                 className="mt-2 mb-1 botonGenerarPedido"
+                onClick={() => generarPedido(usuario)}
               >
                 Generar Pedido
               </Button>
