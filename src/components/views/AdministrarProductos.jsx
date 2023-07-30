@@ -24,7 +24,7 @@ const AdministrarProducto = () => {
             </div>
             <Row>
             {
-                productos.map((producto)=><ItemProducto key={producto._id} producto={producto} setProductos={setProductos}></ItemProducto> )
+                productos.map((producto)=><ItemProducto key={producto._id} index={producto._id} producto={producto} setProductos={setProductos}></ItemProducto> )
             }
             </Row> 
         </Container>

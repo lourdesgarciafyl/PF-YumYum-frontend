@@ -57,3 +57,7 @@
     background-color: #b8231c !important;
     border-color: #b8231c;
   }  
+  .textoSpan {
+    margin-left: 5px;
+    font-size: 1.1rem;
+  }
