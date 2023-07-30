@@ -4,7 +4,7 @@ const dia = fecha.getDate();
 const mes = fecha.getMonth();
 const anio = fecha.getFullYear();
 
-export const crearPedido = async (usuario) => {
+export const crearPedido = async (usuario, carrito) => {
   let pedido = {};
   pedido.usuario = usuario.nombreUsuario;
   pedido.productos = carrito;
@@ -18,6 +18,7 @@ export const crearPedido = async (usuario) => {
       },
       body: JSON.stringify(pedido),
     });
+    carrito = [];
     return nuevoPedido;
   } catch (error) {
     console.log(error);
