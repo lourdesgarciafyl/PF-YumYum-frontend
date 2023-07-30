@@ -3,41 +3,13 @@ import { Card, Row, Col } from "react-bootstrap";
 import { Trash3Fill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import sumarProducto from "../../helpers/funcionSumarCarrito";
 
-const CardItemCarrito = ({ producto, carrito, setCarrito }) => {
+const CardItemCarrito = ({ producto, carrito, setCarrito, totalProductos }) => {
   // Funcion para sumar un producto
   const sumar = (productoSumado) => {
-    if (carrito.length < 15) {
-      const existeProducto = carrito.find(
-        (itemCarrito) => itemCarrito.idProducto === productoSumado.idProducto
-      );
-      if (existeProducto) {
-        const indice = carrito.findIndex(
-          (prod) => prod.idProducto === productoSumado.idProducto
-        );
-        const aux = [...carrito];
-        aux[indice].cantidad = aux[indice].cantidad + 1;
-        aux[indice].subtotalItem = aux[indice].precio * aux[indice].cantidad;
-        setCarrito(aux);
-      }
-     Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: `Se agregó 1 ${productoSumado.nombreProducto} al carrito.`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    } else {
-      console.log("Solo se permite agregar 15 productos al carrito");
-      Swal.fire({
-        position: "top-end",
-        icon: "error",
-        title: "Se permiten máximo 15 productos al carrito",
-        showConfirmButton: false,
-        timer: 2000,
-      });
-    }
-  };
+    setCarrito(sumarProducto(productoSumado,carrito,totalProductos));
+  }
 
   // funcion para restar
   const restar = (productoRestar) => {
