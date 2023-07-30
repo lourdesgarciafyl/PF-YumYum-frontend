@@ -20,10 +20,10 @@ const CardItemCarrito = ({ producto, carrito, setCarrito }) => {
         aux[indice].subtotalItem = aux[indice].precio * aux[indice].cantidad;
         setCarrito(aux);
       }
-      Swal.fire({
+     Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Se agregó producto al carrito.",
+        title: `Se agregó 1 ${productoSumado.nombreProducto} al carrito.`,
         showConfirmButton: false,
         timer: 1500,
       });
@@ -63,7 +63,7 @@ const CardItemCarrito = ({ producto, carrito, setCarrito }) => {
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Se eliminó el producto del carrito.",
+        title: `Se eliminó 1 ${productoRestar.nombreProducto} del carrito`,
         showConfirmButton: false,
         timer: 1500,
       });
