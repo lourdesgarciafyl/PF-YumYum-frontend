@@ -23,7 +23,7 @@
 
 .menu .card:hover {
   transform: scale(1.1);
-  transition: transform 0.3s ease-in;
+  transition: transform 0.4s ease-in;
   color: white;
   filter: brightness(105%);
 }
@@ -89,17 +89,17 @@
 }
 
 .precio {
-  background-color: #27252154 !important;
-  backdrop-filter: blur(0.5px);
-  padding: 23px;
+  background-color: #ffffff00 !important;
+ 
+  padding: 60px;
   min-width: 75%;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white !important;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  border-radius: 48px;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);  
   font-size: 25px;
+  border-radius: 25px;
 }
 
 .btnAgregar {
