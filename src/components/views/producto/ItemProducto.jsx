@@ -86,7 +86,7 @@ const ItemProducto = ({ producto, setProductos, index }) => {
         });
       } else {
         Swal.fire({
-          title: `¿Volver a Inactivo el producto N°:${producto.nombreProducto}?`,
+          title: `¿Pasar a Inactivo el producto N°:${producto.nombreProducto}?`,
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#f7b538',
@@ -98,8 +98,8 @@ const ItemProducto = ({ producto, setProductos, index }) => {
             consultaDesactivarProducto(index).then((respuesta) => {
               if (respuesta && respuesta.status === 200) {
                 Swal.fire(
-                  'Pedido Editado',
-                  `El pedido N°${index} pasó a "En Proceso" correctamente`,
+                  'Producto editado',
+                  `El producto pasó a Inactivo correctamente`,
                   'success'
                 );
                 obtenerListaProductos().then((respuesta) => {
