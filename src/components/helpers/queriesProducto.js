@@ -92,7 +92,7 @@ export const consultaActivarProducto = async (id) => {
 
 export const consultaDesactivarProducto = async (id) => {
   try {
-    const respuesta = await fetch(`${URLProducto}desactivar/${id}`, {
+    const respuesta = await fetch(`${URLProducto}/desactivar/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
