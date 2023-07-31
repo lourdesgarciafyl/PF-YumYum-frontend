@@ -8,7 +8,6 @@ import {
 import Nav from "react-bootstrap/Nav";
 import { useEffect, useState } from "react";
 import videoHero from "../../assets/videoHero.mp4";
-
 import logoHeroSection from "../../assets/LogoYumHeroSection.svg";
 import ItemNavCategoria from "../helpers/ItemNavCategoria";
 import { obtenerListaCategoriasActivas } from "../helpers/querieCategoria";
@@ -17,7 +16,7 @@ import { Pagination } from "react-bootstrap";
 
 const Inicio = ({
   usuarioLogueado,
-  setusuarioLogueado,
+  setUsuarioLogueado,
   carrito,
   setCarrito,
   usuario,
@@ -32,14 +31,6 @@ const Inicio = ({
   const [paginasPorCategoria, setPaginasPorCategoria] = useState({ Todo: 1 });
   const itemsPorPagina = 8;
 
-  // const categorias = [
-  //   'Todo',
-  //   'Pizza',
-  //   'Hamburguesa',
-  //   'Veggie',
-  //   'Bebida',
-  //   'Otro',
-  // ];
   useEffect(() => {
     obtenerListaCategoriasActivas()
       .then((respuesta) =>
@@ -121,32 +112,29 @@ const Inicio = ({
                   />
                 </Col>
                 <Col>
-                  {" "}
                   <h1 className="text-center text-white">
-                    Tu Comida favorita <br></br> directo a tu puerta{" "}
-                  </h1>{" "}
-                  <Link className="w-100 d-flex justify-content-center text-decoration-none ">
-                    {" "}
+                    Tu Comida favorita directo a tu puerta
+                  </h1>
+                  <Link className="w-100 d-flex justify-content-center text-decoration-none">
                     <Button
                       variant="outline-warning"
                       className="mt-5 "
                       id="botonHero"
                     >
-                      <span>Pedí Ahora </span>
-                    </Button>{" "}
-                  </Link>{" "}
+                      <span>Pedí Ahora</span>
+                    </Button>
+                  </Link>
                 </Col>
               </Row>
             </Container>
           </div>
         </div>
       </>
-      ;
       <Container>
         <h1 className="display-4 text-center text-white mt-3 letraSpace mb-2 titulosInicio">
           Disfruta de nuestras PROMOS
         </h1>
-        <hr className="mb-4"></hr>
+        <hr className="mb-4" />
         <Row className="justify-content-around menu mt-5" id="productos">
           {productosPromocion.map((producto) => (
             <CardProducto
