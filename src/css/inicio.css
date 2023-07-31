@@ -17,7 +17,7 @@
   max-width: 15rem;
   color: #ffffff;
   transition: transform 0.3s ease-in-out;
-  font-family: "Cherry Bomb One", cursive;
+
 }
 
 .menu .card img {
@@ -134,9 +134,9 @@
 }
 
 .videoHero {
-  margin-top: -35px;
+  margin-top: -32px;
   width: 100%;
-  height: 65vh;
+  height: 70vh;
   object-fit: cover;
   object-position: 45%;
 }
@@ -165,6 +165,15 @@
   transition: 0.1s ease-in;
 }
 
+.titulosInicio {
+  font-size: 4rem;
+  text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.926);
+  font-weight: 900;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  letter-spacing: -2px;
+  line-height: 0.7;
+}
+
 /* El carrusel debe tener 4 imagenes para sm y 4 imagenes para LG */
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -182,12 +191,17 @@
     filter: drop-shadow(2px 5px 8px rgba(0, 0, 0, 4));
     width: 75%;
   }
+
+  .titulosInicio {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 767px) {
   /* Estilos para dispositivos pequeños */
   .menuBuscador {
-    font-size: small;
+    font-size: x-small;
+    gap:8px;
   }
 
   .menuBuscador .nav-link {
@@ -225,5 +239,9 @@
     font-size: 15px;
     border: 2px solid white;
     margin-top: 10px!important;
+  }
+
+  .titulosInicio {
+    font-size: 2rem;
   }
 }

@@ -1,4 +1,4 @@
-import { Col, Card, Button,OverlayTrigger  } from 'react-bootstrap';
+import { Col, Card, Button,OverlayTrigger, Tooltip} from 'react-bootstrap';
 import { Plus } from 'react-bootstrap-icons';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -78,7 +78,7 @@ const CardProducto = ({
     <Col
       md={6}
       lg={3}
-      className="mb-3 letraRoboto d-flex justify-content-center"
+      className="mb-2 letraRoboto d-flex justify-content-center"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -105,7 +105,7 @@ const CardProducto = ({
                   {" "}
                   <Plus
                     className="fs-1"
-                    onClick={() => sumarProductoCarrito(producto)}
+                    onClick={() => sumar(producto)}
                   ></Plus>{" "}
                 </Button>
               </OverlayTrigger>
@@ -117,13 +117,7 @@ const CardProducto = ({
                 Ver detalle.
               </Link>
             </div>
-            <Button variant="light" className="rounded-5">
-              {' '}
-              <Plus
-                className="fs-1"
-                onClick={() => sumar(producto)}
-              ></Plus>{' '}
-            </Button>
+         
           </div>
         </Card.Body>
       </Card>

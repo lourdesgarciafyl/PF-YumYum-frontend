@@ -25,6 +25,7 @@ const Inicio = ({
   const [categorias, setCategorias] = useState([]);
   const [productos, setProductos] = useState([]);
   const [categoriaActiva, setCategoriaActiva] = useState("Todo");
+  const productosPromocion = productos.filter((producto) => producto.categoria === 'Promociones');
 
   // const categorias = [
   //   'Todo',
@@ -90,7 +91,7 @@ const Inicio = ({
             >
               <Row className="justify-content-center align-items-center">
                 <Col sm={6} lg={4} className="text-center">             
-                  <img src={logoHeroSection} alt="Logotipo YumYum" />
+                  <img src={logoHeroSection} alt="Logotipo YumYum" className="mb-md-5" />
                 </Col>
                 <Col>
                   {" "}
@@ -114,9 +115,27 @@ const Inicio = ({
         </div>
       </>
       ;
+
       <Container>
-        <h2 className="display-4 text-center text-white mt-3 letraSpace">
-          Menú
+      <h1 className="display-4 text-center text-white mt-3 letraSpace mb-2 titulosInicio">Disfruta de nuestras PROMOS</h1>
+      <hr className="mb-4"></hr>
+      <Row className="justify-content-around menu mt-5" id="productos">
+        {productosPromocion.map((producto) => (
+          <CardProducto
+            key={producto._id}
+            producto={producto}
+            carrito={carrito}
+            setCarrito={setCarrito}
+            usuarioLogueado={usuarioLogueado}
+            totalProductos={totalProductos}
+          />
+        ))}
+      </Row>
+      </Container>
+
+      <Container>
+        <h2 className="display-4 text-center text-white mt-3 letraSpace titulosInicio">
+          Nuestro Menú
         </h2>
         <hr />
         <Nav className="justify-content-center my-4 menuBuscador">
