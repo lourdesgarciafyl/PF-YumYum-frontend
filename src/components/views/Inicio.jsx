@@ -12,11 +12,14 @@ import banner3 from '../../assets/img/Banner3.jpg';
 import banner4 from '../../assets/img/Banner4.jpg';
 import ItemNavCategoria from '../helpers/ItemNavCategoria';
 import { obtenerListaCategoriasActivas } from '../helpers/querieCategoria';
+import { Pagination } from 'react-bootstrap';
 
 const Inicio = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, usuario, totalProductos }) => {
   const [categorias, setCategorias] = useState([]);
   const [productos, setProductos] = useState([]);
   const [categoriaActiva, setCategoriaActiva] = useState('Todo');
+  const [paginaActual, setPaginaActual] = useState(1);
+  const itemsPorPagina = 8;
 
   // const categorias = [
   //   'Todo',
