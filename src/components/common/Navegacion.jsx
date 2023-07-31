@@ -115,10 +115,10 @@ const Navegacion = ({
 
         <Navbar.Collapse id="navbar">
           <Nav className="d-flex ms-lg-auto navBar2">
-            <NavLink end to="/" className="nav-link">
+            <NavLink end to="/" className="nav-link mt-lg-2">
               Menu
             </NavLink>
-            <NavLink to="/nosotros" className="nav-link">
+            <NavLink to="/nosotros" className="nav-link mt-lg-2">
               Nosotros
             </NavLink>
             {usuarioLogueado.nombreUsuario ? (
@@ -128,6 +128,7 @@ const Navegacion = ({
                     <NavDropdown
                       title="Administrador"
                       id="navbarScrollingDropdown"
+                      className="mt-lg-2"
                     >
                       <NavDropdown.Item as={Link} to="/administrar/productos">
                         Productos
@@ -150,7 +151,7 @@ const Navegacion = ({
                         <Person size={25}></Person>
                       </Button>{" "}
                     </Nav.Link>
-                    <Nav.Link>{usuarioLogueado.nombreUsuario}</Nav.Link>
+                    <Nav.Link className="mt-lg-2">{usuarioLogueado.nombreUsuario}</Nav.Link>
                   </>
                 ) : (
                   <>
@@ -166,13 +167,13 @@ const Navegacion = ({
                         <Person size={25}></Person>
                       </Button>{" "}
                     </Nav.Link>
-                    <Nav.Link>{usuarioLogueado.nombreUsuario}</Nav.Link>
+                    <Nav.Link className="mt-lg-2">{usuarioLogueado.nombreUsuario}</Nav.Link>
                   </>
                 )}
               </>
             ) : (
               <>
-                <NavLink to="/registro" className="nav-link">
+                <NavLink to="/registro" className="nav-link mt-lg-2">
                   Registrarme
                 </NavLink>
                 <NavLink to="/login" className="nav-link">
