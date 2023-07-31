@@ -166,6 +166,7 @@ const Navegacion = ({
                         <Person size={25}></Person>
                       </Button>{" "}
                     </Nav.Link>
+                    <Nav.Link>{usuarioLogueado.nombreUsuario}</Nav.Link>
                   </>
                 )}
               </>
