@@ -17,7 +17,6 @@
   max-width: 15rem;
   color: #ffffff;
   transition: transform 0.3s ease-in-out;
-
 }
 
 .menu .card img {
@@ -174,6 +173,54 @@
   line-height: 0.7;
 }
 
+.page-link {
+  position: relative;
+  display: block;
+  font-size: 23px;
+  color: #f7b538;
+  text-decoration: none;
+  background-color: #af0303;
+  border: #f7b538 solid 1px;
+}
+.page-link:hover {
+  background-color: #f7b538;
+  color: #af0303;
+  border: #f7b538 solid 1px;
+}
+
+.active > .page-link,
+.page-link.active {
+  z-index: 3;
+  color: #af0303;
+  background-color: #f7b538;
+  border-color: #f7b538;
+}
+
+.disabled > .page-link,
+.page-link.disabled {
+  color: #f7b538;
+  pointer-events: none;
+  background-color: #af0303;
+  border-color: #f7b538;
+}
+
+.page-item:first-child .page-link {
+  color: #f7b538;
+  background-color: #af0303;
+  border-top-left-radius: #f7b538;
+  border-bottom-left-radius: #f7b538;
+}
+
+.page-item:last-child .page-link {
+  color: #f7b538;
+  background-color: #af0303;
+}
+
+.page-link:focus {
+  box-shadow: none;
+  outline: none;
+}
+
 /* El carrusel debe tener 4 imagenes para sm y 4 imagenes para LG */
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -201,7 +248,7 @@
   /* Estilos para dispositivos pequeños */
   .menuBuscador {
     font-size: x-small;
-    gap:8px;
+    gap: 8px;
   }
 
   .menuBuscador .nav-link {
@@ -238,7 +285,7 @@
     height: 50%;
     font-size: 15px;
     border: 2px solid white;
-    margin-top: 10px!important;
+    margin-top: 10px !important;
   }
 
   .titulosInicio {
