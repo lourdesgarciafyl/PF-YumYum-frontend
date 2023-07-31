@@ -2,6 +2,8 @@ const URLPedido = import.meta.env.VITE_API_PEDIDO;
 
 export const crearPedido = async (usuario, carrito,totalCarrito) => {
   let pedido = {};
+  const fechaActual = new Date();
+  const offsetGMT3 = -3 * 60; // GMT-3 está 3 horas detrás del UTC
   const productosEnvio = carrito.map((producto) => {
     return {
       producto: producto.idProducto,
@@ -10,7 +12,7 @@ export const crearPedido = async (usuario, carrito,totalCarrito) => {
     }
   })
   pedido.usuario = usuario._id;
-  pedido.fechaPedido = new Date().getTime();
+  pedido.fechaPedido = fechaActual.setMinutes(fechaActual.getMinutes() + offsetGMT3);
   pedido.productos = productosEnvio;
   pedido.estado = 'En proceso';
   pedido.precioTotal = totalCarrito;
