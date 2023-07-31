@@ -2,12 +2,12 @@ import Swal from "sweetalert2";
 const sumarProducto = (productoSumado,carrito,totalProductos) => {
     if (totalProductos < 15) {
         console.log('length carrito',totalProductos);
-      const existeProducto = carrito.find(
-        (itemCarrito) => itemCarrito.idProducto === productoSumado.idProducto
-      );
-      if (existeProducto) {
+      // const existeProducto = carrito.find(
+      //   (itemCarrito) => itemCarrito.idProducto === productoSumado.idProducto
+      // );
+      // if (existeProducto) {
         const indice = carrito.findIndex(
-          (prod) => prod.idProducto === productoSumado.idProducto
+          (prod) => prod.idProducto === productoSumado._id
         );
         const aux = [...carrito];
         aux[indice].cantidad = aux[indice].cantidad + 1;
@@ -21,7 +21,7 @@ const sumarProducto = (productoSumado,carrito,totalProductos) => {
             timer: 1500,
           });
         return aux;
-      } 
+      // } 
     } else {
       console.log("Solo se permite agregar 15 productos al carrito");
       Swal.fire({

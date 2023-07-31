@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { consultaProducto } from '../helpers/queriesProducto';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import sumarProducto from '../helpers/funcionSumarCarrito';
 
 
 const Detalle = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, totalProductos }) => {
@@ -24,23 +25,16 @@ const Detalle = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, tot
       const existeProducto = carrito.find(
         (itemCarrito) => itemCarrito.idProducto === productoSumado._id
       );
-
       if (existeProducto) {
-        const indice = carrito.findIndex(
-          (prod) => prod.idProducto === productoSumado._id
-        );
-        const aux = [...carrito];
-        aux[indice].cantidad = aux[indice].cantidad + 1;
-        aux[indice].subtotalItem =
-          aux[indice].subtotalItem * aux[indice].cantidad;
-        setCarrito(aux);
+        setCarrito(sumarProducto(productoSumado,carrito,totalProductos));
       } else {
         const nuevoProducto = {
-          idproducto: productoSumado._id,
+          idProducto: productoSumado._id,
           imagen: productoSumado.imagen,
           nombreProducto: productoSumado.nombreProducto,
           cantidad: 1,
-          subtotalItem: productoSumado.precio * 1,
+          precio: productoSumado.precio,
+          subtotalItem: productoSumado.precio,
         };
         setCarrito([...carrito, nuevoProducto]);
       }
