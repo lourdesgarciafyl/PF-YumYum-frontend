@@ -1,4 +1,4 @@
-import { Container, Row, Button, Carousel, Col } from "react-bootstrap";
+import { Container, Row, Button, Col } from "react-bootstrap";
 import "../../css/inicio.css";
 import CardProducto from "../../components/views/producto/CardProducto";
 import {
@@ -12,11 +12,13 @@ import logoHeroSection from "../../assets/LogoYumHeroSection.svg";
 import ItemNavCategoria from "../helpers/ItemNavCategoria";
 import { obtenerListaCategoriasActivas } from "../helpers/querieCategoria";
 import { Link } from "react-router-dom";
+import ItemNavCategoria from "../helpers/ItemNavCategoria";
+import { obtenerListaCategoriasActivas } from "../helpers/querieCategoria";
 import { Pagination } from "react-bootstrap";
 
 const Inicio = ({
   usuarioLogueado,
-  setUsuarioLogueado,
+  setusuarioLogueado,
   carrito,
   setCarrito,
   usuario,
@@ -148,6 +150,8 @@ const Inicio = ({
           ))}
         </Row>
       </Container>
+
+     
       <Container>
         <h1 className="display-4 text-center text-white mt-3 letraSpace">
           Menú
