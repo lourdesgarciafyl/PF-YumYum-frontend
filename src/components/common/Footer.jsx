@@ -1,6 +1,7 @@
 import "../../css/footer.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { Link } from "react-router-dom";
+import logoFooter from "../../assets/LogoYumFooter.svg"
 
 const Footer = () => {
   return (
@@ -26,7 +27,7 @@ const Footer = () => {
         <article>
           <img
             className="logo m-2"
-            src="../../src/assets/LogoYumFooter.svg"
+            src={logoFooter}
             alt="logo YumYum"
           />
         </article>
