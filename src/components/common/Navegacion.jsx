@@ -5,6 +5,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { Person } from "react-bootstrap-icons";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import iconoDelivery from "../../assets/img/icono-delivery.svg";
+import logo from "../../assets/LogoYumNavbar.svg" 
 
 const Navegacion = ({
   usuarioLogueado,
@@ -33,7 +34,7 @@ const Navegacion = ({
       <Container className="d-flex justify-content-between">
         <Navbar.Brand as={Link} to="/">
           <img
-            src="../../src/assets/LogoYumNavbar.svg"
+            src={logo}
             className="logoNavbar"
             alt="Logo YumYum"
           />
