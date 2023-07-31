@@ -7,9 +7,8 @@ import {
 } from "../helpers/queriesProducto";
 import Nav from "react-bootstrap/Nav";
 import { useEffect, useState } from "react";
-import banner2 from "../../assets/img/Banner2.jpg";
-import banner3 from "../../assets/img/Banner3.jpg";
-import banner4 from "../../assets/img/Banner4.jpg";
+import videoHero from "../../assets/videoHero.mp4";
+
 import logoHeroSection from "../../assets/LogoYumHeroSection.svg";
 import ItemNavCategoria from "../helpers/ItemNavCategoria";
 import { obtenerListaCategoriasActivas } from "../helpers/querieCategoria";
@@ -80,33 +79,40 @@ const Inicio = ({
         {" "}
         <div className="position-relative">
           {" "}
-          <img className="w-100" src={banner2} />{" "}
-        </div>
-      </>
-      <Container
+          <div>
+            {/* Aquí mostrarás el video */}
+            <video autoPlay loop muted className="videoHero w-100">
+              <source src={videoHero} type="video/mp4" />
+              Tu navegador no admite el elemento de video.
+            </video>
+            <Container
         fluid="md"
         id="contenidoHeroSection"
         className="position-absolute"
       >
         <Row>
-          <Col sm={12} md={6} lg={4}>
+          <Col md={6} lg={4} className="text-center">
             {" "}
             <img src={logoHeroSection} alt="Logotipo YumYum" />{" "}
           </Col>
-          <Col Classname=" flex-column">
+          <Col Classname="">
             {" "}
-            <h1 className="text-center">
+            <h1 className="text-center text-white">
               Tu Comida favorita <br></br> directo a tu puerta{" "}
             </h1>{" "}
             <Link className="w-100 d-flex justify-content-center">
               {" "}
-              <Button variant="dark" className="rounded-5 btn-lg">
+              <Button variant="dark" className="rounded-5 btn-lg mt-5">
                 Pedí Ahora
               </Button>{" "}
             </Link>{" "}
           </Col>
         </Row>
       </Container>
+          </div>
+        </div>
+      </>
+     
       ;
       <Container>
         <h2 className="display-4 text-center text-white mt-3 letraSpace">

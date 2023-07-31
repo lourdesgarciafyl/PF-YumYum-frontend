@@ -44,7 +44,7 @@
 }
 
 #contenidoHeroSection {
-  top: 65%;
+  top: 56%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;  
@@ -52,7 +52,7 @@
 }
 
 #contenidoHeroSection h1 {
-  font-size: 5rem;
+  font-size: 3.9rem;
 }
 #contenidoHeroSection img {
   filter: drop-shadow(2px 5px 8px rgba(0, 0, 0, 4));
@@ -141,6 +141,30 @@
   object-fit: cover;
   object-position: 50%;
 }
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+  #contenidoHeroSection {
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;  
+  
+  }
+  
+  #contenidoHeroSection h1 {
+    font-size: 2.4rem;
+  }
+  #contenidoHeroSection img {
+    filter: drop-shadow(2px 5px 8px rgba(0, 0, 0, 4));
+    width: 75%;
+  }
+
+
+
+}
+
+
 @media (max-width: 767px) {
   /* Estilos para dispositivos pequeños */
   .menuBuscador {
@@ -153,10 +177,29 @@
     font-weight: 700;
   }
 
-  .Carrusel-MD-LG img {
+  .videoHero {
+    margin-top: -25px;
     width: 100%;
     height: 40vh;
     object-fit: cover;
     object-position: 95%;
+  }
+
+
+
+  #contenidoHeroSection {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;  
+  
+  }
+  
+  #contenidoHeroSection h1 {
+    font-size: 1rem;
+  }
+  #contenidoHeroSection img {
+    filter: drop-shadow(2px 5px 8px rgba(0, 0, 0, 4));
+    width: 25%;
   }
 }
