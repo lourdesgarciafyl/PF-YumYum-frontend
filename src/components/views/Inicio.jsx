@@ -129,6 +129,7 @@ const Inicio = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, usua
               key={index + 1}
               active={index + 1 === paginaActual}
               onClick={() => handlePageChange(index + 1)}
+    
             >
               {index + 1}
             </Pagination.Item>
