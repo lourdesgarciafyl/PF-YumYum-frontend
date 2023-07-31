@@ -117,7 +117,7 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
           </> ) : ( 
           <>
           <div className="letraAmarilla text-center letraRoboto">
-            <h2 className="fs-1 fw-bold">No hay productos tu carrito</h2>
+            <h2 className="fs-1 fw-bold">No hay productos en tu carrito</h2>
             <Button as={Link} to={"/"} className="volverMenu mb-2 letraSpace">Volver al menú</Button>
           </div>
           </> )}
