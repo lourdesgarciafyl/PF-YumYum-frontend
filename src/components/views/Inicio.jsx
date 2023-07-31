@@ -51,6 +51,10 @@ const Inicio = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, usua
   const currentProductos = productos.slice(indicePrimerItem, indiceUltimoItem);
   const totalPaginas = Math.ceil(productos.length / itemsPorPagina);
 
+  const handlePageChange = (numeroPage) => {
+    setPaginaActual(numeroPage);
+  };
+
   const manejadorCambioCategoria = (categoria) => {
     if (categoria === 'Todo') {
       setCategoriaActiva(categoria);
@@ -103,11 +107,37 @@ const Inicio = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, usua
           ))}
         </Nav>
         <hr className="mb-5" />
-        <Row className="justify-content-around menu">
-          {productos.map((producto) => (
-            <CardProducto key={producto._id} producto={producto} carrito={carrito} setCarrito={setCarrito} usuarioLogueado={usuarioLogueado} totalProductos={totalProductos} ></CardProducto>
+       <Row className="justify-content-around menu">
+          {currentProductos.map((producto) => (
+            <CardProducto
+              key={producto._id}
+              producto={producto}
+              carrito={carrito}
+              setCarrito={setCarrito}
+              usuarioLogueado={usuarioLogueado}
+              totalProductos={totalProductos}
+            />
           ))}
         </Row>
+        <Pagination className="justify-content-center my-4">
+          <Pagination.Prev
+            disabled={paginaActual === 1}
+            onClick={() => handlePageChange(paginaActual - 1)}
+          />
+          {[...Array(totalPaginas)].map((_, index) => (
+            <Pagination.Item
+              key={index + 1}
+              active={index + 1 === paginaActual}
+              onClick={() => handlePageChange(index + 1)}
+            >
+              {index + 1}
+            </Pagination.Item>
+          ))}
+          <Pagination.Next
+            disabled={paginaActual === totalPaginas}
+            onClick={() => handlePageChange(paginaActual + 1)}
+          />
+        </Pagination>
       </Container>
     </section>
   );
