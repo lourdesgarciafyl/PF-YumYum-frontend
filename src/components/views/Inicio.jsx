@@ -9,8 +9,6 @@ import Nav from "react-bootstrap/Nav";
 import { useEffect, useState } from "react";
 import videoHero from "../../assets/videoHero.mp4";
 import logoHeroSection from "../../assets/LogoYumHeroSection.svg";
-import ItemNavCategoria from "../helpers/ItemNavCategoria";
-import { obtenerListaCategoriasActivas } from "../helpers/querieCategoria";
 import { Link } from "react-router-dom";
 import ItemNavCategoria from "../helpers/ItemNavCategoria";
 import { obtenerListaCategoriasActivas } from "../helpers/querieCategoria";
