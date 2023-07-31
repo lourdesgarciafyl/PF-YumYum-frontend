@@ -46,6 +46,11 @@ const Inicio = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, usua
       });
   }, []);
 
+  const indiceUltimoItem = paginaActual * itemsPorPagina;
+  const indicePrimerItem = indiceUltimoItem - itemsPorPagina;
+  const currentProductos = productos.slice(indicePrimerItem, indiceUltimoItem);
+  const totalPaginas = Math.ceil(productos.length / itemsPorPagina);
+
   const manejadorCambioCategoria = (categoria) => {
     if (categoria === 'Todo') {
       setCategoriaActiva(categoria);
