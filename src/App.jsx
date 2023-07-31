@@ -28,6 +28,7 @@ function App() {
   const [totalProductos, setTotalProductos] = useState(0);
 
   useEffect(() => {
+    console.log('useEffect',carrito)
     sessionStorage.setItem(`${usuario._id}`, JSON.stringify(carrito))
     setTotalProductos(sumaCantidad(carrito))
   }, [carrito])
