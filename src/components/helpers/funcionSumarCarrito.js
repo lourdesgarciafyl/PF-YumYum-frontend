@@ -7,7 +7,7 @@ const sumarProducto = (productoSumado,carrito,totalProductos) => {
       // );
       // if (existeProducto) {
         const indice = carrito.findIndex(
-          (prod) => prod.idProducto === productoSumado._id
+          (prod) => prod.idProducto === productoSumado.idProducto
         );
         const aux = [...carrito];
         aux[indice].cantidad = aux[indice].cantidad + 1;

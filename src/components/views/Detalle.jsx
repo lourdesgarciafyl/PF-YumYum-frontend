@@ -22,14 +22,17 @@ const Detalle = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, tot
   const sumarProductoCarrito = (productoSumado) => {
    if(usuarioLogueado.perfil === "Cliente" || usuarioLogueado.perfil === "Administrador"){
     if (totalProductos < 15) {
+      const productoConIdProducto = {
+        idProducto: productoSumado._id,
+      };
       const existeProducto = carrito.find(
-        (itemCarrito) => itemCarrito.idProducto === productoSumado._id
+        (itemCarrito) => itemCarrito.idProducto === productoConIdProducto.idProducto
       );
       if (existeProducto) {
-        setCarrito(sumarProducto(productoSumado,carrito,totalProductos));
+        setCarrito(sumarProducto(productoConIdProducto,carrito,totalProductos));
       } else {
         const nuevoProducto = {
-          idProducto: productoSumado._id,
+          idProducto: productoConIdProducto.idProducto,
           imagen: productoSumado.imagen,
           nombreProducto: productoSumado.nombreProducto,
           cantidad: 1,
