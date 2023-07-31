@@ -151,7 +151,7 @@ const Inicio = ({
 
      
       <Container>
-        <h1 className="display-4 text-center text-white mt-3 letraSpace">
+        <h1 className="display-4 text-center text-white mt-3 letraSpace titulosInicio">
           Menú
         </h1>
         <hr />
