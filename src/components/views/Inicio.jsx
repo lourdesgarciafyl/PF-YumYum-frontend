@@ -76,43 +76,43 @@ const Inicio = ({
   return (
     <section className="mainSection letraRoboto mb-3">
       <>
-        {" "}
+        {/* Video de Hero Section */}
         <div className="position-relative">
-          {" "}
           <div>
-            {/* Aquí mostrarás el video */}
             <video autoPlay loop muted className="videoHero w-100">
               <source src={videoHero} type="video/mp4" />
               Tu navegador no admite el elemento de video.
             </video>
             <Container
-        fluid="md"
-        id="contenidoHeroSection"
-        className="position-absolute"
-      >
-        <Row>
-          <Col md={6} lg={4} className="text-center">
-            {" "}
-            <img src={logoHeroSection} alt="Logotipo YumYum" />{" "}
-          </Col>
-          <Col Classname="">
-            {" "}
-            <h1 className="text-center text-white">
-              Tu Comida favorita <br></br> directo a tu puerta{" "}
-            </h1>{" "}
-            <Link className="w-100 d-flex justify-content-center">
-              {" "}
-              <Button variant="dark" className="rounded-5 btn-lg mt-5">
-                Pedí Ahora
-              </Button>{" "}
-            </Link>{" "}
-          </Col>
-        </Row>
-      </Container>
+              fluid="md"
+              id="contenidoHeroSection"
+              className="position-absolute"
+            >
+              <Row className="justify-content-center align-items-center">
+                <Col sm={6} lg={4} className="text-center">             
+                  <img src={logoHeroSection} alt="Logotipo YumYum" />
+                </Col>
+                <Col>
+                  {" "}
+                  <h1 className="text-center text-white">
+                    Tu Comida favorita <br></br> directo a tu puerta{" "}
+                  </h1>{" "}
+                  <Link className="w-100 d-flex justify-content-center text-decoration-none ">
+                    {" "}
+                    <Button
+                      variant="outline-warning"
+                      className="mt-5 "
+                      id="botonHero"
+                    >
+                      <span>Pedí Ahora </span>
+                    </Button>{" "}
+                  </Link>{" "}
+                </Col>
+              </Row>
+            </Container>
           </div>
         </div>
       </>
-     
       ;
       <Container>
         <h2 className="display-4 text-center text-white mt-3 letraSpace">
@@ -130,7 +130,7 @@ const Inicio = ({
           ))}
         </Nav>
         <hr className="mb-5" />
-        <Row className="justify-content-around menu">
+        <Row className="justify-content-around menu" id="productos">
           {productos.map((producto) => (
             <CardProducto
               key={producto._id}

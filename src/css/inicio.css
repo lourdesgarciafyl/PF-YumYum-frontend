@@ -35,8 +35,6 @@
 .menu .card-body {
   margin: 0px;
   padding: 0px;
-  
- 
 }
 
 .menu .row-producto > * {
@@ -47,18 +45,21 @@
   top: 56%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2;  
-
+  z-index: 2;
 }
 
 #contenidoHeroSection h1 {
-  font-size: 3.9rem;
+  font-size: 6rem;
+  text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.926);
+  font-weight: 900;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  letter-spacing: -2px;
+  line-height: 0.7;
 }
 #contenidoHeroSection img {
   filter: drop-shadow(2px 5px 8px rgba(0, 0, 0, 4));
   width: 100%;
 }
-
 
 .detalleLink {
   color: #ffffff;
@@ -94,10 +95,10 @@
   transform: translate(-50%, -50%);
   color: white !important;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-  text-shadow: 1px 3px 5px rgba(0, 0, 0, 1),-2px -1px 5px rgba(224, 224, 224, 0.653);
+  text-shadow: 1px 3px 5px rgba(0, 0, 0, 1),
+    -2px -1px 5px rgba(224, 224, 224, 0.653);
   border-radius: 25px;
-
-  }
+}
 
 .btnAgregar {
   color: black;
@@ -110,7 +111,7 @@
 .btnAgregar:hover {
   border: 1px solid rgb(0, 0, 0);
   background-color: rgba(47, 33, 33, 0.504);
-  color: white
+  color: white;
 }
 .btnAgregar:active {
   transform: scale(1.1);
@@ -121,11 +122,10 @@
   background-color: #c32f27;
   color: #ffffff;
   font-size: 10px;
- 
 }
 .verMas:hover {
   background-color: #f7b538;
-  
+
   color: white;
 }
 
@@ -133,37 +133,56 @@
   background-color: rgba(0, 0, 0, 0.308) !important;
 }
 
-/* El carrusel debe tener 4 imagenes para sm y 4 imagenes para LG */
-
-.Carrusel-MD-LG img {
+.videoHero {
+  margin-top: -35px;
   width: 100%;
-  max-height: 50vh;
+  height: 65vh;
   object-fit: cover;
-  object-position: 50%;
+  object-position: 45%;
 }
 
-@media (min-width: 768px) and (max-width: 991.98px) {
+#botonHero {
+  background-color: #f7b538;
+  color: white;
+  width: 200px;
+  height: 100px;
+  border-radius: 250px;
+  font-size: 1.8rem;
+  border: 4px white solid;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  transition: 0.2s ease-in;
+}
+#botonHero:hover {
+  background-color: #c32f27;
+  transform: scale(1.1);
+  transition: 0.2s ease-out;
+}
 
+#botonHero:active {
+  background-color: #8c231d;
+  transform: scale(1);
+  transition: 0.1s ease-in;
+}
+
+/* El carrusel debe tener 4 imagenes para sm y 4 imagenes para LG */
+
+@media (min-width: 768px) and (max-width: 991.98px) {
   #contenidoHeroSection {
     top: 46%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2;  
-  
+    z-index: 2;
   }
-  
+
   #contenidoHeroSection h1 {
-    font-size: 2.4rem;
+    font-size: 3rem;
   }
   #contenidoHeroSection img {
     filter: drop-shadow(2px 5px 8px rgba(0, 0, 0, 4));
     width: 75%;
   }
-
-
-
 }
-
 
 @media (max-width: 767px) {
   /* Estilos para dispositivos pequeños */
@@ -180,26 +199,31 @@
   .videoHero {
     margin-top: -25px;
     width: 100%;
-    height: 40vh;
+    height: 65vh;
     object-fit: cover;
-    object-position: 95%;
+    object-position: 45%;
   }
-
-
 
   #contenidoHeroSection {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2;  
-  
+    z-index: 2;
   }
-  
+
   #contenidoHeroSection h1 {
-    font-size: 1rem;
+    font-size: 2.5rem;
   }
   #contenidoHeroSection img {
     filter: drop-shadow(2px 5px 8px rgba(0, 0, 0, 4));
-    width: 25%;
+    width: 60%;
+  }
+
+  #botonHero {
+    width: 50%;
+    height: 50%;
+    font-size: 15px;
+    border: 2px solid white;
+    margin-top: 10px!important;
   }
 }
