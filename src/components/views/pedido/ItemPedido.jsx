@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Trash3Fill } from 'react-bootstrap-icons';
 import { ToggleAcordion } from '../../helpers/ToggleAcordion';
 import ItemProductoPedido from './ItemProductoPedido';
-import { formatearFecha } from '../../helpers/formateoFecha';
+import { formatearFecha, formatearHora } from '../../helpers/formateoFechaHora';
 import Swal from 'sweetalert2';
 import { consultaEnProcesoPedido, consultaEntregarPedido, obtenerListaPedidos, borrarPedido } from '../../helpers/queriesPedido';
 
@@ -135,6 +135,12 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
                 Fecha:{' '}
                 <span className="fw-bold">
                   {formatearFecha(pedido.fechaPedido)}
+                </span>
+              </ListGroup.Item>
+              <ListGroup.Item className="border-0 letraRoboto tamanioLetraItemListGroup py-1 px-2">
+                Hora:{' '}
+                <span className="fw-bold">
+                  {formatearHora(pedido.fechaPedido)}
                 </span>
               </ListGroup.Item>
               <ListGroup.Item className="border-0 letraRoboto tamanioLetraItemListGroup py-1 px-2">
