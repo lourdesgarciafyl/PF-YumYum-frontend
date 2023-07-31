@@ -58,7 +58,7 @@ export const editarPedido = async (id, pedido) => {
 
 export const borrarPedido = async (id) => {
   try {
-    const respuesta = await fetch(`${URLPedido}${id}`, {
+    const respuesta = await fetch(`${URLPedido}/${id}`, {
       method: 'DELETE',
     });
     return respuesta;
