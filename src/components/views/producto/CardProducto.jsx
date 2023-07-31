@@ -1,9 +1,10 @@
-import { Col, Card, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { Plus } from "react-bootstrap-icons";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { Col, Card, Button } from 'react-bootstrap';
+import { Plus } from 'react-bootstrap-icons';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+import sumarProducto from '../../helpers/funcionSumarCarrito';
 
 const CardProducto = ({
   producto,
@@ -23,33 +24,25 @@ const CardProducto = ({
   const { nombreProducto, precio, imagen, _id } = producto;
 
   //Función que agrega el producto si no existe, y si existe cambia su cantidad.
-  const sumarProductoCarrito = (productoSumado) => {
-    console.log(productoSumado);
-    if (
-      usuarioLogueado.perfil === "Cliente" ||
-      usuarioLogueado.perfil === "Administrador"
-    ) {
+  const sumar = (productoSumado) => {
+    if(usuarioLogueado.perfil === "Cliente" || usuarioLogueado.perfil === "Administrador") {
       if (totalProductos < 15) {
+        const productoConIdProducto = {
+          idProducto: productoSumado._id,
+        };
         const existeProducto = carrito.find(
-          (itemCarrito) => itemCarrito.idProducto === productoSumado._id
+          (itemCarrito) => itemCarrito.idProducto === productoConIdProducto.idProducto
         );
-        if (existeProducto) {
-          const indice = carrito.findIndex(
-            (prod) => prod.idProducto === productoSumado._id
-          );
-          const aux = [...carrito];
-          aux[indice].cantidad = aux[indice].cantidad + 1;
-          aux[indice].subtotalItem =
-            aux[indice].subtotalItem * aux[indice].cantidad;
-          setCarrito(aux);
+        if (existeProducto) { 
+          setCarrito(sumarProducto(productoConIdProducto,carrito,totalProductos));
         } else {
           const nuevoProducto = {
-            idProducto: productoSumado._id,
+            idProducto: productoConIdProducto.idProducto,
             imagen: productoSumado.imagen,
             nombreProducto: productoSumado.nombreProducto,
             cantidad: 1,
-            subtotalItem: productoSumado.precio * 1,
             precio: productoSumado.precio,
+            subtotalItem: productoSumado.precio,
           };
           setCarrito([...carrito, nuevoProducto]);
         }
@@ -124,6 +117,13 @@ const CardProducto = ({
                 Ver detalle.
               </Link>
             </div>
+            <Button variant="light" className="rounded-5">
+              {' '}
+              <Plus
+                className="fs-1"
+                onClick={() => sumar(producto)}
+              ></Plus>{' '}
+            </Button>
           </div>
         </Card.Body>
       </Card>

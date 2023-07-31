@@ -3,48 +3,20 @@ import { Card, Row, Col } from "react-bootstrap";
 import { Trash3Fill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import sumarProducto from "../../helpers/funcionSumarCarrito";
 
-const CardItemCarrito = ({ producto, carrito, setCarrito }) => {
+const CardItemCarrito = ({ producto, carrito, setCarrito, totalProductos }) => {
   // Funcion para sumar un producto
   const sumar = (productoSumado) => {
-    if (carrito.length < 15) {
-      const existeProducto = carrito.find(
-        (itemCarrito) => itemCarrito.idProducto === productoSumado.idProducto
-      );
-      if (existeProducto) {
-        const indice = carrito.findIndex(
-          (prod) => prod.idProducto === productoSumado.idProducto
-        );
-        const aux = [...carrito];
-        aux[indice].cantidad = aux[indice].cantidad + 1;
-        aux[indice].subtotalItem = aux[indice].precio * aux[indice].cantidad;
-        setCarrito(aux);
-      }
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Se agregó producto al carrito.",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    } else {
-      console.log("Solo se permite agregar 15 productos al carrito");
-      Swal.fire({
-        position: "top-end",
-        icon: "error",
-        title: "Se permiten máximo 15 productos al carrito",
-        showConfirmButton: false,
-        timer: 2000,
-      });
-    }
-  };
+    setCarrito(sumarProducto(productoSumado,carrito,totalProductos));
+  }
 
   // funcion para restar
   const restar = (productoRestar) => {
     console.log(carrito);
     if (
       carrito.length < 15 &&
-      carrito.length > 1 &&
+      carrito.length > 0 &&
       productoRestar.cantidad > 1
     ) {
       const existeProducto = carrito.find(
@@ -63,11 +35,38 @@ const CardItemCarrito = ({ producto, carrito, setCarrito }) => {
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Se eliminó el producto del carrito.",
+        title: `Se eliminó 1 ${productoRestar.nombreProducto} del carrito`,
         showConfirmButton: false,
         timer: 1500,
       });
     }
+  };
+  const eliminarProducto = (idProducto) => {
+    Swal.fire({
+      title: `¿Seguro que deseas eliminar ${producto.nombreProducto}?`,
+      text: "Se eliminará del carrito actual.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Eliminar",
+      cancelButtonText: "Cancelar",
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // borramos el item cuando el usuario confirme
+        const actualizarCarrito = carrito.filter(
+          (itemCarrito) => itemCarrito.idProducto !== idProducto
+        );
+        setCarrito(actualizarCarrito);
+        Swal.fire({
+          title: "Producto eliminado",
+          text: `${producto.nombreProducto} eliminado del carrito correctamente`,
+          icon: "success",
+          timer: 1700,
+          showConfirmButton: false,
+        });
+      }
+    });
   };
   return (
     <Card className="letraRoboto mb-3">
@@ -125,6 +124,7 @@ const CardItemCarrito = ({ producto, carrito, setCarrito }) => {
             <Trash3Fill
               className="letraRoja iconoEliminar"
               size={25}
+              onClick={() => eliminarProducto(producto.idProducto)}
             ></Trash3Fill>
 
             <Card.Text as="h5" className="letraRoboto">

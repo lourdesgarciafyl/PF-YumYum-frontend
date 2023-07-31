@@ -45,6 +45,19 @@
   background-color: #f7b538;
   border: 2px solid #f7b538;
 }
+.volverMenu{
+  background-color: #f7b538;
+  color: #c32f27;
+  font-size: large;
+  font-weight: bolder;
+  border-radius: 5px;
+  border-color: #d8572a;
+  padding: 15px;
+}
+.volverMenu:hover{
+  background-color: #d8572a;
+  border-color: #d8572a;
+}
 
 @media all and (max-width: 991px) {
   .borderDerechoContenidoCarrito-lg {

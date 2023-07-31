@@ -1,15 +1,19 @@
 const URLPedido = import.meta.env.VITE_API_PEDIDO;
-const fecha = new Date();
-const dia = fecha.getDate();
-const mes = fecha.getMonth();
-const anio = fecha.getFullYear();
 
-export const crearPedido = async (usuario) => {
+export const crearPedido = async (usuario, carrito,totalCarrito) => {
   let pedido = {};
-  pedido.usuario = usuario.nombreUsuario;
-  pedido.productos = carrito;
+  const productosEnvio = carrito.map((producto) => {
+    return {
+      producto: producto.idProducto,
+      cantidad: producto.cantidad,
+      subtotalItem: producto.subtotalItem
+    }
+  })
+  pedido.usuario = usuario._id;
+  pedido.fechaPedido = new Date().getTime();
+  pedido.productos = productosEnvio;
   pedido.estado = 'En proceso';
-  pedido.fecha = `${dia}/${mes}/${anio}`;
+  pedido.precioTotal = totalCarrito;
   try {
     const nuevoPedido = await fetch(URLPedido, {
       method: 'POST',

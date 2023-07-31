@@ -6,7 +6,7 @@ import { ToggleAcordion } from '../../helpers/ToggleAcordion';
 import ItemProductoPedido from './ItemProductoPedido';
 import { formatearFecha } from '../../helpers/formateoFecha';
 import Swal from 'sweetalert2';
-import { consultaEnProcesoPedido, consultaEntregarPedido, obtenerListaPedidos } from '../../helpers/queriesPedido';
+import { consultaEnProcesoPedido, consultaEntregarPedido, obtenerListaPedidos, borrarPedido } from '../../helpers/queriesPedido';
 
 const ItemPedido = ({ index, pedido, setPedidos }) => {
   const estadoSwitch =
@@ -91,6 +91,37 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
       });
     }
   };
+
+  const borrarUnPedido = () => {
+    Swal.fire({
+      title: "¿Esta seguro de borrar el pedido?",
+      text: "No se puede revertir este paso!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Borrar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {if (result.isConfirmed){
+      borrarPedido(pedido._id).then((respuesta)=>{
+        if(respuesta.status === 200){
+          Swal.fire(
+            'Pedido eliminado',
+            `El pedido fue eliminado correctamente`,
+            'success'
+          );
+          obtenerListaPedidos().then((respuesta) => setPedidos(respuesta))
+        } else{
+          Swal.fire(
+            'Ocurrio un error',
+            `Intente realizar esta operación nuevamente mas tarde`,
+            'error'
+          )
+        }
+      }) 
+    }})
+  }
+  
   return (
     <Col md={6} xxl={4}>
       <Accordion defaultActiveKey="0" className="my-2">
@@ -146,6 +177,7 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
                 <Trash3Fill
                   className="letraRoja iconoEliminar"
                   size={25}
+                  onClick={borrarUnPedido}
                 ></Trash3Fill>
               </div>
             </ListGroup>

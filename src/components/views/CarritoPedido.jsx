@@ -7,11 +7,9 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useEffect } from "react";
 import { set } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
-  // useEffect(()=>{
-  //   setCarrito(carrito)
-  // },[carrito])
 
   const navegacion = useNavigate();
 
@@ -37,6 +35,23 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
     });
   };
 
+  const generarPedido = (usuario, carrito, totalCarrito) => {
+   
+    crearPedido(usuario, carrito, totalCarrito).then((respuestaCreated) => {
+      if (respuestaCreated && respuestaCreated.status === 201) {
+        Swal.fire(
+          "Pedido Realizado",
+          `Su pedido se realizó correctamente`,
+          `success`
+        );
+        setCarrito([])
+        navegacion("/");
+      } else {
+        Swal.fire(`Ocurrió un error`, `Intente nuevamente más tarde`, `error`);
+      }
+    });
+  };
+
   return (
     <>
       <section className="mainSection letraRoboto mb-3">
@@ -45,7 +60,9 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
             Mi pedido
           </h1>
           <hr className="colorHr" />
-          <Row>
+          {carrito.length > 0 ? (
+          <>
+                   <Row>
             <Col
               lg={9}
               className="justify-content-around borderDerechoContenidoCarrito-lg mb-3"
@@ -91,11 +108,19 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
                 variant="primary"
                 type="submit"
                 className="mt-2 mb-1 botonGenerarPedido"
+                onClick={()=> generarPedido(usuario, carrito,total(carrito))}
               >
                 Generar Pedido
               </Button>
             </Col>
           </Row>
+          </> ) : ( 
+          <>
+          <div className="letraAmarilla text-center letraRoboto">
+            <h2 className="fs-1 fw-bold">No hay productos en tu carrito</h2>
+            <Button as={Link} to={"/"} className="volverMenu mb-2 letraSpace">Volver al menú</Button>
+          </div>
+          </> )}
         </Container>
       </section>
     </>

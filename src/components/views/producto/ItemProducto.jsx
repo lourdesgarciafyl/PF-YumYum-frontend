@@ -2,17 +2,22 @@ import { Row, Col, Card, Badge, Button, Form } from "react-bootstrap";
 import "../../../css/itemProducto.css"
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { borrarProducto, obtenerListaProductos } from "../../helpers/queriesProducto";
+import { borrarProducto, obtenerListaProductos, consultaActivarProducto, consultaDesactivarProducto } from "../../helpers/queriesProducto";
 import Swal from "sweetalert2";
 
-const ItemProducto = ({ producto, setProductos }) => {
-    const [botonSwitch, setBotonSwitch] = useState(false)
-    
-    const toggler = () =>{
+const ItemProducto = ({ producto, setProductos, index }) => {
+  const estadoSwitch =
+  producto.estado === 'Inactivo'
+    ? false
+    : producto.estado === 'Activo'
+    ? true
+    : false;  
+  const [botonSwitch, setBotonSwitch] = useState(estadoSwitch)
+  const toggler = () =>{
       botonSwitch ? setBotonSwitch(false) : setBotonSwitch(true)
     }
 
-    const borrarUnProducto = () => {
+  const borrarUnProducto = () => {
       Swal.fire({
         title: "¿Esta seguro de borrar el producto?",
         text: "No se puede revertir este paso!",
@@ -40,10 +45,82 @@ const ItemProducto = ({ producto, setProductos }) => {
               )
             }
           })
-          
         }
       })
-    }
+    };
+
+    const cambioCheckbox = (index) => {
+      if (!botonSwitch) {
+        Swal.fire({
+          title: `¿Pasar a Activo el producto ${producto.nombreProducto}?`,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#f7b538',
+          cancelButtonColor: '#c32f27',
+          confirmButtonText: 'Cambiar',
+          cancelButtonText: 'Cancelar',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            consultaActivarProducto(index).then((respuesta) => {
+              if (respuesta && respuesta.status === 200) {
+                Swal.fire(
+                  'Producto editado',
+                  `El producto pasó a Activo correctamente`,
+                  'success'
+                );
+                obtenerListaProductos().then((respuesta) => {
+                  setProductos(respuesta);
+                });
+              } else {
+                setBotonSwitch(false);
+                Swal.fire(
+                  'Ocurrió un error',
+                  `Intente realizar esta operación nuevamente más tarde`,
+                  'error'
+                );
+              }
+            });
+          }else{
+            setBotonSwitch(false);
+          }
+        });
+      } else {
+        Swal.fire({
+          title: `¿Pasar a Inactivo el producto N°:${producto.nombreProducto}?`,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#f7b538',
+          cancelButtonColor: '#c32f27',
+          confirmButtonText: 'Cambiar',
+          cancelButtonText: 'Cancelar',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            consultaDesactivarProducto(index).then((respuesta) => {
+              if (respuesta && respuesta.status === 200) {
+                Swal.fire(
+                  'Producto editado',
+                  `El producto pasó a Inactivo correctamente`,
+                  'success'
+                );
+                obtenerListaProductos().then((respuesta) => {
+                  setProductos(respuesta);
+                });
+              } else {
+                setBotonSwitch(true);
+                Swal.fire(
+                  'Ocurrió un error',
+                  `Intente realizar esta operación nuevamente más tarde`,
+                  'error'
+                );
+              }
+            });
+          }else{
+            setBotonSwitch(true);
+          }
+        });
+      }
+    };
+  
 
     return(
         <Col sm={6} md={4} lg={3} className="mb-3 justify-content-center">
@@ -61,11 +138,30 @@ const ItemProducto = ({ producto, setProductos }) => {
             <Col>
             <Form>
               <Form.Check
-              type="switch"
-              id="custom-switch"
-              className="d-flex justify-content-end align-items-center"
-              onClick={toggler}
-              label={botonSwitch ? <span className="textoSpan fw-bold">{producto.estado}</span> : <span className="textoSpan">Inactivo</span>}>
+            //  type="switch"
+            //  id="custom-switch"
+            //  className="d-flex justify-content-end align-items-center"
+            //  onClick={toggler}
+            //</Form>  label={botonSwitch ? <span className="textoSpan fw-bold">{producto.estado}</span> : <span className="textoSpan">Inactivo</span>}
+            type="switch"
+            id={index}
+            className="d-flex justify-content-end align-items-center"
+            onClick={toggler}
+            checked={botonSwitch}
+            onChange={() => cambioCheckbox(`${index}`)}
+            label={
+              botonSwitch ? (
+                <span className="textoSpan fw-bold letraRoboto">
+                  Activo
+                </span>
+              ) : (
+                <span className="textoSpan letraRoboto">
+                  Inactivo
+                </span>
+              )
+            }
+            
+            >
               </Form.Check>
               </Form>
             </Col>
