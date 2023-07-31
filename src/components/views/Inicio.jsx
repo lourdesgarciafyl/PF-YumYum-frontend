@@ -14,6 +14,8 @@ import ItemNavCategoria from '../helpers/ItemNavCategoria';
 import { obtenerListaCategoriasActivas } from '../helpers/querieCategoria';
 import { Pagination } from 'react-bootstrap';
 
+
+
 const Inicio = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, usuario, totalProductos }) => {
   const [categorias, setCategorias] = useState([]);
   const [productos, setProductos] = useState([]);
@@ -54,7 +56,7 @@ const Inicio = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, usua
   const handlePageChange = (numeroPage) => {
     setPaginaActual(numeroPage);
   };
-
+  
   const manejadorCambioCategoria = (categoria) => {
     if (categoria === 'Todo') {
       setCategoriaActiva(categoria);
@@ -120,25 +122,24 @@ const Inicio = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, usua
           ))}
         </Row>
         <Pagination className="justify-content-center my-4">
-          <Pagination.Prev
-            disabled={paginaActual === 1}
-            onClick={() => handlePageChange(paginaActual - 1)}
-          />
-          {[...Array(totalPaginas)].map((_, index) => (
-            <Pagination.Item
-              key={index + 1}
-              active={index + 1 === paginaActual}
-              onClick={() => handlePageChange(index + 1)}
-    
-            >
-              {index + 1}
-            </Pagination.Item>
-          ))}
-          <Pagination.Next
-            disabled={paginaActual === totalPaginas}
-            onClick={() => handlePageChange(paginaActual + 1)}
-          />
-        </Pagination>
+        <Pagination.Prev
+          disabled={paginaActual === 1}
+          onMouseDown={() => handlePageChange(paginaActual - 1)}
+        />
+        {[...Array(totalPaginas)].map((_, index) => (
+          <Pagination.Item
+            key={index + 1}
+            active={index + 1 === paginaActual}
+            onMouseDown={() => handlePageChange(index + 1)}
+          >
+            {index + 1}
+          </Pagination.Item>
+        ))}
+        <Pagination.Next
+          disabled={paginaActual === totalPaginas}
+          onMouseDown={() => handlePageChange(paginaActual + 1)}
+        />
+      </Pagination>
       </Container>
     </section>
   );
