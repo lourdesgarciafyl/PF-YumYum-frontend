@@ -1,0 +1,75 @@
+.borderDerechoContenidoCarrito-lg {
+  border-right: 1px solid #b53434;
+  border-bottom: none;
+}
+
+.colorHr {
+  color: white;
+}
+
+.botonVaciarCarrito {
+  color: #c32f27;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.botonVaciarCarrito:hover {
+  background-color: #d8572a;
+  color: white;
+}
+
+.tamanioLetra {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.botonGenerarPedido {
+  margin-top: 2rem;
+  display: block;
+  width: 100%;
+  background-color: #8d99ae;
+  text-decoration: none;
+  color: white;
+  padding: 1rem 2rem;
+  border: 2px solid #8d99ae;
+  border-radius: 10px;
+  text-align: center;
+  border: 2px solid #f7b538;
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+}
+
+.botonGenerarPedido:hover {
+  background-color: #f7b538;
+  border: 2px solid #f7b538;
+}
+.volverMenu{
+  background-color: #f7b538;
+  color: #c32f27;
+  font-size: large;
+  font-weight: bolder;
+  border-radius: 5px;
+  border-color: #d8572a;
+  padding: 15px;
+}
+.volverMenu:hover{
+  background-color: #d8572a;
+  border-color: #d8572a;
+}
+
+@media all and (max-width: 991px) {
+  .borderDerechoContenidoCarrito-lg {
+    border-right: none;
+    border-bottom: 3px solid #b53434;
+  }
+  .tamanioLetra {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  .botonGenerarPedido {
+    font-size: 1rem;
+    font-weight: 900;
+  }
+}

@@ -1,0 +1,104 @@
+.logoNavbar {
+  max-width: 200px;
+}
+
+.navBar2 {
+  max-width: fit-content;
+}
+
+.nav-link {
+  color: #ffffff !important;
+} 
+.nav-link:hover {
+  color: #f7b538 !important;
+}
+.nav-link:active {
+  color: #ffffff !important;
+}
+
+.dropdown-item:active {
+  background-color: #f7b538;
+}
+
+.dropdown-item {
+  background-color: #f7b538;
+  color: white;
+}
+.dropdown-menu {
+  overflow: hidden;
+  background-color: #f7b538;
+}
+
+.iconoDelivery {
+  width: 2.5rem;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.5));
+}
+
+#carrito {
+  left: 20vw;
+  position: relative;
+}
+
+.btnCarrito:hover{
+  outline: #ffffff;
+  background-color:#af0303;
+
+transform: scale(1.1);}
+
+  .btnCarrito:active{
+    outline: #ffffff;
+    background-color:#f7b538;
+    transform: scale( 1);}
+
+  .btnCarrito {
+    outline: #ffffff;
+    background-color:transparent;
+  border: none;}
+
+
+
+.btn-dark {
+  background-color: rgb(241, 171, 18);
+  color: white;
+}
+
+.btn-dark:hover {
+  background-color: #af0303;
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .logoNavbar {
+    max-width: 160px;
+  }
+
+  
+#carrito {
+  left: -5vw;
+  position: relative;
+}
+
+  .navBar2 {
+    max-width: 100px;
+  }
+
+
+}
+
+@media (max-width: 576px) {
+  .logoNavbar {
+    max-width: 100px;
+  }
+
+  .iconoDelivery {
+    width: 1.7rem;
+    color: #ffffff;
+  }
+
+  #carrito {
+    left: -20px;
+    position: relative;
+    
+  }
+
+
+}

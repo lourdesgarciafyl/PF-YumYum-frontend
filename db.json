@@ -1,0 +1,236 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "nombreProducto": "Pizza Muzzarella",
+      "precio": 3000,
+      "imagen": "https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383714/yumyum/pizzaMuzzarela_rfihh1.png",
+      "detalle": "Pizza Muzzarella elaborada con salsa de tomate, muzzarella, aceitunas y orégano",
+      "estado": "Activo",
+      "categoria": "Pizza"
+    },
+    {
+      "id": 2,
+      "nombreProducto": "Doble Cheeseburger",
+      "precio": 2600,
+      "imagen": "https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383717/yumyum/hamburguesaCheeseburger_owbqs3.png",
+      "detalle": "La Doble Cheeseburger incluye dos patties 100% carne. vienen cubierta con crujientes pepinillos, cebolla picada, ketchup, mostaza y dos rebanadas de queso americano",
+      "estado": "Activo",
+      "categoria": "Hamburguesa"
+    },
+    {
+      "id": 3,
+      "nombreProducto": "Pizza Napolitana",
+      "precio": 2900,
+      "imagen": "https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383714/yumyum/pizzaNapolitana_ehnywj.png",
+      "detalle": "La pizza Napolitana es un tipo de pizza que se originó en la ciudad de Nápoles, Italia. Este tipo de pizza se suele preparar con ingredientes simples y frescos. Una masa básica, salsa de tomate natural, queso mozzarella, albahaca fresca y aceite de oliva.",
+      "estado": "Activo",
+      "categoria": "Pizza"
+    },
+    {
+      "id": 4,
+      "nombreProducto": "Pizza Primavera",
+      "precio": 3200,
+      "imagen": "https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383714/yumyum/pizzaPrimavera_cl5yyj.png",
+      "detalle": "La Pizza Primavera está elaborada con salsa de tomates, jamón, muzarella, tomates al natural, huevo picado y aceitunas.",
+      "estado": "Activo",
+      "categoria": "Pizza"
+    },
+    {
+      "id": 5,
+      "nombreProducto": "Coca Cola 2,25 lts",
+      "precio": 700,
+      "imagen": "https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383715/yumyum/cocaCola_tcdbyw.png",
+      "detalle": "La bebida preferida de todos y para todos! El distintivo sabor a cola proviene en su mayoría de la mezcla de azúcar y aceites de naranja, limón y vainilla. Los otros ingredientes cambian el sabor tan solo ligeramente.",
+      "estado": "Activo",
+      "categoria": "Bebida"
+    },
+    {
+      "id": 6,
+      "nombreProducto": "Vegan Tofu",
+      "precio": 2600,
+      "imagen": "https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383716/yumyum/veganTofu_bidfrf.png",
+      "detalle": "El tofu es un producto derivado de la soja ampliamente utilizado en dietas veganas y vegetarianas por su calidad proteica y por ser un buen sustituto de carnes o quesos.",
+      "estado": "Activo",
+      "categoria": "Veggie"
+    },
+    {
+      "id": 7,
+      "nombreProducto": "1/4 Helado Durazno",
+      "precio": 1400,
+      "imagen": "https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383720/yumyum/helado_iud0cu.png",
+      "detalle": "Crema helada durazno a la crema.",
+      "estado": "Activo",
+      "categoria": "Otro"
+    },
+    {
+      "id": 8,
+      "nombreProducto": "Nuggets XL",
+      "precio": 1700,
+      "imagen": "https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383721/yumyum/nuggetsPollo_so8uk6.png",
+      "detalle": "Nuestros nuggets de pollo son el complemento perfecto para cualquier comida. ",
+      "estado": "Activo",
+      "categoria": "Otro"
+    },
+    {
+      "id": 9,
+      "nombreProducto": "Heiniken 300ml",
+      "precio": 900,
+      "imagen": "https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383719/yumyum/heineken_300ml_z7it5j.png",
+      "detalle": "Heineken es la cerveza Premium número 1 de Europa y la más internacional del mundo.",
+      "estado": "Activo",
+      "categoria": "Bebida"
+    },
+    {
+      "id": 10,
+      "nombreProducto": "Ensalada Mixta",
+      "precio": 1300,
+      "imagen": "https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383718/yumyum/ensaladaMixta_tzazrx.png",
+      "detalle": "La ensalada mixta está compuesta de lechuga romana, tomate, zanahoria, atún, cebolla, maíz dulce y huevo cocido.",
+      "estado": "Activo",
+      "categoria": "Veggie"
+    },
+    {
+      "nombreProducto": "Hamburguesa vegana",
+      "detalle": "Hamburguesa de lentejas con lechuga y tomate",
+      "precio": "1250",
+      "imagen": "https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383717/yumyum/hamburguesaCheeseburger_owbqs3.png",
+      "categoria": "Hamburguesa",
+      "estado": "Activo",
+      "id": 11
+    },
+    {
+      "nombreProducto": "Hamburguesa DobleCheddar",
+      "detalle": "Carne de calidad con queso cheedar y cebolla caramelizada.",
+      "precio": "2700",
+      "imagen": "https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383720/yumyum/hamburguesaDobleCheddar_wyifm1.png",
+      "categoria": "Hamburguesa",
+      "estado": "Activo",
+      "id": 12
+    }
+  ],
+  "usuarios": [
+    {
+      "id": 1,
+      "nombreUsuario": "rolling",
+      "apellidoUsuario": "code",
+      "email": "admin@rollingcode.com",
+      "password": "123456aA",
+      "estado": "Activo",
+      "perfil": "Administrador"
+    },
+    {
+      "nombreUsuario": "Mariana",
+      "apellidoUsuario": "Enriquez",
+      "email": "marianaenriquez@gmail.com",
+      "password": "123456aA",
+      "estado": "Activo",
+      "perfil": "Cliente",
+      "id": 2
+    },
+    {
+      "nombreUsuario": "Juan",
+      "apellidoUsuario": "Perez",
+      "email": "juanperez@gmail.com",
+      "password": "123456aA",
+      "estado": "Activo",
+      "perfil": "Cliente",
+      "id": 3
+    },
+    {
+      "nombreUsuario": "Suduns",
+      "apellidoUsuario": "Jimenez",
+      "email": "susanajimenez@gmail.com",
+      "password": "123456aA",
+      "estado": "Activo",
+      "perfil": "Cliente",
+      "id": 4
+    },
+    {
+      "nombreUsuario": "Cristian",
+      "apellido": "Quiroga",
+      "email": "cristianq3@gmail.com",
+      "password": "cARAMELO2343",
+      "perfil": "Administrador",
+      "estado": "Activo",
+      "id": 5
+    },
+    {
+      "nombreUsuario": "Maria",
+      "apellidoUsuario": "Garcia",
+      "email": "maria@gmail.com",
+      "password": "123456aA",
+      "perfil": "Cliente",
+      "estado": "Activo",
+      "id": 7
+    },
+    {
+      "nombreUsuario": "Juan",
+      "apellidoUsuario": "Garcia",
+      "email": "juangarcia@gmail.com",
+      "password": "123456aA",
+      "perfil": "Cliente",
+      "estado": "Activo",
+      "id": 9
+    },
+    {
+      "nombreUsuario": "Jose",
+      "apellidoUsuario": "Villafañe",
+      "email": "jvillafane@gmail.com",
+      "password": "123456aA",
+      "perfil": "Cliente",
+      "estado": "Activo",
+      "id": 10
+    },
+    {
+      "nombreUsuario": "Veronica",
+      "apellidoUsuario": "Garcia",
+      "email": "veronica@gmail.com",
+      "password": "123456aA",
+      "perfil": "Cliente",
+      "estado": "Activo",
+      "id": 11
+    },
+    {
+      "nombreUsuario": "prueba para borrar y editar",
+      "apellidoUsuario": "eeeeee",
+      "email": "b@b.com",
+      "password": "123456aA",
+      "perfil": "Administrador",
+      "estado": "Activo",
+      "id": 12
+    }
+  ],
+  "categorias": [
+    {
+      "id": 1,
+      "nombreCategoria": "Todo",
+      "estado": "Activo"
+    },
+    {
+      "id": 2,
+      "nombreCategoria": "Pizza",
+      "estado": "Activo"
+    },
+    {
+      "id": 3,
+      "nombreCategoria": "Hamburguesa",
+      "estado": "Activo"
+    },
+    {
+      "id": 4,
+      "nombreCategoria": "Veggie",
+      "estado": "Activo"
+    },
+    {
+      "id": 5,
+      "nombreCategoria": "Bebida",
+      "estado": "Activo"
+    },
+    {
+      "id": 6,
+      "nombreCategoria": "Otro",
+      "estado": "Activo"
+    }
+  ]
+}
