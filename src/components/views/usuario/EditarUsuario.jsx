@@ -1,10 +1,11 @@
 import "../../../css/formularioAdminProductos.css";
-import { Form, Button, Card, Row, Col } from "react-bootstrap";
+import { Form, Button, Card, Row, Col,Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { editarUsuario, obtenerUsuario } from "../../helpers/queriesUsuario";
-import { useEffect } from "react";
+import { cambiarPassword, editarUsuario, obtenerUsuario } from "../../helpers/queriesUsuario";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Key } from "react-bootstrap-icons";
 
 const EditarUsuario = () => {
   const {
@@ -15,12 +16,25 @@ const EditarUsuario = () => {
     handleSubmit,
   } = useForm();
 
+  const {
+    register: registerContrasenia,
+    formState: { errors:errorsContrasenia },
+    reset: resetContrasenia,
+    handleSubmit: handleSubmitContrasenia,
+    watch: watchContrasenia
+  } = useForm();
+  const password = watchContrasenia("password");
+
   const { id } = useParams();
   const navegacion = useNavigate();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => {
+    setShow(true);
+  };
 
   useEffect(() => {
     obtenerUsuario(id).then((respuesta) => {
-      console.log(respuesta); // Agrega este console.log para verificar la respuesta en la consola
       if (respuesta && respuesta.status === 200) {
         setValue("nombreUsuario", respuesta.data.nombreUsuario);
         setValue("apellidoUsuario", respuesta.data.apellidoUsuario);
@@ -48,7 +62,6 @@ const EditarUsuario = () => {
           "success"
         );
         reset();
-
         navegacion("/administrar/usuarios");
       } else {
         Swal.fire(
@@ -60,13 +73,35 @@ const EditarUsuario = () => {
     });
   };
 
+  const onSubmitContrasenia = (nuevaContrasenia) => {
+    cambiarPassword(nuevaContrasenia,id).then((respuestaEditadoPassword) => {
+      if (respuestaEditadoPassword && respuestaEditadoPassword.status === 200) {
+        Swal.fire({
+          text: "Se cambió conrrectamente la contraseña",
+          icon: "success",
+          confirmButtonColor: "#d8572a",
+        });
+        resetContrasenia();
+        setShow(false);
+      } else {
+        Swal.fire(
+          'Ocurrio un error',
+          `La contraseña no fue editada, intentelo mas tarde`,
+          'error'
+        );
+      }
+    });
+  }
+
   return (
+    <>
     <Card className="fondoAmarillo mainSection">
       <div className="fondoNaranja letraAmarilla letraSpace">
         <Card.Title className="my-4 text-center fw-bold fs-3">
           Editar usuario
         </Card.Title>
       </div>
+     
       <Card.Body className="py-3 w-100 mx-auto">
         <Form
           noValidate
@@ -138,26 +173,6 @@ const EditarUsuario = () => {
               {errors.email?.message}
             </Form.Text>
           </Form.Group>
-
-          {/* <Form.Group className="mb-3 fw-bold" controlId="formPassword">
-            <Form.Label className="letraFormLabel">Password *</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              {...register("password", {
-                required: "El Password es un dato obligatorio.",
-                pattern: {
-                  value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
-                  message:
-                    "La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.",
-                },
-              })}
-            />
-            <Form.Text className="text-danger my-2 py-3">
-              {errors.password?.message}
-            </Form.Text>
-          </Form.Group> */}
-
           <Row>
             <Col lg={6}>
               <Form.Group className="mb-2 fw-bold" controlId="forCategoria">
@@ -206,14 +221,82 @@ const EditarUsuario = () => {
                 </Form.Text>
               </Form.Group>
             </Col>
+            <Col className="mb-4">
+            <Button variant="danger me-1" bg="dark" className=" text-dark rounded-5 btn-dark " onClick={() => handleShow()}>
+         Contraseña <Key className="fs-1"></Key>
+        </Button> </Col>
+            
           </Row>
 
-          <Button className="mt-1 mb-3" type="submit" id="btnAgregar">
-            Agregar
+          <Button className="mt-1 mb-3 text-dark btn-dark" type="submit" id="">
+            Editar Usuario
           </Button>
         </Form>
       </Card.Body>
     </Card>
+    <Modal show={show} onHide={handleClose} bg="dark">
+        <Modal.Header closeButton>
+          <Modal.Title>Nueva Contraseña</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="d-flex justify-content-center">
+          <Form onSubmit={handleSubmitContrasenia(onSubmitContrasenia)}>
+            <Form.Group className="mb-2">
+              <Form.Label>Contraseña</Form.Label>
+              <Form.Control
+                className="col-sm-9 inputFormRegistro"
+                type="password"
+                placeholder="Ingresa una contraseña"
+                {...registerContrasenia("password", {
+                  required: "La contrseña es un dato obligatorio",
+                  pattern: {
+                    value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+                    message:
+                      "La contraseña debe tener entre 8 y 16 caracteres, al menos un numero, una minuscula, una mayúscula y no contener caracteres especiales.",
+                  },
+                })}
+              />
+              <Form.Text className="text-danger my-2 py-3">
+              {errorsContrasenia.password?.message}
+            </Form.Text>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+                  <Form.Label>Confirmar contraseña</Form.Label>
+                  <Form.Control
+                    className="col-sm-9 inputFormRegistro"
+                    type="password"
+                    placeholder="Ingresa nuevamente la contraseña"
+                    {...registerContrasenia("confirmarPassword", {
+                      required: "Debe confirmar su contaseña.",
+                      pattern: {
+                        value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+                        message:
+                          "La contraseña debe tener entre 8 y 16 caracteres, al menos un numero, una minuscula, una mayúscula y no contener caracteres especiales.",
+                      },
+                      validate: (value) =>
+                        value === password || "Las contraseñas no coinciden.",
+                    })}
+                  ></Form.Control>
+                  <Form.Text className="text-danger fw-bold">
+                    {errorsContrasenia.confirmarPassword?.message}
+                  </Form.Text>
+                </Form.Group>
+
+            <Modal.Footer>
+            <Button bg="dark" variant="dark" type="submit">
+                Cambiar
+              </Button>
+              <Button bg="dark" variant="danger rounded-5" onClick={handleClose}>
+                Cancelar
+              </Button>
+              
+            </Modal.Footer>
+          </Form>
+        </Modal.Body>
+      </Modal>
+    </>
+    
+    
   );
 };
 

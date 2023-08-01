@@ -122,3 +122,22 @@ export const editarUsuario = async (usuario, id) => {
     console.log(error);
   }
 };
+
+export const cambiarPassword = async (nuevoPassword,id) => {
+  console.log(nuevoPassword);
+  try {
+    const respuesta = await fetch(`${URLUsuario}/nuevopassword/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
+      },
+      body: JSON.stringify(nuevoPassword),
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
