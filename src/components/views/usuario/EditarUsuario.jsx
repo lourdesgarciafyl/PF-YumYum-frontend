@@ -35,7 +35,6 @@ const EditarUsuario = () => {
 
   useEffect(() => {
     obtenerUsuario(id).then((respuesta) => {
-      console.log(respuesta); 
       if (respuesta && respuesta.status === 200) {
         setValue("nombreUsuario", respuesta.data.nombreUsuario);
         setValue("apellidoUsuario", respuesta.data.apellidoUsuario);
@@ -75,7 +74,6 @@ const EditarUsuario = () => {
   };
 
   const onSubmitContrasenia = (nuevaContrasenia) => {
-    console.log(nuevaContrasenia);
     cambiarPassword(nuevaContrasenia,id).then((respuestaEditadoPassword) => {
       if (respuestaEditadoPassword && respuestaEditadoPassword.status === 200) {
         Swal.fire({
