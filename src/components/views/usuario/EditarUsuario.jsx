@@ -1,7 +1,7 @@
 import "../../../css/formularioAdminProductos.css";
 import { Form, Button, Card, Row, Col,Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { editarUsuario, obtenerUsuario } from "../../helpers/queriesUsuario";
+import { cambiarPassword, editarUsuario, obtenerUsuario } from "../../helpers/queriesUsuario";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -89,24 +89,22 @@ const EditarUsuario = () => {
 
   const onSubmitContrasenia = (nuevaContrasenia) => {
     console.log(nuevaContrasenia);
-    // editarContrasenia(tarea, tareaId).then((respuestaEditado) => {
-    //   if (respuestaEditado && respuestaEditado.status === 200) {
-    //     Swal.fire(
-    //       'Tarea editada',
-    //       `La tarea ${tarea.nombreTarea} fue editada correctamente`,
-    //       'success'
-    //     );
-    //     obtenerListaTareas().then((respuesta) => {
-    //       setListaTareas(respuesta);
-    //     });
-    //   } else {
-    //     Swal.fire(
-    //       'Ocurrio un error',
-    //       `La tarea ${tarea.nombreTarea} no fue editada, intentelo mas tarde`,
-    //       'error'
-    //     );
-    //   }
-    // });
+    cambiarPassword(nuevaContrasenia,id).then((respuestaEditadoPassword) => {
+      if (respuestaEditadoPassword && respuestaEditadoPassword.status === 200) {
+        Swal.fire({
+          text: "Se cambió conrrectamente la contraseña",
+          icon: "success",
+          confirmButtonColor: "#d8572a",
+        });
+        setShow(false);
+      } else {
+        Swal.fire(
+          'Ocurrio un error',
+          `La contraseña no fue editada, intentelo mas tarde`,
+          'error'
+        );
+      }
+    });
   }
 
   return (
@@ -260,7 +258,7 @@ const EditarUsuario = () => {
                 className="col-sm-9"
                 type="text"
                 placeholder="Ingresa una contraseña"
-                {...registerContrasenia("nuevaContrasenia", {
+                {...registerContrasenia("password", {
                   required: "La contrseña es un dato obligatorio",
                   pattern: {
                     value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
@@ -270,7 +268,7 @@ const EditarUsuario = () => {
                 })}
               />
               <Form.Text className="text-danger my-2 py-3">
-              {errorsContrasenia.nuevaContrasenia?.message}
+              {errorsContrasenia.password?.message}
             </Form.Text>
             </Form.Group>
 
