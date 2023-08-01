@@ -1,8 +1,8 @@
 const URLUsuario = import.meta.env.VITE_API_USUARIO;
-// sirve para registro:
+
 export const crearUsuario = async (usuario) => {
   try {
-    const nuevoUsuario = await fetch(URLUsuario+"/registro", {
+    const nuevoUsuario = await fetch(URLUsuario + "/registro", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -16,13 +16,14 @@ export const crearUsuario = async (usuario) => {
   }
 };
 
-// sirve para crear registro desde el admin:
 export const crearUsuarioAdmin = async (usuario) => {
   try {
-    const nuevoUsuario = await fetch(URLUsuario+"/nuevo", {
+    const nuevoUsuario = await fetch(URLUsuario + "/nuevo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
       },
       body: JSON.stringify(usuario),
     });
@@ -35,7 +36,12 @@ export const crearUsuarioAdmin = async (usuario) => {
 
 export const obtenerUsuario = async (id) => {
   try {
-    const respuesta = await fetch(`${URLUsuario}/${id}`);
+    const respuesta = await fetch(`${URLUsuario}/${id}`, {
+      headers: {
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
+      },
+    });
     const usuarioEncontrado = {
       data: await respuesta.json(),
       status: respuesta.status,
@@ -51,6 +57,10 @@ export const borrarUsuario = async (id) => {
   try {
     const respuesta = await fetch(`${URLUsuario}/${id}`, {
       method: "DELETE",
+      headers: {
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
+      },
     });
     return respuesta;
   } catch (error) {
@@ -62,9 +72,9 @@ export const borrarUsuario = async (id) => {
 export const loginUsuario = async (usuario) => {
   try {
     const respuesta = await fetch(`${URLUsuario}/login`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(usuario),
     });
@@ -81,34 +91,14 @@ export const loginUsuario = async (usuario) => {
   }
 };
 
-// export const loginUsuario = async (usuario) => {
-//   try {
-//     const respuesta = await fetch(URLUsuario);
-//     const listaUsuarios = await respuesta.json();
-//     //buscar cual usuario tiene el mail
-//     const usuarioBuscado = listaUsuarios.find(
-//       (itemUsuario) => itemUsuario.email === usuario.email
-//     );
-//     if (usuarioBuscado) {
-//       console.log("email encontrado");
-//       if (usuarioBuscado.password === usuario.password) {
-//         return usuarioBuscado;
-//       } else {
-//         console.log("el password es incorrecto");
-//         return null;
-//       }
-//     } else {
-//       console.log("el email no existe");
-//       return null;
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
 export const consultaListaUsuarios = async () => {
   try {
-    const respuesta = await fetch(URLUsuario);
+    const respuesta = await fetch(URLUsuario, {
+      headers: {
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
+      },
+    });
     const listaUsuarios = await respuesta.json();
     return listaUsuarios;
   } catch (error) {
@@ -122,11 +112,32 @@ export const editarUsuario = async (usuario, id) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
       },
       body: JSON.stringify(usuario),
     });
     return respuesta;
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const cambiarPassword = async (nuevoPassword,id) => {
+  console.log(nuevoPassword);
+  try {
+    const respuesta = await fetch(`${URLUsuario}/nuevopassword/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
+      },
+      body: JSON.stringify(nuevoPassword),
+    });
+    return respuesta;
+  } catch (error) {
+    console.log(error);
+    return null;
   }
 };

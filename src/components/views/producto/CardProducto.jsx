@@ -1,10 +1,10 @@
-import { Col, Card, Button,OverlayTrigger, Tooltip} from 'react-bootstrap';
-import { Plus } from 'react-bootstrap-icons';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
-import sumarProducto from '../../helpers/funcionSumarCarrito';
+import { Col, Card, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Plus } from "react-bootstrap-icons";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import sumarProducto from "../../helpers/funcionSumarCarrito";
 
 const CardProducto = ({
   producto,
@@ -23,18 +23,23 @@ const CardProducto = ({
   const navegacion = useNavigate();
   const { nombreProducto, precio, imagen, _id } = producto;
 
-  //Función que agrega el producto si no existe, y si existe cambia su cantidad.
   const sumar = (productoSumado) => {
-    if(usuarioLogueado.perfil === "Cliente" || usuarioLogueado.perfil === "Administrador") {
+    if (
+      usuarioLogueado.perfil === "Cliente" ||
+      usuarioLogueado.perfil === "Administrador"
+    ) {
       if (totalProductos < 15) {
         const productoConIdProducto = {
           idProducto: productoSumado._id,
         };
         const existeProducto = carrito.find(
-          (itemCarrito) => itemCarrito.idProducto === productoConIdProducto.idProducto
+          (itemCarrito) =>
+            itemCarrito.idProducto === productoConIdProducto.idProducto
         );
-        if (existeProducto) { 
-          setCarrito(sumarProducto(productoConIdProducto,carrito,totalProductos));
+        if (existeProducto) {
+          setCarrito(
+            sumarProducto(productoConIdProducto, carrito, totalProductos)
+          );
         } else {
           const nuevoProducto = {
             idProducto: productoConIdProducto.idProducto,
@@ -54,7 +59,6 @@ const CardProducto = ({
           timer: 1500,
         });
       } else {
-        console.log("Solo se permite agregar 15 productos al carrito");
         Swal.fire({
           position: "top-end",
           icon: "error",
@@ -94,30 +98,25 @@ const CardProducto = ({
             <div className="fw-bolder position-absolute precio d-flex flex-column align-items-center">
               <span className="text-center fw-bold fs-1">
                 <b className="fw-bolder fs-1">$</b>
-                {precio}{" "}
-              </span>{" "}
+                {precio}
+              </span>
               <OverlayTrigger
                 placement="right"
                 delay={{ show: 250, hide: 400 }}
                 overlay={renderTooltip}
               >
                 <Button variant="light" className="rounded-5 btnAgregar">
-                  {" "}
-                  <Plus
-                    className="fs-1"
-                    onClick={() => sumar(producto)}
-                  ></Plus>{" "}
+                  <Plus className="fs-1" onClick={() => sumar(producto)}></Plus>
                 </Button>
               </OverlayTrigger>
               <Link
-                className="verMas btn btn-outline-dark"
+                className="verMas btn btn-dark"
                 as={Link}
                 to={`/detalle/${producto._id}`}
               >
                 Ver detalle.
               </Link>
             </div>
-         
           </div>
         </Card.Body>
       </Card>

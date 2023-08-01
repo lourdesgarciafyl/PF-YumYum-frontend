@@ -17,11 +17,13 @@
 .cardDetalle {
   margin-top: 4%;
   margin-bottom: 1%;
-  background-color: #2b2d42;
+  background: rgb(43,45,66);
+  background: linear-gradient(90deg, rgba(43,45,66,1) 0%, rgba(0,0,0,1) 100%);
   color: #f7b538;
   padding-bottom: 1%;
   padding-top: 1%;
   width: 100%;
+  border-radius: 25px;
 }
 
 .fotoDetalle {
@@ -53,11 +55,15 @@
 
 .botonDetalle {
   background-color: #f7b538;
-  color: black;
+  color: #2b2d42;
   border-radius: 1cm;
-  padding: 0px 3%;
+  font-weight: bolder;
+  padding: 15px;
+  font-size: 20px;
 }
-
+.botonDetalle:hover {
+  background-color: #e9a82e;
+}
 .ordenDetallesPrecio {
   display: flex;
   justify-content: space-around;
@@ -65,19 +71,18 @@
 }
 
 .botonVolver {
-  padding: 0, 7% 5%;
+  padding: 15px;
   font-size: 26px;
   background-color: #2b2d42;
   color: #f7b538;
+  font-weight: bolder;
   border-radius: 1em;
 }
 
 .botonVolver:hover {
-  background-color: #000000;
+  background-color: #212232;
   color: #f7b538;
 }
-
-/* dispositivos small */
 
 @media all and (max-width: 767px) {
   .cardDetalle {
@@ -147,8 +152,6 @@
     color: #f7b538;
   }
 }
-
-/* dispositivos medium */
 
 @media all and (min-width: 768px) and (max-width: 991px) {
   .cardDetalle {

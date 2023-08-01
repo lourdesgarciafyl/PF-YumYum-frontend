@@ -13,8 +13,6 @@ footer {
   align-items: center;
 }
 
-/* Dispositivos Small */
-
 @media all and (max-width: 767px) {
   .ordenFooter {
     display: flex;

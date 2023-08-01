@@ -8,12 +8,14 @@ import agustin from "../../assets/img/perfil/agustin.png";
 
 const Nosotros = () => {
   return (
-    <Container className="my-3 mainSection">
+    <Container className="mainSection">
       <section className=" mb-4">
-        <h1 className="letraAmarilla">Sobre Nosotros:</h1>
+        <h1 className="text-center letraSpace letraAmarilla fs-1 mt-md-4 mt-lg-5 mb-2">
+          Sobre Nosotros
+        </h1>
         <hr />
 
-        <p className="lead text-white">
+        <p className="letraRoboto fs-3 text-white">
           Nuestro equipo ha trabajado en colaboración utilizando herramientas
           como Trello y Scrum para gestionar tareas y adaptarnos de manera ágil
           a los cambios. Comunicándonos a través de reuniones virtuales por Zoom
@@ -25,9 +27,10 @@ const Nosotros = () => {
         </p>
       </section>
 
-      {/* Seccion Fotos del Equipo */}
       <Row>
-        <h2 className="letraAmarilla">El Equipo:</h2>
+        <h2 className="text-center letraSpace letraAmarilla fs-1 mt-md-4 mt-lg-5 mb-2">
+          El Equipo
+        </h2>
         <hr className="mb-5" />
 
         <Col sm={6} md={6} lg={3} className="mb-3">

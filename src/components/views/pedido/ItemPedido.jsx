@@ -1,18 +1,23 @@
-import { Accordion, Card, Col, Form, ListGroup, Table } from 'react-bootstrap';
-import './../../../css/itemPedido.css';
-import { useState } from 'react';
-import { Trash3Fill } from 'react-bootstrap-icons';
-import { ToggleAcordion } from '../../helpers/ToggleAcordion';
-import ItemProductoPedido from './ItemProductoPedido';
-import { formatearFecha, formatearHora } from '../../helpers/formateoFechaHora';
-import Swal from 'sweetalert2';
-import { consultaEnProcesoPedido, consultaEntregarPedido, obtenerListaPedidos, borrarPedido } from '../../helpers/queriesPedido';
+import { Accordion, Card, Col, Form, ListGroup, Table } from "react-bootstrap";
+import "./../../../css/itemPedido.css";
+import { useState } from "react";
+import { Trash3Fill } from "react-bootstrap-icons";
+import { ToggleAcordion } from "../../helpers/ToggleAcordion";
+import ItemProductoPedido from "./ItemProductoPedido";
+import { formatearFecha, formatearHora } from "../../helpers/formateoFechaHora";
+import Swal from "sweetalert2";
+import {
+  consultaEnProcesoPedido,
+  consultaEntregarPedido,
+  obtenerListaPedidos,
+  borrarPedido,
+} from "../../helpers/queriesPedido";
 
 const ItemPedido = ({ index, pedido, setPedidos }) => {
   const estadoSwitch =
-    pedido.estado === 'En proceso'
+    pedido.estado === "En proceso"
       ? false
-      : pedido.estado === 'Entregado'
+      : pedido.estado === "Entregado"
       ? true
       : false;
   const [botonSwitch, setBotonSwitch] = useState(estadoSwitch);
@@ -24,68 +29,70 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
     if (!botonSwitch) {
       Swal.fire({
         title: `¿Pasar a Entregado el pedido N°:${index}?`,
-        icon: 'warning',
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#f7b538',
-        cancelButtonColor: '#c32f27',
-        confirmButtonText: 'Cambiar',
-        cancelButtonText: 'Cancelar',
+        confirmButtonColor: "#f7b538",
+        cancelButtonColor: "#c32f27",
+        confirmButtonText: "Cambiar",
+        cancelButtonText: "Cancelar",
       }).then((result) => {
         if (result.isConfirmed) {
           consultaEntregarPedido(index).then((respuesta) => {
             if (respuesta && respuesta.status === 200) {
-              Swal.fire(
-                'Pedido Editado',
-                `El pedido N°${index} pasó a Entregado correctamente`,
-                'success'
-              );
+              Swal.fire({
+                title: "Pedido Editado",
+                text: `El pedido N°${index} pasó a Entregado correctamente`,
+                icon: "success",
+                confirmButtonColor: " #d8572a",
+              });
               obtenerListaPedidos().then((respuesta) => {
                 setPedidos(respuesta);
               });
             } else {
               setBotonSwitch(false);
               Swal.fire(
-                'Ocurrió un error',
+                "Ocurrió un error",
                 `Intente realizar esta operación nuevamente más tarde`,
-                'error'
+                "error"
               );
             }
           });
-        }else{
+        } else {
           setBotonSwitch(false);
         }
       });
     } else {
       Swal.fire({
         title: `¿Volver a "En Proceso" el pedido N°:${index}?`,
-        icon: 'warning',
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#f7b538',
-        cancelButtonColor: '#c32f27',
-        confirmButtonText: 'Cambiar',
-        cancelButtonText: 'Cancelar',
+        confirmButtonColor: "#f7b538",
+        cancelButtonColor: "#c32f27",
+        confirmButtonText: "Cambiar",
+        cancelButtonText: "Cancelar",
       }).then((result) => {
         if (result.isConfirmed) {
           consultaEnProcesoPedido(index).then((respuesta) => {
             if (respuesta && respuesta.status === 200) {
-              Swal.fire(
-                'Pedido Editado',
-                `El pedido N°${index} pasó a "En Proceso" correctamente`,
-                'success'
-              );
+              Swal.fire({
+                title: "Pedido Editado",
+                text: `El pedido N°${index} pasó a "En Proceso" correctamente`,
+                icon: "success",
+                confirmButtonColor: " #d8572a",
+              });
               obtenerListaPedidos().then((respuesta) => {
                 setPedidos(respuesta);
               });
             } else {
               setBotonSwitch(true);
               Swal.fire(
-                'Ocurrió un error',
+                "Ocurrió un error",
                 `Intente realizar esta operación nuevamente más tarde`,
-                'error'
+                "error"
               );
             }
           });
-        }else{
+        } else {
           setBotonSwitch(true);
         }
       });
@@ -102,26 +109,29 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Borrar",
       cancelButtonText: "Cancelar",
-    }).then((result) => {if (result.isConfirmed){
-      borrarPedido(pedido._id).then((respuesta)=>{
-        if(respuesta.status === 200){
-          Swal.fire(
-            'Pedido eliminado',
-            `El pedido fue eliminado correctamente`,
-            'success'
-          );
-          obtenerListaPedidos().then((respuesta) => setPedidos(respuesta))
-        } else{
-          Swal.fire(
-            'Ocurrio un error',
-            `Intente realizar esta operación nuevamente mas tarde`,
-            'error'
-          )
-        }
-      }) 
-    }})
-  }
-  
+    }).then((result) => {
+      if (result.isConfirmed) {
+        borrarPedido(pedido._id).then((respuesta) => {
+          if (respuesta.status === 200) {
+            Swal.fire({
+              title: "Pedido eliminado",
+              text: `El pedido fue eliminado correctamente`,
+              icon: "success",
+              confirmButtonColor: " #d8572a",
+            });
+            obtenerListaPedidos().then((respuesta) => setPedidos(respuesta));
+          } else {
+            Swal.fire(
+              "Ocurrio un error",
+              `Intente realizar esta operación nuevamente mas tarde`,
+              "error"
+            );
+          }
+        });
+      }
+    });
+  };
+
   return (
     <Col md={6} xxl={4}>
       <Accordion defaultActiveKey="0" className="my-2">
@@ -132,27 +142,27 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
                 ID Pedido: <span className="fw-bold">{pedido._id}</span>
               </ListGroup.Item>
               <ListGroup.Item className="border-0 letraRoboto tamanioLetraItemListGroup py-1 px-2">
-                Fecha:{' '}
+                Fecha:{" "}
                 <span className="fw-bold">
                   {formatearFecha(pedido.fechaPedido)}
                 </span>
               </ListGroup.Item>
               <ListGroup.Item className="border-0 letraRoboto tamanioLetraItemListGroup py-1 px-2">
-                Hora:{' '}
+                Hora:{" "}
                 <span className="fw-bold">
                   {formatearHora(pedido.fechaPedido)}
                 </span>
               </ListGroup.Item>
               <ListGroup.Item className="border-0 letraRoboto tamanioLetraItemListGroup py-1 px-2">
-                Cliente:{' '}
+                Cliente:{" "}
                 <span className="fw-bold">
                   {pedido.usuario.nombreUsuario +
-                    ' ' +
+                    " " +
                     pedido.usuario.apellidoUsuario}
                 </span>
               </ListGroup.Item>
               <ListGroup.Item className="border-0 letraRoboto tamanioLetraItemListGroup py-1 px-2">
-                Precio Total:{' '}
+                Precio Total:{" "}
                 <span className="fw-bold">${pedido.precioTotal}</span>
               </ListGroup.Item>
               <div className="d-flex justify-content-between align-items-center mt-2 mx-2">

@@ -6,7 +6,7 @@ import {
   obtenerListaProductos,
 } from "../helpers/queriesProducto";
 import Nav from "react-bootstrap/Nav";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import videoHero from "../../assets/videoHero.mp4";
 import logoHeroSection from "../../assets/LogoYumHeroSection.svg";
 import { Link } from "react-router-dom";
@@ -25,13 +25,29 @@ const Inicio = ({
   const [categorias, setCategorias] = useState([]);
   const [productos, setProductos] = useState([]);
   const [categoriaActiva, setCategoriaActiva] = useState("Todo");
-  const productosPromocion = productos.filter(
-    (producto) => producto.categoria === "Promociones"
-  );
+   const [productosPromocion, setProductosPromocion] = useState([]);
   const [paginasPorCategoria, setPaginasPorCategoria] = useState({ Todo: 1 });
   const itemsPorPagina = 8;
+  const myRef = useRef();
+
+  const scrollToRef = () => {
+    console.log('click')
+    
+      const yOffset = 0; 
+      const y =
+        myRef.current.getBoundingClientRect().top + yOffset;
+  
+      window.scrollTo({
+        top: y,
+        behavior: 'smooth'
+      });
+  };
 
   useEffect(() => {
+    window.scrollTo({
+      top: 120,
+      behavior: 'smooth'
+    });
     obtenerListaCategoriasActivas()
       .then((respuesta) =>
         setCategorias(respuesta.map((categ) => categ.nombreCategoria))
@@ -42,6 +58,13 @@ const Inicio = ({
     obtenerListaProductos()
       .then((repuesta) => {
         setProductos(repuesta);
+      })
+      .catch((error) => {
+        console.log(error);
+      }); 
+      consultaProductosPorCategoria("Promociones")
+      .then((repuesta) => {
+        setProductosPromocion(repuesta);
       })
       .catch((error) => {
         console.log(error);
@@ -70,6 +93,7 @@ const Inicio = ({
       consultaProductosPorCategoria(categoria)
         .then((repuesta) => {
           setProductos(repuesta);
+         
         })
         .catch((error) => {
           console.log(error);
@@ -91,7 +115,6 @@ const Inicio = ({
   return (
     <section className="mainSection letraRoboto mb-3">
       <>
-        {/* Video de Hero Section */}
         <div className="position-relative">
           <div>
             <video autoPlay loop muted className="videoHero w-100">
@@ -115,7 +138,7 @@ const Inicio = ({
                   <h1 className="text-center text-white">
                     Tu Comida favorita directo a tu puerta
                   </h1>
-                  <Link className="w-100 d-flex justify-content-center text-decoration-none">
+                  <Link onClick={scrollToRef} className="w-100 d-flex justify-content-center text-decoration-none">
                     <Button
                       variant="outline-warning"
                       className="mt-5 "
@@ -130,8 +153,8 @@ const Inicio = ({
           </div>
         </div>
       </>
-      <Container>
-        <h1 className="display-4 text-center text-white mt-3 letraSpace mb-2 titulosInicio">
+      <Container ref={myRef}>
+        <h1 className="display-4 text-center text-white mt-5 mb-3 letraSpace titulosInicio">
           Disfruta de nuestras PROMOS
         </h1>
         <hr className="mb-4" />
@@ -149,13 +172,12 @@ const Inicio = ({
         </Row>
       </Container>
 
-     
       <Container>
-        <h1 className="display-4 text-center text-white mt-3 letraSpace titulosInicio">
+        <h1  className="display-4 text-center text-white mt-3 letraSpace titulosInicio ">
           Menú
         </h1>
-        <hr />
-        <Nav className="justify-content-center my-4 menuBuscador">
+
+        <Nav className="justify-content-center menuBuscador  p-4 d-flex">
           {categorias.map((categoria) => (
             <ItemNavCategoria
               key={categoria}

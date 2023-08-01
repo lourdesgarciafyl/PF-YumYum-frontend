@@ -13,7 +13,7 @@ const AgregarUsuario = () => {
     handleSubmit,
   } = useForm();
 
-  const navegacion = useNavigate()
+  const navegacion = useNavigate();
 
   const onSubmit = (usuarioNuevo) => {
     crearUsuarioAdmin(usuarioNuevo).then((respuestaCreated) => {
@@ -24,7 +24,7 @@ const AgregarUsuario = () => {
           `success`
         );
         reset();
-        navegacion('/administrar/usuarios');
+        navegacion("/administrar/usuarios");
       } else {
         Swal.fire(`Ocurrió un error`, `Intente nuevamente más tarde`, `error`);
       }
@@ -118,7 +118,7 @@ const AgregarUsuario = () => {
               {...register("password", {
                 required: "El Password es un dato obligatorio.",
                 pattern: {
-                  value:  /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+                  value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
                   message:
                     "La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.",
                 },

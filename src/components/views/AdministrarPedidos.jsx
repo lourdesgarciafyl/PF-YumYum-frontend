@@ -1,7 +1,7 @@
-import { Container, Row } from 'react-bootstrap';
-import ItemPedido from './pedido/ItemPedido';
-import { useEffect, useState } from 'react';
-import { obtenerListaPedidos } from '../helpers/queriesPedido';
+import { Container, Row } from "react-bootstrap";
+import ItemPedido from "./pedido/ItemPedido";
+import { useEffect, useState } from "react";
+import { obtenerListaPedidos } from "../helpers/queriesPedido";
 const AdministrarPedidos = () => {
   const [pedidos, setPedidos] = useState([]);
   useEffect(() => {
@@ -12,7 +12,7 @@ const AdministrarPedidos = () => {
   return (
     <section className="mainSection letraRoboto mb-3">
       <Container>
-        <h1 className="display-4 mt-3 letraSpace text-white text-center text-md-start ">
+        <h1 className="text-center letraSpace letraAmarilla fs-1 mt-md-4 mt-lg-5">
           Administrar Pedidos
         </h1>
         <hr />

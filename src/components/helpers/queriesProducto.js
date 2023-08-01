@@ -3,9 +3,11 @@ const URLProducto = import.meta.env.VITE_API_PRODUCTO;
 export const crearProducto = async (producto) => {
   try {
     const nuevoProducto = await fetch(URLProducto, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
       },
       body: JSON.stringify(producto),
     });
@@ -22,10 +24,12 @@ export const editarProducto = async (id, producto) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
       },
       body: JSON.stringify(producto),
     });
-    
+
     return respuesta;
   } catch (error) {
     console.log(error);
@@ -36,7 +40,11 @@ export const editarProducto = async (id, producto) => {
 export const borrarProducto = async (id) => {
   try {
     const respuesta = await fetch(`${URLProducto}/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
+      headers: {
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
+      },
     });
     return respuesta;
   } catch (error) {
@@ -67,20 +75,22 @@ export const consultaProductosPorCategoria = async (categoria) => {
 
 export const consultaProducto = async (id) => {
   try {
-      const respuesta = await fetch(URLProducto + "/" + id);
-      const producto = await respuesta.json();
-      return producto;
+    const respuesta = await fetch(URLProducto + "/" + id);
+    const producto = await respuesta.json();
+    return producto;
   } catch (error) {
-      console.log(error);
+    console.log(error);
   }
 };
 
 export const consultaActivarProducto = async (id) => {
   try {
     const respuesta = await fetch(`${URLProducto}/activar/${id}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
       },
     });
     return respuesta;
@@ -93,9 +103,11 @@ export const consultaActivarProducto = async (id) => {
 export const consultaDesactivarProducto = async (id) => {
   try {
     const respuesta = await fetch(`${URLProducto}/desactivar/${id}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
       },
     });
     return respuesta;

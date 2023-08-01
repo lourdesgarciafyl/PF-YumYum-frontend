@@ -1,26 +1,28 @@
 const URLPedido = import.meta.env.VITE_API_PEDIDO;
 
-export const crearPedido = async (usuario, carrito,totalCarrito) => {
+export const crearPedido = async (usuario, carrito, totalCarrito) => {
   let pedido = {};
   const fechaActual = new Date();
-  const offsetGMT3 = -3 * 60; // GMT-3 está 3 horas detrás del UTC
+  const offsetGMT3 = -3 * 60;
   const productosEnvio = carrito.map((producto) => {
     return {
       producto: producto.idProducto,
       cantidad: producto.cantidad,
-      subtotalItem: producto.subtotalItem
-    }
-  })
+      subtotalItem: producto.subtotalItem,
+    };
+  });
   pedido.usuario = usuario._id;
-  pedido.fechaPedido = fechaActual.setMinutes(fechaActual.getMinutes() + offsetGMT3);
+  pedido.fechaPedido = fechaActual.setMinutes(
+    fechaActual.getMinutes() + offsetGMT3
+  );
   pedido.productos = productosEnvio;
-  pedido.estado = 'En proceso';
+  pedido.estado = "En proceso";
   pedido.precioTotal = totalCarrito;
   try {
     const nuevoPedido = await fetch(URLPedido, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(pedido),
     });
@@ -33,7 +35,12 @@ export const crearPedido = async (usuario, carrito,totalCarrito) => {
 
 export const obtenerPedido = async (id) => {
   try {
-    const respuesta = await fetch(URLPedido + id);
+    const respuesta = await fetch(URLPedido + id, {
+      headers: {
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
+      },
+    });
     const pedido = await respuesta.json();
     return pedido;
   } catch (error) {
@@ -44,9 +51,9 @@ export const obtenerPedido = async (id) => {
 export const editarPedido = async (id, pedido) => {
   try {
     const respuesta = await fetch(`${URLPedido}${id}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(pedido),
     });
@@ -61,7 +68,7 @@ export const editarPedido = async (id, pedido) => {
 export const borrarPedido = async (id) => {
   try {
     const respuesta = await fetch(`${URLPedido}/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
     });
     return respuesta;
   } catch (error) {
@@ -72,7 +79,12 @@ export const borrarPedido = async (id) => {
 
 export const obtenerListaPedidos = async () => {
   try {
-    const respuesta = await fetch(URLPedido);
+    const respuesta = await fetch(URLPedido, {
+      headers: {
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
+      },
+    });
     const listaPedidos = await respuesta.json();
     return listaPedidos;
   } catch (error) {
@@ -84,9 +96,11 @@ export const obtenerListaPedidos = async () => {
 export const consultaEntregarPedido = async (id) => {
   try {
     const respuesta = await fetch(`${URLPedido}/entregado/${id}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
       },
     });
     return respuesta;
@@ -99,9 +113,11 @@ export const consultaEntregarPedido = async (id) => {
 export const consultaEnProcesoPedido = async (id) => {
   try {
     const respuesta = await fetch(`${URLPedido}/enproceso/${id}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
       },
     });
     return respuesta;

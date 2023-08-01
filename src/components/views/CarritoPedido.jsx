@@ -6,45 +6,45 @@ import { total } from "../helpers/queriesCarrito";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useEffect } from "react";
-import { set } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
-
   const navegacion = useNavigate();
 
   const vaciarCarrito = () => {
     Swal.fire({
       title: "Esta seguro de vaciar su carrito?",
-      text: "Deberar volver a armar su pedido en el inicio!",
+      text: "Debes volver a armar tu pedido en el inicio!",
       icon: "question",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      confirmButtonColor: "#f7b538",
       cancelButtonColor: "#d33",
       confirmButtonText: "Si, vaciar!",
+      cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
         setCarrito([]);
-        Swal.fire(
-          "Carrito vaciado!",
-          "Su Carrito fue vaciado. <br> Puede realizar nuevamente su pedido",
-          "success"
-        );
+        Swal.fire({
+          title: "Carrito vaciado!",
+          text: "Puede realizar nuevamente su pedido",
+          icon: "success",
+          confirmButtonColor: "#d8572a",
+        });
         navegacion("/");
       }
     });
   };
 
   const generarPedido = (usuario, carrito, totalCarrito) => {
-   
     crearPedido(usuario, carrito, totalCarrito).then((respuestaCreated) => {
       if (respuestaCreated && respuestaCreated.status === 201) {
-        Swal.fire(
-          "Pedido Realizado",
-          `Su pedido se realizó correctamente`,
-          `success`
-        );
-        setCarrito([])
+        Swal.fire({
+          title: "Pedido Realizado",
+          text: `Su pedido se realizó correctamente`,
+          icon: `success`,
+          confirmButtonColor: " #d8572a",
+        });
+        setCarrito([]);
         navegacion("/");
       } else {
         Swal.fire(`Ocurrió un error`, `Intente nuevamente más tarde`, `error`);
@@ -54,10 +54,10 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
 
   return (
     <>
-      <section className="mainSection letraRoboto mb-3">
+      <section className="mainSection letraRoboto">
         <Container>
-          <h1 className="display-4 mt-3 letraSpace text-center text-md-start text-light">
-            Mi pedido
+          <h1 className="text-center letraSpace letraAmarilla fs-1 mt-md-4 mt-lg-5 mb-2">
+            Mi Pedido
           </h1>
           <hr className="colorHr" />
           {carrito.length > 0 ? (
@@ -77,14 +77,20 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
                   totalProductos={totalProductos}
                 ></CardItemCarrito>
               ))}
+              <Row className="justify-content-center">
               <Button
-                variant="light"
-                type="submit"
-                className="mt-2 mb-3 botonVaciarCarrito"
+                variant="dark"
+                className="mt-2 mb-3 botonVaciarCarrito w-25"
                 onClick={vaciarCarrito}
               >
                 Vaciar Carrito
               </Button>
+              <Button as={Link} to={"/"}
+              variant="dark"
+              className="ms-2 mt-2 mb-3 botonVaciarCarrito fondoGris w-25">
+                Seguir comprando
+                </Button>
+                </Row>
             </Col>
 
             <Col lg={3} className="justify-content-around">
@@ -105,20 +111,20 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
                 </ListGroup.Item>
               </ListGroup>
               <Button
-                variant="primary"
+                variant="dark"
                 type="submit"
-                className="mt-2 mb-1 botonGenerarPedido"
+                className="mt-2 mb-1 w-100 botonVaciarCarrito"
                 onClick={()=> generarPedido(usuario, carrito,total(carrito))}
               >
-                Generar Pedido
+                Pedir
               </Button>
             </Col>
           </Row>
           </> ) : ( 
           <>
-          <div className="letraAmarilla text-center letraRoboto">
-            <h2 className="fs-1 fw-bold">No hay productos en tu carrito</h2>
-            <Button as={Link} to={"/"} className="volverMenu mb-2 letraSpace">Volver al menú</Button>
+          <div className="text-white text-center letraRoboto">
+            <h2 className="fs-1 fw-bold mt-5">No hay productos en tu carrito</h2>
+            <Button as={Link} to={"/"} className="btn btn-dark mb-2 p-4 mt-5">Volver al menú</Button>
           </div>
           </> )}
         </Container>
