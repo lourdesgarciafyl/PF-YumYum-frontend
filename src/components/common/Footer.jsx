@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className="bg-dark letraGrisOscuro">
       <section className="ordenFooter">
         <article>
-          <h5 className="letraAmarilla"> Redes sociales </h5>
+          <h5 className="letraAmarilla pb-2"> Redes sociales </h5>
           <div className="d-flex justify-content-evenly">
             <Link to={"/error404"} className="letraAmarilla">
               <i className="bi bi-instagram"></i>
@@ -25,7 +25,7 @@ const Footer = () => {
           <img className="logo m-2" src={logoFooter} alt="logo YumYum" />
         </article>
         <article className="text-center">
-          <h5>
+          <h5 className="mb-2">
             <Link
               to={"/nosotros"}
               className="text-decoration-none letraAmarilla"
@@ -43,6 +43,9 @@ const Footer = () => {
           </h5>
         </article>
       </section>
+      <section className="subFooter py-3 text-light text-center"> &copy; Todos los derechos reservados <strong>YumYum Fast Food</strong> 2023 | San Miguel de Tucuman - Argentina </section>
+  
+
     </footer>
   );
 };
