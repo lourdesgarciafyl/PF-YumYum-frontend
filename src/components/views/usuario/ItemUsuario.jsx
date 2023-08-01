@@ -2,7 +2,7 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import {borrarUsuario,consultaListaUsuarios } from "../../helpers/queriesUsuario";
-
+import "../../../css/ItemUsuario.css"
 const ItemUsuario = ({ usuario, setUsuarios }) => {
   const borrarUsuarioActual = () => {
     Swal.fire({
@@ -10,7 +10,7 @@ const ItemUsuario = ({ usuario, setUsuarios }) => {
       text: "No se puede revertir este paso",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      confirmButtonColor: "#f5ad28",
       cancelButtonColor: "#d33",
       confirmButtonText: "Borrar",
       cancelButtonText: "Cancelar",
@@ -20,11 +20,12 @@ const ItemUsuario = ({ usuario, setUsuarios }) => {
         borrarUsuario(usuario._id).then((respuesta) => {
           console.log(respuesta);
           if (respuesta.status === 200) {
-            Swal.fire(
-              "Usuario eliminado",
-              `El ${usuario.nombreUsuario} fue eliminado correctamente`,
-              "success"
-            );
+            Swal.fire({
+             title: "Usuario eliminado",
+             text: `El ${usuario.nombreUsuario} fue eliminado correctamente`,
+              icon: "success",
+              confirmButtonColor: ' #d8572a'
+          });
             //actualizar la tabla de usuarios
             consultaListaUsuarios().then((respuesta) => setUsuarios(respuesta));
           } else {
@@ -47,8 +48,8 @@ const ItemUsuario = ({ usuario, setUsuarios }) => {
       <td>{usuario.perfil}</td>
 
       <td className="d-flex justify-content-around">  
-        <Link className="btn btn-warning" to={`editar-usuario/${usuario._id}`}>Editar</Link>
-        <Button variant="danger" className="m-1" onClick={borrarUsuarioActual}>
+        <Button className="fondoAmarillo py-1 btnEditarUsuario" as={Link} to={`editar-usuario/${usuario._id}`}>Editar</Button>
+        <Button  className="fondoRojo btnBorrarUsuario" onClick={borrarUsuarioActual}>
           Borrar
         </Button>
       </td>

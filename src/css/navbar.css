@@ -60,10 +60,15 @@ transform: scale(1.1);}
 .btn-dark {
   background-color: rgb(241, 171, 18);
   color: white;
+  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.926);
+  border-radius: 35px;
+  
 }
 
 .btn-dark:hover {
   background-color: #af0303;
+  transform: scale(0.9);
+  transition: 120ms;
 }
 
 @media (min-width: 577px) and (max-width: 991px) {

@@ -53,11 +53,15 @@
 
 .botonDetalle {
   background-color: #f7b538;
-  color: black;
+  color:  #2b2d42;;
   border-radius: 1cm;
-  padding: 0px 3%;
+  font-weight: bolder;
+  padding: 15px;
+  font-size: 20px;
 }
-
+.botonDetalle:hover{
+  background-color: #e9a82e;
+}
 .ordenDetallesPrecio {
   display: flex;
   justify-content: space-around;
@@ -65,15 +69,16 @@
 }
 
 .botonVolver {
-  padding: 0, 7% 5%;
+  padding: 15px;
   font-size: 26px;
   background-color: #2b2d42;
   color: #f7b538;
+  font-weight: bolder;
   border-radius: 1em;
 }
 
 .botonVolver:hover {
-  background-color: #000000;
+  background-color: #212232 ;
   color: #f7b538;
 }
 
