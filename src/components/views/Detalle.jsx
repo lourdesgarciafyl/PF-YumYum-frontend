@@ -70,7 +70,7 @@ const Detalle = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, tot
             <Row>
               <Col lg={6}>
                 <Card.Body className="card-body-detalles">
-                  <Card.Title className="titulo">
+                  <Card.Title className="titulo fs-1">
                     {producto.nombreProducto}
                   </Card.Title>
                   <hr />
