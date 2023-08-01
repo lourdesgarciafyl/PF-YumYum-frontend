@@ -101,11 +101,7 @@ const EditarUsuario = () => {
           Editar usuario
         </Card.Title>
       </div>
-      <div className="ms-auto w-25 mt-3 ">
-        <Button variant="danger me-1" bg="dark" className="fondoGrisClaro rounded-5 " onClick={() => handleShow()}>
-          <Key className="fs-1"></Key>
-        </Button>
-      </div>
+     
       <Card.Body className="py-3 w-100 mx-auto">
         <Form
           noValidate
@@ -225,10 +221,15 @@ const EditarUsuario = () => {
                 </Form.Text>
               </Form.Group>
             </Col>
+            <Col className="mb-4">
+            <Button variant="danger me-1" bg="dark" className=" text-dark rounded-5 btn-dark " onClick={() => handleShow()}>
+         Contraseña <Key className="fs-1"></Key>
+        </Button> </Col>
+            
           </Row>
 
-          <Button className="mt-1 mb-3" type="submit" id="btnAgregar">
-            Agregar
+          <Button className="mt-1 mb-3 text-dark btn-dark" type="submit" id="">
+            Editar Usuario
           </Button>
         </Form>
       </Card.Body>
