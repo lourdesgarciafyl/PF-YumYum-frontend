@@ -16,9 +16,7 @@ const ItemUsuario = ({ usuario, setUsuarios }) => {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        //borrar el usuario
         borrarUsuario(usuario._id).then((respuesta) => {
-          console.log(respuesta);
           if (respuesta.status === 200) {
             Swal.fire({
              title: "Usuario eliminado",
@@ -26,7 +24,6 @@ const ItemUsuario = ({ usuario, setUsuarios }) => {
               icon: "success",
               confirmButtonColor: ' #d8572a'
           });
-            //actualizar la tabla de usuarios
             consultaListaUsuarios().then((respuesta) => setUsuarios(respuesta));
           } else {
             Swal.fire(
