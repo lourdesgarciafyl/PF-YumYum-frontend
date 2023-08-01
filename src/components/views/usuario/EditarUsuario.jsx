@@ -2,9 +2,10 @@ import "../../../css/formularioAdminProductos.css";
 import { Form, Button, Card, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { editarUsuario, obtenerUsuario } from "../../helpers/queriesUsuario";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Key } from "react-bootstrap-icons";
 
 const EditarUsuario = () => {
   const {
@@ -17,6 +18,23 @@ const EditarUsuario = () => {
 
   const { id } = useParams();
   const navegacion = useNavigate();
+  const [show, setShow] = useState(false);
+  const handleShow = (tarea) => {
+    // consultaTarea(tarea._id).then((respuesta) => {
+    //   if (respuesta) {
+    //     setValue('nombreTarea', respuesta.nombreTarea);
+    //     setShow(true);
+    //     setTareaId(tarea._id);
+    //   } else {
+    //     Swal.fire(
+    //       'Ocurrio un error',
+    //       `No se puede editar la tarea, intentelo mas tarde`,
+    //       'error'
+    //     );
+    //   }
+    // });
+    console.log('se abrió el modal');
+  };
 
   useEffect(() => {
     obtenerUsuario(id).then((respuesta) => {
@@ -66,6 +84,11 @@ const EditarUsuario = () => {
         <Card.Title className="my-4 text-center fw-bold fs-3">
           Editar usuario
         </Card.Title>
+      </div>
+      <div className="ms-auto w-25 mt-3 ">
+        <Button variant="danger me-1" bg="dark" className="fondoGrisClaro rounded-5 " onClick={() => handleShow()}>
+          <Key className="fs-1"></Key>
+        </Button>
       </div>
       <Card.Body className="py-3 w-100 mx-auto">
         <Form
