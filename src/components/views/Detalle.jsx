@@ -83,7 +83,7 @@ const Detalle = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, tot
                         className="botonDetalle"
                         onClick={() => sumarProductoCarrito(producto)}
                       >
-                        AÑADIR AL CARRITO
+                        Añadir al carrito
                       </button>
                     </div>
                   </section>
@@ -107,7 +107,7 @@ const Detalle = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, tot
       <div className="mb-4 texto container fs-2 text-center">
         <Link className="text-decoration-none letraAmarilla" to={'/'}>
           {' '}
-          <button className="btn botonVolver">Volver al menú</button>
+          <button className="btn botonVolver letraRoboto my-2">Volver al menú</button>
         </Link>
       </div>
     </>
