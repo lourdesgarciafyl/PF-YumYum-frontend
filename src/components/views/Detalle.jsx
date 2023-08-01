@@ -19,6 +19,10 @@ const Detalle = ({
   const [existeProducto, setExisteProducto] = useState(true);
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
     consultaProducto(id).then((respuesta) => {
       setProducto(respuesta);
     });
@@ -91,7 +95,7 @@ const Detalle = ({
                       <p className="fs-1"> ${producto.precio} </p>
                       <button
                         type="submit"
-                        className="botonDetalle"
+                        className="btn-dark p-3"
                         onClick={() => sumarProductoCarrito(producto)}
                       >
                         Añadir al carrito
@@ -116,9 +120,9 @@ const Detalle = ({
         navegacion("/404")
       )}
       <div className="mb-4 texto container fs-2 text-center">
-        <Link className="text-decoration-none letraAmarilla" to={"/"}>
+        <Link className="text-decoration-none" to={"/"}>
           {" "}
-          <button className="btn botonVolver letraRoboto my-2">
+          <button className="btn-dark p-3 letraRoboto my-2">
             Volver al menú
           </button>
         </Link>

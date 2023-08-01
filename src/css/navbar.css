@@ -60,7 +60,7 @@
 
 .btn-dark {
   background-color: rgb(241, 171, 18);
-  color: white;
+  color: white !important;
   text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.926);
   border-radius: 35px;
 }

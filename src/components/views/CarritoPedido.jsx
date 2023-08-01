@@ -87,7 +87,7 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
               </Button>
               <Button as={Link} to={"/"}
               variant="dark"
-              className="ms-2 mt-2 mb-3 botonVaciarCarrito w-25">
+              className="ms-2 mt-2 mb-3 botonVaciarCarrito fondoGris w-25">
                 Seguir comprando
                 </Button>
                 </Row>

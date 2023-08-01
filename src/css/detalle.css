@@ -17,11 +17,13 @@
 .cardDetalle {
   margin-top: 4%;
   margin-bottom: 1%;
-  background-color: #2b2d42;
+  background: rgb(43,45,66);
+  background: linear-gradient(90deg, rgba(43,45,66,1) 0%, rgba(0,0,0,1) 100%);
   color: #f7b538;
   padding-bottom: 1%;
   padding-top: 1%;
   width: 100%;
+  border-radius: 25px;
 }
 
 .fotoDetalle {
