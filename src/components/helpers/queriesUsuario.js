@@ -1,5 +1,5 @@
 const URLUsuario = import.meta.env.VITE_API_USUARIO;
-const token = JSON.parse(localStorage.getItem("usuarioInicioSesion")).token;
+const token = JSON.parse(localStorage.getItem("usuarioInicioSesion")).token || "";
 // sirve para registro:
 export const crearUsuario = async (usuario) => {
   try {
