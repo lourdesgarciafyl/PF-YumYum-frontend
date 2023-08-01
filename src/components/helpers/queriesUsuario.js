@@ -1,4 +1,5 @@
 const URLUsuario = import.meta.env.VITE_API_USUARIO;
+const token = JSON.parse(localStorage.getItem("usuarioInicioSesion")).token;
 // sirve para registro:
 export const crearUsuario = async (usuario) => {
   try {
@@ -23,6 +24,7 @@ export const crearUsuarioAdmin = async (usuario) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "x-token": token
       },
       body: JSON.stringify(usuario),
     });
@@ -35,7 +37,11 @@ export const crearUsuarioAdmin = async (usuario) => {
 
 export const obtenerUsuario = async (id) => {
   try {
-    const respuesta = await fetch(`${URLUsuario}/${id}`);
+    const respuesta = await fetch(`${URLUsuario}/${id}`, {
+      headers: {
+        "x-token": token
+      }, 
+    });
     const usuarioEncontrado = {
       data: await respuesta.json(),
       status: respuesta.status,
@@ -51,6 +57,9 @@ export const borrarUsuario = async (id) => {
   try {
     const respuesta = await fetch(`${URLUsuario}/${id}`, {
       method: "DELETE",
+      headers: {
+        "x-token": token
+      }, 
     });
     return respuesta;
   } catch (error) {
@@ -81,34 +90,13 @@ export const loginUsuario = async (usuario) => {
   }
 };
 
-// export const loginUsuario = async (usuario) => {
-//   try {
-//     const respuesta = await fetch(URLUsuario);
-//     const listaUsuarios = await respuesta.json();
-//     //buscar cual usuario tiene el mail
-//     const usuarioBuscado = listaUsuarios.find(
-//       (itemUsuario) => itemUsuario.email === usuario.email
-//     );
-//     if (usuarioBuscado) {
-//       console.log("email encontrado");
-//       if (usuarioBuscado.password === usuario.password) {
-//         return usuarioBuscado;
-//       } else {
-//         console.log("el password es incorrecto");
-//         return null;
-//       }
-//     } else {
-//       console.log("el email no existe");
-//       return null;
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
 export const consultaListaUsuarios = async () => {
   try {
-    const respuesta = await fetch(URLUsuario);
+    const respuesta = await fetch(URLUsuario, {
+      headers: {
+        "x-token": token
+      }, 
+    });
     const listaUsuarios = await respuesta.json();
     return listaUsuarios;
   } catch (error) {
@@ -122,6 +110,7 @@ export const editarUsuario = async (usuario, id) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        "x-token": token
       },
       body: JSON.stringify(usuario),
     });
