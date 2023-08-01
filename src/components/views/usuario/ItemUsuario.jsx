@@ -20,11 +20,12 @@ const ItemUsuario = ({ usuario, setUsuarios }) => {
         borrarUsuario(usuario._id).then((respuesta) => {
           console.log(respuesta);
           if (respuesta.status === 200) {
-            Swal.fire(
-              "Usuario eliminado",
-              `El ${usuario.nombreUsuario} fue eliminado correctamente`,
-              "success"
-            );
+            Swal.fire({
+             title: "Usuario eliminado",
+             text: `El ${usuario.nombreUsuario} fue eliminado correctamente`,
+              icon: "success",
+              confirmButtonColor: ' #d8572a'
+          });
             //actualizar la tabla de usuarios
             consultaListaUsuarios().then((respuesta) => setUsuarios(respuesta));
           } else {
