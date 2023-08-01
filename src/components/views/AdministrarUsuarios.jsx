@@ -1,15 +1,14 @@
 import React from "react";
-import { useState, useEffect } from 'react';
-import { Table } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import { Table, Button } from "react-bootstrap";
 import ItemUsuario from "./usuario/ItemUsuario";
 import { Link } from "react-router-dom";
-import { consultaListaUsuarios } from "../helpers/queriesUsuario"
+import { consultaListaUsuarios } from "../helpers/queriesUsuario";
 
 const AdministradorUsuarios = () => {
-
   const [usuarios, setUsuarios] = useState([]);
 
-   useEffect(() => {
+  useEffect(() => {
     consultaListaUsuarios()
       .then((repuesta) => {
         setUsuarios(repuesta);
@@ -19,19 +18,19 @@ const AdministradorUsuarios = () => {
       });
   }, []);
 
-
   return (
-    <div className="container mainSection my-4">
+    <div className="container mainSection">
       <section>
-        <div className="d-flex justify-content-between align-items-center mt-5 mb-2">
-          <h1 className="display-4 letraAmarilla">Usuarios</h1>
+        <div className="d-flex justify-content-between align-items-center flex-column">
+          <h1 className="text-center letraSpace letraAmarilla fs-1 mt-md-4 mt-lg-5 mb-2">
+            Administrar Usuarios
+          </h1>
 
-          <Link
-            className="btn btn btn-warning"
-            to="/administrar/usuarios/agregar-usuario"
-          >
-            Agregar
-          </Link>
+          <div className="mb-3">
+             <Button className="btnAgregarProducto" as={Link} to={"/administrar/usuarios/agregar-usuario"}>Agregar nuevo usuario</Button>
+            </div>
+
+        
         </div>
 
         <Table responsive striped bordered hover>
@@ -46,7 +45,11 @@ const AdministradorUsuarios = () => {
           </thead>
           <tbody>
             {usuarios.map((usuario) => (
-              <ItemUsuario key={usuario._id} usuario={usuario} setUsuarios={setUsuarios}></ItemUsuario>
+              <ItemUsuario
+                key={usuario._id}
+                usuario={usuario}
+                setUsuarios={setUsuarios}
+              ></ItemUsuario>
             ))}
           </tbody>
         </Table>

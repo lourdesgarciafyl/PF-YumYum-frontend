@@ -1,5 +1,5 @@
 import "../../../css/cardItemCarrito.css";
-import { Card, Row, Col } from "react-bootstrap";
+import { Card, Row, Col, Button } from "react-bootstrap";
 import { Trash3Fill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -49,8 +49,8 @@ const CardItemCarrito = ({ producto, carrito, setCarrito, totalProductos }) => {
       showCancelButton: true,
       confirmButtonText: "Eliminar",
       cancelButtonText: "Cancelar",
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
+      confirmButtonColor: "#f7b538",
+      cancelButtonColor: "#d33",
     }).then((result) => {
       if (result.isConfirmed) {
         // borramos el item cuando el usuario confirme
@@ -86,13 +86,13 @@ const CardItemCarrito = ({ producto, carrito, setCarrito, totalProductos }) => {
                   {producto.nombreProducto}
                 </Card.Title>
 
-                <Card.Link
+                <Button
                   as={Link}
                   to={`/detalle/${producto.idProducto}`}
-                  className=" linkDetalle"
+                  className=" btn-dark"
                 >
                   Ver Detalle
-                </Card.Link>
+                </Button>
               </Col>
             </Row>
           </Col>

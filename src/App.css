@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Space+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Space+Mono&display=swap");
 
 #root {
   display: flex;
@@ -8,13 +8,20 @@
 }
 .mainSection {
   flex-grow: 1;
-  padding-top: 90px
+  padding-top: 90px;
 }
+/* MODAL DE SWeet alert */
+.swal2-modal {
+  background-color: #2b2d42;
+  color: #f7b538;
+  border-radius: 25px;
+}
+
 .letraSpace {
-  font-family: 'Space Mono', monospace;
+  font-family: "Space Mono", monospace;
 }
 .letraRoboto {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
 }
 .fondoGrisOscuro {
   background-color: #2b2d42;
@@ -45,4 +52,24 @@
 }
 .letraRoja {
   color: #c32f27;
+}
+
+
+.swal2-modal {
+  background-color: #2b2d42;
+  color: #f7b538;
+  border-radius: 25px;
+}
+
+
+@media all and (max-width: 991px) {
+
+  .swal2-modal {
+
+    font-size: small;
+ 
+  }
+  
+  
+  
 }

@@ -8,16 +8,28 @@
 }
 
 .botonVaciarCarrito {
-  color: #c32f27;
+  color: #ffffff;
   font-size: 1.1rem;
   font-weight: 700;
+  padding: 15px;
 }
-
-.botonVaciarCarrito:hover {
+.btnSeguir{
   background-color: #d8572a;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 30px;
+  padding: 15px;
+
+}
+.botonVaciarCarrito:hover {
+  background-color: #ffa807;
   color: white;
 }
-
+.btnSeguir:hover{
+  background-color: #d8572a;
+  color:#ffffff
+}
 .tamanioLetra {
   font-size: 1.5rem;
   font-weight: 700;

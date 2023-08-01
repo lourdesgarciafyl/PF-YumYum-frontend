@@ -17,9 +17,9 @@ const AdministrarProducto = () => {
     }, [])
 
     return(
-        <Container className="my-2 mainSection">
-            <h1 className="text-center letraSpace letraAmarilla fs-1">Administrar productos</h1>
-            <div className="d-flex justify-content-center my-3">
+        <Container className="mainSection">
+            <h1 className="text-center letraSpace letraAmarilla fs-1 mt-md-4 mt-lg-5">Administrar productos</h1>
+            <div className="d-flex justify-content-center">
              <Button className="btnAgregarProducto" as={Link} to={"/administrar/productos/agregar-producto"}>Agregar nuevo producto</Button>
             </div>
             <Row>

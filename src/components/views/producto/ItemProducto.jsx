@@ -23,7 +23,7 @@ const ItemProducto = ({ producto, setProductos, index }) => {
         text: "No se puede revertir este paso!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
+        confirmButtonColor: "#f7b538",
         cancelButtonColor: "#d33",
         confirmButtonText: "Borrar",
         cancelButtonText: "Cancelar",
@@ -31,11 +31,12 @@ const ItemProducto = ({ producto, setProductos, index }) => {
           borrarProducto(producto._id).then((respuesta)=>{
             console.log(respuesta);
             if(respuesta.status === 200){
-              Swal.fire(
-                'Producto eliminado',
-                `El producto ${producto.nombreProducto} fue eliminado correctamente`,
-                'success'
-              );
+              Swal.fire({
+               title: 'Producto eliminado',
+                text: `El producto ${producto.nombreProducto} fue eliminado correctamente`,
+                icon: 'success',
+                confirmButtonColor: ' #d8572a' 
+            });
               obtenerListaProductos().then((respuesta)=> setProductos(respuesta))
             }else{
               Swal.fire(
@@ -63,11 +64,12 @@ const ItemProducto = ({ producto, setProductos, index }) => {
           if (result.isConfirmed) {
             consultaActivarProducto(index).then((respuesta) => {
               if (respuesta && respuesta.status === 200) {
-                Swal.fire(
-                  'Producto editado',
-                  `El producto pasó a Activo correctamente`,
-                  'success'
-                );
+                Swal.fire({
+                  title: 'Producto editado',
+                  text: `El producto pasó a Activo correctamente`,
+                  icon: 'success',
+                  confirmButtonColor: ' #d8572a'
+              });
                 obtenerListaProductos().then((respuesta) => {
                   setProductos(respuesta);
                 });
@@ -97,11 +99,12 @@ const ItemProducto = ({ producto, setProductos, index }) => {
           if (result.isConfirmed) {
             consultaDesactivarProducto(index).then((respuesta) => {
               if (respuesta && respuesta.status === 200) {
-                Swal.fire(
-                  'Producto editado',
-                  `El producto pasó a Inactivo correctamente`,
-                  'success'
-                );
+                Swal.fire({
+                  title:'Producto editado',
+                  text:`El producto pasó a Inactivo correctamente`,
+                  icon:'success',
+                  confirmButtonColor: ' #d8572a'
+              });
                 obtenerListaProductos().then((respuesta) => {
                   setProductos(respuesta);
                 });

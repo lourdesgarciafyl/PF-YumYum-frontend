@@ -1,5 +1,5 @@
 const URLProducto = import.meta.env.VITE_API_PRODUCTO;
-const token = JSON.parse(localStorage.getItem("usuarioInicioSesion")).token;
+//const token = JSON.parse(localStorage.getItem("usuarioInicioSesion")).token;
 
 export const crearProducto = async (producto) => {
   try {
@@ -7,7 +7,7 @@ export const crearProducto = async (producto) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        "x-token": token
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion")).token
       },
       body: JSON.stringify(producto),
     });
@@ -24,7 +24,7 @@ export const editarProducto = async (id, producto) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "x-token": token
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion")).token
       },
       body: JSON.stringify(producto),
     });
@@ -41,7 +41,7 @@ export const borrarProducto = async (id) => {
     const respuesta = await fetch(`${URLProducto}/${id}`, {
       method: 'DELETE',
       headers: {
-        "x-token": token
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion")).token
       },  
     });
     return respuesta;
@@ -87,7 +87,7 @@ export const consultaActivarProducto = async (id) => {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        "x-token": token
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion")).token
       },
     });
     return respuesta;
@@ -103,7 +103,7 @@ export const consultaDesactivarProducto = async (id) => {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        "x-token": token
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion")).token
       },
     });
     return respuesta;

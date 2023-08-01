@@ -34,11 +34,12 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
         if (result.isConfirmed) {
           consultaEntregarPedido(index).then((respuesta) => {
             if (respuesta && respuesta.status === 200) {
-              Swal.fire(
-                'Pedido Editado',
-                `El pedido N°${index} pasó a Entregado correctamente`,
-                'success'
-              );
+              Swal.fire({
+                title:'Pedido Editado',
+                text:`El pedido N°${index} pasó a Entregado correctamente`,
+                icon:'success',
+                confirmButtonColor: ' #d8572a'
+            });
               obtenerListaPedidos().then((respuesta) => {
                 setPedidos(respuesta);
               });
@@ -68,11 +69,12 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
         if (result.isConfirmed) {
           consultaEnProcesoPedido(index).then((respuesta) => {
             if (respuesta && respuesta.status === 200) {
-              Swal.fire(
-                'Pedido Editado',
-                `El pedido N°${index} pasó a "En Proceso" correctamente`,
-                'success'
-              );
+              Swal.fire({
+                title: 'Pedido Editado',
+                text:`El pedido N°${index} pasó a "En Proceso" correctamente`,
+                icon:'success',
+                confirmButtonColor: ' #d8572a'
+            });
               obtenerListaPedidos().then((respuesta) => {
                 setPedidos(respuesta);
               });
@@ -105,11 +107,12 @@ const ItemPedido = ({ index, pedido, setPedidos }) => {
     }).then((result) => {if (result.isConfirmed){
       borrarPedido(pedido._id).then((respuesta)=>{
         if(respuesta.status === 200){
-          Swal.fire(
-            'Pedido eliminado',
-            `El pedido fue eliminado correctamente`,
-            'success'
-          );
+          Swal.fire({
+            title:'Pedido eliminado',
+            text:`El pedido fue eliminado correctamente`,
+            icon:'success',
+            confirmButtonColor: ' #d8572a'
+        });
           obtenerListaPedidos().then((respuesta) => setPedidos(respuesta))
         } else{
           Swal.fire(
