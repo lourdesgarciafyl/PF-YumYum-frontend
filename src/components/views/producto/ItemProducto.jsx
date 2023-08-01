@@ -23,7 +23,7 @@ const ItemProducto = ({ producto, setProductos, index }) => {
         text: "No se puede revertir este paso!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
+        confirmButtonColor: "#f7b538",
         cancelButtonColor: "#d33",
         confirmButtonText: "Borrar",
         cancelButtonText: "Cancelar",

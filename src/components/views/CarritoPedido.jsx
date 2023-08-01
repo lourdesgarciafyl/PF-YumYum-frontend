@@ -19,17 +19,19 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
       text: "Deberar volver a armar su pedido en el inicio!",
       icon: "question",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      confirmButtonColor: "#f7b538",
       cancelButtonColor: "#d33",
       confirmButtonText: "Si, vaciar!",
+      cancelButtonText: "Cancelar"
     }).then((result) => {
       if (result.isConfirmed) {
         setCarrito([]);
-        Swal.fire(
-          "Carrito vaciado!",
-          "Su Carrito fue vaciado. <br> Puede realizar nuevamente su pedido",
-          "success"
-        );
+        Swal.fire({
+          title: "Carrito vaciado!",
+          text: "Su Carrito fue vaciado. <br> Puede realizar nuevamente su pedido",
+          icon: "success",
+          confirmButtonColor: '#d8572a'
+      });
         navegacion("/");
       }
     });
@@ -39,11 +41,12 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
    
     crearPedido(usuario, carrito, totalCarrito).then((respuestaCreated) => {
       if (respuestaCreated && respuestaCreated.status === 201) {
-        Swal.fire(
-          "Pedido Realizado",
-          `Su pedido se realizó correctamente`,
-          `success`
-        );
+        Swal.fire({
+          title: "Pedido Realizado",
+          text: `Su pedido se realizó correctamente`,
+          icon: `success`,
+          confirmButtonColor: ' #d8572a'
+        } );
         setCarrito([])
         navegacion("/");
       } else {

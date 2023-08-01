@@ -26,11 +26,11 @@ const Login = ({setUsuarioLogueado, carrito}) => {
         sessionStorage.clear();
         localStorage.setItem('usuarioInicioSesion', JSON.stringify(respuestaRestante));
         sessionStorage.setItem(`${respuesta._id}`, JSON.stringify(carrito))
-        Swal.fire(
-          'Bienvenido',
-          `${respuesta.nombreUsuario} iniciste sesión correctamente`,
-          'success'
-        );
+        Swal.fire({
+          title: 'Bienvenido',
+          text:`${respuesta.nombreUsuario} iniciste sesión correctamente`,
+          confirmButtonColor: ' #d8572a'
+      });
         setUsuarioLogueado(respuesta);
         navegacion('/');
       } else {

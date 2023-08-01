@@ -49,8 +49,8 @@ const CardItemCarrito = ({ producto, carrito, setCarrito, totalProductos }) => {
       showCancelButton: true,
       confirmButtonText: "Eliminar",
       cancelButtonText: "Cancelar",
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
+      confirmButtonColor: "#f7b538",
+      cancelButtonColor: "#d33",
     }).then((result) => {
       if (result.isConfirmed) {
         // borramos el item cuando el usuario confirme
