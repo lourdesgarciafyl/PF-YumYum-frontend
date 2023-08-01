@@ -27,7 +27,7 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
         setCarrito([]);
         Swal.fire({
           title: "Carrito vaciado!",
-          text: "Su Carrito fue vaciado. <br> Puede realizar nuevamente su pedido",
+          text: "Puede realizar nuevamente su pedido",
           icon: "success",
           confirmButtonColor: '#d8572a'
       });
