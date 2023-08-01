@@ -131,7 +131,7 @@ const Inicio = ({
         </div>
       </>
       <Container>
-        <h1 className="display-4 text-center text-white mt-3 letraSpace mb-2 titulosInicio">
+        <h1 className="display-4 text-center text-white mt-5 mb-3 letraSpace titulosInicio">
           Disfruta de nuestras PROMOS
         </h1>
         <hr className="mb-4" />
@@ -150,12 +150,12 @@ const Inicio = ({
       </Container>
 
      
-      <Container>
-        <h1 className="display-4 text-center text-white mt-3 letraSpace titulosInicio">
+      <Container className="">
+        <h1 className="display-4 text-center text-white mt-3 letraSpace titulosInicio ">
           Menú
         </h1>
-        <hr />
-        <Nav className="justify-content-center my-4 menuBuscador">
+
+        <Nav className="justify-content-center menuBuscador  p-4 d-flex">
           {categorias.map((categoria) => (
             <ItemNavCategoria
               key={categoria}
