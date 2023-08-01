@@ -20,22 +20,24 @@ const EditarUsuario = () => {
 
   useEffect(() => {
     obtenerUsuario(id).then((respuesta) => {
-      if (respuesta.status === 200) {
-        setValue("nombreUsuario", respuesta.nombreUsuario);
-        setValue("apellidoUsuario", respuesta.apellidoUsuario);
-        setValue("email", respuesta.email);
-        setValue("password", respuesta.password);
-        setValue("perfil", respuesta.perfil);
-        setValue("estado", respuesta.estado);
+      console.log(respuesta); // Agrega este console.log para verificar la respuesta en la consola
+      if (respuesta && respuesta.status === 200) {
+        setValue("nombreUsuario", respuesta.data.nombreUsuario);
+        setValue("apellidoUsuario", respuesta.data.apellidoUsuario);
+        setValue("email", respuesta.data.email);
+        setValue("password", respuesta.data.password);
+        setValue("perfil", respuesta.data.perfil);
+        setValue("estado", respuesta.data.estado);
       } else {
         Swal.fire(
-          "Ocurrio un error",
-          `No se puede editar el usuario, intentelo mas tarde`,
+          "Ocurrió un error",
+          `No se puede editar el usuario, inténtelo más tarde`,
           "error"
         );
       }
     });
-  }, []);
+  }, [id, setValue]);
+
 
  
   const onSubmit = (usuarioEditado) => {
