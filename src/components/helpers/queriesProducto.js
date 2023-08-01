@@ -1,5 +1,5 @@
 const URLProducto = import.meta.env.VITE_API_PRODUCTO;
-const token = JSON.parse(localStorage.getItem("usuarioInicioSesion")).token;
+const token = JSON.parse(localStorage.getItem("usuarioInicioSesion")).token || "";
 
 export const crearProducto = async (producto) => {
   try {

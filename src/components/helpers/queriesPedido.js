@@ -1,5 +1,5 @@
 const URLPedido = import.meta.env.VITE_API_PEDIDO;
-const token = JSON.parse(localStorage.getItem("usuarioInicioSesion")).token;
+const token = JSON.parse(localStorage.getItem("usuarioInicioSesion")).token || "";
 
 export const crearPedido = async (usuario, carrito, totalCarrito) => {
   let pedido = {};
