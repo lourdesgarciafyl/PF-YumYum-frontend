@@ -7,7 +7,7 @@ para que los clientes de un restaurante elijan entre distintos productos y pueda
 
 ## Link Versión de producción 
 
-[Netlify](https://YumYum.netlify.app)
+- [Netlify](https://yumyum-fastfood.netlify.app/)
 
 ## Tecnologias / Herramientas 🛠
 
@@ -26,8 +26,10 @@ para que los clientes de un restaurante elijan entre distintos productos y pueda
 
 Creamos el archivo .env y agregamos las siguientes variables de entorno
 
-- VITE_API_USUARIO=http://localhost:3004/usuarios
-- VITE_API_PRODUCTO=http://localhost:3004/productos
+- VITE_API_PRODUCTO=https://yumyum-backend.vercel.app/apiyumyum/productos
+- VITE_API_USUARIO=https://yumyum-backend.vercel.app/apiyumyum/auth
+- VITE_API_CATEGORIA=https://yumyum-backend.vercel.app/apiyumyum/categorias
+- VITE_API_PEDIDO=https://yumyum-backend.vercel.app/apiyumyum/pedidos
 
 ## Pasos para clonar y ejecutar la Aplicación 🖥
 
