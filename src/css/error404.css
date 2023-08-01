@@ -13,8 +13,6 @@
   padding-bottom: 8%;
 }
 
-/* dispositivos small */
-
 @media all and (max-width: 767px) {
   .imagenError {
     width: 70%;
@@ -32,8 +30,6 @@
     margin-bottom: 2%;
   }
 }
-
-/* dispositivos medium */
 
 @media all and (min-width: 768px) and (max-width: 991px) {
   .imagenError {

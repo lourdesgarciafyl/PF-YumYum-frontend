@@ -27,10 +27,14 @@ const AdministradorUsuarios = () => {
           </h1>
 
           <div className="mb-3">
-             <Button className="btnAgregarProducto" as={Link} to={"/administrar/usuarios/agregar-usuario"}>Agregar nuevo usuario</Button>
-            </div>
-
-        
+            <Button
+              className="btnAgregarProducto"
+              as={Link}
+              to={"/administrar/usuarios/agregar-usuario"}
+            >
+              Agregar nuevo usuario
+            </Button>
+          </div>
         </div>
 
         <Table responsive striped bordered hover>

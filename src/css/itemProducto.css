@@ -1,63 +1,63 @@
-.cardItemProducto{
-    border: none;
-    background-color: transparent;
-    padding-bottom: 0px;
+.cardItemProducto {
+  border: none;
+  background-color: transparent;
+  padding-bottom: 0px;
 }
-.cardItemProducto:hover{
-    filter: brightness(1.1);
+.cardItemProducto:hover {
+  filter: brightness(1.1);
 }
 .imagenCard {
-    width: 100%;
-    object-fit: contain;
-    object-position: 100%;
-    padding: 2px;
-    position: relative;
-    bottom: -15px;
-    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 2.5));
+  width: 100%;
+  object-fit: contain;
+  object-position: 100%;
+  padding: 2px;
+  position: relative;
+  bottom: -15px;
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 2.5));
 }
 .cardBodyProducto {
-    background-color: #fff1d8;
-    border-radius: 25px;
-    padding-bottom: 0PX;
-  }
-  .form-check-input:checked {
-    background-color: rgb(34, 255, 0);
-    border-color: #73fa64;
-  }
-  .btnAgregarProducto {
-    background-color: #f7b538;
-    border-color: #f7b538;
-    color: black;
-    font-family: "Roboto Condensed", sans-serif;
-    font-weight: bolder;
-    font-size: 15px;
-  }
-  .btnAgregarProducto:hover {
-    background-color: #e7a325 !important;
-    border-color: #e7a325;
-    color: black;
-  }
-  .btnEditarProducto {
-    background-color: #e7a325;
-    color: aliceblue;
-    border-color:  #e7a325;
-    height: fit-content;
-  }
-  .btnEditarProducto:hover {
-    background-color:  #e7a325!important;
-    border-color: #c3491c;
-  }
-  .btnBorrarProducto {
-    background-color: #c32f27;
-    color: aliceblue;
-    border-color: #c32f27;
-    height: fit-content;
-  }
-  .btnBorrarProducto:hover {
-    background-color: #b8231c !important;
-    border-color: #b8231c;
-  }  
-  .textoSpan {
-    margin-left: 5px;
-    font-size: 1.1rem;
-  }
+  background-color: #fff1d8;
+  border-radius: 25px;
+  padding-bottom: 0px;
+}
+.form-check-input:checked {
+  background-color: rgb(34, 255, 0);
+  border-color: #73fa64;
+}
+.btnAgregarProducto {
+  background-color: #f7b538;
+  border-color: #f7b538;
+  color: black;
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: bolder;
+  font-size: 15px;
+}
+.btnAgregarProducto:hover {
+  background-color: #e7a325 !important;
+  border-color: #e7a325;
+  color: black;
+}
+.btnEditarProducto {
+  background-color: #e7a325;
+  color: aliceblue;
+  border-color: #e7a325;
+  height: fit-content;
+}
+.btnEditarProducto:hover {
+  background-color: #e7a325 !important;
+  border-color: #c3491c;
+}
+.btnBorrarProducto {
+  background-color: #c32f27;
+  color: aliceblue;
+  border-color: #c32f27;
+  height: fit-content;
+}
+.btnBorrarProducto:hover {
+  background-color: #b8231c !important;
+  border-color: #b8231c;
+}
+.textoSpan {
+  margin-left: 5px;
+  font-size: 1.1rem;
+}
