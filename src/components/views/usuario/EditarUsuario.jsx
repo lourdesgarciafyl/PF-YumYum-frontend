@@ -235,13 +235,14 @@ const EditarUsuario = () => {
         </Form>
       </Card.Body>
     </Card>
-    <Modal show={show} onHide={handleClose}>
+    <Modal show={show} onHide={handleClose} bg="dark">
         <Modal.Header closeButton>
           <Modal.Title>Nueva Contraseña</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="d-flex justify-content-center">
           <Form onSubmit={handleSubmitContrasenia(onSubmitContrasenia)}>
             <Form.Group className="mb-2">
+              <Form.Label>Contraseña</Form.Label>
               <Form.Control
                 className="col-sm-9 inputFormRegistro"
                 type="password"
@@ -283,12 +284,13 @@ const EditarUsuario = () => {
                 </Form.Group>
 
             <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
+            <Button bg="dark" variant="dark" type="submit">
+                Cambiar
+              </Button>
+              <Button bg="dark" variant="danger rounded-5" onClick={handleClose}>
                 Cancelar
               </Button>
-              <Button variant="success" type="submit">
-                Enviar
-              </Button>
+              
             </Modal.Footer>
           </Form>
         </Modal.Body>
