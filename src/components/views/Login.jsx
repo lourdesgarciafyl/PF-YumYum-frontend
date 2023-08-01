@@ -29,7 +29,7 @@ const Login = ({ setUsuarioLogueado, carrito }) => {
         sessionStorage.setItem(`${respuesta._id}`, JSON.stringify(carrito));
         Swal.fire({
           title: "Bienvenido",
-          text: `${respuesta.nombreUsuario} iniciste sesión correctamente`,
+          text: `${respuesta.nombreUsuario} iniciaste sesión correctamente`,
           confirmButtonColor: " #d8572a",
         });
         setUsuarioLogueado(respuesta);
@@ -47,7 +47,7 @@ const Login = ({ setUsuarioLogueado, carrito }) => {
           Iniciar Sesión
         </Card.Title>
         <Card.Body>
-          <Form onSubmit={handleSubmit(onSubmit)}>
+          <Form noValidate onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-3" controlId="formEmail">
               <InputGroup>
                 <InputGroup.Text id="iconoEmail" className="fondoAmarillo">
@@ -59,6 +59,7 @@ const Login = ({ setUsuarioLogueado, carrito }) => {
                   type="email"
                   className="inputFormulario"
                   placeholder="Ej: lisandrov@gmail.com"
+                  maxLength={60} 
                   {...register("email", {
                     required: "El email es obligatorio",
                     minLength: {
@@ -92,6 +93,7 @@ const Login = ({ setUsuarioLogueado, carrito }) => {
                   aria-label="Password"
                   aria-describedby="iconoPassword"
                   type="password"
+                  maxLength={16} 
                   className="inputFormulario"
                   {...register("password", {
                     required: "La contraseña es un dato obligatorio.",
