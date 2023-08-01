@@ -1,5 +1,5 @@
 const URLPedido = import.meta.env.VITE_API_PEDIDO;
-const token = JSON.parse(localStorage.getItem("usuarioInicioSesion")).token || "";
+//const token = JSON.parse(localStorage.getItem("usuarioInicioSesion")).token || "";
 
 export const crearPedido = async (usuario, carrito, totalCarrito) => {
   let pedido = {};
@@ -37,7 +37,7 @@ export const crearPedido = async (usuario, carrito, totalCarrito) => {
 export const obtenerPedido = async (id) => {
   try {
     const respuesta = await fetch(URLPedido + id, {
-      headers: { "x-token": token },
+      headers: { "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion")).token },
     });
     const pedido = await respuesta.json();
     return pedido;
@@ -78,7 +78,7 @@ export const borrarPedido = async (id) => {
 export const obtenerListaPedidos = async () => {
   try {
     const respuesta = await fetch(URLPedido, {
-      headers: { "x-token": token },
+      headers: { "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion")).token },
     });
     const listaPedidos = await respuesta.json();
     return listaPedidos;
@@ -94,7 +94,7 @@ export const consultaEntregarPedido = async (id) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-      "x-token": token
+      "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion")).token
       },
     });
     return respuesta;
@@ -110,7 +110,7 @@ export const consultaEnProcesoPedido = async (id) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "x-token":token
+        "x-token":JSON.parse(localStorage.getItem("usuarioInicioSesion")).token
       },
     });
     return respuesta;
