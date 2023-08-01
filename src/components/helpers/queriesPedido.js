@@ -1,10 +1,9 @@
 const URLPedido = import.meta.env.VITE_API_PEDIDO;
-//const token = JSON.parse(localStorage.getItem("usuarioInicioSesion")).token || "";
 
 export const crearPedido = async (usuario, carrito, totalCarrito) => {
   let pedido = {};
   const fechaActual = new Date();
-  const offsetGMT3 = -3 * 60; // GMT-3 está 3 horas detrás del UTC
+  const offsetGMT3 = -3 * 60;
   const productosEnvio = carrito.map((producto) => {
     return {
       producto: producto.idProducto,
@@ -37,7 +36,10 @@ export const crearPedido = async (usuario, carrito, totalCarrito) => {
 export const obtenerPedido = async (id) => {
   try {
     const respuesta = await fetch(URLPedido + id, {
-      headers: { "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion")).token },
+      headers: {
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
+      },
     });
     const pedido = await respuesta.json();
     return pedido;
@@ -78,7 +80,10 @@ export const borrarPedido = async (id) => {
 export const obtenerListaPedidos = async () => {
   try {
     const respuesta = await fetch(URLPedido, {
-      headers: { "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion")).token },
+      headers: {
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
+      },
     });
     const listaPedidos = await respuesta.json();
     return listaPedidos;
@@ -94,7 +99,8 @@ export const consultaEntregarPedido = async (id) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-      "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion")).token
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
       },
     });
     return respuesta;
@@ -110,7 +116,8 @@ export const consultaEnProcesoPedido = async (id) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "x-token":JSON.parse(localStorage.getItem("usuarioInicioSesion")).token
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
       },
     });
     return respuesta;
