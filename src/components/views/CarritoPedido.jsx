@@ -14,7 +14,7 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
   const vaciarCarrito = () => {
     Swal.fire({
       title: "Esta seguro de vaciar su carrito?",
-      text: "Deberar volver a armar su pedido en el inicio!",
+      text: "Debes volver a armar tu pedido en el inicio!",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#f7b538",

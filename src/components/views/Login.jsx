@@ -29,7 +29,7 @@ const Login = ({ setUsuarioLogueado, carrito }) => {
         sessionStorage.setItem(`${respuesta._id}`, JSON.stringify(carrito));
         Swal.fire({
           title: "Bienvenido",
-          text: `${respuesta.nombreUsuario} iniciste sesión correctamente`,
+          text: `${respuesta.nombreUsuario} iniciaste sesión correctamente`,
           confirmButtonColor: " #d8572a",
         });
         setUsuarioLogueado(respuesta);
