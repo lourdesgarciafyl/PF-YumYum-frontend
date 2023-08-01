@@ -2,7 +2,7 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import {borrarUsuario,consultaListaUsuarios } from "../../helpers/queriesUsuario";
-import "../../../css/ItemUsuario.css"
+import "../../../css/itemUsuario.css"
 const ItemUsuario = ({ usuario, setUsuarios }) => {
   const borrarUsuarioActual = () => {
     Swal.fire({
