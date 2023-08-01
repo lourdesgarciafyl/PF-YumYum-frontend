@@ -29,6 +29,12 @@
   cursor: pointer;
 }
 
+@media all and (max-width: 991px) {
+  .imagenItem {
+    font-size: small;
+  }
+}
+
 @media all and (max-width: 575px) {
   .imagenItem {
     width: 80px;
