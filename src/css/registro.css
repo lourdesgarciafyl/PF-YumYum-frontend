@@ -1,57 +1,57 @@
-.imgRegistro{
-    width: 100%;
-    height: 661px;
-    object-fit: cover;
+.imgRegistro {
+  width: 100%;
+  height: 661px;
+  object-fit: cover;
 }
 .inputFormRegistro {
-    background: transparent;
-    color: #2b2d42;
-  }
-.form-control:focus {
-    -webkit-text-fill-color: #2b2d42;
-    box-shadow: 0 0 0 0.25rem #f7b538 !important;
-    border-color: transparent;
-  }
-.btnRegistrarme{
-    margin-top: 2rem;
-    display: block;
-    width: 100%;
-    background-color: #8d99ae;
-    text-decoration: none;
-    color: #2b2d42;
-    padding: 1rem 2rem;
-    border: 2px solid #8d99ae;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    transition-property: background-color;
-    transition-duration: 0.3s;
+  background: transparent;
+  color: #2b2d42;
 }
-.btnRegistrarme:hover{
-    background-color: #d8572a;
-    border: 2px solid #d8572a;
+.form-control:focus {
+  -webkit-text-fill-color: #2b2d42;
+  box-shadow: 0 0 0 0.25rem #f7b538 !important;
+  border-color: transparent;
+}
+.btnRegistrarme {
+  margin-top: 2rem;
+  display: block;
+  width: 100%;
+  background-color: #8d99ae;
+  text-decoration: none;
+  color: #2b2d42;
+  padding: 1rem 2rem;
+  border: 2px solid #8d99ae;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+}
+.btnRegistrarme:hover {
+  background-color: #d8572a;
+  border: 2px solid #d8572a;
 }
 @media (max-width: 576px) {
-    .letraForm{
-        font-size: 10px;
-    }
-    .imgRegistro{
-        padding-top: 10px;
-        object-fit: cover;
-        height: 410px;
-        width: 100%;
-    }
+  .letraForm {
+    font-size: 10px;
   }
-@media all and (max-width:991px){
-    .letraForm{
-        font-size: 20px;
-    }
-    .imgRegistro{
-        padding-top: 10px;
-        object-fit: cover;
-        height: 600px;
-        width: 100%;
-    }
+  .imgRegistro {
+    padding-top: 10px;
+    object-fit: cover;
+    height: 410px;
+    width: 100%;
+  }
+}
+@media all and (max-width: 991px) {
+  .letraForm {
+    font-size: 20px;
+  }
+  .imgRegistro {
+    padding-top: 10px;
+    object-fit: cover;
+    height: 600px;
+    width: 100%;
+  }
 }

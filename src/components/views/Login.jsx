@@ -1,40 +1,41 @@
-import { Form, Button, Container, Card, InputGroup } from 'react-bootstrap';
-import { useForm } from 'react-hook-form';
-import { PersonFill, FileLock2Fill } from 'react-bootstrap-icons';
-import './../../css/login.css';
-import { loginUsuario } from '../helpers/queriesUsuario';
-import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Form, Button, Container, Card, InputGroup } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import { PersonFill, FileLock2Fill } from "react-bootstrap-icons";
+import "./../../css/login.css";
+import { loginUsuario } from "../helpers/queriesUsuario";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logoHeroSection from "../../assets/LogoYumHeroSection.svg";
 
-const Login = ({setUsuarioLogueado, carrito}) => {
+const Login = ({ setUsuarioLogueado, carrito }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
-  const navegacion = useNavigate()
+  const navegacion = useNavigate();
 
   const onSubmit = (usuario) => {
-
     loginUsuario(usuario).then((respuesta) => {
       if (respuesta && respuesta.status === 200) {
-        console.log(respuesta);
         const { status, ...respuestaRestante } = respuesta;
         sessionStorage.clear();
-        localStorage.setItem('usuarioInicioSesion', JSON.stringify(respuestaRestante));
-        sessionStorage.setItem(`${respuesta._id}`, JSON.stringify(carrito))
+        localStorage.setItem(
+          "usuarioInicioSesion",
+          JSON.stringify(respuestaRestante)
+        );
+        sessionStorage.setItem(`${respuesta._id}`, JSON.stringify(carrito));
         Swal.fire({
-          title: 'Bienvenido',
-          text:`${respuesta.nombreUsuario} iniciste sesión correctamente`,
-          confirmButtonColor: ' #d8572a'
-      });
+          title: "Bienvenido",
+          text: `${respuesta.nombreUsuario} iniciste sesión correctamente`,
+          confirmButtonColor: " #d8572a",
+        });
         setUsuarioLogueado(respuesta);
-        navegacion('/');
+        navegacion("/");
       } else {
-        Swal.fire('Error', 'Email o password incorrecto', 'error');
+        Swal.fire("Error", "Email o password incorrecto", "error");
       }
     });
   };
@@ -46,7 +47,6 @@ const Login = ({setUsuarioLogueado, carrito}) => {
           Iniciar Sesión
         </Card.Title>
         <Card.Body>
-         
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-3" controlId="formEmail">
               <InputGroup>
@@ -61,19 +61,20 @@ const Login = ({setUsuarioLogueado, carrito}) => {
                   placeholder="Ej: lisandrov@gmail.com"
                   {...register("email", {
                     required: "El email es obligatorio",
-                    minLength:{
-                        value: 5,
-                        message: "Cantidad mínima de caracteres: 5"
-                    }, 
+                    minLength: {
+                      value: 5,
+                      message: "Cantidad mínima de caracteres: 5",
+                    },
                     maxLength: {
-                        value: 60,
-                        message: "Cantidad máxima de caracteres: 60."
+                      value: 60,
+                      message: "Cantidad máxima de caracteres: 60.",
                     },
                     pattern: {
-                        value: /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/,
-                        message: "El Email debe cumplir con el formato juan@correo.com"
-                    }
-                })}
+                      value: /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/,
+                      message:
+                        "El Email debe cumplir con el formato juan@correo.com",
+                    },
+                  })}
                 />
               </InputGroup>
               <Form.Text className="text-danger my-2 py-3">
@@ -92,12 +93,12 @@ const Login = ({setUsuarioLogueado, carrito}) => {
                   aria-describedby="iconoPassword"
                   type="password"
                   className="inputFormulario"
-                  {...register('password', {
-                    required: 'La contraseña es un dato obligatorio.',
+                  {...register("password", {
+                    required: "La contraseña es un dato obligatorio.",
                     pattern: {
                       value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
                       message:
-                      'La contraseña debe tener entre 8 y 16 caracteres, al menos un número, una minúscula, una mayúscula y no contener caracteres especiales.',
+                        "La contraseña debe tener entre 8 y 16 caracteres, al menos un número, una minúscula, una mayúscula y no contener caracteres especiales.",
                     },
                   })}
                 />

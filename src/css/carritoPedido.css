@@ -13,22 +13,21 @@
   font-weight: 700;
   padding: 15px;
 }
-.btnSeguir{
+.btnSeguir {
   background-color: #d8572a;
   color: #ffffff;
   font-size: 1.1rem;
   font-weight: 700;
   border-radius: 30px;
   padding: 15px;
-
 }
 .botonVaciarCarrito:hover {
   background-color: #ffa807;
   color: white;
 }
-.btnSeguir:hover{
+.btnSeguir:hover {
   background-color: #d8572a;
-  color:#ffffff
+  color: #ffffff;
 }
 .tamanioLetra {
   font-size: 1.5rem;
@@ -57,7 +56,7 @@
   background-color: #f7b538;
   border: 2px solid #f7b538;
 }
-.volverMenu{
+.volverMenu {
   background-color: #f7b538;
   color: #c32f27;
   font-size: large;
@@ -66,7 +65,7 @@
   border-color: #d8572a;
   padding: 15px;
 }
-.volverMenu:hover{
+.volverMenu:hover {
   background-color: #d8572a;
   border-color: #d8572a;
 }

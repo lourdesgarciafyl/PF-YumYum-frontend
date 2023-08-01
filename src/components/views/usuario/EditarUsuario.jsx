@@ -20,24 +20,25 @@ const EditarUsuario = () => {
 
   useEffect(() => {
     obtenerUsuario(id).then((respuesta) => {
-      if (respuesta.status === 200) {
-        setValue("nombreUsuario", respuesta.nombreUsuario);
-        setValue("apellidoUsuario", respuesta.apellidoUsuario);
-        setValue("email", respuesta.email);
-        setValue("password", respuesta.password);
-        setValue("perfil", respuesta.perfil);
-        setValue("estado", respuesta.estado);
+      console.log(respuesta); // Agrega este console.log para verificar la respuesta en la consola
+      if (respuesta && respuesta.status === 200) {
+        setValue("nombreUsuario", respuesta.data.nombreUsuario);
+        setValue("apellidoUsuario", respuesta.data.apellidoUsuario);
+        setValue("email", respuesta.data.email);
+        setValue("password", respuesta.data.password);
+        setValue("perfil", respuesta.data.perfil);
+        setValue("estado", respuesta.data.estado);
       } else {
         Swal.fire(
-          "Ocurrio un error",
-          `No se puede editar el usuario, intentelo mas tarde`,
+          "Ocurrió un error",
+          `No se puede editar el usuario, inténtelo más tarde`,
           "error"
         );
       }
     });
-  }, []);
+  }, [id, setValue]);
 
- 
+
   const onSubmit = (usuarioEditado) => {
     editarUsuario(usuarioEditado, id).then((respuestaEditado) => {
       if (respuestaEditado && respuestaEditado.status === 200) {
@@ -138,7 +139,7 @@ const EditarUsuario = () => {
             </Form.Text>
           </Form.Group>
 
-          <Form.Group className="mb-3 fw-bold" controlId="formPassword">
+          {/* <Form.Group className="mb-3 fw-bold" controlId="formPassword">
             <Form.Label className="letraFormLabel">Password *</Form.Label>
             <Form.Control
               type="password"
@@ -155,7 +156,7 @@ const EditarUsuario = () => {
             <Form.Text className="text-danger my-2 py-3">
               {errors.password?.message}
             </Form.Text>
-          </Form.Group>
+          </Form.Group> */}
 
           <Row>
             <Col lg={6}>
@@ -210,7 +211,6 @@ const EditarUsuario = () => {
           <Button className="mt-1 mb-3" type="submit" id="btnAgregar">
             Agregar
           </Button>
-          
         </Form>
       </Card.Body>
     </Card>

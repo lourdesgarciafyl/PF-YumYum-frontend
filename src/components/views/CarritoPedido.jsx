@@ -9,7 +9,6 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
-
   const navegacion = useNavigate();
 
   const vaciarCarrito = () => {
@@ -21,7 +20,7 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
       confirmButtonColor: "#f7b538",
       cancelButtonColor: "#d33",
       confirmButtonText: "Si, vaciar!",
-      cancelButtonText: "Cancelar"
+      cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
         setCarrito([]);
@@ -29,24 +28,23 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
           title: "Carrito vaciado!",
           text: "Puede realizar nuevamente su pedido",
           icon: "success",
-          confirmButtonColor: '#d8572a'
-      });
+          confirmButtonColor: "#d8572a",
+        });
         navegacion("/");
       }
     });
   };
 
   const generarPedido = (usuario, carrito, totalCarrito) => {
-   
     crearPedido(usuario, carrito, totalCarrito).then((respuestaCreated) => {
       if (respuestaCreated && respuestaCreated.status === 201) {
         Swal.fire({
           title: "Pedido Realizado",
           text: `Su pedido se realizó correctamente`,
           icon: `success`,
-          confirmButtonColor: ' #d8572a'
-        } );
-        setCarrito([])
+          confirmButtonColor: " #d8572a",
+        });
+        setCarrito([]);
         navegacion("/");
       } else {
         Swal.fire(`Ocurrió un error`, `Intente nuevamente más tarde`, `error`);
@@ -58,7 +56,7 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
     <>
       <section className="mainSection letraRoboto">
         <Container>
-        <h1 className="text-center letraSpace letraAmarilla fs-1 mt-md-4 mt-lg-5 mb-2">
+          <h1 className="text-center letraSpace letraAmarilla fs-1 mt-md-4 mt-lg-5 mb-2">
             Mi Pedido
           </h1>
           <hr className="colorHr" />

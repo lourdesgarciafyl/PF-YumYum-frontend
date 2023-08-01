@@ -10,7 +10,7 @@
   flex-grow: 1;
   padding-top: 90px;
 }
-/* MODAL DE SWeet alert */
+
 .swal2-modal {
   background-color: #2b2d42;
   color: #f7b538;
@@ -54,22 +54,14 @@
   color: #c32f27;
 }
 
-
 .swal2-modal {
   background-color: #2b2d42;
   color: #f7b538;
   border-radius: 25px;
 }
 
-
 @media all and (max-width: 991px) {
-
   .swal2-modal {
-
     font-size: small;
- 
   }
-  
-  
-  
 }

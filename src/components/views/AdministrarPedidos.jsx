@@ -1,7 +1,7 @@
-import { Container, Row } from 'react-bootstrap';
-import ItemPedido from './pedido/ItemPedido';
-import { useEffect, useState } from 'react';
-import { obtenerListaPedidos } from '../helpers/queriesPedido';
+import { Container, Row } from "react-bootstrap";
+import ItemPedido from "./pedido/ItemPedido";
+import { useEffect, useState } from "react";
+import { obtenerListaPedidos } from "../helpers/queriesPedido";
 const AdministrarPedidos = () => {
   const [pedidos, setPedidos] = useState([]);
   useEffect(() => {

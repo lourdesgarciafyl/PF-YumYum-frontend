@@ -1,9 +1,8 @@
 const URLUsuario = import.meta.env.VITE_API_USUARIO;
-//const token = JSON.parse(localStorage.getItem("usuarioInicioSesion")||"").token || "";
-// sirve para registro:
+
 export const crearUsuario = async (usuario) => {
   try {
-    const nuevoUsuario = await fetch(URLUsuario+"/registro", {
+    const nuevoUsuario = await fetch(URLUsuario + "/registro", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -17,14 +16,14 @@ export const crearUsuario = async (usuario) => {
   }
 };
 
-// sirve para crear registro desde el admin:
 export const crearUsuarioAdmin = async (usuario) => {
   try {
-    const nuevoUsuario = await fetch(URLUsuario+"/nuevo", {
+    const nuevoUsuario = await fetch(URLUsuario + "/nuevo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion")).token
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
       },
       body: JSON.stringify(usuario),
     });
@@ -39,8 +38,9 @@ export const obtenerUsuario = async (id) => {
   try {
     const respuesta = await fetch(`${URLUsuario}/${id}`, {
       headers: {
-        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion")).token
-      }, 
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
+      },
     });
     const usuarioEncontrado = {
       data: await respuesta.json(),
@@ -58,8 +58,9 @@ export const borrarUsuario = async (id) => {
     const respuesta = await fetch(`${URLUsuario}/${id}`, {
       method: "DELETE",
       headers: {
-        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion")).token
-      }, 
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
+      },
     });
     return respuesta;
   } catch (error) {
@@ -71,9 +72,9 @@ export const borrarUsuario = async (id) => {
 export const loginUsuario = async (usuario) => {
   try {
     const respuesta = await fetch(`${URLUsuario}/login`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(usuario),
     });
@@ -94,8 +95,9 @@ export const consultaListaUsuarios = async () => {
   try {
     const respuesta = await fetch(URLUsuario, {
       headers: {
-        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion")).token
-      }, 
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
+      },
     });
     const listaUsuarios = await respuesta.json();
     return listaUsuarios;
@@ -110,7 +112,8 @@ export const editarUsuario = async (usuario, id) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion")).token
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion"))
+          .token,
       },
       body: JSON.stringify(usuario),
     });
