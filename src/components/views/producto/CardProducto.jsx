@@ -110,7 +110,7 @@ const CardProducto = ({
                 </Button>
               </OverlayTrigger>
               <Link
-                className="verMas btn btn-outline-dark"
+                className="verMas btn btn-dark"
                 as={Link}
                 to={`/detalle/${producto._id}`}
               >
