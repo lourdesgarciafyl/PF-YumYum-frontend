@@ -140,7 +140,7 @@ const EditarUsuario = () => {
             </Form.Text>
           </Form.Group>
 
-          <Form.Group className="mb-3 fw-bold" controlId="formPassword">
+          {/* <Form.Group className="mb-3 fw-bold" controlId="formPassword">
             <Form.Label className="letraFormLabel">Password *</Form.Label>
             <Form.Control
               type="password"
@@ -157,7 +157,7 @@ const EditarUsuario = () => {
             <Form.Text className="text-danger my-2 py-3">
               {errors.password?.message}
             </Form.Text>
-          </Form.Group>
+          </Form.Group> */}
 
           <Row>
             <Col lg={6}>
