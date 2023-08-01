@@ -25,12 +25,9 @@ const Inicio = ({
   const [categorias, setCategorias] = useState([]);
   const [productos, setProductos] = useState([]);
   const [categoriaActiva, setCategoriaActiva] = useState("Todo");
-  const productosPromocion = productos.filter(
-    (producto) => producto.categoria === "Promociones"
-  );
+   const [productosPromocion, setProductosPromocion] = useState([]);
   const [paginasPorCategoria, setPaginasPorCategoria] = useState({ Todo: 1 });
   const itemsPorPagina = 8;
-
   const myRef = useRef();
 
   const scrollToRef = () => {
@@ -42,15 +39,14 @@ const Inicio = ({
   
       window.scrollTo({
         top: y,
-        behavior: 'smooth' // Desplazamiento suave
+        behavior: 'smooth'
       });
-    
   };
 
   useEffect(() => {
     window.scrollTo({
       top: 120,
-      behavior: 'smooth' // Desplazamiento suave
+      behavior: 'smooth'
     });
     obtenerListaCategoriasActivas()
       .then((respuesta) =>
@@ -62,6 +58,13 @@ const Inicio = ({
     obtenerListaProductos()
       .then((repuesta) => {
         setProductos(repuesta);
+      })
+      .catch((error) => {
+        console.log(error);
+      }); 
+      consultaProductosPorCategoria("Promociones")
+      .then((repuesta) => {
+        setProductosPromocion(repuesta);
       })
       .catch((error) => {
         console.log(error);
@@ -90,6 +93,7 @@ const Inicio = ({
       consultaProductosPorCategoria(categoria)
         .then((repuesta) => {
           setProductos(repuesta);
+         
         })
         .catch((error) => {
           console.log(error);
