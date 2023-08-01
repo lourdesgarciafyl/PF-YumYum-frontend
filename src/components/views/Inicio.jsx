@@ -91,7 +91,6 @@ const Inicio = ({
   return (
     <section className="mainSection letraRoboto mb-3">
       <>
-        {/* Video de Hero Section */}
         <div className="position-relative">
           <div>
             <video autoPlay loop muted className="videoHero w-100">
@@ -149,7 +148,6 @@ const Inicio = ({
         </Row>
       </Container>
 
-     
       <Container>
         <h1 className="display-4 text-center text-white mt-3 letraSpace titulosInicio">
           Menú

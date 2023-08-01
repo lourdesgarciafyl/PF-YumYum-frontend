@@ -6,14 +6,11 @@ import Swal from "sweetalert2";
 import sumarProducto from "../../helpers/funcionSumarCarrito";
 
 const CardItemCarrito = ({ producto, carrito, setCarrito, totalProductos }) => {
-  // Funcion para sumar un producto
   const sumar = (productoSumado) => {
-    setCarrito(sumarProducto(productoSumado,carrito,totalProductos));
-  }
+    setCarrito(sumarProducto(productoSumado, carrito, totalProductos));
+  };
 
-  // funcion para restar
   const restar = (productoRestar) => {
-    console.log(carrito);
     if (
       carrito.length < 15 &&
       carrito.length > 0 &&
@@ -29,7 +26,6 @@ const CardItemCarrito = ({ producto, carrito, setCarrito, totalProductos }) => {
         const aux = [...carrito];
         aux[indice].cantidad = aux[indice].cantidad - 1;
         aux[indice].subtotalItem = aux[indice].precio * aux[indice].cantidad;
-        console.log(aux[indice]);
         setCarrito(aux);
       }
       Swal.fire({
@@ -53,7 +49,6 @@ const CardItemCarrito = ({ producto, carrito, setCarrito, totalProductos }) => {
       cancelButtonColor: "#d33",
     }).then((result) => {
       if (result.isConfirmed) {
-        // borramos el item cuando el usuario confirme
         const actualizarCarrito = carrito.filter(
           (itemCarrito) => itemCarrito.idProducto !== idProducto
         );

@@ -5,7 +5,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { Person } from "react-bootstrap-icons";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import iconoDelivery from "../../assets/img/icono-delivery.svg";
-import logo from "../../assets/LogoYumNavbar.svg" 
+import logo from "../../assets/LogoYumNavbar.svg";
 
 const Navegacion = ({
   usuarioLogueado,
@@ -33,14 +33,9 @@ const Navegacion = ({
     >
       <Container className="d-flex justify-content-between">
         <Navbar.Brand as={Link} to="/">
-          <img
-            src={logo}
-            className="logoNavbar"
-            alt="Logo YumYum"
-          />
+          <img src={logo} className="logoNavbar" alt="Logo YumYum" />
         </Navbar.Brand>
 
-        {/* Este link nos envia al carrito de compras. */}
         {usuarioLogueado.nombreUsuario ? (
           <>
             {usuarioLogueado.perfil === "Cliente" ||
@@ -51,10 +46,7 @@ const Navegacion = ({
                   id="carrito"
                   className="d-flex mt-2 justi flex-column position-relative"
                 >
-                  <Button
-                    className="rounded-5 btnCarrito "
-                    variant="dark"
-                  >
+                  <Button className="rounded-5 btnCarrito " variant="dark">
                     <span>
                       <img
                         src={iconoDelivery}
@@ -62,7 +54,6 @@ const Navegacion = ({
                         className="iconoDelivery"
                       />
                     </span>
-                    {/* <Cart size={30}></Cart>{" "} */}
                     <Badge
                       bg="dark"
                       className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-warning"
@@ -97,12 +88,10 @@ const Navegacion = ({
                     className="iconoDelivery"
                   />
                 </span>
-                {/* <Cart size={30}></Cart>{" "} */}
                 <Badge
                   bg="dark"
                   className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-warning"
                 >
-                  {" "}
                   <span className="" id="cantidadProductosCliente">
                     {totalProductos}
                   </span>
@@ -152,7 +141,9 @@ const Navegacion = ({
                         <Person size={25}></Person>
                       </Button>{" "}
                     </Nav.Link>
-                    <Nav.Link className="mt-lg-2">{usuarioLogueado.nombreUsuario}</Nav.Link>
+                    <Nav.Link className="mt-lg-2">
+                      {usuarioLogueado.nombreUsuario}
+                    </Nav.Link>
                   </>
                 ) : (
                   <>
@@ -168,7 +159,9 @@ const Navegacion = ({
                         <Person size={25}></Person>
                       </Button>{" "}
                     </Nav.Link>
-                    <Nav.Link className="mt-lg-2">{usuarioLogueado.nombreUsuario}</Nav.Link>
+                    <Nav.Link className="mt-lg-2">
+                      {usuarioLogueado.nombreUsuario}
+                    </Nav.Link>
                   </>
                 )}
               </>

@@ -53,13 +53,13 @@
 
 .botonDetalle {
   background-color: #f7b538;
-  color:  #2b2d42;;
+  color: #2b2d42;
   border-radius: 1cm;
   font-weight: bolder;
   padding: 15px;
   font-size: 20px;
 }
-.botonDetalle:hover{
+.botonDetalle:hover {
   background-color: #e9a82e;
 }
 .ordenDetallesPrecio {
@@ -78,11 +78,9 @@
 }
 
 .botonVolver:hover {
-  background-color: #212232 ;
+  background-color: #212232;
   color: #f7b538;
 }
-
-/* dispositivos small */
 
 @media all and (max-width: 767px) {
   .cardDetalle {
@@ -152,8 +150,6 @@
     color: #f7b538;
   }
 }
-
-/* dispositivos medium */
 
 @media all and (min-width: 768px) and (max-width: 991px) {
   .cardDetalle {

@@ -1,13 +1,18 @@
-import { Container, Card, Row, Col } from 'react-bootstrap';
-import '../../css/detalle.css';
-import { useEffect, useState } from 'react';
-import { consultaProducto } from '../helpers/queriesProducto';
-import { useParams, useNavigate, Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import sumarProducto from '../helpers/funcionSumarCarrito';
+import { Container, Card, Row, Col } from "react-bootstrap";
+import "../../css/detalle.css";
+import { useEffect, useState } from "react";
+import { consultaProducto } from "../helpers/queriesProducto";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import sumarProducto from "../helpers/funcionSumarCarrito";
 
-
-const Detalle = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, totalProductos }) => {
+const Detalle = ({
+  usuarioLogueado,
+  setusuarioLogueado,
+  carrito,
+  setCarrito,
+  totalProductos,
+}) => {
   const { id } = useParams();
   const navegacion = useNavigate();
   const [producto, setProducto] = useState({});
@@ -20,46 +25,52 @@ const Detalle = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, tot
   }, []);
 
   const sumarProductoCarrito = (productoSumado) => {
-   if(usuarioLogueado.perfil === "Cliente" || usuarioLogueado.perfil === "Administrador"){
-    if (totalProductos < 15) {
-      const productoConIdProducto = {
-        idProducto: productoSumado._id,
-      };
-      const existeProducto = carrito.find(
-        (itemCarrito) => itemCarrito.idProducto === productoConIdProducto.idProducto
-      );
-      if (existeProducto) {
-        setCarrito(sumarProducto(productoConIdProducto,carrito,totalProductos));
-      } else {
-        const nuevoProducto = {
-          idProducto: productoConIdProducto.idProducto,
-          imagen: productoSumado.imagen,
-          nombreProducto: productoSumado.nombreProducto,
-          cantidad: 1,
-          precio: productoSumado.precio,
-          subtotalItem: productoSumado.precio,
+    if (
+      usuarioLogueado.perfil === "Cliente" ||
+      usuarioLogueado.perfil === "Administrador"
+    ) {
+      if (totalProductos < 15) {
+        const productoConIdProducto = {
+          idProducto: productoSumado._id,
         };
-        setCarrito([...carrito, nuevoProducto]);
+        const existeProducto = carrito.find(
+          (itemCarrito) =>
+            itemCarrito.idProducto === productoConIdProducto.idProducto
+        );
+        if (existeProducto) {
+          setCarrito(
+            sumarProducto(productoConIdProducto, carrito, totalProductos)
+          );
+        } else {
+          const nuevoProducto = {
+            idProducto: productoConIdProducto.idProducto,
+            imagen: productoSumado.imagen,
+            nombreProducto: productoSumado.nombreProducto,
+            cantidad: 1,
+            precio: productoSumado.precio,
+            subtotalItem: productoSumado.precio,
+          };
+          setCarrito([...carrito, nuevoProducto]);
+        }
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Se agregó producto al carrito.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } else {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: "Se permiten máximo 15 productos al carrito",
+          showConfirmButton: false,
+          timer: 2000,
+        });
       }
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Se agregó producto al carrito.',
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    } else {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'Se permiten máximo 15 productos al carrito',
-        showConfirmButton: false,
-        timer: 2000,
-      });
+    } else if (!usuarioLogueado.perfil) {
+      navegacion("/login");
     }
-   } else if (!usuarioLogueado.perfil){
-    navegacion("/login")
-   }
   };
 
   return (
@@ -102,12 +113,14 @@ const Detalle = ({ usuarioLogueado, setusuarioLogueado, carrito, setCarrito, tot
           </Card>
         </Container>
       ) : (
-        navegacion('/404')
+        navegacion("/404")
       )}
       <div className="mb-4 texto container fs-2 text-center">
-        <Link className="text-decoration-none letraAmarilla" to={'/'}>
-          {' '}
-          <button className="btn botonVolver letraRoboto my-2">Volver al menú</button>
+        <Link className="text-decoration-none letraAmarilla" to={"/"}>
+          {" "}
+          <button className="btn botonVolver letraRoboto my-2">
+            Volver al menú
+          </button>
         </Link>
       </div>
     </>

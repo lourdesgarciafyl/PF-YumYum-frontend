@@ -1,59 +1,63 @@
-import '../../../css/formularioAdminProductos.css';
-import { Form, Button, Card, Row, Col } from 'react-bootstrap';
-import { useForm } from 'react-hook-form';
-import { editarProducto, consultaProducto } from '../../helpers/queriesProducto';
-import Swal from 'sweetalert2';
+import "../../../css/formularioAdminProductos.css";
+import { Form, Button, Card, Row, Col } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import {
+  editarProducto,
+  consultaProducto,
+} from "../../helpers/queriesProducto";
+import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 
 const EditarProducto = () => {
-  const {id} = useParams();
-  const navegacion = useNavigate()
+  const { id } = useParams();
+  const navegacion = useNavigate();
   const {
     register,
     formState: { errors },
     reset,
     handleSubmit,
-    setValue
+    setValue,
   } = useForm();
 
   const onSubmit = (productoEditado) => {
     editarProducto(id, productoEditado).then((respuestaEditado) => {
       if (respuestaEditado && respuestaEditado.status === 200) {
         Swal.fire(
-          'Producto Editado',
+          "Producto Editado",
           `El producto ${productoEditado.nombreProducto} se editó correctamente`,
-          'success'
+          "success"
         );
         reset();
-       navegacion("/administrar/productos")
+        navegacion("/administrar/productos");
       } else {
         Swal.fire(
-          'Ocurrió un error',
+          "Ocurrió un error",
           `El producto ${productoEditado.nombreProducto} no fue editado, inténtelo más tarde`,
-          'error'
+          "error"
         );
       }
     });
   };
 
-  useEffect(()=>{
-    consultaProducto(id).then((respuesta) =>{
-        if(respuesta){
-            setValue(`nombreProducto`, respuesta.nombreProducto);
-            setValue(`detalle`, respuesta.detalle);
-            setValue(`precio`, respuesta.precio);
-            setValue(`imagen`, respuesta.imagen);
-            setValue(`categoria`, respuesta.categoria);
-            setValue(`estado`, respuesta.estado);
-        }else{
-            Swal.fire(
-                'Ocurrio un error', 
-                `No se puede editar el producto, intentelo mas tarde`, 
-                'error');
-        }
-    })
-}, [])
+  useEffect(() => {
+    consultaProducto(id).then((respuesta) => {
+      if (respuesta) {
+        setValue(`nombreProducto`, respuesta.nombreProducto);
+        setValue(`detalle`, respuesta.detalle);
+        setValue(`precio`, respuesta.precio);
+        setValue(`imagen`, respuesta.imagen);
+        setValue(`categoria`, respuesta.categoria);
+        setValue(`estado`, respuesta.estado);
+      } else {
+        Swal.fire(
+          "Ocurrio un error",
+          `No se puede editar el producto, intentelo mas tarde`,
+          "error"
+        );
+      }
+    });
+  }, []);
 
   return (
     <Card className="fondoAmarillo mainSection rounded-0">
@@ -75,15 +79,15 @@ const EditarProducto = () => {
             <Form.Control
               type="text"
               placeholder="Ej: Pizza especial"
-              {...register('nombreProducto', {
-                required: 'Debe ingresar el nombre del producto.',
+              {...register("nombreProducto", {
+                required: "Debe ingresar el nombre del producto.",
                 minLength: {
                   value: 3,
-                  message: 'Mínimo de caracteres: 3',
+                  message: "Mínimo de caracteres: 3",
                 },
                 maxLength: {
                   value: 50,
-                  message: 'Cantidad máxima de caracteres: 50',
+                  message: "Cantidad máxima de caracteres: 50",
                 },
               })}
             ></Form.Control>
@@ -100,15 +104,15 @@ const EditarProducto = () => {
               as="textarea"
               rows={2}
               placeholder="Ingrese una descripción para dar más detalles sobre el producto."
-              {...register('detalle', {
-                required: 'Debe ingresar una descripción del producto',
+              {...register("detalle", {
+                required: "Debe ingresar una descripción del producto",
                 minLength: {
                   value: 5,
-                  message: 'Cantidad mínima de caracteres: 5',
+                  message: "Cantidad mínima de caracteres: 5",
                 },
                 maxLength: {
                   value: 500,
-                  message: 'Cantidad máxima de caracteres: 500',
+                  message: "Cantidad máxima de caracteres: 500",
                 },
               })}
             ></Form.Control>
@@ -122,15 +126,15 @@ const EditarProducto = () => {
             <Form.Control
               type="number"
               placeholder="Ej: 1200"
-              {...register('precio', {
-                required: 'Debe ingresar el precio del producto.',
+              {...register("precio", {
+                required: "Debe ingresar el precio del producto.",
                 min: {
                   value: 100,
-                  message: 'Precio mínimo: $100',
+                  message: "Precio mínimo: $100",
                 },
                 max: {
                   value: 10000,
-                  message: 'Precio máximo: $10000',
+                  message: "Precio máximo: $10000",
                 },
               })}
             ></Form.Control>
@@ -144,11 +148,11 @@ const EditarProducto = () => {
             <Form.Control
               type="text"
               placeholder="Ej: https://res.cloudinary.com/dvcq6vatc/image/upload/v1689383720/yumyum/hamburguesaQuesoyMorron_pfs2by.png"
-              {...register('imagen', {
-                required: 'Debe ingresar la URL de la imagen.',
+              {...register("imagen", {
+                required: "Debe ingresar la URL de la imagen.",
                 pattern: {
                   value: /^(http(s?):)([/|.|\w|\s|-])*\.(?:png|jpe?g|gif|svg)$/,
-                  message: 'La URL debe terminar en: PNG, JPG, JPEG, GIF o SVG',
+                  message: "La URL debe terminar en: PNG, JPG, JPEG, GIF o SVG",
                 },
               })}
             ></Form.Control>
@@ -162,8 +166,8 @@ const EditarProducto = () => {
               <Form.Group className="mb-2 fw-bold" controlId="formCategoria">
                 <Form.Label className="letraFormLabel">Categoría *</Form.Label>
                 <Form.Select
-                  {...register('categoria', {
-                    required: 'Debe seleccionar una categoría',
+                  {...register("categoria", {
+                    required: "Debe seleccionar una categoría",
                   })}
                 >
                   <option value="" className="formSelect">
@@ -198,8 +202,8 @@ const EditarProducto = () => {
               <Form.Group className="mb-2 fw-bold" controlId="formEstado">
                 <Form.Label className="letraFormLabel">Estado *</Form.Label>
                 <Form.Select
-                  {...register('estado', {
-                    required: 'Debe seleccionar el estado del producto.',
+                  {...register("estado", {
+                    required: "Debe seleccionar el estado del producto.",
                   })}
                 >
                   <option value="" className="formSelect">

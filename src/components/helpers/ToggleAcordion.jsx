@@ -1,7 +1,7 @@
-import { Button, useAccordionButton } from 'react-bootstrap';
+import { Button, useAccordionButton } from "react-bootstrap";
 export function ToggleAcordion({ children, eventKey }) {
   const abreCierraAcordion = useAccordionButton(eventKey, () =>
-    console.log('Se ejecuta el evento click y abre o cierra el acordion')
+    console.log("Se ejecuta el evento click y abre o cierra el acordion")
   );
 
   return (

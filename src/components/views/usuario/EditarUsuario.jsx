@@ -37,7 +37,6 @@ const EditarUsuario = () => {
     });
   }, []);
 
- 
   const onSubmit = (usuarioEditado) => {
     editarUsuario(usuarioEditado, id).then((respuestaEditado) => {
       if (respuestaEditado && respuestaEditado.status === 200) {
@@ -210,7 +209,6 @@ const EditarUsuario = () => {
           <Button className="mt-1 mb-3" type="submit" id="btnAgregar">
             Agregar
           </Button>
-          
         </Form>
       </Card.Body>
     </Card>

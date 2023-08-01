@@ -9,7 +9,6 @@ import EditarUsuario from "../views/usuario/EditarUsuario";
 import AdministrarPedidos from '../views/AdministrarPedidos';
 import Error404 from '../views/Error404';
 
-
 const RutasAdministrador = () => {
     return(
         <>
