@@ -19,35 +19,23 @@ const EditarUsuario = () => {
   const {
     register: registerContrasenia,
     formState: { errors:errorsContrasenia },
-    //reset: resetContrasenia,
+    reset: resetContrasenia,
     handleSubmit: handleSubmitContrasenia,
+    watch: watchContrasenia
   } = useForm();
+  const password = watchContrasenia("password");
 
   const { id } = useParams();
   const navegacion = useNavigate();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => {
-    // consultaTarea(tarea._id).then((respuesta) => {
-    //   if (respuesta) {
-    //     setValue('nombreTarea', respuesta.nombreTarea);
-    //     setShow(true);
-    //     setTareaId(tarea._id);
-    //   } else {
-    //     Swal.fire(
-    //       'Ocurrio un error',
-    //       `No se puede editar la tarea, intentelo mas tarde`,
-    //       'error'
-    //     );
-    //   }
-    // });
     setShow(true);
-    console.log('se abrió el modal');
   };
 
   useEffect(() => {
     obtenerUsuario(id).then((respuesta) => {
-      console.log(respuesta); // Agrega este console.log para verificar la respuesta en la consola
+      console.log(respuesta); 
       if (respuesta && respuesta.status === 200) {
         setValue("nombreUsuario", respuesta.data.nombreUsuario);
         setValue("apellidoUsuario", respuesta.data.apellidoUsuario);
@@ -75,7 +63,6 @@ const EditarUsuario = () => {
           "success"
         );
         reset();
-
         navegacion("/administrar/usuarios");
       } else {
         Swal.fire(
@@ -96,6 +83,7 @@ const EditarUsuario = () => {
           icon: "success",
           confirmButtonColor: "#d8572a",
         });
+        resetContrasenia();
         setShow(false);
       } else {
         Swal.fire(
@@ -255,8 +243,8 @@ const EditarUsuario = () => {
           <Form onSubmit={handleSubmitContrasenia(onSubmitContrasenia)}>
             <Form.Group className="mb-2">
               <Form.Control
-                className="col-sm-9"
-                type="text"
+                className="col-sm-9 inputFormRegistro"
+                type="password"
                 placeholder="Ingresa una contraseña"
                 {...registerContrasenia("password", {
                   required: "La contrseña es un dato obligatorio",
@@ -271,6 +259,28 @@ const EditarUsuario = () => {
               {errorsContrasenia.password?.message}
             </Form.Text>
             </Form.Group>
+
+            <Form.Group className="mb-3">
+                  <Form.Label>Confirmar contraseña</Form.Label>
+                  <Form.Control
+                    className="col-sm-9 inputFormRegistro"
+                    type="password"
+                    placeholder="Ingresa nuevamente la contraseña"
+                    {...registerContrasenia("confirmarPassword", {
+                      required: "Debe confirmar su contaseña.",
+                      pattern: {
+                        value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+                        message:
+                          "La contraseña debe tener entre 8 y 16 caracteres, al menos un numero, una minuscula, una mayúscula y no contener caracteres especiales.",
+                      },
+                      validate: (value) =>
+                        value === password || "Las contraseñas no coinciden.",
+                    })}
+                  ></Form.Control>
+                  <Form.Text className="text-danger fw-bold">
+                    {errorsContrasenia.confirmarPassword?.message}
+                  </Form.Text>
+                </Form.Group>
 
             <Modal.Footer>
               <Button variant="secondary" onClick={handleClose}>
