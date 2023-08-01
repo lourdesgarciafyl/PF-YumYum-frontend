@@ -6,7 +6,6 @@ import { total } from "../helpers/queriesCarrito";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useEffect } from "react";
-import { set } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
@@ -80,14 +79,20 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
                   totalProductos={totalProductos}
                 ></CardItemCarrito>
               ))}
+              <Row className="justify-content-center">
               <Button
                 variant="dark"
-                type="submit"
-                className="mt-2 mb-3 botonVaciarCarrito"
+                className="mt-2 mb-3 botonVaciarCarrito w-25"
                 onClick={vaciarCarrito}
               >
                 Vaciar Carrito
               </Button>
+              <Button as={Link} to={"/"}
+              variant="dark"
+              className="ms-2 mt-2 mb-3 btnSeguir w-25">
+                Seguir comprando
+                </Button>
+                </Row>
             </Col>
 
             <Col lg={3} className="justify-content-around">
