@@ -1,5 +1,5 @@
 import "../../../css/formularioAdminProductos.css";
-import { Form, Button, Card, Row, Col } from "react-bootstrap";
+import { Form, Button, Card, Row, Col,Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { editarUsuario, obtenerUsuario } from "../../helpers/queriesUsuario";
 import { useEffect, useState } from "react";
@@ -16,10 +16,18 @@ const EditarUsuario = () => {
     handleSubmit,
   } = useForm();
 
+  const {
+    register: registerContrasenia,
+    formState: { errors:errorsContrasenia },
+    //reset: resetContrasenia,
+    handleSubmit: handleSubmitContrasenia,
+  } = useForm();
+
   const { id } = useParams();
   const navegacion = useNavigate();
   const [show, setShow] = useState(false);
-  const handleShow = (tarea) => {
+  const handleClose = () => setShow(false);
+  const handleShow = () => {
     // consultaTarea(tarea._id).then((respuesta) => {
     //   if (respuesta) {
     //     setValue('nombreTarea', respuesta.nombreTarea);
@@ -33,6 +41,7 @@ const EditarUsuario = () => {
     //     );
     //   }
     // });
+    setShow(true);
     console.log('se abrió el modal');
   };
 
@@ -78,7 +87,30 @@ const EditarUsuario = () => {
     });
   };
 
+  const onSubmitContrasenia = (nuevaContrasenia) => {
+    console.log(nuevaContrasenia);
+    // editarContrasenia(tarea, tareaId).then((respuestaEditado) => {
+    //   if (respuestaEditado && respuestaEditado.status === 200) {
+    //     Swal.fire(
+    //       'Tarea editada',
+    //       `La tarea ${tarea.nombreTarea} fue editada correctamente`,
+    //       'success'
+    //     );
+    //     obtenerListaTareas().then((respuesta) => {
+    //       setListaTareas(respuesta);
+    //     });
+    //   } else {
+    //     Swal.fire(
+    //       'Ocurrio un error',
+    //       `La tarea ${tarea.nombreTarea} no fue editada, intentelo mas tarde`,
+    //       'error'
+    //     );
+    //   }
+    // });
+  }
+
   return (
+    <>
     <Card className="fondoAmarillo mainSection">
       <div className="fondoNaranja letraAmarilla letraSpace">
         <Card.Title className="my-4 text-center fw-bold fs-3">
@@ -161,26 +193,6 @@ const EditarUsuario = () => {
               {errors.email?.message}
             </Form.Text>
           </Form.Group>
-
-          {/* <Form.Group className="mb-3 fw-bold" controlId="formPassword">
-            <Form.Label className="letraFormLabel">Password *</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              {...register("password", {
-                required: "El Password es un dato obligatorio.",
-                pattern: {
-                  value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
-                  message:
-                    "La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.",
-                },
-              })}
-            />
-            <Form.Text className="text-danger my-2 py-3">
-              {errors.password?.message}
-            </Form.Text>
-          </Form.Group> */}
-
           <Row>
             <Col lg={6}>
               <Form.Group className="mb-2 fw-bold" controlId="forCategoria">
@@ -237,6 +249,45 @@ const EditarUsuario = () => {
         </Form>
       </Card.Body>
     </Card>
+    <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Nueva Contraseña</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleSubmitContrasenia(onSubmitContrasenia)}>
+            <Form.Group className="mb-2">
+              <Form.Control
+                className="col-sm-9"
+                type="text"
+                placeholder="Ingresa una contraseña"
+                {...registerContrasenia("nuevaContrasenia", {
+                  required: "La contrseña es un dato obligatorio",
+                  pattern: {
+                    value: /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,
+                    message:
+                      "La contraseña debe tener entre 8 y 16 caracteres, al menos un numero, una minuscula, una mayúscula y no contener caracteres especiales.",
+                  },
+                })}
+              />
+              <Form.Text className="text-danger my-2 py-3">
+              {errorsContrasenia.nuevaContrasenia?.message}
+            </Form.Text>
+            </Form.Group>
+
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Cancelar
+              </Button>
+              <Button variant="success" type="submit">
+                Enviar
+              </Button>
+            </Modal.Footer>
+          </Form>
+        </Modal.Body>
+      </Modal>
+    </>
+    
+    
   );
 };
 
