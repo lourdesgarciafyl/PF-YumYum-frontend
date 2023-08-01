@@ -8,13 +8,16 @@
 }
 
 .botonVaciarCarrito {
-  color: #c32f27;
+  color: #ffffff;
   font-size: 1.1rem;
+  padding: 10px;
   font-weight: 700;
+  
+
 }
 
 .botonVaciarCarrito:hover {
-  background-color: #d8572a;
+  background-color: #ffa807;
   color: white;
 }
 

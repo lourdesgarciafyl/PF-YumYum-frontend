@@ -56,7 +56,7 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
     <>
       <section className="mainSection letraRoboto mb-3">
         <Container>
-          <h1 className="display-4 mt-3 letraSpace text-center text-md-start text-light">
+          <h1 className="display-4 mt-md-5 letraSpace text-center text-md-start text-light">
             Mi pedido
           </h1>
           <hr className="colorHr" />
@@ -78,7 +78,7 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
                 ></CardItemCarrito>
               ))}
               <Button
-                variant="light"
+                variant="dark"
                 type="submit"
                 className="mt-2 mb-3 botonVaciarCarrito"
                 onClick={vaciarCarrito}
@@ -105,12 +105,12 @@ const CarritoPedido = ({ usuario, carrito, setCarrito, totalProductos }) => {
                 </ListGroup.Item>
               </ListGroup>
               <Button
-                variant="primary"
+                variant="dark"
                 type="submit"
-                className="mt-2 mb-1 botonGenerarPedido"
+                className="mt-2 mb-1 w-100 botonVaciarCarrito"
                 onClick={()=> generarPedido(usuario, carrito,total(carrito))}
               >
-                Generar Pedido
+                Pedir
               </Button>
             </Col>
           </Row>

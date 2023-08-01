@@ -1,5 +1,5 @@
 import "../../../css/cardItemCarrito.css";
-import { Card, Row, Col } from "react-bootstrap";
+import { Card, Row, Col, Button } from "react-bootstrap";
 import { Trash3Fill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -86,13 +86,13 @@ const CardItemCarrito = ({ producto, carrito, setCarrito, totalProductos }) => {
                   {producto.nombreProducto}
                 </Card.Title>
 
-                <Card.Link
+                <Button
                   as={Link}
                   to={`/detalle/${producto.idProducto}`}
-                  className=" linkDetalle"
+                  className=" btn-dark"
                 >
                   Ver Detalle
-                </Card.Link>
+                </Button>
               </Col>
             </Row>
           </Col>
