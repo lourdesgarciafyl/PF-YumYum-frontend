@@ -6,7 +6,7 @@ import {
   obtenerListaProductos,
 } from "../helpers/queriesProducto";
 import Nav from "react-bootstrap/Nav";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import videoHero from "../../assets/videoHero.mp4";
 import logoHeroSection from "../../assets/LogoYumHeroSection.svg";
 import { Link } from "react-router-dom";
@@ -31,7 +31,27 @@ const Inicio = ({
   const [paginasPorCategoria, setPaginasPorCategoria] = useState({ Todo: 1 });
   const itemsPorPagina = 8;
 
+  const myRef = useRef();
+
+  const scrollToRef = () => {
+    console.log('click')
+    
+      const yOffset = 0; 
+      const y =
+        myRef.current.getBoundingClientRect().top + yOffset;
+  
+      window.scrollTo({
+        top: y,
+        behavior: 'smooth' // Desplazamiento suave
+      });
+    
+  };
+
   useEffect(() => {
+    window.scrollTo({
+      top: 120,
+      behavior: 'smooth' // Desplazamiento suave
+    });
     obtenerListaCategoriasActivas()
       .then((respuesta) =>
         setCategorias(respuesta.map((categ) => categ.nombreCategoria))
@@ -114,7 +134,7 @@ const Inicio = ({
                   <h1 className="text-center text-white">
                     Tu Comida favorita directo a tu puerta
                   </h1>
-                  <Link className="w-100 d-flex justify-content-center text-decoration-none">
+                  <Link onClick={scrollToRef} className="w-100 d-flex justify-content-center text-decoration-none">
                     <Button
                       variant="outline-warning"
                       className="mt-5 "
@@ -129,7 +149,7 @@ const Inicio = ({
           </div>
         </div>
       </>
-      <Container>
+      <Container ref={myRef}>
         <h1 className="display-4 text-center text-white mt-5 mb-3 letraSpace titulosInicio">
           Disfruta de nuestras PROMOS
         </h1>
@@ -149,7 +169,7 @@ const Inicio = ({
       </Container>
 
       <Container>
-        <h1 className="display-4 text-center text-white mt-3 letraSpace titulosInicio ">
+        <h1  className="display-4 text-center text-white mt-3 letraSpace titulosInicio ">
           Menú
         </h1>
 
