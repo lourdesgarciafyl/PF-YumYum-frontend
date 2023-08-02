@@ -69,6 +69,9 @@ export const borrarPedido = async (id) => {
   try {
     const respuesta = await fetch(`${URLPedido}/${id}`, {
       method: "DELETE",
+      headers: {
+        "x-token": JSON.parse(localStorage.getItem("usuarioInicioSesion")).token,
+      },
     });
     return respuesta;
   } catch (error) {
