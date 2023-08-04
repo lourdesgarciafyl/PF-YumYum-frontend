@@ -111,3 +111,13 @@ export const consultaDesactivarProducto = async (id) => {
     return null;
   }
 };
+
+export const obtenerProductosActivos = async () => {
+  try {
+    const respuesta = await fetch(`${URLProducto}/activos`);
+    const listaProductos = await respuesta.json();
+    return listaProductos;
+  } catch (error) {
+    return null;
+  }
+};

@@ -3,7 +3,7 @@ import "../../css/inicio.css";
 import CardProducto from "../../components/views/producto/CardProducto";
 import {
   consultaProductosPorCategoria,
-  obtenerListaProductos,
+  obtenerProductosActivos
 } from "../helpers/queriesProducto";
 import Nav from "react-bootstrap/Nav";
 import { useEffect, useRef, useState } from "react";
@@ -53,7 +53,7 @@ const Inicio = ({
       .catch((error) => {
         return null;
       });
-    obtenerListaProductos()
+    obtenerProductosActivos()
       .then((repuesta) => {
         setProductos(repuesta);
       })
@@ -79,7 +79,7 @@ const Inicio = ({
   const manejadorCambioCategoria = (categoria) => {
     if (categoria === "Todo") {
       setCategoriaActiva(categoria);
-      obtenerListaProductos()
+      obtenerProductosActivos()
         .then((repuesta) => {
           setProductos(repuesta);
         })
