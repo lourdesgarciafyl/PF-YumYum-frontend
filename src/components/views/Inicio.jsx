@@ -3,7 +3,7 @@ import "../../css/inicio.css";
 import CardProducto from "../../components/views/producto/CardProducto";
 import {
   consultaProductosPorCategoria,
-  obtenerListaProductos,
+  obtenerProductosActivos
 } from "../helpers/queriesProducto";
 import Nav from "react-bootstrap/Nav";
 import { useEffect, useRef, useState } from "react";
@@ -31,8 +31,6 @@ const Inicio = ({
   const myRef = useRef();
 
   const scrollToRef = () => {
-    console.log('click')
-    
       const yOffset = 0; 
       const y =
         myRef.current.getBoundingClientRect().top + yOffset;
@@ -53,21 +51,21 @@ const Inicio = ({
         setCategorias(respuesta.map((categ) => categ.nombreCategoria))
       )
       .catch((error) => {
-        console.log(error);
+        return null;
       });
-    obtenerListaProductos()
+    obtenerProductosActivos()
       .then((repuesta) => {
         setProductos(repuesta);
       })
       .catch((error) => {
-        console.log(error);
+        return null;
       }); 
       consultaProductosPorCategoria("Promociones")
       .then((repuesta) => {
         setProductosPromocion(repuesta);
       })
       .catch((error) => {
-        console.log(error);
+        return null;
       });
   }, []);
 
@@ -81,12 +79,12 @@ const Inicio = ({
   const manejadorCambioCategoria = (categoria) => {
     if (categoria === "Todo") {
       setCategoriaActiva(categoria);
-      obtenerListaProductos()
+      obtenerProductosActivos()
         .then((repuesta) => {
           setProductos(repuesta);
         })
         .catch((error) => {
-          console.log(error);
+         return null;
         });
     } else {
       setCategoriaActiva(categoria);
@@ -96,7 +94,7 @@ const Inicio = ({
          
         })
         .catch((error) => {
-          console.log(error);
+          return null;
         });
     }
 
