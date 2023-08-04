@@ -5,8 +5,9 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import imgRegistro from "../../assets/imgRegistro.png";
 import "../../css/registro.css";
+import { loginUsuario } from "../helpers/queriesUsuario";
 
-const Registro = ({ setUsuarioLogueado }) => {
+const Registro = ({ setUsuarioLogueado, carrito }) => {
   const {
     register,
     handleSubmit,
@@ -19,6 +20,7 @@ const Registro = ({ setUsuarioLogueado }) => {
 
   const onSubmit = (data) => {
     delete data.confirmarPassword;
+    const { email, password } = data
     data.perfil = "Cliente";
     data.estado = "Activo";
     crearUsuario(data).then((respuesta) => {
@@ -26,13 +28,25 @@ const Registro = ({ setUsuarioLogueado }) => {
         localStorage.setItem("usuarioInicioSesion", JSON.stringify(respuesta));
         setUsuarioLogueado(respuesta);
         reset();
-        Swal.fire({
-          color: "#fff",
-          background: "#d8572a",
-          confirmButtonColor: "#f7b538",
-          title: `Bienvenido ${data.nombreUsuario}`,
-          text: "Ahora podrás realizar un pedido",
-          icon: "success",
+      loginUsuario({email, password}).then((respuesta) => {
+          if (respuesta && respuesta.status === 200) {
+            const { status, ...respuestaRestante } = respuesta;
+            sessionStorage.clear();
+            localStorage.setItem(
+              "usuarioInicioSesion",
+              JSON.stringify(respuestaRestante)
+            );
+            sessionStorage.setItem(`${respuesta._id}`, JSON.stringify(carrito));
+            Swal.fire({
+              title: "Ya estás registrado",
+              text: `${respuesta.nombreUsuario} podés hacer un pedido.`,
+              confirmButtonColor: " #d8572a",
+            });
+            setUsuarioLogueado(respuesta);
+            navegacion("/");
+          } else {
+            Swal.fire("Error", "Email o password incorrecto", "error");
+          }
         });
         navegacion("/");
       } else {
