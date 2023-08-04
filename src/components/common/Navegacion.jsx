@@ -6,6 +6,7 @@ import { Person } from "react-bootstrap-icons";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import iconoDelivery from "../../assets/img/icono-delivery.svg";
 import logo from "../../assets/LogoYumNavbar.svg";
+import Swal from "sweetalert2";
 
 const Navegacion = ({
   usuarioLogueado,
@@ -17,11 +18,28 @@ const Navegacion = ({
   const target = useRef(null);
   const navegacion = useNavigate();
   const logout = () => {
-    localStorage.removeItem("usuarioInicioSesion");
-    sessionStorage.removeItem(`${usuarioLogueado.id}`);
-    setUsuarioLogueado("");
-    setCarrito([]);
-    navegacion("/");
+    Swal.fire({
+      title: "¿Esta seguro de cerrar sesión?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#f7b538",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Confirmar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("usuarioInicioSesion");
+        sessionStorage.removeItem(`${usuarioLogueado.id}`);
+        setUsuarioLogueado("");
+        setCarrito([]);
+        Swal.fire({
+          title: "Cerraste sesión",
+          text: `¡YumYum te espera nuevamente!`,
+          confirmButtonColor: " #d8572a",
+        });
+        navegacion("/");
+      }
+    });
   };
 
   return (
@@ -133,12 +151,12 @@ const Navegacion = ({
                     <Nav.Link>
                       {" "}
                       <Button
-                        className="rounded-5"
+                        className="rounded-5 btnSesion"
                         variant="dark"
                         ref={target}
                         onClick={logout}
                       >
-                        <Person size={25}></Person>
+                        <Person size={25}></Person>Cerrar sesión
                       </Button>{" "}
                     </Nav.Link>
                     <Nav.Link className="mt-lg-2">
@@ -150,13 +168,13 @@ const Navegacion = ({
                     <Nav.Link>
                       {" "}
                       <Button
-                        className="rounded-5"
+                        className="rounded-5 btnSesion"
                         variant="dark"
                         ref={target}
                         onClick={logout}
                       >
                         {" "}
-                        <Person size={25}></Person>
+                        <Person size={25}></Person>Cerrar sesión
                       </Button>{" "}
                     </Nav.Link>
                     <Nav.Link className="mt-lg-2">
@@ -173,12 +191,12 @@ const Navegacion = ({
                 <NavLink to="/login" className="nav-link">
                   {" "}
                   <Button
-                    className="rounded-5 botonLogin"
+                    className="rounded-5 botonLogin btnSesion"
                     variant="dark"
                     ref={target}
                     onClick={() => setShow(!show)}
                   >
-                    <Person size={25}></Person>
+                    <Person size={25}></Person>Iniciar Sesión
                   </Button>
                 </NavLink>
               </>
