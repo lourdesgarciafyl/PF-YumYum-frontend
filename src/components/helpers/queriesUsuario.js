@@ -11,7 +11,6 @@ export const crearUsuario = async (usuario) => {
     });
     return nuevoUsuario;
   } catch (error) {
-    console.log(error);
     return null;
   }
 };
@@ -29,7 +28,6 @@ export const crearUsuarioAdmin = async (usuario) => {
     });
     return nuevoUsuario;
   } catch (error) {
-    console.log(error);
     return null;
   }
 };
@@ -48,7 +46,6 @@ export const obtenerUsuario = async (id) => {
     };
     return usuarioEncontrado;
   } catch (error) {
-    console.log(error);
     return null;
   }
 };
@@ -64,7 +61,6 @@ export const borrarUsuario = async (id) => {
     });
     return respuesta;
   } catch (error) {
-    console.log(error);
     return null;
   }
 };
@@ -87,7 +83,7 @@ export const loginUsuario = async (usuario) => {
       token: datos.token,
     };
   } catch (error) {
-    console.log(error);
+    return null;
   }
 };
 
@@ -102,7 +98,7 @@ export const consultaListaUsuarios = async () => {
     const listaUsuarios = await respuesta.json();
     return listaUsuarios;
   } catch (error) {
-    console.log(error);
+    return null;
   }
 };
 
@@ -119,12 +115,11 @@ export const editarUsuario = async (usuario, id) => {
     });
     return respuesta;
   } catch (error) {
-    console.log(error);
+    return null;
   }
 };
 
 export const cambiarPassword = async (nuevoPassword,id) => {
-  console.log(nuevoPassword);
   try {
     const respuesta = await fetch(`${URLUsuario}/nuevopassword/${id}`, {
       method: "PUT",
@@ -137,7 +132,6 @@ export const cambiarPassword = async (nuevoPassword,id) => {
     });
     return respuesta;
   } catch (error) {
-    console.log(error);
     return null;
   }
 };

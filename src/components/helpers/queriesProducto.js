@@ -13,7 +13,6 @@ export const crearProducto = async (producto) => {
     });
     return nuevoProducto;
   } catch (error) {
-    console.log(error);
     return null;
   }
 };
@@ -32,7 +31,6 @@ export const editarProducto = async (id, producto) => {
 
     return respuesta;
   } catch (error) {
-    console.log(error);
     return null;
   }
 };
@@ -48,7 +46,6 @@ export const borrarProducto = async (id) => {
     });
     return respuesta;
   } catch (error) {
-    console.log(error);
     return null;
   }
 };
@@ -59,7 +56,7 @@ export const obtenerListaProductos = async () => {
     const listaProductos = await respuesta.json();
     return listaProductos;
   } catch (error) {
-    console.log(error);
+    return null;
   }
 };
 
@@ -69,7 +66,7 @@ export const consultaProductosPorCategoria = async (categoria) => {
     const productosFiltrados = await respuesta.json();
     return productosFiltrados;
   } catch (error) {
-    console.log(error);
+    return null;
   }
 };
 
@@ -79,7 +76,7 @@ export const consultaProducto = async (id) => {
     const producto = await respuesta.json();
     return producto;
   } catch (error) {
-    console.log(error);
+    return null;
   }
 };
 
@@ -95,7 +92,6 @@ export const consultaActivarProducto = async (id) => {
     });
     return respuesta;
   } catch (error) {
-    console.log(error);
     return null;
   }
 };
@@ -112,7 +108,6 @@ export const consultaDesactivarProducto = async (id) => {
     });
     return respuesta;
   } catch (error) {
-    console.log(error);
     return null;
   }
 };

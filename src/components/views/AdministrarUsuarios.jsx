@@ -14,7 +14,7 @@ const AdministradorUsuarios = () => {
         setUsuarios(repuesta);
       })
       .catch((error) => {
-        console.log(error);
+        return null;
       });
   }, []);
 

@@ -28,7 +28,6 @@ export const crearPedido = async (usuario, carrito, totalCarrito) => {
     });
     return nuevoPedido;
   } catch (error) {
-    console.log(error);
     return false;
   }
 };
@@ -44,7 +43,7 @@ export const obtenerPedido = async (id) => {
     const pedido = await respuesta.json();
     return pedido;
   } catch (error) {
-    console.log(error);
+    return null;
   }
 };
 
@@ -60,7 +59,6 @@ export const editarPedido = async (id, pedido) => {
 
     return respuesta;
   } catch (error) {
-    console.log(error);
     return null;
   }
 };
@@ -75,7 +73,6 @@ export const borrarPedido = async (id) => {
     });
     return respuesta;
   } catch (error) {
-    console.log(error);
     return null;
   }
 };
@@ -91,7 +88,6 @@ export const obtenerListaPedidos = async () => {
     const listaPedidos = await respuesta.json();
     return listaPedidos;
   } catch (error) {
-    console.log(error);
     return false;
   }
 };
@@ -108,7 +104,6 @@ export const consultaEntregarPedido = async (id) => {
     });
     return respuesta;
   } catch (error) {
-    console.log(error);
     return null;
   }
 };
@@ -125,7 +120,6 @@ export const consultaEnProcesoPedido = async (id) => {
     });
     return respuesta;
   } catch (error) {
-    console.log(error);
     return null;
   }
 };
