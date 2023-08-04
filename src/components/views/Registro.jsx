@@ -191,8 +191,8 @@ const Registro = ({ setUsuarioLogueado, carrito }) => {
     {errors.confirmarPassword?.message}
   </Form.Text>
 </Form.Group>
-                <Button type="submit" className="w-100 btnRegistrarme fw-bold">
-                  REGISTRARME
+                <Button type="submit" className="w-100 btn-dark  fw-bold">
+                  Registrarme
                 </Button>
               </Form>
             </Card.Body>
