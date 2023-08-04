@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import imgRegistro from "../../assets/imgRegistro.png";
 import "../../css/registro.css";
 import { loginUsuario } from "../helpers/queriesUsuario";
+import { useEffect } from "react";
 
 const Registro = ({ setUsuarioLogueado, carrito }) => {
   const {
@@ -17,7 +18,6 @@ const Registro = ({ setUsuarioLogueado, carrito }) => {
   } = useForm();
   const password = watch("password");
   const navegacion = useNavigate();
-
   const onSubmit = (data) => {
     delete data.confirmarPassword;
     const { email, password } = data
@@ -55,6 +55,12 @@ const Registro = ({ setUsuarioLogueado, carrito }) => {
     });
   };
 
+  useEffect(()=>{
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, [])
 
   return (
     <Container className="mainSection my-3">
