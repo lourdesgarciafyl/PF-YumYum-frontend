@@ -6,6 +6,6 @@ export const obtenerListaCategoriasActivas = async () => {
     const listaCategorias = await respuesta.json();
     return listaCategorias;
   } catch (error) {
-    console.log(error);
+    return null;
   }
 };

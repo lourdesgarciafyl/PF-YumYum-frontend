@@ -31,8 +31,6 @@ const Inicio = ({
   const myRef = useRef();
 
   const scrollToRef = () => {
-    console.log('click')
-    
       const yOffset = 0; 
       const y =
         myRef.current.getBoundingClientRect().top + yOffset;
@@ -53,21 +51,21 @@ const Inicio = ({
         setCategorias(respuesta.map((categ) => categ.nombreCategoria))
       )
       .catch((error) => {
-        console.log(error);
+        return null;
       });
     obtenerListaProductos()
       .then((repuesta) => {
         setProductos(repuesta);
       })
       .catch((error) => {
-        console.log(error);
+        return null;
       }); 
       consultaProductosPorCategoria("Promociones")
       .then((repuesta) => {
         setProductosPromocion(repuesta);
       })
       .catch((error) => {
-        console.log(error);
+        return null;
       });
   }, []);
 
@@ -86,7 +84,7 @@ const Inicio = ({
           setProductos(repuesta);
         })
         .catch((error) => {
-          console.log(error);
+         return null;
         });
     } else {
       setCategoriaActiva(categoria);
@@ -96,7 +94,7 @@ const Inicio = ({
          
         })
         .catch((error) => {
-          console.log(error);
+          return null;
         });
     }
 
