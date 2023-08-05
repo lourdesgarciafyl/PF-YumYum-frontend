@@ -111,7 +111,7 @@ const Inicio = ({
   const totalPaginas = Math.ceil(productos.length / itemsPorPagina);
 
   return (
-    <section className="mainSection letraRoboto mb-3">
+    <section className="letraRoboto mb-3">
       <>
         <div className="position-relative">
           <div>

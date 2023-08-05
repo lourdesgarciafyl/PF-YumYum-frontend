@@ -2,6 +2,14 @@
   max-width: 200px;
 }
 
+.navPrincipal {
+  backdrop-filter: blur(8px);
+  background-color: #201c1c4e!important;  
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border: 1px rgba(255, 255, 255, 0.11) solid;
+}
+
 .navBar2 {
   max-width: fit-content;
 }
