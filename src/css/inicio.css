@@ -1,3 +1,4 @@
+
 .menu.card-text {
   font-size: x-small;
   display: flex;
@@ -133,7 +134,7 @@
 .videoHero {
   margin-top: -32px;
   width: 100%;
-  height: 79vh;
+  height: 105vh;
   object-fit: cover;
   object-position: 45%;
 }

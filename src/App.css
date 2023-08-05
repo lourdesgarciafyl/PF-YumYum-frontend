@@ -5,7 +5,7 @@
   flex-direction: column;
   min-height: 100vh;
   background: rgb(75,28,12);
-  background: linear-gradient(90deg, rgba(75,28,12,1) 0%, rgba(190,60,49,1) 84%);
+  background: linear-gradient(90deg, rgb(119, 32, 3) 0%, rgb(188, 33, 19) 84%);
 }
 .mainSection {
   flex-grow: 1;

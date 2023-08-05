@@ -115,7 +115,7 @@ const Inicio = ({
       <>
         <div className="position-relative">
           <div>
-            <video autoPlay loop muted className="videoHero w-100">
+            <video autoPlay loop muted className="videoHero w-100 shadow">
               <source src={videoHero} type="video/mp4" />
               Tu navegador no admite el elemento de video.
             </video>
@@ -147,16 +147,16 @@ const Inicio = ({
                   </Link>
                 </Col>
               </Row>
-            </Container>
+            </Container >
           </div>
         </div>
       </>
-      <Container ref={myRef}>
+      <Container >
         <h1 className="display-4 text-center text-white mt-5 mb-3 letraSpace titulosInicio">
           Disfruta de nuestras PROMOS
         </h1>
         <hr className="mb-4" />
-        <Row className="justify-content-around menu mt-5" id="productos">
+        <Row className="justify-content-around menu mt-5" id="productos" ref={myRef}>
           {productosPromocion.map((producto) => (
             <CardProducto
               key={producto._id}
