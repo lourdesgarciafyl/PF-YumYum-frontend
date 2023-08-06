@@ -1,97 +1,71 @@
 .contenedorPrincipal {
+  background-image: url("../assets/FondoPantalla.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 100%;
 }
 
 .contenedor_login {
+  background-color: #bb5f151d !important;
   margin: 0 auto;
-  width: 15rem;
-  background: transparent;
-  border-radius: 50px !important;
-  box-shadow: 0 1px 1rem rgba(0, 0, 0, 0.2);
-}
+  width: 23rem;
+  border-radius: 25px !important;
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 1);
+  backdrop-filter: blur(10px);
+  border: 2px rgba(255, 255, 255, 0.21) solid !important;
+  color: white;
 
-.form-control:focus {
-  -webkit-text-fill-color: #d8572a;
-  box-shadow: 0 0 0 0.25rem #f7b538 !important;
-  border-color: transparent;
-}
-.fondoIconoInput {
-  background-color: #8d99ae !important;
 }
 
 .inputFormulario {
   width: 100%;
   padding-block: 1rem;
   background: transparent;
-  color: #2b2d42;
-  height: 50px;
+  color: #ffffff;
+  height: 65px;
 }
 
-.botonIngresar {
-  margin-top: 2rem;
-  display: block;
-  width: 100%;
-  background-color: #8d99ae;
-  text-decoration: none;
-  color: #2b2d42;
-  padding: 1rem 2rem;
-  border: 2px solid #8d99ae;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  transition-property: background-color;
-  transition-duration: 0.3s;
+.inputFormulario::placeholder {
+  color: rgba(255, 255, 255, 0.57);
 }
 
-.botonIngresar:hover {
-  background-color: #f7b538;
-  border: 2px solid #d8572a;
+
+.text-danger {
+  color: rgb(255, 196, 0) !important;
+  font-size: 12px;
+  letter-spacing: 0.1px;
 }
 
-.subtituloCuenta {
-  font-size: 1rem;
-  font-weight: 700;
+.inputFormulario:focus {
+  background: transparent;
+  color: aliceblue;
 }
 
-.linkRegistrate {
-  color: #2b2d42;
-  margin-top: 10px;
-  display: inline-block;
-  text-decoration: none;
-  border-radius: 20px;
-  padding: 10px 9px;
-  text-transform: uppercase;
-  font-size: 1rem;
-  font-weight: 700;
-  transition-property: background-color;
-  transition-duration: 0.3s;
+.btnIngreso:hover {
+  background-color: #f7b538!important;
+
 }
 
-.linkRegistrate:hover {
-  background-color: #f7b538;
-  color: white;
-}
 
-@media screen and (min-width: 350px) {
+
+@media screen and (max-width: 640px) {
   .contenedor_login {
-    width: 20rem;
+    width: 100%;
   }
-  .botonIngresar {
-    font-size: 1.2rem;
-    font-weight: 900;
+
+  .text-decoration-underline {
+    font-size: 14px;
   }
-  .subtituloCuenta {
-    font-size: 1.1rem;
-    font-weight: 700;
-  }
-  .linkRegistrate {
-    font-size: 1.2rem;
-    font-weight: 700;
+
+  .inputFormulario {
+    width: 100%;
+    padding-block: 1rem;
+    background: transparent;
+    color: #ffffff;
+    height: 45px;
+    font-size: 13px;
+
   }
 }
