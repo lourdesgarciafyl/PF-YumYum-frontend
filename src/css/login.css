@@ -16,21 +16,7 @@
   backdrop-filter: blur(10px);
   border: 2px rgba(255, 255, 255, 0.21) solid !important;
   color: white;
-
 }
-
-.inputFormulario {
-  width: 100%;
-  padding-block: 1rem;
-  background: transparent;
-  color: #ffffff;
-  height: 65px;
-}
-
-.inputFormulario::placeholder {
-  color: rgba(255, 255, 255, 0.57);
-}
-
 
 .text-danger {
   color: rgb(255, 196, 0) !important;
@@ -40,13 +26,7 @@
 
 .inputFormulario:focus {
   background: transparent;
-  color: aliceblue;
-}
-
-.btnIngreso:hover {
-  background-color: #f7b538!important;
-
-}
+  color: aliceblue;}
 
 
 
@@ -66,6 +46,5 @@
     color: #ffffff;
     height: 45px;
     font-size: 13px;
-
   }
 }

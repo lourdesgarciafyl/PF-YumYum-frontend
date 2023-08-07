@@ -61,6 +61,45 @@
   border-radius: 25px;
 }
 
+/* Clases para aplicar Glassmorph en los forms */
+.formGlass {
+  max-width: 25rem;
+  margin: 0 auto;
+  background-color: #bb5f151d !important;
+  border-radius: 25px !important;
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 1);
+  backdrop-filter: blur(10px);
+  border: 2px rgba(255, 255, 255, 0.21) solid !important;
+  color: white;
+}
+
+.inputFormulario {
+  width: 100%;
+  padding-block: 1rem;
+  background: transparent;
+  color: #ffffff;
+  height: 65px;
+}
+
+.inputFormulario::placeholder {
+  color: rgba(255, 255, 255, 0.57);
+}
+
+.btnIngreso:hover {
+  background-color: #f7b538 !important;
+}
+
+
+/* Contenedor para paginas que lleven la imagen de fondo y form en el centro */
+.contenedorPrincipal {
+  background-image: url("../assets/FondoPantalla.png");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+}
+
 @media all and (max-width: 991px) {
   .swal2-modal {
     font-size: small;

@@ -1,7 +1,6 @@
 import { Form, Button, Container, Card, InputGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import {
-  EnvelopeAt,
    Google,
   Facebook,
   ShieldLock,
@@ -12,7 +11,7 @@ import { loginUsuario } from "../helpers/queriesUsuario";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import logoHeroSection from "../../assets/LogoYumHeroSection.svg";
+
 
 const Login = ({ setUsuarioLogueado, carrito }) => {
   const {

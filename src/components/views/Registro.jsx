@@ -1,9 +1,8 @@
-import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
+import { Container, Card, Form, Button } from "react-bootstrap";
 import { crearUsuario } from "../helpers/queriesUsuario";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import imgRegistro from "../../assets/imgRegistro.png";
 import "../../css/registro.css";
 import { loginUsuario } from "../helpers/queriesUsuario";
 import { useEffect } from "react";
@@ -63,23 +62,25 @@ const Registro = ({ setUsuarioLogueado, carrito }) => {
   }, [])
 
   return (
-    <Container className="mainSection my-3">
-      <Row className="py-2">
-        <Col lg={8}>
-          <Card className="letraForm">
-            <Card.Title className="mt-4 mb-1 text-center letraSpace letraNaranja fw-bold fs-4">
-              Registro
+
+    <> <section className="mainSection contenedorPrincipal letraRoboto">
+    <Container className="mb-3" >
+      
+  
+          <Card className="formGlass">
+            <Card.Title className="text-center pt-3 mt-3">
+              Registro de usuario nuevo
             </Card.Title>
-            <hr className="letraNaranja" />
-            <Card.Body className="d-flex justify-content-center">
+            <hr className="w-75 m-auto"/>
+            <Card.Body className="d-flex justify-content-center ">
               <Form noValidate
                 onSubmit={handleSubmit(onSubmit)}
-                className="w-75 letraRoboto letraRoja fs-5 fw-bold"
+                className="w-75 fs-5 "
               >
                <Form.Group className="mb-3">
   <Form.Label>Nombre/s</Form.Label>
   <Form.Control
-    className="inputFormRegistro"
+    className="inputFormularioReg inputFormulario"
     type="text"
     placeholder="Ej: Lisandro"
     maxLength={30} 
@@ -103,7 +104,7 @@ const Registro = ({ setUsuarioLogueado, carrito }) => {
 <Form.Group className="mb-3">
   <Form.Label>Apellido/s</Form.Label>
   <Form.Control
-    className="inputFormRegistro"
+    className="inputFormularioReg inputFormulario"
     type="text"
     placeholder="Ej: Villafañe"
     maxLength={40} 
@@ -127,7 +128,7 @@ const Registro = ({ setUsuarioLogueado, carrito }) => {
 <Form.Group className="mb-3">
   <Form.Label>Email</Form.Label>
   <Form.Control
-    className="inputFormRegistro"
+    className="inputFormularioReg inputFormulario"
     type="email"
     placeholder="Ej: lisandrov@gmail.com"
     maxLength={60} 
@@ -156,7 +157,7 @@ const Registro = ({ setUsuarioLogueado, carrito }) => {
 <Form.Group className="mb-3">
   <Form.Label>Contraseña</Form.Label>
   <Form.Control
-    className="inputFormRegistro"
+    className="inputFormularioReg inputFormulario"
     type="password"
     placeholder="Ingresa una contraseña"
     maxLength={16} 
@@ -178,7 +179,7 @@ const Registro = ({ setUsuarioLogueado, carrito }) => {
 <Form.Group className="mb-3">
   <Form.Label>Confirmar contraseña</Form.Label>
   <Form.Control
-    className="inputFormRegistro"
+    className="inputFormularioReg inputFormulario"
     type="password"
     placeholder="Ingresa nuevamente la contraseña"
     maxLength={16} 
@@ -197,20 +198,15 @@ const Registro = ({ setUsuarioLogueado, carrito }) => {
     {errors.confirmarPassword?.message}
   </Form.Text>
 </Form.Group>
-                <Button type="submit" className="w-100 btn-dark  fw-bold">
+                <Button type="submit"  variant="outline-light" className="w-100 btnIngreso">
                   Registrarme
                 </Button>
               </Form>
             </Card.Body>
           </Card>
-        </Col>
-        <Col lg={4}>
-          <div>
-            <img className="img-fluid imgRegistro" src={imgRegistro} alt="Imagen de registro"></img>
-          </div>
-        </Col>
-      </Row>
+   
     </Container>
+    </section> </>
   );
 };
 
