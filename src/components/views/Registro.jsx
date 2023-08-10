@@ -63,8 +63,8 @@ const Registro = ({ setUsuarioLogueado, carrito }) => {
 
   return (
 
-    <> <section className="mainSection contenedorPrincipal letraRoboto">
-    <Container className="mb-3" >
+    <> <section className="mainSection contenedorPrincipal   letraRoboto ">
+    <Container className="mb-3 mt-5" >
       
   
           <Card className="formGlass">

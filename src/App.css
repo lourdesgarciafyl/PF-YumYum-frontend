@@ -9,7 +9,7 @@
 }
 .mainSection {
   flex-grow: 1;
-  padding-top: 90px;
+  padding-top: 10vh;
 }
 
 .swal2-modal {
@@ -19,7 +19,7 @@
 }
 
 .letraSpace {
-  font-family: "Space Mono", monospace;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
 .letraRoboto {
   font-family: "Roboto Condensed", sans-serif;
@@ -56,7 +56,10 @@
 }
 
 .swal2-modal {
-  background-color: #2b2d42;
+  background-color: #2b2d4259;
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 1);
+  backdrop-filter: blur(15px);
+  border: 2px rgba(255, 255, 255, 0.21) solid !important;
   color: #f7b538;
   border-radius: 25px;
 }

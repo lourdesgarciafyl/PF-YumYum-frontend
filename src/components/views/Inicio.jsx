@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import ItemNavCategoria from "../helpers/ItemNavCategoria";
 import { obtenerListaCategoriasActivas } from "../helpers/querieCategoria";
 import { Pagination } from "react-bootstrap";
+import BannerInicio from "./Inicio/BannerInicio";
 
 const Inicio = ({
   usuarioLogueado,
@@ -151,6 +152,7 @@ const Inicio = ({
           </div>
         </div>
       </>
+      <BannerInicio></BannerInicio>
       <Container >
         <h1 className="display-4 text-center text-white mt-5 mb-3 letraSpace titulosInicio">
           Disfruta de nuestras PROMOS
