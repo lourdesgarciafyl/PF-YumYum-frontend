@@ -7,7 +7,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import iconoDelivery from "../../assets/img/icono-delivery.svg";
 import logo from "../../assets/LogoYumNavbar.svg";
 import Swal from "sweetalert2";
-
+import { ListGroup, ListGroupItem } from "react-bootstrap";
 const Navegacion = ({
   usuarioLogueado,
   setUsuarioLogueado,
@@ -159,9 +159,11 @@ const Navegacion = ({
                         <Person size={25}></Person>Cerrar sesión
                       </Button>{" "}
                     </Nav.Link>
-                    <Nav.Link className="mt-lg-2">
+                    <ListGroup>
+                    <ListGroup.Item className="bg-dark text-white liNavbar">
                       {usuarioLogueado.nombreUsuario}
-                    </Nav.Link>
+                    </ListGroup.Item>
+                    </ListGroup>
                   </>
                 ) : (
                   <>
@@ -175,11 +177,13 @@ const Navegacion = ({
                       >
                         {" "}
                         <Person size={25}></Person>Cerrar sesión
-                      </Button>{" "}
+                      </Button>
                     </Nav.Link>
-                    <Nav.Link className="mt-lg-2">
+                    <ListGroup>
+                    <ListGroup.Item className="bg-dark text-white liNavbar">
                       {usuarioLogueado.nombreUsuario}
-                    </Nav.Link>
+                    </ListGroup.Item>
+                    </ListGroup>
                   </>
                 )}
               </>

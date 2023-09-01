@@ -69,6 +69,11 @@
   transform: scale(0.9);
   transition: 120ms;
 }
+.liNavbar{
+  border-style: none;
+  padding-top: 17px;
+  padding-left: 6px;
+}
 
 @media (min-width: 577px) and (max-width: 991px) {
   .logoNavbar {
@@ -87,6 +92,10 @@
     min-width: 150px;
     padding: 5px 0;
     }
+    .liNavbar{
+      padding-top: 0px;
+      padding-left: 6px;
+    }
 }
 
 @media (max-width: 576px) {
@@ -102,5 +111,9 @@
   #carrito {
     left: -20px;
     position: relative;
+  }
+  .liNavbar{
+    padding-top: 0px;
+    padding-left: 6px;
   }
 }
